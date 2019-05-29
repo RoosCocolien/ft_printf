@@ -6,14 +6,10 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/27 14:13:38 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/28 16:51:36 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/05/29 14:22:03 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include "../../libft/includes/libft.h"
 #include "example.h"
 
 void	ft_putdouble(double d)
@@ -120,6 +116,32 @@ int		main(void)
 	printf("Neg number: %i\n", -36);
 	sim_print("Neg number: %i\n", -36);
 
+	//FLAGS
+	printf("******** right aligned, without fill option ********\n");
+	printf("%5d\n", 45);
 
+	printf("******** left aligned, without fill option ********\n");
+	printf("%-5d\n", 45);
+
+	printf("******** right aligned, with fill option 0 ********\n");
+	printf("%05d\n", 45);
+	//printf("%*5d\n", 45); you can't use '*' as fill option
+
+	printf("******** left aligned, with fill option 0 ********\n");
+	printf("error: flag 0 is ignored when '-' is present");
+	/*printf("%-05d\n", 45);	flag 0 is ignored when '-' is present*/
+
+	printf("******** request plus sign for pos & neg number ********\n");
+	//requesting a plus sign
+	printf("%+5d\n", 45);
+	//requesting plus sign for neg number
+	printf("%+5d\n", -45);
+
+	//invisible plus sign && left aligned
+	printf("******** left aligned && + sign ********\n");
+	printf("%+-5d\n", 36);
+	printf("******** left aligned && invisible + sign ********\n");
+	printf("% -5d\n", 36);
+	printf("% -5d\n", -36);
 	return (0);
 }
