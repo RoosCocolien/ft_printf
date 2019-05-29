@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/28 16:24:34 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/29 13:21:23 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/05/29 16:13:51 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@
 
 typedef struct s_info
 {
-	int w;		//this number can have a '-' or '+'
-	
+	char left_align;
+	char fill_zero;
+	char plus_sign;
+	char inv_plus;
+	int w;		//a number, this is the width
 }				t_info;
 
 
