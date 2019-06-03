@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/28 16:24:34 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/29 16:13:51 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/06/03 16:48:09 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@
 #include <stdlib.h>
 #include "../../libft/includes/libft.h"
 
+/*
+**	by default it is set to '0' which means that it's off
+**	otherwise it will be set to '1', which means it's on
+*/
 typedef struct s_info
 {
-	char left_align;
-	char fill_zero;
-	char plus_sign;
-	char inv_plus;
-	int w;		//a number, this is the width
+	char minus;			//'-' -> left align
+	char zero;			//'0' --> fill zero
+	char plus;			//'+' --> plus sign
+	char space;			//' ' --> align neg pos numbers
+	int width;			//'6' (example)
 }				t_info;
 
 

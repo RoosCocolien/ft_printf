@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/27 14:13:38 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/29 16:26:46 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/06/03 17:23:44 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,24 +60,78 @@ int		rec_spec(char *str, va_list args, int x)
 	{
 		ft_putchar('%');
 	}
-	if (str[x])
+	if (str[x])			//Ik kan alle if's hierin omsluiten
+		x++;			//en dan aan het einde x++ doen????
+	return (x);			//ik moet denk ik x++ doen per if statement
+}
+
+void	set_zero_flags(t_info *flag)
+{
+	(*flag).minus = 0;
+	(*flag).zero = 0;
+	(*flag).plus = 0;
+	(*flag).space = 0;
+	(*flag).width = 0;
+}
+
+int		find_flags(char *str, t_info *flag, int x)
+{
+	int width;
+
+	while (str[x])
+	{
+		if (str[x] == '-' && (*flag).minus == 0)
+		{
+			(*flag).minus = 1;
+		}
+		else if (str[x] == '0' && (*flag).zero == 0)
+		{
+			(*flag).zero = 1;
+		}
+		else if (str[x] == '+' && (*flag).plus == 0)
+		{
+			(*flag).plus = 1;
+		}
+		else if (str[x] == ' ' && (*flag).space == 0)
+		{
+			(*flag).space = 1;
+		}
+		else if (str[x] > 0 && str[x] < 9)
+		{
+			(*flag).width = ft_atoi;
+		}
+		if (str[x] == 'd' || str[x] == 'i' || str[x] == 'f' || str[x] == 'c'/
+		str[x] == 's' || str[x] == '%')
+		{
+			return (x);
+		}
 		x++;
-	return (x);
+	}
+		return (x);
 }
 
 int		sim_print(const char *restrict format, ...)
 {
 	va_list	args;
 	int		x;
-	va_start(args, format);
+	t_info	flag;	//*
 
+	va_start(args, format);
 	x = 0;
 	while (format[x])
 	{
 		if (format[x] == '%')
 		{
 			x++;
+			set_zero_flags(flag);							//*
+			x = find_flags(((char*)format), flag, x);		//*
+/*			if (x == -1)	error handling
+				return (-1);
+*/
 			x = rec_spec((char*)format, args, x);
+/*			if (x == -1)	error handling
+				return (-1);
+*/
 		}
 		else
 		{
@@ -148,6 +202,11 @@ int		main(void)
 	printf("% -5d\n", 36);
 	printf("% -5d\n", -36);
 
+	printf("******** %%- 5d ********THIS IS STRANGE BEHAVIOR, the amount of spaces does not matter\n");
+	//the minus sign prints a space before a positive number
+	printf("%-   5d\n", 28);
+
+
 	printf("**-----------------------**\n\tFLAGS 4 strings\n**-----------------------**\n");
 	printf("zero fill (0), plus sign(+) and invisible plus( +) sign are meaningless\
 	and will result in undefined behavior with 's' conversion specifier\n");
@@ -161,15 +220,35 @@ int		main(void)
 	printf("**-----------------------**\n\tFLAGS 4 floating point numbers\n**-----------------------**\n");
 	printf("all the same flags and rules apply for floats as for ints\n");
 	printf("precision examples\n");
-	float nb = 2.718281828;
-	printf("%.0f\n", nb);
-	printf("%.0f.\n", nb);
+	float nb = 2.7182818;
+	printf("%.0f\n", nb);	//hij rondt alles af naar boven
+	printf("%.0f.\n", nb);	//die punt na 'f' is gewoon onderdeel van de string
 	printf("%.1f\n", nb);
 	printf("%.2f\n", nb);
 	printf("%.6f\n", nb);
 	printf("%f\n", nb);
 	printf("%.7f\n", nb);
-
+	float nb2 = 0.7182818;
+	printf("%.0f\n", nb2);
+	printf("%.0f.\n", nb2);
+	printf("%.1f\n", nb2);
+	printf("%.5f\n", nb2);
+	printf("%.9f\n", nb2);
+	printf("%.11f\n", nb2);
+	printf("default (6 decimal behind .): (%%f)\n");
+	printf("%f\n", nb2);
+	printf("\n******** standard flags 4 floating point numbers ********\n");
+	printf("%5.1f\n", 2.73);
+	printf("%-5.1f\n", 2.73);
+	printf("%05.1f\n", 2.73);
+	printf("%+5.1f\n", 2.73);
+	printf("% 5.1f\n", 2.73);
+	printf("%+-5.1f\nAND\n%-+5.1f\n", 2.73, 2.73);
+	printf("spatie min:\n% -5.1f\nmin spatie\n%- 5.1f\n", 2.73, 2.73);
+	printf("spatie min:\n% -5.1f\nmin spatie\n%- 5.1f\n", -2.73, -2.73);
+	printf("% 05.1f\n", 2.73);
+	printf("%+05.1f\n", 2.73);
+	printf("\n% 5.1f\n", -33.44);
 
 	return (0);
 }
