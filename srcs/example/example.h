@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/28 16:24:34 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/03 16:48:09 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/06/06 13:48:03 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,10 @@ typedef struct s_info
 	int width;			//'6' (example)
 }				t_info;
 
+int				sim_print(const char *restrict format, ...);
+int				find_flags(char *str, t_info *flag, int x);
+void			set_zero_flags(t_info *flag);
+int				rec_spec(char *str, va_list args, t_info flag, int x);
+void			ft_putdouble(double d);
 
 #endif
