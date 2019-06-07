@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/27 14:13:38 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/07 11:12:09 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/06/07 13:07:52 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ int		find_flags(char *str, t_info *flag, int x)
 			return (x);
 		}
 	}
-		return (x);
+	return (x);
 }
 
 int		sim_print(const char *restrict format, ...)
