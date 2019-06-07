@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/27 14:13:38 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/06 14:55:03 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/06/07 11:12:09 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int		rec_spec(char *str, va_list args, t_info flag, int x)
 		ft_putchar('%');
 		x++;
 	}
-	return (x);			//ik moet denk ik x++ doen per if statement
+	return (x);
 }
 
 void	set_zero_flags(t_info *flag)
