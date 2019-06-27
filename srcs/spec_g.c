@@ -35,7 +35,7 @@ static void		ft_put_e_for_g(long double d)
         j++;
     }
     new_d_int = d * 1000000;
-    new_d_str = ft_itoa_ll(new_d_int);
+    new_d_str = ft_itoa_llu(new_d_int);
     len = ft_strlen(new_d_str);
     i = 0;
     while (new_d_str[i + 1] != '\0')
@@ -89,7 +89,7 @@ int		spec_g(char *s, va_list args, t_info flag, int x)
 		return (x + 1);
 	}
     new_d_int = d * 10;
-    new_d_str = ft_itoa_ll(new_d_int);
+    new_d_str = ft_itoa_llu(new_d_int);
     len = ft_strlen(new_d_str);
 	if (len <= 7)
 	{

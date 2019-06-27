@@ -21,7 +21,7 @@ long long int     ft_roundup(long double d)
     
     i = d * 1000000;
     len = ft_intlength(i);
-    str = ft_itoa_ll(i);
+    str = ft_itoa_llu(i);
     j = len;
     if (str[len - 6] >= '5')
     {

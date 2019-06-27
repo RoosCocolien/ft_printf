@@ -47,8 +47,8 @@ typedef struct s_info
 
 
 //Moeten naar libft
-char					*ft_itoa_ll(long long int n);
-int						ft_intlength(long long int y);
+char					*ft_itoa_llu(long long unsigned n);
+int						ft_intlength(long long unsigned y);
 long long int   		ft_roundup(long double d);
 int     				ft_deci_count(double d);
 

@@ -83,6 +83,7 @@ char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s1, char c);
 char				*ft_itoa(int n);
 char				*ft_itoa_base(int value, int base);
+char				*ft_itoa_base_cap(int value, int base);
 void				ft_putendl(char const *s);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);

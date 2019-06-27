@@ -12,7 +12,7 @@
 
 #include "../includes/printf.h"
 
-int		ft_intlength(long long int y)
+int		ft_intlength(long long unsigned y)
 {
 	int		cx;
 
@@ -47,7 +47,7 @@ static char		*ft_itoa_cpy(char *str, int cx, int intlen, long long int n)
 	return (str);
 }
 
-char			*ft_itoa_ll(long long int n)
+char			*ft_itoa_llu(long long unsigned n)
 {
 	int		cx;
 	int		intlen;

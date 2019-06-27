@@ -38,7 +38,7 @@ int		spec_eE(char *s, va_list args, t_info flag, int x)
         j++;
     }
     new_d_int = d * 1000000;
-    new_d_str = ft_itoa_ll(new_d_int);
+    new_d_str = ft_itoa_llu(new_d_int);
     len = ft_strlen(new_d_str);
     i = 0;
     while (new_d_str[i] != '\0')

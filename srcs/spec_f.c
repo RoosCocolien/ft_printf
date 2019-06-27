@@ -27,12 +27,9 @@ void	ft_putdouble(long long unsigned d)
 	int j;
 	double	len;
 
-	printf("%llu\n\n", d);
-	dub = ft_itoa(d);
+	dub = ft_itoa_llu(d / 1000000);
 	ft_putstr(dub);
 	ft_putchar('.');
-	//d = d * 1000000;
-	//printf("real %llu\n", d);
 	j = ft_deci_count(d);
 	while (j < 5)
 	{
@@ -42,7 +39,7 @@ void	ft_putdouble(long long unsigned d)
 	len = ft_strlen(dub);
 	if ((int)d / 1000000 == 0)
 		len -= 1;
-	tot = ft_itoa_ll(d);
+	tot = ft_itoa_llu(d);
 	dec = ft_strsub(tot, len, 6);
 	ft_putstr(dec);
 	free(dec);
@@ -56,11 +53,10 @@ int		spec_f(char *s, va_list args, t_info flag, int x)
 	d = va_arg(args, double);
 	if (d < 0)
 	{
-		d *= -1;
+		d = -d;
 		ft_putchar('-');
 	}
 	i = (long long unsigned)(1000000 * d);
-	printf("%llu\n", i);
 	ft_putdouble(i);
 	return (x + 1);
 }

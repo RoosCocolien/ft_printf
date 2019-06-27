@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_itoa_base.c                                     :+:    :+:            */
+/*   ft_itoa_base_cap.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
@@ -41,7 +41,7 @@ static char		*fill_str(int value, int base, int len, int sign)
 
 	i = 1;
 	s_base = (char*)malloc(sizeof(char) * 17);
-	s_base = "0123456789abcdef";
+	s_base = "0123456789ABCDEF";
 	s = (char*)malloc(sizeof(char) * (len + 1));
 	if (sign)
 		s[0] = '-';
@@ -55,7 +55,7 @@ static char		*fill_str(int value, int base, int len, int sign)
 	return (s);
 }
 
-char			*ft_itoa_base(int value, int base)
+char			*ft_itoa_base_cap(int value, int base)
 {
 	int		len;
 	int		sign;

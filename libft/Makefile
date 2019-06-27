@@ -24,7 +24,8 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c\
             ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c\
             ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c\
             ft_printtlist.c ft_printelem.c ft_strnlen.c ft_strcharfind.c\
-            ft_strsldup.c ft_sqrt.c ft_lstpushback.c ft_itoa_base.c
+            ft_strsldup.c ft_sqrt.c ft_lstpushback.c ft_itoa_base.c\
+            ft_itoa_base_cap.c
 
 LIBO = *.o
 FLAG = -Wall -Wextra -Werror
