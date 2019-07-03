@@ -21,8 +21,6 @@ int		ft_intlength(long long unsigned y)
 	{
 		return (1);
 	}
-	if (y < 0)
-		cx++;
 	while (y != 0)
 	{
 		cx++;
@@ -61,12 +59,6 @@ char			*ft_itoa_llu(long long unsigned n)
 		return (NULL);
 	// if (n == -2147483648)
 	// 	return (ft_strdup("-2147483648"));
-	if (n < 0)
-	{
-		str[cx] = '-';
-		n = -n;
-		cx++;
-	}
 	str[intlen] = '\0';
 	intlen--;
 	return (ft_itoa_cpy(str, cx, intlen, n));

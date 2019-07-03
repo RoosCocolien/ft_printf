@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_deci_count.c                                    :+:    :+:            */
+/*   ft_zero_count.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
@@ -10,17 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int     ft_deci_count(double d)
+#include "../includes/printf.h"
+
+int     ft_zero_count(char *str)
 {
     int i;
 
     i = 0;
-    while (d < 10)
+    while (str[i] != '\0')
     {
-        d /= 10;
+        if (str[i] != '0')
+            return (1);
         i++;
     }
-    return (i);
-
-
+    return (0);
 }

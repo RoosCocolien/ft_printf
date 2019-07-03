@@ -39,10 +39,9 @@ int		main(void)
 	int *p = &a;
 	double f;
 
-	f = 9999999999.0109011234;
-
-	printf("Ekte printf =\t %f\n", f);
-	//ft_printf("Neppe Fprintf =\t %e\n", -1234569.79 * 1.99);
-	ft_printf("Neppe printf =\t %f\n", f);
+	//f = -9999999.34;
+	f = -10000000.34;
+	printf("Ekte printf =\t %g\n", f);
+	ft_printf("Neppe printf =\t %g\n", f);
 	return (0);
 }

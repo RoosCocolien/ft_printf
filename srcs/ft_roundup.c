@@ -12,7 +12,7 @@
 
 #include "../includes/printf.h"
 
-long long int     ft_roundup(long double d)
+long long unsigned     ft_roundup(long long unsigned d)
 {
     long long int i;
     int len;
@@ -23,13 +23,12 @@ long long int     ft_roundup(long double d)
     len = ft_intlength(i);
     str = ft_itoa_llu(i);
     j = len;
+    printf("d oud = %llu\n", d);
     if (str[len - 6] >= '5')
     {
+        printf("d niewuw = %llu\n", d);
         str[len - 7] += 1;
-        if (d < 0)
-            d -= 1;
-        else
-            d += 1;
+        d += 1;
     }
     return (d);
 }

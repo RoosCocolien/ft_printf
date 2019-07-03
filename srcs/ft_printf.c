@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:28:36 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/26 16:24:54 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/07/01 18:23:47 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 ** if something goes wrong in print_content, return (-1);
 */
 
-static int	print_content(char *s, int x)
+static int	print_content(t_info *flag, char *s, int x)
 {
 	while (s[x] && s[x] != '%')
 	{
 		ft_putchar(s[x]);
+		(*flag).count++;
 		x++;
 	}
 	return (x);
@@ -54,7 +55,7 @@ int			loop_format_args(char *s, va_list args)
 		}
 		else
 		{
-			x = print_content(s, x);
+			x = print_content(&flag, s, x);
 			if (x == -1)
 			{
 				printf("Error ft_printf.c from print_content\n");
@@ -62,19 +63,21 @@ int			loop_format_args(char *s, va_list args)
 			}
 		}
 	}
-	return (0);
+	return (flag.count);
 }
 
 int			ft_printf(const char *restrict format, ...)
 {
 	va_list	args;
+	int		count;
 
 	va_start(args, format);
-	if (loop_format_args((char*)format, args) == -1)
+	count = loop_format_args((char*)format, args);
+	if (count == -1)
 	{
 		printf("Error ft_printf.c from loop_format_args\n");
 		return (-1);
 	}
 	va_end(args);
-	return (0);
+	return (count);
 }

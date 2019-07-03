@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:19 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/20 15:35:32 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/07/01 18:28:10 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,34 @@
 ** consideration of flags:	NO
 */
 
+long long unsigned     ft_roundup_g(long long unsigned d)
+{
+    long long int i;
+    int len;
+    int j;
+    char *str;
+    
+    i = d * 1000000;
+    len = ft_intlength(i);
+    str = ft_itoa_llu(i);
+    j = len;
+    if (str[len - 12] >= '5')
+    {
+        str[len - 7] += 1;
+        d += 1;
+    }
+    return (d);
+}
+
 static void		ft_put_e_for_g(long double d)
 {
     long long int new_d_int;
     char *new_d_str;
+    char *str;
     int i;
     int j;
+    int x;
+    int y;
     int len;
     int count;
 
@@ -34,17 +56,27 @@ static void		ft_put_e_for_g(long double d)
         d = d / 10;
         j++;
     }
+    x = d * 1000000;
+    if (ft_intlength(x) > 5)
+        d = ft_roundup_g(d);
     new_d_int = d * 1000000;
     new_d_str = ft_itoa_llu(new_d_int);
     len = ft_strlen(new_d_str);
     i = 0;
-    while (new_d_str[i + 1] != '\0')
+    y = ft_intlength(x / 1000000);
+    str = ft_strsub(new_d_str, x, len);
+    if (ft_zero_count(str) == 1)
     {
-        if (i + 6 == len)
-            ft_putchar('.');
-        ft_putchar(new_d_str[i]);
-        i++;
+        while (new_d_str[i + 1] != '\0')
+        {
+            if (i + 6 == len)
+                ft_putchar('.');
+            ft_putchar(new_d_str[i]);
+            i++;
+        }
     }
+    else
+        ft_putnbr(x / 1000000);
     ft_putchar('e');
     if (i > 10)
         ft_putstr("+");
@@ -63,12 +95,16 @@ void	ft_put_g(double d)
 
 	dub = ft_itoa(d);
 	ft_putstr(dub);
-	ft_putchar('.');
 	d = d * 1000000;
 	len = ft_strlen(dub);
 	tot = ft_itoa(d);
 	dec = ft_strsub(tot, len, 6 - len);
+    if (ft_strlen(dec) > 0)
+        ft_putchar('.');
 	ft_putstr(dec);
+    free(dec);
+    free(tot);
+    free(dub);
 }
 
 int		spec_g(char *s, va_list args, t_info flag, int x)
@@ -80,11 +116,25 @@ int		spec_g(char *s, va_list args, t_info flag, int x)
     int len;
     int count;
 	long double d;
+    // long long unsigned 		i;
+
+	// d = va_arg(args, double);
+	// if (d < 0)
+	// {
+	// 	d = -d;
+	// 	ft_putchar('-');
+	// }
+	// i = (long long unsigned)(1000000 * d);
 
 	d = va_arg(args, double);
-	if (d >= 1000000 || d <= -1000000)
+	if (d < 0)
 	{
-		d = ft_roundup(d);
+		d = -d;
+		ft_putchar('-');
+	}
+	if (d >= 1000000)
+	{
+		d = ft_roundup_g(d);
 		ft_put_e_for_g(d);
 		return (x + 1);
 	}

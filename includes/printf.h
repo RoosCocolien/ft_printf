@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/27 16:20:37 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/07/01 18:29:51 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,16 @@ typedef struct s_info
 	int		hh;
 	int		l_cap;
 	int		neg;
+	int		count;
 }				t_info;
 
 
 //Moeten naar libft
 char					*ft_itoa_llu(long long unsigned n);
 int						ft_intlength(long long unsigned y);
-long long int   		ft_roundup(long double d);
+long long unsigned   	ft_roundup(long long unsigned d);
 int     				ft_deci_count(double d);
+int     				ft_zero_count(char *str);
 
 /*
 **	print.c		CAN BE REMOVED
@@ -61,11 +63,12 @@ void					print_flags(t_info flag);
 **	ft_printf.c
 */
 int						ft_printf(const char * restrict format, ...);
+int						loop_format_args(char *s, va_list args);
 
 /*
 **	len_mod.c
 */
-unsigned long long int	len_mod_check(va_list args, t_info *flag);
+unsigned long long int	len_mod_check(va_list args, t_info flag);
 
 /*
 **	len_mod2.c
@@ -82,12 +85,14 @@ int						save_flags(char *s, t_info *flag, int x);
 */
 int						check_precision(char *s, t_info *flag, int x);
 void					set_zero_flags(t_info *flag);
+int						check_flag_plus(t_info flag, int fill, int left_align);
+int						check_flag_space(t_info flag, int fill, int left_align);
 
 /*
 **	spec.c
 */
 int						find_spec(char *s, va_list args, t_info flag, int x);
-int						find_spec_2(/*char *s, va_list args, t_info flag, */int x);
+int						find_spec_2(/*char *s, va_list args, t_info &flag, */int x);
 
 /*
 **	spec_d_i.c

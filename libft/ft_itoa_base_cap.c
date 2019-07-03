@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rsteigen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/28 10:37:26 by rsteigen      #+#    #+#                 */
-/*   Updated: 2019/05/28 15:11:41 by rsteigen      ########   odam.nl         */
+/*   Created: 2019/05/28 10:37:26 by rsteigen       #+#    #+#                */
+/*   Updated: 2019/06/18 13:39:17 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char		*fill_str(int value, int base, int len, int sign)
 	int		i;
 
 	i = 1;
-	s_base = (char*)malloc(sizeof(char) * 17);
+	//s_base = (char*)malloc(sizeof(char) * 17);
 	s_base = "0123456789ABCDEF";
 	s = (char*)malloc(sizeof(char) * (len + 1));
 	if (sign)

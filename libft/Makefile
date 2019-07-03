@@ -6,7 +6,7 @@
 #    By: bvan-de- <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/15 14:53:31 by bvan-de-       #+#    #+#                 #
-#    Updated: 2019/05/28 11:10:14 by rsteigen      ########   odam.nl          #
+#    Updated: 2019/06/18 12:13:30 by rsteigen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c\
             ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c\
             ft_printtlist.c ft_printelem.c ft_strnlen.c ft_strcharfind.c\
             ft_strsldup.c ft_sqrt.c ft_lstpushback.c ft_itoa_base.c\
-            ft_itoa_base_cap.c
+            ft_itoa_base_cap.c\
 
 LIBO = *.o
 FLAG = -Wall -Wextra -Werror

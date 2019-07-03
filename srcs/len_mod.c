@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/20 13:38:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/27 16:24:47 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/07/01 11:51:29 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ unsigned long long int		len_mod_check(va_list args, t_info *flag)
 {
 	unsigned long long int	i;
 
-	if (flag.precision == 2)
-		flag.width = va_args(args, int);
+	if ((*flag).precision == 2)
+		(*flag).width = va_arg(args, int);
 	if ((*flag).hh == 1)
 		i = check_char(args, &(*flag));
 	else if ((*flag).h == 1)
