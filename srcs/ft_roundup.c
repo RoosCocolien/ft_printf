@@ -23,10 +23,10 @@ long long unsigned     ft_roundup(long long unsigned d)
     len = ft_intlength(i);
     str = ft_itoa_llu(i);
     j = len;
-    printf("d oud = %llu\n", d);
+    //printf("d oud = %llu\n", d);
     if (str[len - 6] >= '5')
     {
-        printf("d niewuw = %llu\n", d);
+        //printf("d niewuw = %llu\n", d);
         str[len - 7] += 1;
         d += 1;
     }

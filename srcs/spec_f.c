@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:11 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/24 18:19:37 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/07/10 11:04:02 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_putdouble(long long unsigned d)
 	ft_putstr(dub);
 	ft_putchar('.');
 	j = ft_deci_count(d);
-	while (j < 5)
+	while (j < 4)
 	{
 		ft_putchar('0');
 		j++;;
@@ -41,11 +41,12 @@ void	ft_putdouble(long long unsigned d)
 		len -= 1;
 	tot = ft_itoa_llu(d);
 	dec = ft_strsub(tot, len, 6);
+	//ft_putchar('\n');
 	ft_putstr(dec);
 	free(dec);
 }
 
-int		spec_f(char *s, va_list args, t_info flag, int x)
+int		spec_f(char *s, va_list args, t_info *flag, int x)
 {
 	double 					d;
 	long long unsigned 		i;

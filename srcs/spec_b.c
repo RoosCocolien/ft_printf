@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:33 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/01 18:29:04 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/07/04 12:54:19 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void     bin_filler(int **bin_2d_arr, int bin)
     ft_print_int_arr(arr_1, len);
 }
 
-int		spec_b(char *s, va_list args, t_info flag, int x)
+int		spec_b(char *s, va_list args, t_info *flag, int x)
 {
     int bin;
     int bin_len;

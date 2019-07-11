@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:52:24 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/01 18:27:08 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/07/04 12:59:10 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		find_spec_2(/*char *s, va_list args, t_info flag, */int x)
 
 }
 
-int		find_spec(char *s, va_list args, t_info flag, int x)
+int		find_spec(char *s, va_list args, t_info *flag, int x)
 {
 	if (s[x] == 'd' || s[x] == 'i')
 		x = spec_d_i(s, args, flag, x);

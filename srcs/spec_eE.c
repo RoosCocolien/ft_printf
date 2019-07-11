@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:05 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/01 18:27:58 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/07/04 12:51:13 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** consideration of flags:	NO
 */
 
-int		spec_eE(char *s, va_list args, t_info flag, int x)
+int		spec_eE(char *s, va_list args, t_info *flag, int x)
 {
     long long int new_d_int;
     char *new_d_str;
@@ -30,7 +30,6 @@ int		spec_eE(char *s, va_list args, t_info flag, int x)
 	long double d;
 
 	d = ft_roundup(va_arg(args, double));
-    //printf("dit is f %Lf\n", d);
     j = 0;
     while (d >= 10 || d <= -10)
     {

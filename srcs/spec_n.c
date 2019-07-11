@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:28 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/01 18:28:17 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/07/04 12:57:02 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** consideration of flags:	NO
 */
 
-int		spec_n(char *s, va_list args, t_info flag, int x)
+int		spec_n(char *s, va_list args, t_info *flag, int x)
 {   
 	void *n;
 

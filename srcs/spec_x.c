@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:49:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/01 18:28:48 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/07/09 16:03:27 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,17 @@
 ** consideration of flags:	NO
 */
 
-int		spec_xX(char *s, va_list args, t_info flag, int x)
+int		spec_xX(char *s, va_list args, t_info *flag, int x)
 {
 	char *s1;
+	// int d;
+	// d = va_arg(args, int);
+	// if (d < 0)
+	// {
+	// 	d = -d;
+	// 	ft_putchar('-');
+	// }
+	// i = (long long unsigned)d;
 
 	if (s[x] == 'x')
 	{

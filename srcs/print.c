@@ -6,12 +6,31 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:23:54 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/26 14:34:04 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/07/08 12:42:49 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 
+/*
+**	(*flag).count opplussen bij elke print
+*/
+void	print_digit(t_info *flag, unsigned long long nb)
+{
+	char	*str_digit;
+	int		i;
+
+	str_digit = ft_itoa_llu(nb);
+	i = 0;
+	while (str_digit[i])
+	{
+		ft_putchar(str_digit[i]);
+		(*flag).count++;
+		i++;
+	}
+}
+
+/*
 void	print_flags(t_info flag)
 {
 	printf("Value flag.minus: %d\n", flag.minus);
@@ -30,3 +49,4 @@ void	print_flags(t_info flag)
 	printf("Value flag.l_cap: %d\n", flag.l_cap);
 	printf("Value flag.neg: %d\n", flag.neg);
 }
+*/

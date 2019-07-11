@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:28:36 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/01 18:23:47 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/07/04 15:42:10 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,17 @@ int			loop_format_args(char *s, va_list args)
 {
 	t_info	flag;
 	int		x;
+	int		start_count;
 
 	x = 0;
+	start_count = 0;
 	while (s[x])
 	{
 		if (s[x] == '%')
 		{
 			x++;
-			set_zero_flags(&flag);
+			set_zero_flags(&flag, start_count);
+			start_count++;
 			x = save_flags(s, &flag, x);
 //			print_flags(flag);	//this can be removed
 			if (x == -1)
@@ -46,7 +49,7 @@ int			loop_format_args(char *s, va_list args)
 				printf("Error ft_printf.c from save_flags.c\n");
 				return (-1);
 			}
-			x = find_spec(s, args, flag, x);
+			x = find_spec(s, args, &flag, x);
 			if (x == -1)
 			{
 				printf("Error ft_printf.c from find_spec.c, %c\n", s[x]);

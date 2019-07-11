@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/12 14:25:20 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/01 18:16:42 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/07/04 15:42:30 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,32 @@
 //put a space first? how does that work?
 
 //print plus sign on positive numbers
-int		check_flag_plus(t_info flag, int fill, int left_align)
+int		check_flag_plus(t_info *flag, int fill, int left_align)
 {
 	//first if: to let '+' be counted as well in the fill
-	if (flag.precision == 0 && flag.neg == 0)
+	if ((*flag).precision == 0 && (*flag).neg == 0)
 		fill--;
-	if (flag.neg == 0 && ((flag.precision != 0 || left_align == 1) ||
-	flag.zero == 1))
+	if ((*flag).neg == 0 && (((*flag).precision != 0 || left_align == 1) ||
+	(*flag).zero == 1))
+	{
 		ft_putchar('+');
+		(*flag).count++;
+	}
 	return (fill);
 }
 
 //invisible plus sign
-int		check_flag_space(t_info flag, int fill, int left_align)
+int		check_flag_space(t_info *flag, int fill, int left_align)
 {
 	//first if: to let ' ' be counted as well in the fill
-	if (flag.precision == 0 && flag.neg == 0)
+	if ((*flag).precision == 0 && (*flag).neg == 0)
 		fill--;
-	if (flag.neg == 0 && ((flag.precision != 0 || left_align == 1) ||\
-	flag.zero == 1))
+	if ((*flag).neg == 0 && (((*flag).precision != 0 || left_align == 1) ||\
+	(*flag).zero == 1))
+	{
 		ft_putchar(' ');
+		(*flag).count++;
+	}
 	return (fill);
 }
 
@@ -73,7 +79,7 @@ int		check_precision(char *s, t_info *flag, int x)
 	return (x);
 }
 
-void		set_zero_flags(t_info *flag)
+void		set_zero_flags(t_info *flag, int start_count)
 {
 	(*flag).minus = 0;
 	(*flag).zero = 0;
@@ -90,5 +96,6 @@ void		set_zero_flags(t_info *flag)
 	(*flag).hh = 0;
 	(*flag).l_cap = 0;
 	(*flag).neg = 0;
-	(*flag).count = 0;
+	if (start_count == 0)
+		(*flag).count = 0;
 }
