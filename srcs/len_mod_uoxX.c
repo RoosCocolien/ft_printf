@@ -17,13 +17,8 @@
 **	h	-->	unsigned short		0 - 65.535
 **	l	--> unsigned long		0 - 4.294.967.295
 **	ll	-->	unsigned long long	0 - 18.446.744.073.709.551.615
+**	I have no idea what to do with the neg integers.
 */
-
-//extra
-static char					*bit_str(int n)
-{
-
-}
 
 static unsigned long long	check_char_uns(va_list args, t_info *flag)
 {
@@ -47,12 +42,12 @@ static unsigned long long	check_short_uns(va_list args, t_info *flag)
 
 static unsigned long long	check_long_uns(va_list args, t_info *flag)
 {
-	unsigned long long	uns_long;
+	unsigned long		uns_long;
 	unsigned long long	num;
 	unsigned int		uns_int;
 
-	uns_long = (unsigned long long)va_arg(args, int);
-	printf("uns_long 1: %llu (len_mod_uoxX)\n", uns_long);
+	uns_long = (unsigned long)va_arg(args, int);
+	printf("uns_long 1: %lu (len_mod_uoxX)\n", uns_long);
 /*
 	if ((long)uns_long < 0)
 	{
@@ -62,7 +57,7 @@ static unsigned long long	check_long_uns(va_list args, t_info *flag)
 	}
 	else
 	{*/
-		printf("uns_long else: %llu (len_mod_uoxX)\n", uns_long);
+		printf("uns_long else: %lu (len_mod_uoxX)\n", uns_long);
 		num = (unsigned long long)uns_long;
 		printf("uns_long num: %llu (len_mod_uoxX)\n", num);
 /*	}*/
