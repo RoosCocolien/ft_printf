@@ -19,6 +19,12 @@
 **	ll	-->	unsigned long long	0 - 18.446.744.073.709.551.615
 */
 
+//extra
+static char					*bit_str(int n)
+{
+
+}
+
 static unsigned long long	check_char_uns(va_list args, t_info *flag)
 {
 	unsigned char			uns_char;
@@ -41,22 +47,25 @@ static unsigned long long	check_short_uns(va_list args, t_info *flag)
 
 static unsigned long long	check_long_uns(va_list args, t_info *flag)
 {
-	unsigned long		uns_long;
+	unsigned long long	uns_long;
 	unsigned long long	num;
+	unsigned int		uns_int;
 
-	printf("uns_long (len_mod_uoxX)\n");
-	uns_long = (unsigned long)va_arg(args, int);
+	uns_long = (unsigned long long)va_arg(args, int);
+	printf("uns_long 1: %llu (len_mod_uoxX)\n", uns_long);
+/*
 	if ((long)uns_long < 0)
 	{
-		printf("if 1 (len_mod_uoxX)\n");
-		num = (int)uns_long;
+		printf("NEG\n");
+		uns_int = (unsigned int)uns_long;
+		num = (unsigned long long)uns_int;
 	}
 	else
-	{
-		printf("else (len_mod_uoxX)\n");
+	{*/
+		printf("uns_long else: %llu (len_mod_uoxX)\n", uns_long);
 		num = (unsigned long long)uns_long;
-	}
-	printf("num: %llu\n", num);
+		printf("uns_long num: %llu (len_mod_uoxX)\n", num);
+/*	}*/
 	return (num);
 }
 
@@ -64,9 +73,24 @@ static unsigned long long	check_longlong_uns(va_list args, t_info *flag)
 {
 	unsigned long long	uns_longlong;
 	unsigned long long	num;
+	unsigned int		uns_int;
 
 	uns_longlong = (unsigned long long)va_arg(args, int);
-	num = (unsigned long long)uns_longlong;
+	printf("uns_longlong 1: %llu (len_mod_uoxX)\n", uns_longlong);
+/*	if ((long long)uns_longlong < 0)
+	{
+		//this means that it is either negative OR bigger than a
+		//positive unsigned type
+		printf("NEG\n");
+		uns_int = (unsigned int)uns_longlong;
+		num = (unsigned long long)uns_int;
+	}
+	else
+	{*/
+		printf("uns_longlong else: %llu (len_mod_uoxX)\n", uns_longlong);
+		num = (unsigned long long)uns_longlong;
+		printf("uns_longlong num: %llu (len_mod_uoxX)\n", num);
+/*	}*/
 	return (num);
 }
 

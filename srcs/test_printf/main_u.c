@@ -180,18 +180,20 @@ static void	range_check_u(void)
 	ft_printf("%u\n", 4294967296);
 
 	//uns long
+	unsigned long uns_long = 4294967297;
 	printf("\nprintf\t%%lu\tuns long (789)\n%lu\n", 789);
 	ft_printf("%lu\n", 789);
 	//uns long < 0
 	printf("\nprintf\t%%lu\tuns long < 0 (-2)\n%lu\n", -2);
 	ft_printf("%lu\n", -2);
 	//uns long > 4.294.967.295
-	printf("\nprintf\t%%lu\tuns long > 4.294.967.295 (4294967296)\n%lu\n", 4294967296);
-	ft_printf("%lu\n", 4294967296);
+	printf("\nprintf\t%%lu\tuns long > 4.294.967.295 (4294967296)\n%lu\n", uns_long);
+	ft_printf("%lu\n", uns_long);
 
 	//uns long long
-	printf("\nprintf\t%%llu\tuns long long (18.443.744.073.709.551.614)\n%llu\n", 18443744073709551614);
-	ft_printf("%llu\n", 18443744073709551614);
+	unsigned long long uns_longlong = 18446744073709551614;
+	printf("\nprintf\t%%llu\tuns long long (18.446.744.073.709.551.614)\n%llu\n", uns_longlong);
+	ft_printf("%llu\n", uns_longlong);
 	//uns long long < 0
 	printf("\nprintf\t%%llu\tuns long long < 0 (-1)\n%llu\n", -1);
 	ft_printf("%llu\n", -1);
@@ -199,7 +201,7 @@ static void	range_check_u(void)
 	//uns long long > 18.466.744.073.709.551.615
 /*	printf("\nprintf\t%%llu\tuns long long > 18.446.744.073.709.551.615\n%llu\n", 18446744073709551616);
 	ft_printf("%llu\n", 18446744073709551616);
-	GEEFT EEN ERROR
+	GEEFT EEN ERROR WANT HET IS GROTER DAN EEN UNSIGNED LONG LONG
 */
 }
 
