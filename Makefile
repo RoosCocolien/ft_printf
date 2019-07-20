@@ -17,7 +17,8 @@ SRCS 	= srcs/ft_printf.c srcs/flags.c srcs/spec.c srcs/spec_c.c\
 			srcs/flags2.c srcs/spec_x.c srcs/spec_b.c srcs/spec_u.c\
 			srcs/spec_p.c srcs/spec_n.c srcs/ft_roundup.c srcs/ft_deci_count.c\
 			srcs/print.c srcs/padding.c srcs/len_mod_di2.c srcs/ft_zero_count.c\
-			srcs/len_mod_di.c srcs/len_mod_uoxX.c srcs/len_mod_uoxX2.c\
+			srcs/len_mod_di.c srcs/len_mod_u.c srcs/len_mod_u2.c\
+			srcs/ft_itoa_base_ll.c
 
 FLAG 	= -Wall -Wextra -Werror
 
