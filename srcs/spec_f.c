@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   spec_f.c                                           :+:    :+:            */
+/*   spec_f.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/06/07 15:48:11 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/10 11:04:02 by rsteigen      ########   odam.nl         */
+/*   Created: 2019/09/24 18:15:44 by rsteigen       #+#    #+#                */
+/*   Updated: 2019/09/27 13:17:38 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,48 +16,35 @@
 ** This function will print an double and consider
 ** the used flags.
 ** print: 					OK
-** consideration of flags:	NO
+** consideration of flags:	OK
 */
-
-void	ft_putdouble(long long unsigned d)
-{
-	char	*dub;
-	char	*tot;
-	char	*dec;
-	int j;
-	double	len;
-
-	dub = ft_itoa_llu(d / 1000000);
-	ft_putstr(dub);
-	ft_putchar('.');
-	j = ft_deci_count(d);
-	while (j < 4)
-	{
-		ft_putchar('0');
-		j++;;
-	}
-	len = ft_strlen(dub);
-	if ((int)d / 1000000 == 0)
-		len -= 1;
-	tot = ft_itoa_llu(d);
-	dec = ft_strsub(tot, len, 6);
-	//ft_putchar('\n');
-	ft_putstr(dec);
-	free(dec);
-}
 
 int		spec_f(char *s, va_list args, t_info *flag, int x)
 {
-	double 					d;
-	long long unsigned 		i;
+	long double		i;
+	char			*str_spec_f;
+	int				length;
+	int				fill;
 
-	d = va_arg(args, double);
-	if (d < 0)
+	fill = 0;
+	//sla de waardes op als precision aan staat
+	prec_and_zero_check(flag, args);
+	//if 'L' and check if neg value, returned altijd een pos getal
+	i = len_mod_check_efg(args, flag);
+	str_spec_f = make_str_f(i, flag);
+	length = ft_strlen(str_spec_f);
+	fill = change_fill(flag, fill, length);
+	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
+		put_padding(flag, fill);
+	//neg?
+	if ((*flag).neg == 1 && (*flag).zero != 1)
 	{
-		d = -d;
 		ft_putchar('-');
+		(*flag).count++;
 	}
-	i = (long long unsigned)(1000000 * d);
-	ft_putdouble(i);
+	print_string(flag, str_spec_f);
+	//PADDING AAN HET EINDE? (only blank spaces)
+	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
+		put_padding(flag, fill);
 	return (x + 1);
 }

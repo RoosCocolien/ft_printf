@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:55:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/10 13:43:56 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/09/23 13:58:57 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,33 @@
 **		int neg == 0			-->		it's a pos nb
 */
 
-void	put_padding(t_info *flag, int zero, int fill, int neg)
+int		change_fill(t_info *flag, int fill, int length)
+{
+	if ((*flag).width > 0)
+		fill = (*flag).width - length;
+	if ((*flag).neg == 1 && (*flag).precision == 0)
+		fill--;
+	if ((*flag).plus == 1)
+	{
+//		print plus sign on positive numbers
+		fill = check_flag_plus(flag, fill, (*flag).minus);
+	}
+	if ((*flag).space == 1)
+	{
+//		invisible plus sign
+		fill = check_flag_space(flag, fill, (*flag).minus);
+	}
+	return (fill);
+}
+
+void	put_padding(t_info *flag, int fill)
 {
 	char	char_fill;
 
-	if (zero == 1)
+	if ((*flag).zero == 1)
 	{
 		char_fill = '0';
-		if (neg == 1)
+		if ((*flag).neg == 1)
 		{
 			ft_putchar('-');
 			(*flag).count++;

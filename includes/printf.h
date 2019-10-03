@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/10 14:58:35 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/02 17:45:45 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_info
 	int		zero;
 	int		plus;
 	int		space;
-	int		hash;
+	int		hash;		//WHAT DOES HASH DO????
 	int		width;		//what's up with '*', does it do something?
 	int		asterisk;	//width
 	int		precision;	//0 == off, 1 == on (default), 2 == *
@@ -44,22 +44,28 @@ typedef struct s_info
 	int		l_cap;
 	int		neg;
 	int		count;
+	int		power;
+	char	power_not;	//power notation (e or E)
+	int		no_decimals;	//off or on ('.' or no '.') (floats, eE etc.)
+	int		spec_g;			//off: normal spec_f, on: spec_f for spec_g
+	int		dot;		//for spec_g, spec_f and spec_e
 }				t_info;
 
 
 //Moeten naar libft
 char					*ft_itoa_llu(unsigned long long n);
 int						ft_intlength(unsigned long long y);
-long long unsigned   	ft_roundup(unsigned long long d);
+unsigned long long   	ft_roundup(unsigned long long d);
 int     				ft_deci_count(double d);
 int     				ft_zero_count(char *str);
-char					*ft_itoa_base_ll(long long value, int base);
+char					*ft_itoa_base_ll(unsigned long long value, int base, int cap);
 
 /*
 **	print.c
 */
 void					print_flags(t_info flag); //kan weg
 void					print_digit(t_info *flag, unsigned long long nb);
+void					print_string(t_info *flag, char *s);
 
 /*
 **	ft_printf.c
@@ -78,15 +84,35 @@ unsigned long long		len_mod_check_di(va_list args, t_info *flag);
 unsigned long long		check_int(va_list args, t_info *flag);
 
 /*
-**	len_mod_uoxX.c
+**	len_mod_efg.c
 */
-unsigned long long		len_mod_check_uoxX(va_list args, t_info *flag,\
+long double				len_mod_check_efg(va_list args, t_info *flag);
+
+/*
+**	len_mod_u.c
+*/
+unsigned long long		len_mod_check_u(va_list args, t_info *flag,\
 char conv_spec);
 
 /*
-**	len_mod_uoxX2.c
+**	len_mod_u2.c
 */
-unsigned long long		check_uoxX(va_list args, t_info *flag, char conv_spec);
+unsigned long long		check_u(va_list args, t_info *flag, char conv_spec);
+
+/*
+**	make_str_e.c
+*/
+char					*make_str_e(long double i, t_info *flag, char e_notation);
+
+/*
+**	make_str_f.c
+*/
+char					*make_str_f(long double i, t_info *flag);
+
+/*
+**	make_str_g.c
+*/
+char					*make_str_g(long double i, t_info *flag);
 
 /*
 **	flags.c
@@ -100,6 +126,24 @@ int						check_precision(char *s, t_info *flag, int x);
 void					set_zero_flags(t_info *flag, int start_count);
 int						check_flag_plus(t_info *flag, int fill, int left_align);
 int						check_flag_space(t_info *flag, int fill, int left_align);
+
+/*
+**	colors.c
+*/
+int						color_setter(char *str, int x);
+
+/*
+**	precision.c
+*/
+void					prec_and_zero_check(t_info *flag, va_list args);
+void					prec_change_settings_e(t_info *flag);
+
+/*
+**	roundup.c
+*/
+unsigned long long		ten_to_the_power_of(int power);
+long double				roundup_e(long double i, t_info *flag, int prec);
+long double				roundup_f(long double i, int prec);
 
 /*
 **	spec.c
@@ -120,7 +164,6 @@ int						error_d_i(t_info flag, long long int i);
 /*
 **	spec_f.c
 */
-void					ft_putdouble(long long unsigned int d);
 int						spec_f(char *s, va_list args, t_info *flag, int x);
 
 /*
@@ -139,15 +182,21 @@ int						spec_c(char *s, va_list args, t_info *flag, int x);
 int						spec_perc(char *s, va_list args, t_info *flag, int x);
 
 /*
-**	spec_eE.c
+**	spec_e.c
 */
-int						spec_eE(char *s, va_list args, t_info *flag, int x);
+int						spec_e(char *s, va_list args, t_info *flag, int x);
+int						spec_e(char *s, va_list args, t_info *flag, int x);
 
 /*
 **	spec_g.c
 */
 int						spec_g(char *s, va_list args, t_info *flag, int x);
+int						spec_g2(char *s, va_list args, t_info *flag, int x);
 
+/*
+**	spec_g_zero.c
+*/
+char				    *erase_zeros_for_spec_g(char *after, t_info *flag);
 
 /*
 **	spec_o.c
@@ -159,13 +208,17 @@ int						spec_o(char *s, va_list args, t_info *flag, int x);
 /*
 **	spec_x.c
 */
-int						spec_xX(char *s, va_list args, t_info *flag, int x);
+int						spec_x(char *s, va_list args, t_info *flag, int x);
 
 
 /*
 **	spec_b.c BONUS
 */
 int						spec_b(char *s, va_list args, t_info *flag, int x);
+void					bin_bits_filler(long long *arr, int len);
+void					bin_filler(long long *bin_bits);
+void					bin_bits_calcu(long long *bin_bits, int i, int remain);
+char					*bin_str_cpy(long long *bin_bits, int j, int min);
 
 
 /*
@@ -186,6 +239,7 @@ int						spec_n(char *s, va_list args, t_info *flag, int x);
 /*
 **	padding.c
 */
-void					put_padding(t_info *flag, int zero, int fill, int neg);
+int						change_fill(t_info *flag, int fill, int length);
+void					put_padding(t_info *flag, int fill);
 
 #endif

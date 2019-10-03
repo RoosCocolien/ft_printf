@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:52:24 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/04 12:59:10 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/01 12:54:56 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ int		find_spec(char *s, va_list args, t_info *flag, int x)
 	else if (s[x] == '%')
 		x = spec_perc(s, args, flag, x);
 	else if (s[x] == 'e' || s[x] == 'E')
-		x = spec_eE(s, args, flag, x);
+		x = spec_e(s, args, flag, x);
 	else if (s[x] == 'g')
-		x = spec_g(s, args, flag, x);
+		x = spec_g2(s, args, flag, x);
 	else if (s[x] == 'o')
 		x = spec_o(s, args, flag, x);
 	else if (s[x] == 'x' || s[x] == 'X')
-		x = spec_xX(s, args, flag, x);
+		x = spec_x(s, args, flag, x);
 	else if (s[x] == 'b')
 		x = spec_b(s, args, flag, x);
 	else if (s[x] == 'u')

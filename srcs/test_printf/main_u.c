@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 16:43:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/16 14:21:04 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/09/11 13:21:17 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void	combi_plus_space_zero_u(void)
 	Visible plus sign, fill 0, width 5\n%+05u\n", 38);
 	ft_printf("%+05u\n", 38);
 	printf("\nprintf\t%%+05u\t(97)\
-	Visible plus sign, fill 0, width 5: %+05u\n", 97);
+	Visible plus sign, fill 0, width 5:\n%+05u\n", 97);
 	ft_printf("%+05u\n", 97);
 }
 
@@ -205,12 +205,12 @@ static void	range_check_u(void)
 
 int		main(void)
 {
-//	simple_test_u();
+	simple_test_u();
 //	padding_test_u();
 //	plus_sign_test_u();
 //	combi_plus_space_zero_u();
 //	precision_u();
 //	asterisk_u();
-	range_check_u();
+//	range_check_u();
 	return (0);
 }

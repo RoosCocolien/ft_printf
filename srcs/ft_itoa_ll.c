@@ -6,13 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/12 14:25:20 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/09 15:45:33 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/01 16:27:19 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 
-int		ft_intlength(long long unsigned y)
+int				ft_intlength(unsigned long long y)
 {
 	int		cx;
 
@@ -29,9 +29,10 @@ int		ft_intlength(long long unsigned y)
 	return (cx);
 }
 
-static char		*ft_itoa_cpy(char *str, int cx, int intlen, long long unsigned n)
+static char		*ft_itoa_cpy(char *str, int cx, int intlen,
+unsigned long long n)
 {
-	long long unsigned		y;
+	unsigned long long		y;
 
 	while (intlen >= cx)
 	{
@@ -45,7 +46,7 @@ static char		*ft_itoa_cpy(char *str, int cx, int intlen, long long unsigned n)
 	return (str);
 }
 
-char			*ft_itoa_llu(long long unsigned n)
+char			*ft_itoa_llu(unsigned long long n)
 {
 	int		cx;
 	int		intlen;

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:40 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/04 12:56:44 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/09/12 15:41:46 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 */
 
 int		spec_p(char *s, va_list args, t_info *flag, int x)
-{     
+{
 	ft_printf("0x7fff%x", va_arg(args, void *)); //geen idee of er altijd '0x7fff' voor staat
 	return (x + 1);
 }

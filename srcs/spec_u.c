@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:58 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/10 13:31:11 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/09/20 18:55:19 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** This function will print a decimal unsigned int and consider
 ** the used flags.
 ** print: 					OK
-** consideration of flags:	NO
+** consideration of flags:	OK
 */
 
 //hoe werken negatieve getallen??
@@ -35,9 +35,7 @@ int		spec_u(char *s, va_list args, t_info *flag, int x)
 	if ((*flag).width == 1 && (*flag).asterisk == 1 && (*flag).precision == 0)
 		(*flag).width = va_arg(args, int);	
 	//tm hier is hetzelfde als spec_d_i
-
-	i = len_mod_check_uoxX(args, flag, s[x]);
-
+	i = len_mod_check_u(args, flag, s[x]);
 	//vanaf hier
 	length = ft_intlength(i);
 	if ((*flag).precision != 0)
@@ -49,7 +47,7 @@ int		spec_u(char *s, va_list args, t_info *flag, int x)
 	}
 	if ((*flag).width > 0)
 		fill = (*flag).width - length;
-	//tm hier is hetzelfde als spec_d_i
+	//tm hier is hetzelfde als spec_d_i en spec_o
 
 	//neg overslaan
 	//plus sign kan wel geprint worden? en invisible plus sign? NEE
@@ -65,9 +63,9 @@ int		spec_u(char *s, va_list args, t_info *flag, int x)
 	}
 */
 	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
-		put_padding(flag, (*flag).zero, fill, 0);
+		put_padding(flag, fill);
 	print_digit(flag, i);
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
-		put_padding(flag, (*flag).zero, fill, (*flag).neg);
+		put_padding(flag, fill);
 	return (x + 1);
 }

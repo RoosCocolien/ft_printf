@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:19 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/10 14:13:10 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/09/27 15:22:30 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,156 +19,304 @@
 ** consideration of flags:	NO
 */
 
-long long unsigned		ft_roundup_g(long double d)
-{
-	long long int i;
-	int len;
-	int j;
-	char *str;
+//fix roundup
+//fix *.00000000
+//Ekte printf =    8.00001
+//Neppe printf =   8
 
-	i = d * 1000000;
-	len = ft_intlength(i);
-	str = ft_itoa_llu(i);
-	j = len;
-	if (str[len - 12] >= '5')
+// unsigned long long		ft_roundup_g(long double d)
+// {
+// 	long long int i;
+// 	int len;
+// 	int j;
+// 	char *str;
+
+// 	i = d * 1000000;
+// 	len = ft_intlength(i);
+// 	str = ft_itoa_llu(i);
+// 	j = len;
+// 	if (str[len - 12] >= '5')
+// 	{
+// 		str[len - 7] += 1;
+// 		d += 1;
+// 	}
+// 	return (d);
+// }
+
+char	*ret_str_maker_g(int j, char plusmin, int min)
+{
+	char *ret_str;
+	int i;
+
+	ret_str = (char *)malloc(11 + min);
+	ret_str[11] = '\0';
+	if (min == 1)
+		ret_str[0] = '-';
+	i = 0 + min;
+	while (ret_str[i] != '\0')
 	{
-		str[len - 7] += 1;
-		d += 1;
+		ret_str[i] = '0';
+		i++;
 	}
-	return (d);
+	ret_str[1 + min] = '.';
+	ret_str[7 + min] = 'e';
+	ret_str[8 + min] = plusmin;
+	if (j >= 10)
+	{
+		ret_str[9 + min] = (j / 10) + 48;
+		ret_str[10 + min] = (j % 10) + 48;
+	}
+	else
+	{
+		ret_str[9 + min] = '0';
+		ret_str[10 + min] = j + 48;
+	}
+	return (ret_str);
 }
 
-static void		ft_put_e_for_g(long double d)
+char	*ret_str_filler_g(char *ret_str, char input, int i, int min)
 {
-	long long int new_d_int;
-	char *new_d_str;
-	char *str;
-	int i;
-	int j;
-	int x;
-	int y;
-	int len;
-	int count;
+		ret_str[i + min] = input;
+		return (ret_str);
+}
 
+int		spec_gmin(char *s, long double d, t_info *flag, int x, int min)
+{
+	int j;
+	int i;
+	char *new_d_str;
+	char *ret_str;
+	long long int new_d_int;
+
+	i = 0;
+	j = 0;
+	while (d < 1)
+	{
+		d = d * 10;
+		j++;
+	}
+	ret_str = ret_str_maker_g(j, '-', min);
+	new_d_int = d * 1000000;
+	new_d_str = ft_itoa_llu(new_d_int);
+	while (new_d_str[i] != '\0' && i <= 6)
+	{
+		if (i > 0)
+			ret_str_filler_g(ret_str, new_d_str[i], i + 1, min);
+		else
+			ret_str_filler_g(ret_str, new_d_str[i], i, min);
+		i++;
+	}
+	ft_putstr(ret_str);
+	//check flags, put padding
+	return (x + 1);
+}
+
+int	precision_zero_check(char *ret_str, int min)
+{
+	if (ret_str[0 + min] == '0' && ret_str[1 + min] == '.')
+		return(1);
+	return(0);
+}
+
+char	*precision_check(char *ret_str, int min)
+{
+	int i;
+	int numb;
+
+	if (precision_zero_check(ret_str, min) == 1)
+		return (ret_str);
+	i = 0;
+	while (ret_str[i] != '\0')
+	{
+		if (ret_str[i] >= 48 && ret_str[i] <= 57)
+			numb++;
+		i++;
+	}
+	if (numb > 6) // 6 = precision
+		ret_str = ft_strsub(ret_str, 0, 7 + min);
+	if (ret_str[ft_strlen(ret_str) - 1] == '.')
+		ret_str = ft_strsub(ret_str, 0, ft_strlen(ret_str) - 1);
+	return (ret_str);
+}
+
+
+char	*ret_str_zero_check_double(char *ret_str)
+{
+	int len;
+
+	len = ft_strlen(ret_str);
+	while (ret_str[len - 1] == '0')
+		len--;
+	ret_str = ft_strsub(ret_str, 0, len);
+	return(ret_str);
+}
+
+char	*ret_str_zero_check(char *ret_str)
+{
+	int i;
+	int zero;
+	int dot;
+	int len;
+
+	len = ft_strlen(ret_str);
+	i = len - 5;
+	zero = 0;
+	dot = 0;
+	while (ret_str[i] == '0')
+	{
+		zero = i;
+		i--;
+	}
+	if (zero == 0)
+		return (ret_str);
+	else
+	{
+		if (ret_str[zero - 1] == '.')
+			dot++;
+		ret_str[zero - dot] = ret_str[len - 4];
+		ret_str[zero + 1 - dot] = ret_str[len - 3];
+		ret_str[zero + 2 - dot] = ret_str[len - 2];
+		ret_str[zero + 3 - dot] = ret_str[len - 1];
+		ret_str[zero + 4 - dot] = '\0';
+		return (ret_str);
+	}
+}
+
+static char			*ft_itoa_llu_g(unsigned long long n, int min, int dot)
+{
+	int		cx;
+	int		intlen;
+	int 	intlen_save;
+	unsigned long long		y;
+	char	*str;
+
+	cx = 0;
+	intlen = ft_intlength(n);
+	if (min == 1)
+		intlen++;
+	str = (char*)malloc(intlen);
+	// intlen--;
+	intlen_save = intlen;
+	while (intlen >= min)
+	{
+		y = n;
+		while (n > 9)
+			n = n % 10;
+		str[intlen - 1] = n + 48;
+		n = y / 10;
+		intlen--;
+	}
+	str[5 + min + 1] = '\0'; //veranderen bij andere spec, dit geldt alleen voor spec_g
+	if (min == 1)
+		str[0] = '-';
+	return (str);
+}
+
+char	*double_str_maker(long double d, int min)
+{
+	int	i;
+	int j;
+	long double 	remainder;
+	char *str_remainder;
+	char *str;
+
+	i = d;
+	remainder = (d - i) * 1000000; //precision
+	str_remainder = ft_itoa(remainder);
+	if (str_remainder[ft_strlen(str_remainder) - 1] == '9')
+		str_remainder = ft_itoa(remainder + 1);
+	str = ft_itoa_llu_g((int)d, min, i);
+	str = ft_strcat(ft_strcat(str, "."), str_remainder);
+	str = ret_str_zero_check_double(str);
+	str = precision_check(str, min);
+	free(str_remainder);
+	ft_putstr(str);
+	return (str);
+}
+
+// char	*double_str_maker(long double d, int min)
+// {
+// 	int	i;
+// 	int j;
+// 	long double 	remainder;
+// 	char *str;
+
+// 	i = d;
+// 	remainder = d - i;
+// 	j = 0;
+// 	printf("i = %d, d = %Lf, remainder = %Lf\n", i, d, remainder);
+// 	while (i != 0)
+// 	{
+// 		printf("1)i = %d, d = %Lf, remainder = %Lf\n", i, d, remainder);
+// 		remainder = remainder * 10;
+// 		printf("2)i = %d, d = %Lf, remainder = %Lf\n", i, d, remainder);
+// 		i = reaminder;
+// 		printf("3)i = %d, d = %Lf, remainder = %Lf\n", i, d, remainder);
+// 		// if (i == 0)
+// 		// 	break;
+// 		remainder = remainder - i;
+// 		j++;
+// 		printf("4)i = %d, d = %Lf, remainder = %Lf\n\n", i, d, remainder);
+// 	}
+// 	i = j;
+// 	while (j >= 0)
+// 	{
+// 		d = d * 10;
+// 		j--;
+// 	}
+// 	str = ft_itoa_llu_g((int)d, min, i);
+// 	ft_putstr(str);
+// 	return (str);
+// }
+
+
+int		spec_g(char *s, va_list args, t_info *flag, int x)
+{
+	long double d;
+	int j;
+	int i;
+	int min;
+	char *new_d_str;
+	char *ret_str;
+	long long int new_d_int;
+
+	d = va_arg(args, double); 
+	min = 0;
+	if (d < 0)
+	{
+		min = 1;
+		d = d * -1;
+	}
+	if (d < (double)999999.50)
+	{
+		new_d_str = double_str_maker(d, min);
+		return (x + 1);
+	}
+	if (d < 1 && d > 0)
+	{
+		x = spec_gmin(s, d, flag, x, min);
+		return (x);
+	}
+	i = 0;
 	j = 0;
 	while (d >= 10 || d <= -10)
 	{
 		d = d / 10;
 		j++;
 	}
-	x = d * 1000000;
-	if (ft_intlength(x) > 5)
-		d = ft_roundup_g(d);
+	ret_str = ret_str_maker_g(j, '+', min);
 	new_d_int = d * 1000000;
 	new_d_str = ft_itoa_llu(new_d_int);
-	len = ft_strlen(new_d_str);
-	i = 0;
-	y = ft_intlength(x / 1000000);
-	str = ft_strsub(new_d_str, x, len);
-	if (ft_zero_count(str) == 1)
+	while (new_d_str[i] != '\0' && i <= 5)
 	{
-		while (new_d_str[i + 1] != '\0')
-		{
-			if (i + 6 == len)
-			ft_putchar('.');
-			ft_putchar(new_d_str[i]);
-			i++;
-		}
-	}
-	else
-		ft_putnbr(x / 1000000);
-	ft_putchar('e');
-	if (j > 10)
-		ft_putstr("+");
-	else
-		ft_putstr("+0");
-	ft_putnbr(j);
-}
-
-static int		zero_stop(char *str, int i)
-{
-	int j;
-	int point;
-
-	j = 0;
-	point = i - 1;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '0')
-		{
-			j = i;
-			while (str[j] != '\0')
-			{
-				if (str[j] != '0')
-					break ;
-				j++;
-			}
-			if (str[j + 1] == '\0')
-				return (i - point);
-		}
+		if (i > 0)
+			ret_str_filler_g(ret_str, new_d_str[i], i + 1, min);
+		else
+			ret_str_filler_g(ret_str, new_d_str[i], i, min);
 		i++;
 	}
-	return (6);
-}
-
-void	ft_put_g(long double d)
-{
-	char	*dub;
-	char	*tot;
-	char	*dec;
-	double	len;
-	int		j;
-
-	dub = ft_itoa(d);
-	ft_putstr(dub);
-	//printf("d= %llu\n", d);
-	d = d * 1000000;
-	len = ft_strlen(dub);
-	tot = ft_itoa(d);
-	dec = ft_strsub(tot, len, zero_stop(tot, len) - len);
-	if (ft_strlen(dec) > 0)
-		ft_putchar('.');
-	ft_putstr(dec);
-	free(dec);
-	free(tot);
-	free(dub);
-}
-
-int		spec_g(char *s, va_list args, t_info *flag, int x)
-{
-	long long int new_d_int;
-	char *new_d_str;
-	int j;
-	int len;
-	int count;
-	long double d;
-	long long unsigned 		i;
-
-	d = va_arg(args, double);
-	if (d < 0)
-	{
-		d = -d;
-		ft_putchar('-');
-	}
-	i = (long long unsigned)(1000000 * d);
-	if (d >= (long long unsigned)1000000)
-	{
-		d = ft_roundup_g(d);
-		ft_put_e_for_g(d);
-		return (x + 1);
-	}
-	new_d_int = d * 10;
-	new_d_str = ft_itoa_llu(new_d_int);
-	len = ft_strlen(new_d_str);
-	if (len <= 7)
-	{
-		ft_put_g(d);
-		return (x + 1);
-	}
-	if (new_d_str[len - 1] > '5')
-		new_d_str[len - 2] += 1;
-	new_d_str[len - 1] = '\0';
-	ft_putstr(new_d_str);
+	ret_str = ret_str_zero_check(ret_str);
+	ft_putstr(ret_str);
+	//check flags, put padding
 	return (x + 1);
 }
- //meer dan 6 getalen? Dan doe hij pas short, anders gewoon input printen.

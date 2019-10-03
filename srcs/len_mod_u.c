@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   len_mod_uoxX.c                                     :+:    :+:            */
+/*   len_mod_u.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 15:53:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/16 14:20:41 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/01 16:31:28 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static unsigned long long	check_char_uns(va_list args, t_info *flag)
 
 static unsigned long long	check_short_uns(va_list args, t_info *flag)
 {
-	unsigned short		uns_short;
-	unsigned long long	num;
+	unsigned short			uns_short;
+	unsigned long long		num;
 
 	uns_short = (unsigned short)va_arg(args, int);
 	num = (unsigned long long)uns_short;
@@ -41,8 +41,8 @@ static unsigned long long	check_short_uns(va_list args, t_info *flag)
 
 static unsigned long long	check_long_uns(va_list args, t_info *flag)
 {
-	unsigned long		uns_long;
-	unsigned long long	num;
+	unsigned long			uns_long;
+	unsigned long long		num;
 
 	uns_long = (unsigned long)va_arg(args, long);
 	num = (unsigned long long)uns_long;
@@ -51,18 +51,18 @@ static unsigned long long	check_long_uns(va_list args, t_info *flag)
 
 static unsigned long long	check_longlong_uns(va_list args, t_info *flag)
 {
-	unsigned long long	uns_longlong;
-	unsigned long long	num;
+	unsigned long long		uns_longlong;
+	unsigned long long		num;
 
 	uns_longlong = (unsigned long long)va_arg(args, long long);
 	num = (unsigned long long)uns_longlong;
 	return (num);
 }
 
-unsigned long long		len_mod_check_uoxX(va_list args, t_info *flag,\
+unsigned long long			len_mod_check_u(va_list args, t_info *flag,\
 char conv_spec)
 {
-	unsigned long long	i;
+	unsigned long long		i;
 
 	if ((*flag).hh == 1)
 		i = check_char_uns(args, flag);
@@ -73,6 +73,6 @@ char conv_spec)
 	else if ((*flag).ll == 1)
 		i = check_longlong_uns(args, flag);
 	else
-		i = check_uoxX(args, flag, conv_spec);
+		i = check_u(args, flag, conv_spec);
 	return (i);
 }

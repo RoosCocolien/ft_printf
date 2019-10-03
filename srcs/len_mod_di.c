@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/20 13:38:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/11 14:29:34 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/01 16:30:05 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static unsigned long long	check_long(va_list args, t_info *flag)
 	long				num_long;
 	unsigned long long	num;
 
-	num_long = (long)va_arg(args, int);
+	num_long = (long)va_arg(args, long);
 	if (num_long < 0)
 	{
 		(*flag).neg = 1;
@@ -72,7 +72,7 @@ static unsigned long long	check_longlong(va_list args, t_info *flag)
 	long long			num_longlong;
 	unsigned long long	num;
 
-	num_longlong = (long long)va_arg(args, int);
+	num_longlong = (long long)va_arg(args, long long);
 	if (num_longlong < 0)
 	{
 		(*flag).neg = 1;
@@ -83,7 +83,7 @@ static unsigned long long	check_longlong(va_list args, t_info *flag)
 	return (num);
 }
 
-unsigned long long		len_mod_check_di(va_list args, t_info *flag)
+unsigned long long			len_mod_check_di(va_list args, t_info *flag)
 {
 	unsigned long long	i;
 

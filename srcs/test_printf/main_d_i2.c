@@ -6,97 +6,19 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/20 12:25:22 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/11 12:01:32 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/09/25 13:24:10 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/printf.h"
 #include <stdio.h>
 
-int		main(void)
-{
-/*
-**	Length modifiers
-*/
-//	ft_printf("Flags \"l, ll, h, hh\"\n");
-//	ft_printf("%%hhd (-35)\n");
-//	ft_printf("%s\n", "Roos");
-//	ft_printf("%d\n", -35);
-//	ft_printf("%lld\n", -35);
-
-/*
-**	Width
-*/
-//	printf("(printf)\n%hh-5d\n", -35);
-//	ft_printf("%hh-5d\n", -35);
-//	printf("(printf)\n%hh5d\n", -35);
-//	ft_printf("%hh5d\n", -35);
-//	printf("(printf)\n%hh05d\n", -35);
-//	ft_printf("%hh05d\n", -35);
-
-/*
-**	Asterisk (doesn't work the same)
-*/
-/*
-	int een = -4;
-	int	twee = 67;
-	int drie = -9;
-	int vier = 7;
-	printf("\n(printf)\nDit is een: %d\nDit is twee: %d\nDit is drie: %0*d\n", een, twee, drie, vier);
-	ft_printf("\n(ft_printf)\nDit is een: %d\nDit is twee: %d\nDit is drie: %0*d\n", een, twee, drie, vier);
-*/
-
-/*
-**	Precision
-**	The minimum number of digits to be printed, leading zeros will be added to make
-**	up the field with.
-*/
-//	ft_printf("*\t**PRECISION**\t*\n");
-//	printf("\n(printf %%.7d)\n%.7d\n", -6790);
-//	ft_printf("%.7d\n", -6790);
-//	printf("\n(printf)\n%.*d\n", 7, 14);
-//	ft_printf("%.*d\n", 7, 14);
-//	printf("\n(printf %%.06d)\n%.06d\n", 7);
-//	ft_printf("%.06d\n", 7);
-
-//SPACE SPACE SPACE NOT FINISHED YET
-//	printf("-\t--comparison with width (onzichtbare plus teken telt mee bij width)--\t-\n");
-//	printf("(printf %%06 d)\n%06 d\n", 7);
-//	ft_printf("%06 d\n", 7);
-
-//	printf("\n(printf %%.6 d)\n%.6 d\n", 7);
-//	ft_printf("%.6 d\n", 7);
-//	printf("\n(printf %%.6-d)\n%.6-d\n", 7);
-//	ft_printf("%.6-d\n", 7);
-//	printf("\n(printf %%.6+d)\n%.6+d\n", 7);
-//	ft_printf("%.6+d\n", 7);
-
-/*
-	printf("\n(printf %%.7d)\n%.7d\n", -6790);
-	ft_printf("%.7d\n", -6790);
-	printf("\n(printf %%.*d)\n%.*d\n", 7, 14);
-	ft_printf("%.*d\n", 7, 14);
-	printf("\n(printf %%.06d)\n%.06d\n", 7);
-	ft_printf("%.06d\n", 7);
-	printf("\n(printf %%.6 d)\n%.6 d\n", 7);
-	ft_printf("%.6 d\n", 7);
-	printf("\n(printf %%.6-d)\n%.6-d\n", 7);
-	ft_printf("%.6-d\n", 7);
-	printf("\n(printf %%.6+d)\n%.6+d\n", 7);
-	ft_printf("%.6+d\n", 7);
-
-	ft_printf("*\t**Plus signs, precision**\t*\n");
-	printf("(printf %%+.*d)\n%+.*d\n", 7, 15);
-	ft_printf("(ft_printf %%+.*d)\n%+.*d\n", 7, 15);
-	printf("(printf %% .*d)\n% .*d\n", 7, 15);
-	ft_printf("(ft_printf %% .*d)\n% .*d\n", 7, 15);
-*/
-
 /*
 **	SPACE AND PLUS
 **	(in)visible plus sign
 */
-/*
+static void extra_space_plus_di(void)
+{
 	ft_printf("\n*\t**PLUS SIGN**\t*\\n");
 	ft_printf("\nprintf %%+5d, 0\n");
 	printf("%+5d\n", 0);
@@ -137,8 +59,84 @@ int		main(void)
 	ft_printf("printf %% 05d, 1536924\n");
 	printf("% 05d\n", 1536924);
 	ft_printf("% 05d\n", 1536924);
-*/
-	ft_printf("\n*\t**PLUS SIGN && Zero**\t*\n");
+}
+
+static void	simple_test_di(void)
+{
+	printf("\nSimple test\n");
+	printf("\nprintf\t%%d\t(532)\n%d\n", 532);
+	ft_printf("%d\n", 532);
+	printf("\nprintf\t%%d\t(-689)\n%d\n", -689);
+	ft_printf("%d\n", -689);
+	printf("\nprintf\t%%d\t(4294967295)\n%d\n", 4294967295);
+	ft_printf("%d\n", 4294967295);
+	printf("\nprintf\t%%d\t(2147483648 (warning: dit is een long))\n%d\n",\
+	2147483648);
+	ft_printf("%d\n", 2147483648);
+	printf("\nprintf\t%%d\t(2147483647)\n%d\n", 2147483647);
+	ft_printf("%d\n", 2147483647);
+	printf("\nprintf\t%%d\t(0)\n%d\n", 0);
+	ft_printf("%d\n", 0);
+}
+
+static void	padding_test_di(void)
+{
+	printf("\nWidth flag\n");
+	printf("\nprintf\t%%7d\t(689) width: 7\n%7d\n", 689);
+	ft_printf("%7d\n", 689);
+	printf("\nprintf\t%%07d\t(5421) witdh: 7, 0 fill\n%07d\n", 5421);
+	ft_printf("%07d\n", 5421);
+
+	printf("\nprintf\t%%0-7d\t(-33) witdh: 7, left aligned\
+	\n%-7d\n", -33);
+	ft_printf("%-7d\n", -33);
+
+	printf("\nprintf\t%%0-7d\t(-34) witdh: 7, 0 fill, left aligned\
+	\n%0-7d\n", -34);
+	ft_printf("%0-7d\n", -34);
+
+	printf("Note: flag '0' is ignored when flag '-' is used.\n");
+	printf("\nprintf\t%%-7d\t(427) witdh: 7, no fill, left aligned\
+	\n%-7d\n", 427);
+	ft_printf("%-7d\n", 427);
+}
+
+static void	plus_sign_test_di(void)
+{
+	printf("\nPlus flag\n");
+	printf("\nprintf\t%%+8d\t(327) width: 8, flag: +\n%+8d\n", 327);
+	ft_printf("%+8d\n", 327);
+	printf("\nprintf\t%%+8d\t(0) width: 8, flag: +\n%+8d\n", 0);
+	ft_printf("%+8d\n", 0);
+	printf("\nprintf\t%%+8d\t(-327) width: 8, flag: +\n%+8d\n", -327);
+	ft_printf("%+8d\n", -327);
+	printf("\nprintf\t%%+8d\t(56) flag: + (visible), align left\n%+-d\n", 56);
+	ft_printf("%+-d\n", 56);
+	printf("\nprintf\t%%+8d\t(998)\
+	invisible plus ' ', align left '-'\n% -d\n", 998);
+	ft_printf("% -d\n", 998);
+	printf("\nprintf\t%%- d\t(-435)\
+	invisible plus ' ', align left '-', neg nb\n%- d\n", -435);
+	ft_printf("%- d\n", -435);	
+}
+
+static void combi_plus_space_zero_di(void)
+{
+	printf("\nCombination of plus, space, zero\n");
+	printf("\nprintf\t%% 05d\t(0)\
+	Invisible plus sign, fill 0, width 5\n% 05d\n", 0);
+	ft_printf("% 05d\n", 0);
+	printf("\nprintf\t%% 05d\t(-461)\
+	Invisible plus sign, fill 0, width 5\n% 05d\n", -461);
+	ft_printf("% 05d\n", -461);
+	printf("\nprintf\t%%+05d\t(38)\
+	Visible plus sign, fill 0, width 5\n%+05d\n", 38);
+	ft_printf("%+05d\n", 38);
+	printf("\nprintf\t%%+05d\t(97)\
+	Visible plus sign, fill 0, width 5:\n%+05d\n", 97);
+	ft_printf("%+05d\n", 97);
+//extra
+	ft_printf("\n*\t**Extra**\t*\n");
 	ft_printf("\nprintf %%+05d, 0\n");
 	printf("%+05d\n", 0);
 	printf("return: %d\n", printf("%+05d\n", 0));
@@ -154,6 +152,114 @@ int		main(void)
 	printf("return: %d\n", printf("%+05d\n", 1536924));
 	ft_printf("%+05d\n", 1536924);
 	printf("return: %d\n", ft_printf("%+05d\n", 1536924));
+}
 
+static void precision_di(void)
+{
+	printf("\nPrecision\n");
+	printf("\nprintf\t%%.7d\t(354) min digits: 7\n%.7d\n", 354);
+	printf("return: %d\n", printf("%.7d", 354));
+	ft_printf("%.7d\n", 354);
+	printf("return: %d\n", ft_printf("%.7d", 354));
+
+	printf("\nprintf\t%%-.7d\t(997) min digits: 7, align left ('-')\n%-.7d\n",\
+	997);
+	printf("return: %d\n", printf("%-.7d", 997));
+	ft_printf("%-.7d\n", 997);
+	printf("return: %d\n", ft_printf("%-.7d", 997));
+
+	printf("\nprintf\t%%0.7d\t(632) min digits: 7, zero\n%0.7d\n", 632);
+	printf("return: %d\n", printf("%0.7d", 632));
+	ft_printf("%0.7d\n", 632);
+	printf("return: %d\n", ft_printf("%0.7d", 632));
+
+	printf("\nprintf\t%%+.7d\t(3476) min digits: 7, plus\n%+.7d\n", 3476);
+	printf("return: %d\n", printf("%+.7d", 3476));
+	ft_printf("%+.7d\n", 3476);
+	printf("return: %d\n", ft_printf("%+.7d", 3476));
+
+	printf("\nprintf\t%% .7d\t(-12) min digits: 7, space\n% .7d\n", -12);
+	printf("return: %d\n", printf("% .7d", -12));
+	ft_printf("% .7d\n", -12);
+	printf("return: %d\n", ft_printf("% .7d", -12));
+
+	printf("\nprintf\t%%-.7d\t(15) min digits: 7, minus\n%-.7d\n", 15);
+	printf("return: %d\n", printf("%-.7d", 15));
+	ft_printf("%-.7d\n", 15);	
+	printf("return: %d\n", ft_printf("%-.7d", 15));
+}
+
+static void asterisk_di(void)
+{
+	printf("\nAsterisk\n");
+	printf("Asterisk PRECISION");
+	printf("\nprintf\t%%.*d (10, 374)\n%.*d\n", 10, 374);
+	ft_printf("%.*d\n", 10, 374);
+
+	printf("Asterisk WIDTH");
+	printf("\nprintf\t%%0*d (11, 798)\n%0*d\n", 11, 798);
+	ft_printf("%0*d\n", 11, 798);
+}
+
+static void	range_check_di(void)
+{
+	printf("\nRange check\n");
+	//char
+	printf("\nprintf\t%%hhd\tchar (188)\n%hhd\n", 188);
+	ft_printf("%hhd\n", 188);
+	//char < 0
+	printf("\nprintf\t%%hhd\tchar < 0 (-2)\n%hhd\n", -2);
+	ft_printf("%hhd\n", -2);
+	//char > 255
+	printf("\nprintf\t%%hhd\tchar > 255 (256)\n%hhd\n", 256);
+	ft_printf("%hhd\n", 256);
+
+	//short
+	printf("\nprintf\t%%hd\tshort (35.748)\n%hd\n", 35748);
+	ft_printf("%hd\n", 35748);
+	//short < 0
+	printf("\nprintf\t%%hd\tshort < 0 (-18)\n%hd\n", -18);
+	ft_printf("%hd\n", -18);
+	//short > 63.535
+	printf("\nprintf\t%%hd\tshort > 65.535 (65536)\n%hd\n", 65536);
+	ft_printf("%hd\n", 65536);
+
+	//int
+	printf("\nprintf\t%%u\tint (28956)\n%d\n", 28956);
+	ft_printf("%d\n", 28956);
+	//int < 0
+	printf("\nprintf\t%%d\tint (-1)\n%d\n", -1);
+	ft_printf("%d\n", -1);
+	//int > 4.294.967.295
+	printf("\nprintf\t%%d\tint > 4294967295 (4.294.967.295)\n%d\n", 4294967296);
+	ft_printf("%d\n", 4294967296);
+
+	//long
+	printf("\nprintf\t%%ld\tlong (789)\n%ld\n", 789);
+	ft_printf("%ld\n", 789);
+	//long < 0
+	printf("\nprintf\t%%ld\tlong < 0 (-2)\n%ld\n", -2);
+	ft_printf("%ld\n", -2);
+	//long > 4.294.967.295
+	printf("\nprintf\t%%ld\tlong > 4.294.967.295 (4294967296)\n%ld\n", 4294967296);
+	ft_printf("%ld\n", 4294967296);
+
+	//long long
+	printf("\nprintf\t%%lld\tlong long (18.443.744.073.709.551.614)\n%lld\n", 18443744073709551614);
+	ft_printf("%lld\n", 18443744073709551614);
+	//long long < 0
+	printf("\nprintf\t%%lld\tlong long < 0 (-1)\n%lld\n", -1);
+	ft_printf("%lld\n", -1);	
+}
+
+int		main(void)
+{
+//	extra_space_plus_di();
+//	simple_test_di();
+//	padding_test_di();
+	combi_plus_space_zero_di();
+//	precision_di();
+//	asterisk_di();
+//	range_check_di();
 	return (0);
 }

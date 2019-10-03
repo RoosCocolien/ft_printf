@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 16:43:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/16 14:21:04 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/09/11 13:26:33 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void	combi_plus_space_zero_o(void)
 	Visible plus sign, fill 0, width 5\n%+05o\n", 38);
 	ft_printf("%+05o\n", 38);
 	printf("\nprintf\t%%+05o\t(97)\
-	Visible plus sign, fill 0, width 5: %+05o\n", 97);
+	Visible plus sign, fill 0, width 5\n%+05o\n", 97);
 	ft_printf("%+05o\n", 97);
 }
 
@@ -128,11 +128,11 @@ static void	precision_o(void)
 static void asterisk_o(void)
 {
 	printf("\nAsterisk\n");
-	printf("Asterisk PRECISION");
+	printf("Asterisk PRECISION\n");
 	printf("\nprintf\t%%.*o (10, 374)\n%.*o\n", 10, 374);
 	ft_printf("%.*o\n", 10, 374);
 
-	printf("Asterisk WIDTH");
+	printf("\nAsterisk WIDTH\n");
 	printf("\nprintf\t%%0*o (11, 798)\n%0*o\n", 11, 798);
 	ft_printf("%0*o\n", 11, 798);
 }
@@ -152,7 +152,17 @@ static void	range_check_o(void)
 	//uns char
 	printf("\nprintf\t%%hho\tchar (188)\n%hho\n", 188);
 	ft_printf("%hho\n", 188);
+	printf("\nprintf\t%%hho\tchar (127)\n%hho\n", 127);
+	ft_printf("%hho\n", 127);
+	printf("\nprintf\t%%hho\tchar (128)\n%hho\n", 128);
+	ft_printf("%hho\n", 128);
+	printf("\nprintf\t%%hho\tchar (129)\n%hho\n", 129);
+	ft_printf("%hho\n", 129);
 	//uns char < 0
+	printf("\nprintf\t%%hho\tchar < 0 (0)\n%hho\n", 0);
+	ft_printf("%hho\n", 0);
+	printf("\nprintf\t%%hho\tchar < 0 (-1)\n%hho\n", -1);
+	ft_printf("%hho\n", -1);
 	printf("\nprintf\t%%hho\tchar < 0 (-2)\n%hho\n", -2);
 	ft_printf("%hho\n", -2);
 	//uns char > 255
@@ -168,6 +178,7 @@ static void	range_check_o(void)
 	//uns short > 63.535
 	printf("\nprintf\t%%ho\tshort > 65.535 (65536)\n%ho\n", 65536);
 	ft_printf("%ho\n", 65536);
+
 
 	//uns int
 	printf("\nprintf\t%%o\tuns int (28956)\n%o\n", 28956);
@@ -196,6 +207,7 @@ static void	range_check_o(void)
 	printf("\nprintf\t%%llo\tuns long long < 0 (-1)\n%llo\n", -1);
 	ft_printf("%llo\n", -1);
 
+
 	//uns long long > 18.466.744.073.709.551.615
 /*	printf("\nprintf\t%%llo\tuns long long > 18.446.744.073.709.551.615\n%llo\n", 18446744073709551616);
 	ft_printf("%llo\n", 18446744073709551616);
@@ -207,8 +219,8 @@ int		main(void)
 {
 	simple_test_o();
 //	padding_test_o();
-//	plos_sign_test_o();
-//	combi_plos_space_zero_o();
+//	plus_sign_test_o();
+//	combi_plus_space_zero_o();
 //	precision_o();
 //	asterisk_o();
 //	range_check_o();

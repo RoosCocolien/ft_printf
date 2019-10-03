@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/09 15:24:21 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/11 12:45:58 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/09/27 16:29:05 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,21 @@ int		main(void)
 	double f;
 
 	//f = -9999999.34;
-	f = -1.0;
-	printf("Ekte printf =\t %e\n", f);
-	ft_printf("Neppe printf =\t %e\n", f);
+	f = 9.09;
+	// ft_printf("Ekte printf =\t %0*f\n", 4, 7.3412);
+	// // ft_printf("Neppe printf =\t {green}%0*f{eoc}\n", 4, 7.3412);
+
+	printf("Echte printf =\t%e\n", f);
+	ft_printf("Neppe printf =\t%e\n", f);
+	// printf("\nprintf\t%%f\t(0.333333333333333334)\n%f\n", 0.333333333333333334);
+	// ft_printf("%f\n", first_long);
+	// printf("\nPOS DOUBLE\n");
+	// printf("\nprintf\t%%f\t(0.333333333333make 333334)\n%f\n", first);
+	// ft_printf("%f\n", first);
+	// printf("\nprintf\t%%f\t(0.333333333333333334)\n%f\n", first);
+	// ft_printf("%f\n", first);
+
+
+
 	return (0); 
 }

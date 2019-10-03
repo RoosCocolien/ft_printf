@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   len_mod_uoxX2.c                                    :+:    :+:            */
+/*   len_mod_u2.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
@@ -12,19 +12,21 @@
 
 #include "../includes/printf.h"
 
-unsigned long long		check_uoxX(va_list args, t_info *flag, char conv_spec)
+unsigned long long		check_u(va_list args, t_info *flag, char conv_spec)
 {
-//	unsigned int (u)	
+//	unsigned int (u)
 	unsigned int		uns_int;
 //	octal int (o)
 //	hexal int (x)
 //	hexal int (X)
 	unsigned long long	i;
 
-	if (conv_spec == 'u')
+	if (conv_spec == 'u' || conv_spec == 'o' || conv_spec == 'x'\
+	|| conv_spec == 'X')
 	{
-		uns_int = (unsigned int)va_arg(args, int);
+		uns_int = va_arg(args, unsigned int);
 		i = (unsigned long long)uns_int;
 	}
+	//else? // i = ?
 	return (i);
 }
