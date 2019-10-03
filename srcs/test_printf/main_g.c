@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/02 17:25:57 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/10/03 15:44:59 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,14 @@ static void		simple_g(void)
 	ft_printf("%.1f", 999995.50);
 	printf("\nprintf\t%%.0f\t(999995.50)\n%.0f\n", 999995.50);
 	ft_printf("%.0f", 999995.50);
+	printf("\nprintf\t%%e\t(9999999.40)\n%e\n", 9999999.40);
+	ft_printf("%e\n", 9999999.40);	
 	printf("\nprintf\t%%g\t(9999999.40)\n%g\n", 9999999.40);
-	ft_printf("%g", 9999999.40);
+	ft_printf("%g\n", 9999999.40);
+	printf("\nprintf\t%%.1f\t(77770000.00)\n%.1f\n", 77770000.00);
+	ft_printf("%.1f", 77770000.00);
+	printf("\nprintf\t%%g\t(77770000.00)\n%g\n", 77770000.00);
+	ft_printf("%g", 77770000.00);
 
 	printf("\n-- Resultaten e--\n");
 	printf("\nprintf\t%%e\t(6333125.66)\n%e\n", 6333125.66);
@@ -75,7 +81,7 @@ static void		simple_g(void)
 	printf("\nprintf\t%%e\t(9999999.40)\n%e\n", 9999999.40);
 	ft_printf("%e", 9999999.40);
 	printf("\nprintf\t%%e\t(99999999.40)\n%e\n", 99999999.40);
-	ft_printf("%e", 99999999.40);
+	ft_printf("%e\n", 99999999.40);
 }
 
 static void		len_mod_g(void)

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:36:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/02 17:45:16 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/10/03 15:42:45 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,21 +132,20 @@ char		*make_str_f(long double i, t_info *flag)
 	i = roundup_f(i, (*flag).prec_value);
 	find_len_decimals(i, flag);
 	before = ft_itoa_llu(i);
-//	after = NULL;
+	after = NULL;
 	if ((*flag).dot == 1)
 		after = get_decimals(i, flag);
 //	if spec_g is on, then other requirements must be taken into
 //	consideration (no 0's to fill up decimals)
-	if ((*flag).spec_g == 1)
+	if ((*flag).spec_g == 1 && (*flag).precision == 0)
 	{
 		after_g = erase_zeros_for_spec_g(after, flag);
 		ret_str = fill_ret_str(flag, before, after_g);
-//		if (after_g)
-//			free(after_g);
 	}
 	else
 		ret_str = fill_ret_str(flag, before, after);
-	free(after);
+	if (after)
+		free(after);
 	free(before);
 	return (ret_str);
 }

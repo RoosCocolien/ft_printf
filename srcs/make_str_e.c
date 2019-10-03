@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/20 16:11:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/01 13:54:58 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/03 15:39:48 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ char				*make_str_e(long double i, t_info *flag, char e_notation)
 	ret_str = ret_str_maker(flag, e_notation);
 	new_i_int = calc_new_i_int(flag, i);
 	new_i_str = ft_itoa_llu(new_i_int);
+	//hier kan ik de 0 checker toevoegen als (*flag).spec_g aanstaat
+	printf("MAKE STR E\tnew_i_str:\t%s\n", new_i_str);
 	while (new_i_str[x] && x <= (*flag).prec_value)
 	{
 		if (x > 0)
