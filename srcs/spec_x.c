@@ -63,7 +63,7 @@ int		spec_x(char *s, va_list args, t_info *flag, int x)
 	(*flag).count += length;
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 		put_padding(flag, fill);
-//	free(hex_str);
+	free(hex_str);
 	return (x + 1);
 }
 

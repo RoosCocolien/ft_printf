@@ -35,6 +35,7 @@ void	print_digit(t_info *flag, unsigned long long nb)
 		(*flag).count++;
 		i++;
 	}
+	free(str_digit);
 }
 
 void	print_string(t_info *flag, char *s)

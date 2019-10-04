@@ -46,9 +46,9 @@ int		spec_e(char *s, va_list args, t_info *flag, int x)
 		(*flag).count++;
 	}
 	print_string(flag, str_spec_e);
-	//free(str_spec_e);
 	//PADDING AAN HET EINDE? (only blank spaces)
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 		put_padding(flag, fill);
+	free(str_spec_e);
 	return (x + 1);
 }

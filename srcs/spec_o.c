@@ -71,6 +71,6 @@ int		spec_o(char *s, va_list args, t_info *flag, int x)
 	(*flag).count += length;
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 		put_padding(flag, fill);
-//	free(oct_str);
+	free(oct_str);
 	return (x + 1);
 }

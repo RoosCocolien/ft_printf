@@ -62,7 +62,6 @@ int					spec_b(char *s, va_list args, t_info *flag, int x)
 	int			j;
 
 	bin = va_arg(args, long long);
-	printf("dit is bin = %lld\n", bin);
 	if (bin_zero_check(bin) == 0)
 		return (x + 1);
 	bin = bin_neg_check(bin, flag);
@@ -78,5 +77,6 @@ int					spec_b(char *s, va_list args, t_info *flag, int x)
 	bin_bits_calcu(bin_bits, i, bin);
 	bin_str = bin_str_cpy(bin_bits, j, (*flag).neg);
 	ft_putstr(bin_str);
+	free(bin_str);
 	return (x + 1);
 }

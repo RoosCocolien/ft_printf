@@ -59,5 +59,6 @@ char			*ft_itoa_llu(unsigned long long n)
 		return (NULL);
 	str[intlen] = '\0';
 	intlen--;
-	return (ft_itoa_cpy(str, cx, intlen, n));
+	str = ft_itoa_cpy(str, cx, intlen, n);
+	return (str);
 }

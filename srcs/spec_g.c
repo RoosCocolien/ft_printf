@@ -318,5 +318,6 @@ int		spec_g(char *s, va_list args, t_info *flag, int x)
 	ret_str = ret_str_zero_check(ret_str);
 	ft_putstr(ret_str);
 	//check flags, put padding
+	free(ret_str);
 	return (x + 1);
 }

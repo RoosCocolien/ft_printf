@@ -40,12 +40,12 @@ int		main(void)
 	double f;
 
 	//f = -9999999.34;
-	f = 9.09;
+	f = 9412.2321;
 	// ft_printf("Ekte printf =\t %0*f\n", 4, 7.3412);
 	// // ft_printf("Neppe printf =\t {green}%0*f{eoc}\n", 4, 7.3412);
 
 	printf("Echte printf =\t%e\n", f);
-	ft_printf("Neppe printf =\t%e\n", f);
+	ft_printf("{red}Neppe printf {eoc}=\t%e\n", f);
 	// printf("\nprintf\t%%f\t(0.333333333333333334)\n%f\n", 0.333333333333333334);
 	// ft_printf("%f\n", first_long);
 	// printf("\nPOS DOUBLE\n");
@@ -53,6 +53,8 @@ int		main(void)
 	// ft_printf("%f\n", first);
 	// printf("\nprintf\t%%f\t(0.333333333333333334)\n%f\n", first);
 	// ft_printf("%f\n", first);
+	while(a)
+		f++;
 
 
 
