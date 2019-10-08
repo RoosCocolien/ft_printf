@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:36:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/03 15:42:45 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/10/08 12:42:20 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int		ft_intlen(int n)
 	return (len);
 }
 
-static char	*get_decimals(long double i, t_info *flag)
+static char	*get_decimals(long double i, t_info *flag, int l_before)
 {
 	char	*dec_str;
 	int		len;
@@ -67,22 +67,15 @@ static char	*get_decimals(long double i, t_info *flag)
 	int		x;
 
 	x = 1;
+	if ((*flag).spec_g == 1)
+		(*flag).prec_value = (*flag).prec_value - l_before;
 	precision = find_precision(flag);
 	dec_int = (i - (int)i) * precision;
 	len = 1 + (*flag).prec_value;
 	dec_str = ft_memalloc(sizeof(char) * len + 1);
 	dec_str[len] = '\0';
 	dec_str[0] = '.';
-	// onderstaande is nutteloos
-	// while (ft_intlen(dec_int) - len != 0)
-	// {
-	// 	dec_str[x] = '0';
-	// 	len--;
-	// 	x++;
-	// }
-	// x = 1;
-	// len = 1 + (*flag).prec_value;
-	while (dec_int && (len - x) > 0)
+	while ((len - x) > 0)
 	{
 		dec_str[len - x] = dec_int % 10 + '0';
 		dec_int = dec_int / 10;
@@ -134,18 +127,18 @@ char		*make_str_f(long double i, t_info *flag)
 	before = ft_itoa_llu(i);
 	after = NULL;
 	if ((*flag).dot == 1)
-		after = get_decimals(i, flag);
+		after = get_decimals(i, flag, ft_strlen(before));
 //	if spec_g is on, then other requirements must be taken into
 //	consideration (no 0's to fill up decimals)
-	if ((*flag).spec_g == 1 && (*flag).precision == 0)
+	if ((*flag).spec_g == 1 && (*flag).no_decimals == 0)
 	{
 		after_g = erase_zeros_for_spec_g(after, flag);
 		ret_str = fill_ret_str(flag, before, after_g);
 	}
 	else
 		ret_str = fill_ret_str(flag, before, after);
-	if (after)
-		free(after);
-	free(before);
+//	if (after)
+//		free(after);
+//	free(before);
 	return (ret_str);
 }

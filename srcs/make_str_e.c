@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/20 16:11:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/03 15:39:48 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/10/08 11:32:00 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,29 @@ static int			calc_new_i_int(t_info *flag, long double i)
 	return (i);
 }
 
-static char	*ret_str_filler(char *ret_str, char input, int x)
+static void/* static char	**/ret_str_filler(char *ret_str, char input, int x)
 {
 	ret_str[x] = input;
-	return (ret_str);
+	//return (ret_str);
+}
+
+static int		remove_zero_spec_g(t_info *flag, int new_i_int)
+{
+	int		decimals;
+	//if new_i_int < 10 -> (*flag).no_decimals = 1
+	//(*flag).prec_value aanpassen
+	while (new_i_int % 10 == 0)
+	{
+		new_i_int /= 10;
+	}
+	decimals = ft_intlength(new_i_int) - 1;
+	(*flag).prec_value = decimals;
+	if (new_i_int < 10)
+	{
+		(*flag).no_decimals = 1;
+		(*flag).prec_value = 0;
+	}
+	return (new_i_int);
 }
 
 char				*make_str_e(long double i, t_info *flag, char e_notation)
@@ -115,15 +134,18 @@ char				*make_str_e(long double i, t_info *flag, char e_notation)
 	x = 0;
 	i = find_power(i, flag);
 	i = roundup_e(i, flag, (*flag).prec_value);
-	ret_str = ret_str_maker(flag, e_notation);
 	new_i_int = calc_new_i_int(flag, i);
+	if ((*flag).spec_g == 1)
+	{	
+		new_i_int = remove_zero_spec_g(flag, new_i_int);
+//		ret_str = ret_str_maker(flag, e_notation);
+	}
+
+	ret_str = ret_str_maker(flag, e_notation);
 	new_i_str = ft_itoa_llu(new_i_int);
-	//hier kan ik de 0 checker toevoegen als (*flag).spec_g aanstaat
-	printf("MAKE STR E\tnew_i_str:\t%s\n", new_i_str);
 	while (new_i_str[x] && x <= (*flag).prec_value)
 	{
 		if (x > 0)
-		//niet: rest_str = ret_str_fille etc.?
 			ret_str_filler(ret_str, new_i_str[x], x + 1);
 		else
 			ret_str_filler(ret_str, new_i_str[x], x);
