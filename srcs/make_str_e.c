@@ -151,6 +151,9 @@ char				*make_str_e(long double i, t_info *flag, char e_notation)
 			ret_str_filler(ret_str, new_i_str[x], x);
 		x++;
 	}
-	free(new_i_str);
+	// printf("address new_i_str %p\n", new_i_str);
+	// printf("address ret_str %p\n", ret_str);
+	if (new_i_str)
+		free(new_i_str);
 	return (ret_str);
 }

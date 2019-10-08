@@ -49,6 +49,7 @@ typedef struct s_info
 	int		no_decimals;	//off or on ('.' or no '.') (floats, eE etc.)
 	int		spec_g;			//off: normal spec_f, on: spec_f for spec_g
 	int		dot;		//for spec_g, spec_f and spec_e
+	int		leftover;
 }				t_info;
 
 

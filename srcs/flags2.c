@@ -103,4 +103,5 @@ void		set_zero_flags(t_info *flag, int start_count)
 	(*flag).no_decimals = 0;
 	(*flag).spec_g = 0;
 	(*flag).dot = 0;
+	(*flag).leftover = 0;
 }

@@ -45,7 +45,10 @@ char	    *erase_zeros_for_spec_g(char *after, t_info *flag)
 		i--;
 	}
     if (zeros == 0)
-        return (after);
+	{
+		after_g = ft_strsub(after, 0, ft_strlen(after));
+        return (after_g);
+	}
     else
         after_g = fill_after_g(after, len, zeros);
     if (zeros == len - 1)

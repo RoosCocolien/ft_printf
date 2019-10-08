@@ -55,6 +55,12 @@ void	print_string(t_info *flag, char *s)
 		(*flag).count++;
 		i++;
 	}
+	while((*flag).leftover != 0)
+	{
+		ft_putchar('0');
+		(*flag).leftover--;
+		(*flag).count++;
+	}
 }
 
 void	print_flags(t_info flag)

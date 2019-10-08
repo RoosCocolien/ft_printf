@@ -22,6 +22,7 @@ char	*make_str_g(long double i, t_info *flag)
 		//default is 6 decimals
 		(*flag).spec_g = 1;
 		ret_str = make_str_f(i, flag);
+		printf("goes in f\n");
 	}
 	else
 	{

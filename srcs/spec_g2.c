@@ -42,6 +42,7 @@ int		spec_g2(char *s, va_list args, t_info *flag, int x)
 	print_string(flag, str_spec_g);
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 		put_padding(flag, fill);
+	printf("address str_spec_g %p\n", str_spec_g);
 	free(str_spec_g);
 	return (x + 1);
 }

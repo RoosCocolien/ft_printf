@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:36:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/08 12:42:20 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/08 15:24:43 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,18 @@ static void		find_len_decimals(long double i, t_info *flag)
 		(*flag).prec_value = 6;
 }
 
-static int	find_precision(t_info *flag)
+static long long	find_precision(t_info *flag)
 {
-	int		multiplier;
+	unsigned long long		multiplier;
 	int		x;
 
 	multiplier = 1;
 	x = (*flag).prec_value;
+	if (x > 19)
+	{
+		(*flag).leftover = x - 18;
+		return(1000000000000000000);
+	}
 	while (x > 0)
 	{
 		multiplier *= 10;
@@ -62,8 +67,8 @@ static char	*get_decimals(long double i, t_info *flag, int l_before)
 {
 	char	*dec_str;
 	int		len;
-	int		dec_int; //precision, the digits after the '.'
-	int		precision; //if (*flag).prec_value is 4, precision is 1000
+	long long		dec_int; //precision, the digits after the '.'
+	long long		precision; //if (*flag).prec_value is 4, precision is 1000
 	int		x;
 
 	x = 1;
@@ -71,7 +76,7 @@ static char	*get_decimals(long double i, t_info *flag, int l_before)
 		(*flag).prec_value = (*flag).prec_value - l_before;
 	precision = find_precision(flag);
 	dec_int = (i - (int)i) * precision;
-	len = 1 + (*flag).prec_value;
+	len = 1 + (*flag).prec_value - (*flag).leftover;
 	dec_str = ft_memalloc(sizeof(char) * len + 1);
 	dec_str[len] = '\0';
 	dec_str[0] = '.';
@@ -96,19 +101,21 @@ static char		*fill_ret_str(t_info *flag, char *before, char *after)
 	i = 0;
 	len_b = ft_strlen(before);
 	ret_str = NULL;
-	if ((*flag).dot == 0)
-		return (before);
+//	if ((*flag).dot == 0)
+//		return (before);
 	len = len_b + ft_strlen(after);
 	ret_str = (char*)malloc(sizeof(char) * (len + 1));
-	ret_str[len + 1] = '\0';
+	ret_str[len] = '\0';
 	while (after[i])
 	{
 		while (x < len_b && before[x])
 		{
 			ret_str[x] = before[x];
+			ft_printf("{red}%c{eoc}", ret_str[x]);
 			x++;
 		}
 		ret_str[x] = after[i];
+		ft_printf("{red}%c{eoc}", ret_str[x]);
 		i++;
 		x++;
 	}
@@ -125,6 +132,9 @@ char		*make_str_f(long double i, t_info *flag)
 	i = roundup_f(i, (*flag).prec_value);
 	find_len_decimals(i, flag);
 	before = ft_itoa_llu(i);
+	if ((*flag).dot == 0)
+		return (before);
+	//printf("before string %s\n", before);
 	after = NULL;
 	if ((*flag).dot == 1)
 		after = get_decimals(i, flag, ft_strlen(before));
@@ -134,11 +144,13 @@ char		*make_str_f(long double i, t_info *flag)
 	{
 		after_g = erase_zeros_for_spec_g(after, flag);
 		ret_str = fill_ret_str(flag, before, after_g);
+		free(after_g);
 	}
 	else
 		ret_str = fill_ret_str(flag, before, after);
-//	if (after)
-//		free(after);
-//	free(before);
+	if (after)
+		free(after);
+	if (before)
+		free(before);
 	return (ret_str);
 }
