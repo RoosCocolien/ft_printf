@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:49:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/09/25 14:24:09 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/10 18:17:36 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,15 @@ int		spec_x(char *s, va_list args, t_info *flag, int x)
 	char			*hex_str;
 
 	fill = 0;
-	if ((*flag).precision == 2)
-		(*flag).width = va_arg(args, int);
-	if ((*flag).width == 1 && (*flag).asterisk == 1 && (*flag).precision == 0)
-		(*flag).width = va_arg(args, int);
+	prec_and_zero_check(args, flag, s[x]);
 	i = len_mod_check_u(args, flag, s[x]);
 	if (s[x] == 'x' || s[x] == 'p')
 		hex_str = ft_itoa_base_ll(i, 16, 0);
 	else
 		hex_str = ft_itoa_base_ll(i, 16, 1);
 	length = ft_strlen(hex_str);
+	if (s[x] == 'p' && (*flag).precision == 0)
+		length += 2;
 	//vanaf hier
 	if ((*flag).precision != 0)
 	{
@@ -57,6 +56,11 @@ int		spec_x(char *s, va_list args, t_info *flag, int x)
 	if ((*flag).width > 0)
 		fill = (*flag).width - length;
 	//tm hier is hetzelfde als spec_di && spec_u && spec_o
+	if (s[x] == 'p')
+	{
+		ft_putstr("0x");
+		(*flag).count += 2;
+	}
 	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
 		put_padding(flag, fill);
 	print_address(flag, hex_str);

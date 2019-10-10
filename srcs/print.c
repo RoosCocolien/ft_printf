@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:23:54 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/09/24 12:12:39 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/10 18:03:20 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	print_address(t_info *flag, char *s)
 	int		i;
 
 	i = 0;
-	ft_putstr("0x");
-	(*flag).count = (*flag).count + 2;
+//	ft_putstr("0x");	verplaatst ivm padding
+//	(*flag).count = (*flag).count + 2;
 	if ((*flag).neg == 0 && (*flag).plus == 1 && (*flag).minus == 0 &&\
 	(*flag).precision == 0 && (*flag).zero == 0)
 	{
@@ -57,7 +57,7 @@ void	print_address(t_info *flag, char *s)
 		(*flag).count++;
 		i++;
 	}
-	while((*flag).leftover != 0)
+	while ((*flag).leftover != 0)
 	{
 		ft_putchar('0');
 		(*flag).leftover--;
@@ -82,7 +82,7 @@ void	print_string(t_info *flag, char *s)
 		(*flag).count++;
 		i++;
 	}
-	while((*flag).leftover != 0)
+	while ((*flag).leftover != 0)
 	{
 		ft_putchar('0');
 		(*flag).leftover--;

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:36:17 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/09/30 18:00:26 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/10 18:14:46 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		spec_e(char *s, va_list args, t_info *flag, int x)
 //		(*flag).zero = 0;
 	fill = 0;
 	//sla de waardes op als precision aan staat
-	prec_and_zero_check(flag, args);
+	prec_and_zero_check(args, flag, s[x]);
 	//if 'L' and check if neg value, returned altijd een pos getal
 	i = len_mod_check_efg(args, flag);
 	str_spec_e = make_str_e(i, flag, s[x]);

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 15:20:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/09/18 15:41:24 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/10 17:06:31 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void		precision_s(void)
 	printf("\n%%.6s (printf)\n");
 	printf("%.6s\n", "roosmarijn");
 	ft_printf("%.6s\n", "roosmarijn");	
-
 }
 
 static void		padding_s(void)

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/02 17:45:45 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/10/10 18:14:32 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int						color_setter(char *str, int x);
 /*
 **	precision.c
 */
-void					prec_and_zero_check(t_info *flag, va_list args);
+void					prec_and_zero_check(va_list args, t_info *flag, char spec);
 void					prec_change_settings_e(t_info *flag);
 
 /*
