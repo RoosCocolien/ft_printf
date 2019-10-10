@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:52:24 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/01 12:54:56 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/10 15:30:13 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,6 @@ int		find_spec(char *s, va_list args, t_info *flag, int x)
 	else if (s[x] == 'n')
 		x = spec_n(s, args, flag, x);
 	else
-	{
-		printf("Error spec.c from find_spec, char: %c...\n", s[x]);
 		return (-1);
-	}
 	return (x);
 }

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/20 16:11:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/08 11:32:00 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/08 16:29:00 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,11 +136,7 @@ char				*make_str_e(long double i, t_info *flag, char e_notation)
 	i = roundup_e(i, flag, (*flag).prec_value);
 	new_i_int = calc_new_i_int(flag, i);
 	if ((*flag).spec_g == 1)
-	{	
 		new_i_int = remove_zero_spec_g(flag, new_i_int);
-//		ret_str = ret_str_maker(flag, e_notation);
-	}
-
 	ret_str = ret_str_maker(flag, e_notation);
 	new_i_str = ft_itoa_llu(new_i_int);
 	while (new_i_str[x] && x <= (*flag).prec_value)
@@ -151,8 +147,6 @@ char				*make_str_e(long double i, t_info *flag, char e_notation)
 			ret_str_filler(ret_str, new_i_str[x], x);
 		x++;
 	}
-	// printf("address new_i_str %p\n", new_i_str);
-	// printf("address ret_str %p\n", ret_str);
 	if (new_i_str)
 		free(new_i_str);
 	return (ret_str);

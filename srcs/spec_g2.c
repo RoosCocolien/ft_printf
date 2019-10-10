@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 15:57:54 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/08 12:43:44 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/08 16:32:22 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int		spec_g2(char *s, va_list args, t_info *flag, int x)
 	print_string(flag, str_spec_g);
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 		put_padding(flag, fill);
-	printf("address str_spec_g %p\n", str_spec_g);
 	free(str_spec_g);
 	return (x + 1);
 }

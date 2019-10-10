@@ -47,32 +47,22 @@ int		main(void)
 	str[3] = 'b';
 	str[4] = '\0';
 
-	ft_putstr(str);
+	int v;
+	v = 55;
+
+	printf("The address of a is %p\n", &a);
 
 	//f = -9999999.34;
 	f = 9412.2321;
-	// ft_printf("Ekte printf =\t %0*f\n", 4, 7.3412);
-	// // ft_printf("Neppe printf =\t {green}%0*f{eoc}\n", 4, 7.3412);
+	printf("Ekte printf =\t %p\n", &a);
+	ft_printf("Neppe printf =\t %p\n", &a);
+
 
 	// printf("Echte printf =\t%e\n", f);
 	// ft_printf("{red}Neppe printf {eoc}=\t%e\n", f);
 
-	printf("\n- spec_g precision with asterisk, value: 20");
-	printf("\nprintf\t%%.*g\t(20, 98.7654321)\n%.*g\n", 9, 98.7654321);
-	ft_printf("%.*g\n", 9, 98.7654321);
-	printf("\n- spec_f precision with asterisk, value: 20");
-	printf("\nprintf\t%%.*f\t(20, 98.7654321)\n%.*f\n", 60, 9.87654321); //max 40, alles erboven print hij een "0"
-	ft_printf("%.*f\n", 60, 9.87654321);
 
 
-
-	// printf("\nprintf\t%%f\t(0.333333333333333334)\n%f\n", 0.333333333333333334);
-	// ft_printf("%f\n", first_long);
-	// printf("\nPOS DOUBLE\n");
-	// printf("\nprintf\t%%f\t(0.333333333333make 333334)\n%f\n", first);
-	// ft_printf("%f\n", first);
-	// printf("\nprintf\t%%f\t(0.333333333333333334)\n%f\n", first);
-	// ft_printf("%f\n", first);
 	while(a)
 		f++;
 

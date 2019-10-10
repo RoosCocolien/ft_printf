@@ -59,12 +59,22 @@ static unsigned long long	check_longlong_uns(va_list args, t_info *flag)
 	return (num);
 }
 
-unsigned long long			len_mod_check_u(va_list args, t_info *flag,\
+static intmax_t	check_intmax_t(va_list args, t_info *flag)
+{
+	intmax_t		num;
+
+	num = va_arg(args, intmax_t);
+	return (num);
+}
+
+intmax_t			len_mod_check_u(va_list args, t_info *flag,\
 char conv_spec)
 {
-	unsigned long long		i;
+	intmax_t		i;
 
-	if ((*flag).hh == 1)
+	if (conv_spec == 'p')
+		i = check_intmax_t(args, flag);
+	else if ((*flag).hh == 1)
 		i = check_char_uns(args, flag);
 	else if ((*flag).h == 1)
 		i = check_short_uns(args, flag);

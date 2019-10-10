@@ -6,7 +6,7 @@
 #    By: bvan-de- <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/15 14:53:31 by bvan-de-       #+#    #+#                 #
-#    Updated: 2019/10/08 11:32:22 by rsteigen      ########   odam.nl          #
+#    Updated: 2019/10/10 15:39:46 by rsteigen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,9 @@ b:
 
 zero:
 	@gcc srcs/test_printf/main_zero.c libft/libft.a $(SRCS)
+
+p:
+	@gcc srcs/test_printf/main_p.c libft/libft.a $(SRCS)
 
 clean:
 	@rm -rf $(SRCS:.c=.o)

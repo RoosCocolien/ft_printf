@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/08 15:38:02 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/08 16:25:30 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,47 +15,47 @@
 
 static void		simple_g(void)
 {
-	// printf("\nSimple test g, general-format floating-point number\n");
-	// printf("POS < (double)999999.50 DUS f\n");
-	// printf("\nprintf\t%%g\t(3.1416)\n%g\n", 3.1416);
-	// ft_printf("%g", 3.1416);
-	// printf("\nprintf\t%%g\t(6.6589)\n%g\n", 6.6589);
-	// ft_printf("%g", 6.6589);
-	// printf("\nprintf\t%%g\t(3.14)\n%g\n", 3.14);
-	// ft_printf("%g", 3.14);
-	// printf("\nprintf\t%%g\t(6.65)\n%g\n", 6.65);
-	// ft_printf("%g", 6.65);
-	// printf("\nprintf\t%%g\t(0.00)\n%g\n", 0.00);
-	// ft_printf("%g", 0.00);
-	// printf("\nprintf\t%%g\t(6.65)\n%g\n", 6.1999999);
-	// ft_printf("%g", 6.1999999);
-	// printf("\nNEG");
-	// printf("\nprintf\t%%g\t(-3.1416)\n%g\n", -3.1416);
-	// ft_printf("%g", -3.1416);
-	// printf("\nprintf\t%%g\t(-6.6589)\n%g\n", -6.6589);
-	// ft_printf("%g\n", -6.6589);
-	// printf("\n-- Resultaten f--\n");
-	// printf("\nprintf\t%%f\t(3.1416)\n%f\n", 3.1416);
-	// ft_printf("%f", 3.1416);
-	// printf("\nprintf\t%%f\t(6.6589)\n%f\n", 6.6589);
-	// ft_printf("%f", 6.6589);
-	// printf("\nprintf\t%%f\t(3.141614161416)\n%f\n", 3.141614161416);
-	// ft_printf("%f", 3.141614161416);
-	// printf("\nprintf\t%%f\t(6.65896589)\n%f\n", 6.65896589);
-	// ft_printf("%f", 6.65896589);
-	// printf("\nNEG");
-	// printf("\nprintf\t%%f\t(-3.1416)\n%f\n", -3.1416);
-	// ft_printf("%f", -3.1416);
-	// printf("\nprintf\t%%f\t(-6.6589)\n%f\n", -6.6589);
-	// ft_printf("%f\n", -6.6589);
+	printf("\nSimple test g, general-format floating-point number\n");
+	printf("POS < (double)999999.50 DUS f\n");
+	printf("\nprintf\t%%g\t(3.1416)\n%g\n", 3.1416);
+	ft_printf("%g", 3.1416);
+	printf("\nprintf\t%%g\t(6.6589)\n%g\n", 6.6589);
+	ft_printf("%g", 6.6589);
+	printf("\nprintf\t%%g\t(3.14)\n%g\n", 3.14);
+	ft_printf("%g", 3.14);
+	printf("\nprintf\t%%g\t(6.65)\n%g\n", 6.65);
+	ft_printf("%g", 6.65);
+	printf("\nprintf\t%%g\t(0.00)\n%g\n", 0.00);
+	ft_printf("%g", 0.00);
+	printf("\nprintf\t%%g\t(6.65)\n%g\n", 6.1999999);
+	ft_printf("%g", 6.1999999);
+	printf("\nNEG");
+	printf("\nprintf\t%%g\t(-3.1416)\n%g\n", -3.1416);
+	ft_printf("%g", -3.1416);
+	printf("\nprintf\t%%g\t(-6.6589)\n%g\n", -6.6589);
+	ft_printf("%g\n", -6.6589);
+	printf("\n-- Resultaten f--\n");
+	printf("\nprintf\t%%f\t(3.1416)\n%f\n", 3.1416);
+	ft_printf("%f", 3.1416);
+	printf("\nprintf\t%%f\t(6.6589)\n%f\n", 6.6589);
+	ft_printf("%f", 6.6589);
+	printf("\nprintf\t%%f\t(3.141614161416)\n%f\n", 3.141614161416);
+	ft_printf("%f", 3.141614161416);
+	printf("\nprintf\t%%f\t(6.65896589)\n%f\n", 6.65896589);
+	ft_printf("%f", 6.65896589);
+	printf("\nNEG");
+	printf("\nprintf\t%%f\t(-3.1416)\n%f\n", -3.1416);
+	ft_printf("%f", -3.1416);
+	printf("\nprintf\t%%f\t(-6.6589)\n%f\n", -6.6589);
+	ft_printf("%f\n", -6.6589);
 
-	// printf("\nPOS > (double)999999.50 DUS e\n");
-	// printf("\nprintf\t%%g\t(6333125.66)\n%g\n", 6333125.66);
-	// ft_printf("%g", 6333125.66);
-	// printf("\nprintf\t%%g\t(999999.50)\n%g\n", 999999.50);
-	// ft_printf("%g", 999999.50);
-	// printf("\nprintf\t%%g\t(999995.50)\n%g\n", 999995.50);
-	// ft_printf("%g", 999995.50);
+	printf("\nPOS > (double)999999.50 DUS e\n");
+	printf("\nprintf\t%%g\t(6333125.66)\n%g\n", 6333125.66);
+	ft_printf("%g", 6333125.66);
+	printf("\nprintf\t%%g\t(999999.50)\n%g\n", 999999.50);
+	ft_printf("%g", 999999.50);
+	printf("\nprintf\t%%g\t(999995.50)\n%g\n", 999995.50);
+	ft_printf("%g", 999995.50);
 	printf("\nprintf\t%%.1f\t(999995.50)\n%.1f\n", 999995.50);
 	ft_printf("%.1f", 999995.50);
 
@@ -70,19 +70,19 @@ static void		simple_g(void)
 	printf("\nprintf\t%%g\t(77770000.00)\n%g\n", 77770000.00);
 	ft_printf("%g", 77770000.00);
 
-	// printf("\n-- Resultaten e--\n");
-	// printf("\nprintf\t%%e\t(6333125.66)\n%e\n", 6333125.66);
-	// ft_printf("%e", 6333125.66);
-	// printf("\nprintf\t%%e\t(6333125.46)\n%e\n", 6333125.46);
-	// ft_printf("%e", 6333125.46);
-	// printf("\nprintf\t%%e\t(999999.50)\n%e\n", 999999.50);
-	// ft_printf("%e", 999999.50);
-	// printf("\nprintf\t%%.5e\t(999995.55)\n%.5e\n", 999995.55);
-	// ft_printf("%.5e", 999995.55);
-	// printf("\nprintf\t%%e\t(9999999.40)\n%e\n", 9999999.40);
-	// ft_printf("%e", 9999999.40);
-	// printf("\nprintf\t%%e\t(99999999.40)\n%e\n", 99999999.40);
-	// ft_printf("%e\n", 99999999.40);
+	printf("\n-- Resultaten e--\n");
+	printf("\nprintf\t%%e\t(6333125.66)\n%e\n", 6333125.66);
+	ft_printf("%e", 6333125.66);
+	printf("\nprintf\t%%e\t(6333125.46)\n%e\n", 6333125.46);
+	ft_printf("%e", 6333125.46);
+	printf("\nprintf\t%%e\t(999999.50)\n%e\n", 999999.50);
+	ft_printf("%e", 999999.50);
+	printf("\nprintf\t%%.5e\t(999995.55)\n%.5e\n", 999995.55);
+	ft_printf("%.5e", 999995.55);
+	printf("\nprintf\t%%e\t(9999999.40)\n%e\n", 9999999.40);
+	ft_printf("%e", 9999999.40);
+	printf("\nprintf\t%%e\t(99999999.40)\n%e\n", 99999999.40);
+	ft_printf("%e\n", 99999999.40);
 }
 
 static void		len_mod_g(void)
@@ -226,10 +226,10 @@ static void		precision_g(void)
 int				main(void)
 {
 	simple_g();
-	//len_mod_g();
-	//flags_g();
-	//width_asterisk_g();
-	//precision_g();
+	len_mod_g();
+	flags_g();
+	width_asterisk_g();
+	precision_g();
 	while(1);
 	return (0);
 }

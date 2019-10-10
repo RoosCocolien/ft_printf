@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:48:34 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/09/25 15:59:40 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/08 16:28:26 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,7 @@ static int	flags_part_four(char *s, t_info *flag, int x)
 		return (x);
 	}
 	else
-	{
-		printf("Error flags.c (flags_part_three)\n");
 		return (-1);
-	}
 	return (x);
 }
 
@@ -110,6 +107,7 @@ static int	flags_part_two(char *s, t_info *flag, int x)
 			x++;
 		width = ft_strsub(s, i, x - i);
 		(*flag).width = ft_atoi(width);
+		free(width);
 	}
 	else
 		x = flags_part_three(s, flag, x);
@@ -150,10 +148,7 @@ int			save_flags(char *s, t_info *flag, int x)
 		i = x;
 		x = flags_part_one(s, flag, i);
 		if (x == -1)
-		{
-			printf("Error flags.c (flags_part_one)\n");
 			return (-1);
-		}
 	}
 	return (x);
 }

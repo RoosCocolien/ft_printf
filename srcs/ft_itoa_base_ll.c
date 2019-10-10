@@ -12,7 +12,7 @@
 
 #include "../includes/printf.h"
 
-static size_t	digit_count(unsigned long long value, int base)
+static size_t	digit_count(intmax_t value, int base)
 {
 	size_t	i;
 
@@ -35,42 +35,42 @@ static int		check_sign(unsigned long long value, int base)
 }
 */
 
-static char		*fill_str(unsigned long long value, int base,
+static char		*fill_str(intmax_t value, int base,
 int len, int cap)/*, int sign)*/
 {
 	char	*s;
 	char	*s_base;
 	int		i;
 
-	i = 1;
+	i = len;
 	s = (char*)malloc(sizeof(char) * (len + 1));
+	s[12] = '\0';
 	if (cap == 0)
 		s_base = "0123456789abcdef";
 	else
 		s_base = "0123456789ABCDEF";
 //	if (sign)
 //		s[0] = '-';
-	while (value != 0)
+	while (len > 0)
 	{
-		s[len - i] = s_base[value % base];
+		len--;
+		s[len] = s_base[value % base];
 		value = value / base;
-		i++;
 	}
-	s[len] = '\0';
 	return (s);
 }
 
-char			*ft_itoa_base_ll(unsigned long long value, int base, int cap)
+char			*ft_itoa_base_ll(intmax_t value, int base, int cap)
 {
 	int		len;
 	char	*s;
 //	int		sign;
 	if (base < 2 || base > 16)
 		return (0);
-	if (base == 10 && value == -2147483648)
-		return ("-2147483648");
-	if (base == 10 && value == 2147483647)
-		return ("2147483647");
+	// if (base == 10 && value == -2147483648)
+	// 	return ("-2147483648");
+	// if (base == 10 && value == 2147483647)
+	// 	return ("2147483647");
 //	sign = check_sign(value, base);
 //	if (value < 0)
 //		value = -value;

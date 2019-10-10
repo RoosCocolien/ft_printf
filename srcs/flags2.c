@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/12 14:25:20 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/02 17:43:42 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/10/08 16:24:21 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int		check_precision(char *s, t_info *flag, int x)
 			x++;
 		value_precision = ft_strsub(s, i, x - i);
 		(*flag).prec_value = ft_atoi(value_precision);
+		free(value_precision);
 	}
 	return (x);
 }

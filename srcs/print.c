@@ -38,6 +38,33 @@ void	print_digit(t_info *flag, unsigned long long nb)
 	free(str_digit);
 }
 
+void	print_address(t_info *flag, char *s)
+{
+	int		i;
+
+	i = 0;
+	ft_putstr("0x");
+	(*flag).count = (*flag).count + 2;
+	if ((*flag).neg == 0 && (*flag).plus == 1 && (*flag).minus == 0 &&\
+	(*flag).precision == 0 && (*flag).zero == 0)
+	{
+		(*flag).count++;
+		ft_putchar('+');
+	}
+	while (s[i])
+	{
+		ft_putchar(s[i]);
+		(*flag).count++;
+		i++;
+	}
+	while((*flag).leftover != 0)
+	{
+		ft_putchar('0');
+		(*flag).leftover--;
+		(*flag).count++;
+	}
+}
+
 void	print_string(t_info *flag, char *s)
 {
 	int		i;

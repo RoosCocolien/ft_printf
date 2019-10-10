@@ -30,7 +30,7 @@
 
 int		spec_x(char *s, va_list args, t_info *flag, int x)
 {
-	long long		i;
+	intmax_t		i;
 	int				length;
 	int				fill;
 	char			*hex_str;
@@ -41,7 +41,7 @@ int		spec_x(char *s, va_list args, t_info *flag, int x)
 	if ((*flag).width == 1 && (*flag).asterisk == 1 && (*flag).precision == 0)
 		(*flag).width = va_arg(args, int);
 	i = len_mod_check_u(args, flag, s[x]);
-	if (s[x] == 'x')
+	if (s[x] == 'x' || s[x] == 'p')
 		hex_str = ft_itoa_base_ll(i, 16, 0);
 	else
 		hex_str = ft_itoa_base_ll(i, 16, 1);
@@ -59,7 +59,7 @@ int		spec_x(char *s, va_list args, t_info *flag, int x)
 	//tm hier is hetzelfde als spec_di && spec_u && spec_o
 	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
 		put_padding(flag, fill);
-	ft_putstr(hex_str);
+	print_address(flag, hex_str);
 	(*flag).count += length;
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 		put_padding(flag, fill);

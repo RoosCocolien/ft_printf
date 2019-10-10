@@ -59,13 +59,14 @@ int						ft_intlength(unsigned long long y);
 unsigned long long   	ft_roundup(unsigned long long d);
 int     				ft_deci_count(double d);
 int     				ft_zero_count(char *str);
-char					*ft_itoa_base_ll(unsigned long long value, int base, int cap);
+char					*ft_itoa_base_ll(intmax_t value, int base, int cap);
 
 /*
 **	print.c
 */
 void					print_flags(t_info flag); //kan weg
 void					print_digit(t_info *flag, unsigned long long nb);
+void					print_address(t_info *flag, char *s);
 void					print_string(t_info *flag, char *s);
 
 /*
@@ -92,7 +93,7 @@ long double				len_mod_check_efg(va_list args, t_info *flag);
 /*
 **	len_mod_u.c
 */
-unsigned long long		len_mod_check_u(va_list args, t_info *flag,\
+intmax_t				len_mod_check_u(va_list args, t_info *flag,\
 char conv_spec);
 
 /*
