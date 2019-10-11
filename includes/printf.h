@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/10 18:14:32 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/11 18:02:28 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,23 +224,24 @@ char					*bin_str_cpy(long long *bin_bits, int j, int min);
 
 
 /*
-**	spec_u.c 
+**	spec_u.c
 */
 int						spec_u(char *s, va_list args, t_info *flag, int x);
 
 /*
-**	spec_p.c 
+**	spec_p.c
 */
 int						spec_p(char *s, va_list args, t_info *flag, int x);
 
 /*
-**	spec_n.c 
+**	spec_n.c
 */
 int						spec_n(char *s, va_list args, t_info *flag, int x);
 
 /*
 **	padding.c
 */
+int						put_0x_spec_f(int count);
 int						change_fill(t_info *flag, int fill, int length);
 void					put_padding(t_info *flag, int fill);
 

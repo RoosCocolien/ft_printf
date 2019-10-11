@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:55:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/11 15:28:57 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/11 18:02:15 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 **		int neg == 1			-->		it's a neg nb
 **		int neg == 0			-->		it's a pos nb
 */
+
+int		put_0x_spec_f(int count)
+{
+	ft_putstr("0x");
+	return (count += 2);
+}
 
 int		change_fill(t_info *flag, int fill, int length)
 {

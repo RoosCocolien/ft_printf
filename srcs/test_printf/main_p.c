@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/10 15:24:21 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/11 16:54:57 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/11 19:09:38 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,13 @@ static void		precision_p(void)
 	str1 = "Coco";
 	str2 = "Lien888";
 	str3 = "Roosmarijn";
-	printf("\nPrecision simple test\n");
-	printf("%%.7p (printf)\n%.7p.\n", str1);
-	ft_printf("%.7p.\n", str1);
-	printf("%%.3p (printf)\n%.3p.\n", str1);
-	ft_printf("%.3p.\n", str1);
-	printf("%%.17p (printf)\n%.17p.\n", str1);
-	ft_printf("%.17p.\n", str1);
+	// printf("\nPrecision simple test\n");
+	// printf("%%.7p (printf)\n%.7p.\n", str1);
+	// ft_printf("%.7p.\n", str1);
+	// printf("%%.3p (printf)\n%.3p.\n", str1);
+	// ft_printf("%.3p.\n", str1);
+	// printf("%%.17p (printf)\n%.17p.\n", str1);
+	// ft_printf("%.17p.\n", str1);
 
 	printf("\nPrecision simple with asterisk\n");
 	printf("%%.*p (printf, value: 7)\n%.*p.\n", 7, str3);

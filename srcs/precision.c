@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:48:28 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/11 16:39:40 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/11 19:37:41 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	prec_and_zero_check(va_list args, t_info *flag, char spec)
 	}
 	if ((*flag).minus == 1)
 		(*flag).zero = 0;
-	if ((*flag).precision != 0 && spec == 'p' && (*flag).minus != 1)
+	if ((*flag).precision != 0 && /*spec == 'p' && */(*flag).minus != 1)
 		(*flag).zero = 1;
 }
