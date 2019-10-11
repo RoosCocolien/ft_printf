@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:49:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/10 18:17:36 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/11 16:54:28 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ int		spec_x(char *s, va_list args, t_info *flag, int x)
 	length = ft_strlen(hex_str);
 	if (s[x] == 'p' && (*flag).precision == 0)
 		length += 2;
+	printf("spec_x 4\tlength = %d\n", length);
 	//vanaf hier
-	if ((*flag).precision != 0)
+	if ((*flag).precision != 0 && (*flag).prec_value != 0)
 	{
 		if ((*flag).precision == 1)
 			(*flag).width = (*flag).prec_value;

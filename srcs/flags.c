@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:48:34 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/08 16:28:26 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/11 16:53:25 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	flags_part_four(char *s, t_info *flag, int x)
 		return (x);
 	}
 	else
-		return (-1);
+		return (x++);	//of overslaan? of return (-1)
 	return (x);
 }
 
@@ -66,7 +66,10 @@ static int	flags_part_three(char *s, t_info *flag, int x)
 	}
 	else if (s[x] == '.' && (*flag).precision == 0)
 	{
-		x = check_precision(s, flag, x);
+		if (s[x + 1] >= '0' && s[x + 1] <= '9')
+			x = check_precision(s, flag, x);
+		else
+			x++;
 	}
 	else if (s[x] == 'l' && s[x - 1] != 'l')
 	{
