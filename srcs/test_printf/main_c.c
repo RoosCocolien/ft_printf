@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/08 18:03:42 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/08 18:30:31 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/12 16:56:00 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,16 @@ int		main(void)
 	printf("\n%%05-c (printf)\n");
 	printf("%05+c\n", 'k');
 	ft_printf("%05+c\n", 'k');
+
+	printf("Test # flag\n");
+	printf("printf %%#c\n");
+	printf("%#c\n", 'a');
+	ft_printf("%#c\n", 'a');
+	printf("printf %%#-5c\n");
+	printf("%#-5c\n", 'b');
+	ft_printf("%#-5c\n", 'b');
+	printf("printf %%#05c\n");
+	printf("%#05c\n", 'c');
+	ft_printf("%#05c\n", 'c');
 	return (0);
 }

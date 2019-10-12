@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 16:43:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/09/11 13:26:33 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/12 17:40:15 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,14 +215,68 @@ static void	range_check_o(void)
 */
 }
 
+static void hash_flag_o(void)
+{
+	printf("\nSimple test with hash\n");
+	printf("\nprintf\t%%#o\t(532)\n%#o\n", 532);
+	ft_printf("%#o\n", 532);
+	printf("\nprintf\t%%#o\t(-689)\n%#o\n", -689);
+	ft_printf("%#o\n", -689);
+	printf("\nprintf\t%%#o\t(4294967295)\n%#o\n", 4294967295);
+	ft_printf("%#o\n", 4294967295);
+	printf("\nprintf\t%%#o\t(2147483648 (warning: dit is een long))\n%#o\n",\
+	2147483648);
+	ft_printf("%#o\n", 2147483648);
+	printf("\nprintf\t%%#o\t(2147483647)\n%#o\n", 2147483647);
+	ft_printf("%#o\n", 2147483647);
+	printf("\nprintf\t%%#o\t(0)\n%#o\n", 0);
+	ft_printf("%#o\n", 0);
+	printf("\nAsterisk with hash\n");
+	printf("Asterisk PRECISION\n");
+	printf("\nprintf\t%%.*#o (10, 374)\n%.*#o\n", 10, 374);
+	ft_printf("%.*#o\n", 10, 374);
+
+	printf("\nAsterisk WIDTH #\n");
+	printf("\nprintf\t%%0*#o (11, 798)\n%0*#o\n", 11, 798);
+	ft_printf("%0*#o\n", 11, 798);
+	printf("\nPrecision with #\n");
+	printf("\nprintf\t%%.7#o\t(354) min digits: 7\n%.7#o\n", 354);
+	ft_printf("%.7#o\n", 354);
+	printf("\nprintf\t%%-.7#o\t(997) min digits: 7, align left ('-')\n%-.7#o\n",\
+	997);
+	ft_printf("%-.7#o\n", 997);
+	printf("\nprintf\t%%0.7#o\t(997) min digits: 7, zero\n%0.7#o\n", 632);
+	ft_printf("%0.7#o\n", 632);
+	printf("\nprintf\t%%+.7#o\t(3476) min digits: 7, plus\n%+.7#o\n", 3476);
+	ft_printf("%+.7#o\n", 3476);
+	printf("\nprintf\t%% .7#o\t(-12) min digits: 7, space\n% .7#o\n", -12);
+	ft_printf("% .7#o\n", -12);
+	printf("\nprintf\t%%-.7#o\t(15) min digits: 7, minus\n%-.7#o\n", 15);
+	ft_printf("% .7#o\n", 15);
+	printf("\nCombination of plus, space, zero with hash\n");
+	printf("\nprintf\t%% 05#o\t(0)\
+	Invisible plus sign, fill 0, width 5\n% 05#o\n", 0);
+	ft_printf("% 05#o\n", 0);
+	printf("\nprintf\t%% 05#o\t(-461)\
+	Invisible plus sign, fill 0, width 5\n% 05#o\n", -461);
+	ft_printf("% 05#o\n", -461);
+	printf("\nprintf\t%%+05#o\t(38)\
+	Visible plus sign, fill 0, width 5\n%+05#o\n", 38);
+	ft_printf("%+05#o\n", 38);
+	printf("\nprintf\t%%+05#o\t(97)\
+	Visible plus sign, fill 0, width 5\n%+05#o\n", 97);
+	ft_printf("%+05#o\n", 97);
+}
+
 int		main(void)
 {
-	simple_test_o();
+//	simple_test_o();
 //	padding_test_o();
 //	plus_sign_test_o();
 //	combi_plus_space_zero_o();
 //	precision_o();
 //	asterisk_o();
 //	range_check_o();
+	hash_flag_o();
 	return (0);
 }

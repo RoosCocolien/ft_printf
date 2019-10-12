@@ -6,7 +6,7 @@
 /*   By: rsteigen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/28 10:37:26 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/01 16:25:52 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/12 16:22:32 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static size_t	digit_count(intmax_t value, int base)
 	size_t	i;
 
 	i = 0;
+	if (value == 0)
+		i = 1;
 	while (value)
 	{
 		value = value / base;
@@ -42,9 +44,8 @@ int len, int cap)/*, int sign)*/
 	char	*s_base;
 	int		i;
 
-	i = len;
 	s = (char*)malloc(sizeof(char) * (len + 1));
-	s[12] = '\0';
+	s[len] = '\0';
 	if (cap == 0)
 		s_base = "0123456789abcdef";
 	else
@@ -65,6 +66,7 @@ char			*ft_itoa_base_ll(intmax_t value, int base, int cap)
 	int		len;
 	char	*s;
 //	int		sign;
+
 	if (base < 2 || base > 16)
 		return (0);
 	// if (base == 10 && value == -2147483648)
@@ -74,8 +76,8 @@ char			*ft_itoa_base_ll(intmax_t value, int base, int cap)
 //	sign = check_sign(value, base);
 //	if (value < 0)
 //		value = -value;
-	if (value == 0)
-		return ("0");
+//	if (value == 0)
+//		return ("0");
 	len = digit_count(value, base);
 //	if (sign)
 //		len += 1;

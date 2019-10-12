@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/20 12:25:22 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/09/25 13:24:10 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/12 17:29:37 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,14 +252,35 @@ static void	range_check_di(void)
 	ft_printf("%lld\n", -1);	
 }
 
+static void	hash_flag_di()
+{
+	ft_printf("\n*\t**Hash**\t*\n");
+	ft_printf("\nprintf %%+05#d, 0\n");
+	printf("%+05#d\n", 0);
+	printf("return: %#d\n", printf("%+05#d\n", 0));
+	ft_printf("%+05#d\n", 0);
+	printf("return: %#d\n", ft_printf("%+05#d\n", 0));
+	ft_printf("\nprintf %%+05#d, -7\n");
+	printf("%+05#d\n", -7);
+	printf("return: %#d\n", printf("%+05#d\n", -7));
+	ft_printf("%+05#d\n", -7);
+	printf("return: %#d\n", ft_printf("%+05#d\n", -7));
+	ft_printf("\nprintf %%+05#d, 1536924\n");
+	printf("%+05#d\n", 1536924);
+	printf("return: %#d\n", printf("%+05#d\n", 1536924));
+	ft_printf("%+05#d\n", 1536924);
+	printf("return: %#d\n", ft_printf("%+05#d\n", 1536924));
+}
+
 int		main(void)
 {
 //	extra_space_plus_di();
 //	simple_test_di();
 //	padding_test_di();
-	combi_plus_space_zero_di();
+//	combi_plus_space_zero_di();
 //	precision_di();
 //	asterisk_di();
 //	range_check_di();
+	hash_flag_di();
 	return (0);
 }

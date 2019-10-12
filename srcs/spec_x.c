@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:49:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/11 18:38:58 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/12 17:44:21 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int		spec_x(char *s, va_list args, t_info *flag, int x)
 	fill = 0;
 	prec_and_zero_check(args, flag, s[x]);
 	i = len_mod_check_u(args, flag, s[x]);
+//	if (i != 0 && (*flag).hash = 1)
+//		s[i] = 'p';
 	if (s[x] == 'x' || s[x] == 'p')
 		hex_str = ft_itoa_base_ll(i, 16, 0);
 	else

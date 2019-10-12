@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:33 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/09/20 18:54:29 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/12 17:41:54 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,16 @@ int		spec_o(char *s, va_list args, t_info *flag, int x)
 */
 	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
 		put_padding(flag, fill);
+	else if (i != 0 && (*flag).hash == 1)
+	{
+		ft_putchar('0');
+		(*flag).count++;
+	}
 	ft_putstr(oct_str);
 	(*flag).count += length;
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 		put_padding(flag, fill);
-	free(oct_str);
+	if (oct_str)
+		free(oct_str);
 	return (x + 1);
 }
