@@ -6,7 +6,7 @@
 #    By: bvan-de- <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/15 14:53:31 by bvan-de-       #+#    #+#                 #
-#    Updated: 2019/10/10 15:39:46 by rsteigen      ########   odam.nl          #
+#    Updated: 2019/10/14 15:16:47 by rsteigen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS 	= srcs/ft_printf.c srcs/flags.c srcs/spec.c srcs/spec_c.c\
 			srcs/len_mod_di.c srcs/len_mod_u.c srcs/len_mod_u2.c\
 			srcs/ft_itoa_base_ll.c srcs/precision.c srcs/len_mod_efg.c\
 			srcs/make_str_e.c srcs/colors.c srcs/spec_b2.c srcs/make_str_f.c\
-			srcs/roundup.c srcs/make_str_g.c srcs/spec_g2.c\
+			srcs/roundup.c srcs/make_str_g.c\
 			srcs/spec_g_zero.c
 
 FLAG 	= -Wall -Wextra -Werror

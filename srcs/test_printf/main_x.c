@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/10 15:24:21 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/11 19:43:42 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/14 14:53:16 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** indien spec == 'p', change settings of the flags
 */
 
-static void		simple_p(void)
+static void		simple_x(void)
 {
 	char *str1;
 
@@ -25,7 +25,7 @@ static void		simple_p(void)
 	ft_printf("%x.\n", str1);
 }
 
-static void		flags_p(void)
+static void		flags_x(void)
 {
 	char	*str1;
 
@@ -79,7 +79,7 @@ static void		flags_p(void)
 	ft_printf("%+-0*x.\n", 12, str1);
 }
 
-static void		precision_p(void)
+static void		precision_x(void)
 {
 	char *str1;
 	char *str2;
@@ -135,7 +135,7 @@ static void		precision_p(void)
 	ft_printf("%.*x.\n", 17, str3);
 }
 
-static void		padding_p(void)
+static void		padding_x(void)
 {
 	char *str1;
 
@@ -158,11 +158,55 @@ static void		padding_p(void)
 	ft_printf("%015+x.\n", str1);
 }
 
+static void		check_hash_x()
+{
+	char *str1;
+	char *str2;
+	char *str3;
+
+	str1 = "Coco";
+	str2 = "Lien888";
+	str3 = "Roosmarijn";
+	printf("\nTest minimum field width asterisk & hash in combi with other flags\n");
+	printf("%%-*#x (printf, value: 10)\n%-*#x.\n", 10, str1);
+	ft_printf("%-*#x.\n", 10, str1);
+	printf("%%+*#x (printf value: 6)\n%+*#x.\n", 6, str1);
+	ft_printf("%+*#x.\n", 6, str1);
+	printf("%%*#x (printf value: 12)\n%*#x.\n", 12, str1);
+	ft_printf("%*#x.\n", 12, str1);
+	printf("%%0*#x (printf value: 12)\n%0*#x.\n", 12, str1);
+	ft_printf("%0*#x.\n", 12, str1);
+	printf("%%+-0*#x (printf value: 12)\n%+-0*#x.\n", 12, str1);
+	ft_printf("%+-0*#x.\n", 12, str1);
+	printf("\nPadding with hash\n");
+	printf("\n%%-15#x (printf)\n");
+	printf("%-15#x.\n", str1);
+	ft_printf("%-15#x.\n", str1);
+	printf("\n%%015#x (printf)\n");
+	printf("%015#x.\n", str1);
+	ft_printf("%015#x.\n", str1);
+	printf("%%-*#X (printf, value: 10)\n%-*#X.\n", 10, str1);
+	ft_printf("%-*#X.\n", 10, str1);
+	printf("%%+*#X (printf value: 6)\n%+*#X.\n", 6, str1);
+	ft_printf("%+*#X.\n", 6, str1);
+	printf("%%*#X (printf value: 12)\n%*#X.\n", 12, str1);
+	ft_printf("%*#X.\n", 12, str1);
+	printf("%%0*#X (printf value: 12)\n%0*#X.\n", 12, str1);
+	ft_printf("%0*#X.\n", 12, str1);
+	printf("%%+-0*#X (printf value: 12)\n%+-0*#X.\n", 12, str1);
+	ft_printf("%+-0*#X.\n", 12, str1);
+	printf("\nPadding with hash\n");
+	printf("\n%%-15#X (printf)\n");
+	printf("%-15#X.\n", str1);
+	ft_printf("%-15#X.\n", str1);
+}
+
 int		main(void)
 {
-	simple_p();
-	flags_p();
-	precision_p();
-	padding_p();
+	simple_x();
+	flags_x();
+	precision_x();
+	padding_x();
+	check_hash_x();
 	return (0);
 }

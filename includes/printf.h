@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/11 18:02:28 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/14 15:15:28 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void					print_string(t_info *flag, char *s);
 /*
 **	ft_printf.c
 */
-int						ft_printf(const char * restrict format, ...);
+int						ft_printf(const char *restrict format, ...);
 int						loop_format_args(char *s, va_list args);
 
 /*
@@ -193,7 +193,6 @@ int						spec_e(char *s, va_list args, t_info *flag, int x);
 **	spec_g.c
 */
 int						spec_g(char *s, va_list args, t_info *flag, int x);
-int						spec_g2(char *s, va_list args, t_info *flag, int x);
 
 /*
 **	spec_g_zero.c
@@ -241,7 +240,7 @@ int						spec_n(char *s, va_list args, t_info *flag, int x);
 /*
 **	padding.c
 */
-int						put_0x_spec_f(int count);
+int						put_0x_spec_f(int count, char spec);
 int						change_fill(t_info *flag, int fill, int length);
 void					put_padding(t_info *flag, int fill);
 

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:36:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/08 15:24:43 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/14 16:01:24 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void		find_len_decimals(long double i, t_info *flag)
 {
 	(*flag).dot = 1;
-	if ((*flag).precision != 0 && (*flag).prec_value == 0)
+	if ((*flag).precision != 0 && (*flag).prec_value == 0 && (*flag).hash != 0)
 		(*flag).dot = 0;
 	if ((*flag).precision == 0 && (*flag).precision == 0)
 		(*flag).prec_value = 6;
@@ -65,12 +65,13 @@ static int		ft_intlen(int n)
 
 static char	*get_decimals(long double i, t_info *flag, int l_before)
 {
-	char	*dec_str;
-	int		len;
-	long long		dec_int; //precision, the digits after the '.'
-	long long		precision; //if (*flag).prec_value is 4, precision is 1000
-	int		x;
+	char		*dec_str;
+	int			len;
+	long long	dec_int; //precision, the digits after the '.'
+	long long	precision; //if (*flag).prec_value is 4, precision is 1000
+	int			x;
 
+	printf("test1 in get_decimals\n");
 	x = 1;
 	if ((*flag).spec_g == 1)
 		(*flag).prec_value = (*flag).prec_value - l_before;
@@ -111,11 +112,11 @@ static char		*fill_ret_str(t_info *flag, char *before, char *after)
 		while (x < len_b && before[x])
 		{
 			ret_str[x] = before[x];
-			ft_printf("{red}%c{eoc}", ret_str[x]);
+//			ft_printf("{red}%c{eoc}", ret_str[x]);
 			x++;
 		}
 		ret_str[x] = after[i];
-		ft_printf("{red}%c{eoc}", ret_str[x]);
+//		ft_printf("{red}%c{eoc}", ret_str[x]);
 		i++;
 		x++;
 	}
@@ -133,14 +134,17 @@ char		*make_str_f(long double i, t_info *flag)
 	find_len_decimals(i, flag);
 	before = ft_itoa_llu(i);
 	if ((*flag).dot == 0)
+	{
+		printf("make_str_f\t(*flag).dot = %d\n(*flag).hahs = %d\n", (*flag).dot, (*flag).hash);
 		return (before);
+	}
 	//printf("before string %s\n", before);
 	after = NULL;
 	if ((*flag).dot == 1)
 		after = get_decimals(i, flag, ft_strlen(before));
 //	if spec_g is on, then other requirements must be taken into
 //	consideration (no 0's to fill up decimals)
-	if ((*flag).spec_g == 1 && (*flag).no_decimals == 0)
+	if ((*flag).spec_g == 1 && (*flag).no_decimals == 0 && (*flag).hash != 0)
 	{
 		after_g = erase_zeros_for_spec_g(after, flag);
 		ret_str = fill_ret_str(flag, before, after_g);

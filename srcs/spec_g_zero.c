@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/02 16:44:00 by rooscocolie    #+#    #+#                */
-/*   Updated: 2019/10/02 17:47:31 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/10/14 15:44:13 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	    *erase_zeros_for_spec_g(char *after, t_info *flag)
 	}
     else
         after_g = fill_after_g(after, len, zeros);
-    if (zeros == len - 1)
+    if (zeros == len - 1 && (*flag).hash != 1)
         (*flag).dot = 0;
 	return (after_g);
 }

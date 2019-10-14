@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/30 17:23:07 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/02 17:20:56 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/10/14 15:26:04 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*make_str_g(long double i, t_info *flag)
 		//default is 6 decimals
 		(*flag).spec_g = 1;
 		ret_str = make_str_f(i, flag);
-		printf("goes in f\n");
+	//	printf("goes in f\n");
 	}
 	else
 	{

@@ -29,6 +29,7 @@ int		spec_f(char *s, va_list args, t_info *flag, int x)
 	fill = 0;
 	//sla de waardes op als precision aan staat
 	prec_and_zero_check(args, flag, s[x]);
+	printf("spec_f\t(*flag).dot = %d\n", (*flag).dot);
 	//if 'L' and check if neg value, returned altijd een pos getal
 	i = len_mod_check_efg(args, flag);
 	str_spec_f = make_str_f(i, flag);

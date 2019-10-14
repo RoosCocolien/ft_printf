@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/08 16:25:30 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/14 15:55:01 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,13 +223,43 @@ static void		precision_g(void)
 	ft_printf("%.*f\n", 20, 98.7654321);
 }
 
+static void hash_g(void)
+{
+	printf("\nPrecision test g notation\n");
+	printf("\n- plus sign, precision 0\n");
+	printf("\nno #\nprintf\t%%+.0g.\t(3.1416)\n%+.0g.\n", 3.1416);
+	ft_printf("%+.0g.\n", 3.1416);
+	printf("\nwith #\nprintf\t%%+.0#g.\t(3.1416)\n%+.0#g.\n", 3.1416);
+	ft_printf("%+.0#g.\n", 3.1416);
+
+	printf("\nno #\n- precision with asterisk, value: 0");
+	printf("\nprintf\t%%.*g.\t(0, 1.2345)\n%.*g.\n", 0, 1.2345);
+	ft_printf("%.*g.\n", 0, 1.2345);
+	printf("\nwith #\n- precision with asterisk, value: 0");
+	printf("\nprintf\t%%.*#g.\t(0, 1.2345)\n%.*#g.\n", 0, 1.2345);
+	ft_printf("%.*#g.\n", 0, 1.2345);
+
+	// printf("\n- precision with asterisk, value: 4");
+	// printf("\nno #\nprintf\t%%.*g\t(4, 1.2345)\n%.*g\n", 4, 1.2345);
+	// ft_printf("%.*g\n", 4, 1.2345);
+	// printf("\nwith #\nprintf\t%%.*#g\t(4, 1.2345)\n%.*#g\n", 4, 1.2345);
+	// ft_printf("%.*#g\n", 4, 1.2345);
+	// printf("\n- precision with asterisk, value: 8");
+	// printf("*\nWITH WIDTH: 22, fill left ' '*");
+	// printf("\nno #\nprintf\t%%22.*g\t(8, 1.234500)\n%22.*g\n", 8, 1.234500);
+	// ft_printf("%22.*g\n", 8, 1.234500);
+	// printf("\nwith #\nprintf\t%%22.*#g\t(8, 1.234500)\n%22.*#g\n", 8, 1.234500);
+	// ft_printf("%22.*#g\n", 8, 1.234500);
+}
+
 int				main(void)
 {
-	simple_g();
-	len_mod_g();
-	flags_g();
-	width_asterisk_g();
-	precision_g();
-	while(1);
+	// simple_g();
+	// len_mod_g();
+	// flags_g();
+	// width_asterisk_g();
+	// precision_g();
+	hash_g();
+	// while(1);
 	return (0);
 }
