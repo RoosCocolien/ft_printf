@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:52:24 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/14 14:56:01 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/15 14:39:50 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ int		find_spec(char *s, va_list args, t_info *flag, int x)
 	if (s[x] == 'd' || s[x] == 'i')
 		x = spec_d_i(s, args, flag, x);
 	else if (s[x] == 'f')
+	{
+		if ((*flag).hash == 1)
+			(*flag).dot = 1;
 		x = spec_f(s, args, flag, x);
+	}
 	else if (s[x] == 'c')
 		x = spec_c(s, args, flag, x);
 	else if (s[x] == 's')
@@ -47,9 +51,17 @@ int		find_spec(char *s, va_list args, t_info *flag, int x)
 	else if (s[x] == '%')
 		x = spec_perc(s, args, flag, x);
 	else if (s[x] == 'e' || s[x] == 'E')
+	{
+		if ((*flag).hash == 1)
+			(*flag).dot = 1;
 		x = spec_e(s, args, flag, x);
+	}
 	else if (s[x] == 'g')
+	{
+		if ((*flag).hash == 1)
+			(*flag).dot = 1;
 		x = spec_g(s, args, flag, x);
+	}
 	else if (s[x] == 'o')
 		x = spec_o(s, args, flag, x);
 	else if (s[x] == 'x' || s[x] == 'X')

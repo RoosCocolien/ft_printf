@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/09 15:24:21 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/08 15:41:30 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/15 15:55:24 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,17 @@ int		main(void)
 	str[3] = 'b';
 	str[4] = '\0';
 
-	int v;
-	v = 55;
+	ft_printf("Lijn {red}74{eoc} testfile\n");
+	printf("Ekte printf =\t %++ ++ d\n", 482642);
+	//ft_printf("Neppe printf =\t %++ ++ d\n", 482642);
+	
+	ft_printf("Lijn {red}75{eoc} testfile\n");
 
-	printf("The address of a is %p\n", &a);
-
+	
 	//f = -9999999.34;
 	f = 9412.2321;
-	printf("Ekte printf =\t %p\n", &a);
-	ft_printf("Neppe printf =\t %p\n", &a);
+	printf("Ekte printf =\t %047.d\n", 482);
+	ft_printf("Neppe printf =\t %047.d\n", 482);
 
 
 	// printf("Echte printf =\t%e\n", f);

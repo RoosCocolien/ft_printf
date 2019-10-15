@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/02 16:44:00 by rooscocolie    #+#    #+#                */
-/*   Updated: 2019/10/14 15:44:13 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/15 14:28:52 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 static char *fill_after_g(char *after, int len, int zeros)
 {
-    char    *after_g;
-    int     i;
+	char	*after_g;
+	int		i;
 
-    i = 1;  //sla de '.' over
-    after_g = (char*)malloc(sizeof(char) * (len - zeros + 2));
-    after_g[len - zeros + 2] = '\0';
-    after_g[0] = '.';
-    while (i < len - zeros)
-    {  
-        after_g[i] = after[i];
-        i++;
-    }
-    return (after_g);
+	i = 1;  //sla de '.' over
+	after_g = (char*)malloc(sizeof(char) * (len - zeros + 2));
+	after_g[len - zeros + 2] = '\0';
+	after_g[0] = '.';
+	while (i < len - zeros)
+	{
+		after_g[i] = after[i];
+		i++;
+	}
+	return (after_g);
 }
 
 char	    *erase_zeros_for_spec_g(char *after, t_info *flag)

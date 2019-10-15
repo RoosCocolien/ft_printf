@@ -6,7 +6,7 @@
 #    By: bvan-de- <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/15 14:53:31 by bvan-de-       #+#    #+#                 #
-#    Updated: 2019/10/14 15:16:47 by rsteigen      ########   odam.nl          #
+#    Updated: 2019/10/15 14:44:00 by rsteigen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,12 @@ all: $(NAME)
 
 $(NAME):
 	@gcc srcs/main_simple.c libft/libft.a $(SRCS)
+
+lib:
+	@gcc -c -I includes/*.h libft/includes/*.h $(SRCS) $(SRCSLIBFT)
+	@ar rc libftprintf.a *.o
+	@ranlib libftprintf.a
+	@rm -rf *.o
 
 leaks:
 	@gcc -g srcs/main_simple.c libft/libft.a $(SRCS)
