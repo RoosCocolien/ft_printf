@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:23:54 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/10 18:03:20 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/14 10:30:30 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,19 @@ void	print_string(t_info *flag, char *s)
 		ft_putchar('0');
 		(*flag).leftover--;
 		(*flag).count++;
+	}
+}
+
+void	print_binary(t_info *flag, char *s)
+{
+	int		i;
+
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar(s[i]);
+		(*flag).count++;
+		i++;
 	}
 }
 

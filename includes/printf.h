@@ -68,6 +68,7 @@ void					print_flags(t_info flag); //kan weg
 void					print_digit(t_info *flag, unsigned long long nb);
 void					print_address(t_info *flag, char *s);
 void					print_string(t_info *flag, char *s);
+void					print_binary(t_info *flag, char *s);
 
 /*
 **	ft_printf.c
