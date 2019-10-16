@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2017/01/26 16:55:28 by thugo          #+#    #+#                */
-/*   Updated: 2019/10/16 11:48:57 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/16 13:17:44 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
-#include "capture_stdout.h"
+#include "../includes/capture_stdout.h"
 
 extern int	errno;
 static int	dup_stdout = -1;

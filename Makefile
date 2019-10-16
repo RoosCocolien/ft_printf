@@ -6,7 +6,7 @@
 #    By: bvan-de- <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/15 14:53:31 by bvan-de-       #+#    #+#                 #
-#    Updated: 2019/10/15 14:44:00 by rsteigen      ########   odam.nl          #
+#    Updated: 2019/10/16 14:23:23 by rsteigen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,14 @@ $(NAME):
 
 lib:
 	@gcc -c -I includes/*.h libft/includes/*.h $(SRCS) $(SRCSLIBFT)
-	@ar rc libftprintf.a *.o
-	@ranlib libftprintf.a
+	@ar rc ext_test/libftprintf.a *.o
+	@ranlib ext_test/libftprintf.a
 	@rm -rf *.o
+
+test:
+	@make lib
+	@cd ext_test && make test
+	@cd ext_test && ./ft_printf_test  > ../test_results.txt && ./ft_printf_test
 
 leaks:
 	@gcc -g srcs/main_simple.c libft/libft.a $(SRCS)
@@ -76,7 +81,7 @@ p:
 	@gcc srcs/test_printf/main_p.c libft/libft.a $(SRCS)
 
 clean:
-	@rm -rf $(SRCS:.c=.o)
+	@rm -rf *.o
 
 fclean: clean
 	@/bin/rm -rf $(NAME)

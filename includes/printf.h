@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/14 15:15:28 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/16 13:34:43 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ unsigned long long		check_u(va_list args, t_info *flag, char conv_spec);
 **	make_str_e.c
 */
 char					*make_str_e(long double i, t_info *flag, char e_notation);
+long double				find_power(long double i, t_info *flag);
 
 /*
 **	make_str_f.c

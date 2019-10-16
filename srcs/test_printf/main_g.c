@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/16 10:50:44 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/16 15:41:36 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 static void		simple_g(void)
 {
+	printf("\nSIMPLE_G\n");
 	printf("\nSimple test g, general-format floating-point number\n");
 	printf("POS < (double)999999.50 DUS f\n");
 	printf("\nprintf\t%%g\t(3.1416)\n%g\n", 3.1416);
@@ -27,13 +28,32 @@ static void		simple_g(void)
 	ft_printf("%g", 6.65);
 	printf("\nprintf\t%%g\t(0.00)\n%g\n", 0.00);
 	ft_printf("%g", 0.00);
-	printf("\nprintf\t%%g\t(6.65)\n%g\n", 6.1999999);
+	printf("\nprintf\t%%g\t(6.1999999)\n%g\n", 6.1999999);
 	ft_printf("%g", 6.1999999);
 	printf("\nNEG");
 	printf("\nprintf\t%%g\t(-3.1416)\n%g\n", -3.1416);
 	ft_printf("%g", -3.1416);
 	printf("\nprintf\t%%g\t(-6.6589)\n%g\n", -6.6589);
 	ft_printf("%g\n", -6.6589);
+	printf("POS < (double)999999.50 DUS f\n");
+	printf("\nprintf\t%%g\t(3.1006)\n%g\n", 3.1006);
+	ft_printf("%g", 3.1006);
+	printf("\nprintf\t%%g\t(0.0)\n%g\n", 0.0);
+	ft_printf("%g", 0.0);
+	printf("\nprintf\t%%g\t(-0)\n%g\n", -0);
+	ft_printf("%g", -0);
+	printf("\nprintf\t%%g\t(-1)\n%g\n", -1);
+	ft_printf("%g", -1);
+	printf("\nprintf\t%%g\t(1.01)\n%g\n", 1.01);
+	ft_printf("%g", 1.01);
+	printf("\nprintf\t%%g\t(03.040)\n%g\n", 03.04);
+	ft_printf("%g", 03.04);
+	printf("\nNEG");
+	printf("\nprintf\t%%g\t(-0.0102200300)\n%g\n", -0.0102200300);
+	ft_printf("%g", -0.0102200300);
+	printf("\nprintf\t%%g\t(-6.6009123)\n%g\n", -6.6009123);
+	ft_printf("%g\n", -6.6009123);
+
 	printf("\n-- Resultaten f--\n");
 	printf("\nprintf\t%%f\t(3.1416)\n%f\n", 3.1416);
 	ft_printf("%f", 3.1416);
@@ -56,6 +76,7 @@ static void		simple_g(void)
 	ft_printf("%g", 999999.50);
 	printf("\nprintf\t%%g\t(999995.50)\n%g\n", 999995.50);
 	ft_printf("%g", 999995.50);
+	printf("\n--RESULTATEN F--\n");
 	printf("\nprintf\t%%.1f\t(999995.50)\n%.1f\n", 999995.50);
 	ft_printf("%.1f", 999995.50);
 
@@ -83,10 +104,36 @@ static void		simple_g(void)
 	ft_printf("%e", 9999999.40);
 	printf("\nprintf\t%%e\t(99999999.40)\n%e\n", 99999999.40);
 	ft_printf("%e\n", 99999999.40);
+
+	printf("\n-- Precision 0 --\n");
+	printf("\nprintf\t%%.0g\t(3.1416)\n%.0g\n", 3.1416);
+	ft_printf("%.0g\n", 3.1416);
+	printf("\nprintf\t%%g\t(6.6589123123)\n%g\n", 6.6589123123);
+	ft_printf("%g\n", 6.6589123123);
+	printf("\nprintf\t%%.7g\t(3.14)\n%.7g\n", 3.14);
+	ft_printf("%.7g\n", 3.14);
+	printf("\nprintf\t%%.7g\t(3.14141415)\n%.7g\n", 3.14141415);
+	ft_printf("%.7g\n", 3.14141415);
+}
+
+static void		simple_g_for_e(void)
+{
+	printf("If (i < (double)999999.50) than > f\nelse: e\n");
+	printf("\nprintf: no precision\t%%g\t(77770000.00)\n%g\n", 77770000.00);
+	ft_printf("%g\n", 77770000.00);
+	printf("\nprintf: no precision with a lot of decimals and big nb\t%%g\t(77770000.00123123123)\n%g\n", 77770000.00123123123);
+	ft_printf("%g\n", 77770000.00123123123);
+	printf("\nprintf: no decimals, precision: 3\t%%.3g\t(389389389)\n%g\n", 389389389);
+	ft_printf("%g\n", 389389389);
+	printf("\nprintf\t%%g\t(6333125.66)\n%g\n", 6333125.66);
+	ft_printf("%g\n", 6333125.66);
+	printf("\nprintf\t%%g\t(999999.50)\n%g\n", 999999.50);
+	ft_printf("%g\n", 999999.50);
 }
 
 static void		len_mod_g(void)
 {
+	printf("\nLEN_MOD_G\n");
 	printf("\nLong double test g, general-format floating-point number\n");
 	printf("\nPOS\n");
 	printf("\nprintf\t%%Lg\t(0.333333333333333334)\n%Lg\n", 0.333333333333333334);
@@ -94,16 +141,39 @@ static void		len_mod_g(void)
 	printf("\nNEG\n");
 	printf("\nprintf\t%%g\t(-0.333333333333333334)\n%g\n", -0.333333333333333334);
 	ft_printf("%g\n", -0.333333333333333334);
-	printf("\nPOS E\n");
-	printf("\nprintf\t%%Le\t(0.333333333333333334)\n%Le\n", 0.333333333333333334);
-	ft_printf("%Le\n", 0.333333333333333334);
-	printf("\nNEG E\n");
-	printf("\nprintf\t%%Le\t(-0.333333333333333334)\n%Le\n", -0.333333333333333334);
-	ft_printf("%Le\n", -0.333333333333333334);
+	printf("\nprintf\t%%g\t(-5498.333333333333333334)\n%g\n", -5498.333333333333333334);
+	ft_printf("%g\n", -5498.333333333333333334);
+	printf("\nprintf\t%%g\t(-0.333333333333333334)\n%g\n", -0.333333333333333334);
+	ft_printf("%g\n", -0.333333333333333334);
+	printf("\nprintf\t%%g\t(0.333333333333333334)\n%g\n", 0.333333333333333334);
+	ft_printf("%g\n", 0.333333333333333334);
+	printf("\nprintf\t%%g\t(-0.1234567)\n%g\n", -0.1234567);
+	ft_printf("%g\n", -0.1234567);
+	printf("\nprintf\t%%g\t(-0.1234517)\n%g\n", -0.1234517);
+	ft_printf("%g\n", -0.1234517);
+	printf("\nprintf\t%%g\t(-0.0102200300)\n%g\n", -0.0102200300);
+	ft_printf("%g", -0.0102200300);
+	printf("\nprintf\t%%g\t(-6.6009123)\n%g\n", -6.6009123);
+	ft_printf("%g\n", -6.6009123);
+	printf("\nprintf\t%%g\t(-6.60091222222)\n%g\n", -6.60091222222);
+	ft_printf("%g\n", -6.60091222222);
+	printf("\nprintf\t%%g\t(-0.2222222222)\n%g\n", -0.2222222222);
+	ft_printf("%g\n", -0.2222222222);
+	printf("\nprintf\t%%g\t(-0.0123456789)\n%g\n", -0.0123456789);
+	ft_printf("%g\n", -0.0123456789);
+	printf("\nprintf\t%%g\t(-0.222222222222222)\n%g\n", -0.222222222222222);
+	ft_printf("%g\n", -0.222222222222222);
+	// printf("\nPOS E\n");
+	// printf("\nprintf\t%%Le\t(0.333333333333333334)\n%Le\n", 0.333333333333333334);
+	// ft_printf("%Le\n", 0.333333333333333334);
+	// printf("\nNEG E\n");
+	// printf("\nprintf\t%%Le\t(-0.333333333333333334)\n%Le\n", -0.333333333333333334);
+	// ft_printf("%Le\n", -0.333333333333333334);
 }
 
 static void		flags_g(void)
 {
+	printf("\nFLAGS_G\n");
 	printf("\nFlags test g, general-format floating-point number\n");
 	printf("\nPOS");
 	printf("\nprintf\t%%+g\t(89.4567)\n%+g\n", 89.4567);
@@ -120,6 +190,7 @@ static void		flags_g(void)
 
 static void		width_asterisk_g(void)
 {
+	printf("\nWIDTH_ASTERISK_G\n");
 	printf("WIDTH ASTERISK, right aligned");
 	printf("\n- asterisk pointing to width value WITH ZERO: 0");
 	printf("\nprintf\t%%0*g\t(0, 7.3412)\n%0*g\n", 0, 7.3412);
@@ -191,6 +262,7 @@ static void		width_asterisk_g(void)
 
 static void		precision_g(void)
 {
+	printf("\nPRECISION_G\n");
 	// printf("\nPrecision test g notation\n");
 	// printf("\n- plus sign, precision 0\n");
 	// printf("\nprintf\t%%+.0g\t(3.1416)\n%+.0g\n", 3.1416);
@@ -231,6 +303,7 @@ static void		precision_g(void)
 
 static void hash_g(void)
 {
+	printf("\nHASH_G\n");
 	printf("\nPrecision test g notation\n");
 	printf("\n- plus sign, precision 0\n");
 	printf("\nno #\nprintf\t%%+.0g.\t(3.1416)\n%+.0g.\n", 3.1416);
@@ -260,12 +333,13 @@ static void hash_g(void)
 
 int				main(void)
 {
-	simple_g();
-	len_mod_g();
-	flags_g();
-	width_asterisk_g();
-	precision_g();
-	hash_g();
+//	simple_g();
+	simple_g_for_e();
+//	len_mod_g();
+//	flags_g();
+//	width_asterisk_g();
+//	precision_g();
+//	hash_g();
 	// while(1);
 	return (0);
 }

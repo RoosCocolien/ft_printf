@@ -6,7 +6,7 @@
 #    By: thugo <marvin@42.fr>                         +#+                      #
 #                                                    +#+                       #
 #    Created: 2017/01/19 23:08:09 by thugo          #+#    #+#                 #
-#    Updated: 2019/10/16 11:46:04 by rsteigen      ########   odam.nl          #
+#    Updated: 2019/10/16 14:28:21 by rsteigen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,13 @@ INCLUDE_DIR = ./includes
 OBJ = $(SRC:.c=.o)
 
 $(NAME): $(OBJ)
-	gcc -I $(INCLUDE_DIR) -o $(NAME) $(OBJ) -L. -lftprintf
+	gcc -I -o $(INCLUDE_DIR) $(NAME) $(OBJ) -L. -lftprintf ../libft/libft.a
 
 %.o: %.c
 	gcc -Wno-format -I $(INCLUDE_DIR) -c $^ -o $@
+
+test:
+	gcc -o $(NAME) src/*.c -L. -lftprintf ../libft/libft.a $(SRCS)
 
 clean:
 	rm -f $(OBJ)
