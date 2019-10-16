@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:36:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/15 15:56:17 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/16 10:52:21 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static char	*get_decimals(long double i, t_info *flag, int l_before)
 	long long	precision; //if (*flag).prec_value is 4, precision is 1000
 	int			x;
 
-	printf("test get decimals\n");
 	x = 1;
 	if ((*flag).spec_g == 1)
 		(*flag).prec_value = (*flag).prec_value - l_before;
@@ -130,17 +129,13 @@ char		*make_str_f(long double i, t_info *flag)
 	char		*after_g;
 
 	i = roundup_f(i, (*flag).prec_value);
-	printf("Dit is i: %Lf\n", i);
 	find_len_decimals(i, flag);
 	before = ft_itoa_llu(i);
 	if ((*flag).dot == 0 && (*flag).hash == 0)
 		return (before);
-	//printf("before string %s\n", before);
 	after = NULL;
 	if ((*flag).hash == 1 || ((*flag).dot == 1 && (*flag).prec_value != 0))
 		after = get_decimals(i, flag, ft_strlen(before));
-//	if spec_g is on, then other requirements must be taken into
-//	consideration (no 0's to fill up decimals)
 	if ((*flag).spec_g == 1 && (*flag).no_decimals == 0 && (*flag).hash == 0)
 	{
 		after_g = erase_zeros_for_spec_g(after, flag);

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/15 15:59:11 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/16 10:50:44 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,12 +260,12 @@ static void hash_g(void)
 
 int				main(void)
 {
-	// simple_g();
-	// len_mod_g();
-	// flags_g();
-	// width_asterisk_g();
+	simple_g();
+	len_mod_g();
+	flags_g();
+	width_asterisk_g();
 	precision_g();
-	// hash_g();
+	hash_g();
 	// while(1);
 	return (0);
 }

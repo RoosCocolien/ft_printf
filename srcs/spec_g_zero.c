@@ -6,13 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/02 16:44:00 by rooscocolie    #+#    #+#                */
-/*   Updated: 2019/10/15 14:28:52 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/16 10:50:30 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 
-static char *fill_after_g(char *after, int len, int zeros)
+static char	*fill_after_g(char *after, int len, int zeros)
 {
 	char	*after_g;
 	int		i;
@@ -29,14 +29,14 @@ static char *fill_after_g(char *after, int len, int zeros)
 	return (after_g);
 }
 
-char	    *erase_zeros_for_spec_g(char *after, t_info *flag)
+char		*erase_zeros_for_spec_g(char *after, t_info *flag)
 {
 	int		len;
 	int		zeros;
 	char	*after_g;
 	int		i;
 
-    zeros = 0;
+	zeros = 0;
 	len = ft_strlen(after);
 	i = len - 1;
 	while (after[i] == '0')
@@ -44,14 +44,16 @@ char	    *erase_zeros_for_spec_g(char *after, t_info *flag)
 		zeros++;
 		i--;
 	}
-    if (zeros == 0)
+	if (zeros == 0)
 	{
 		after_g = ft_strsub(after, 0, ft_strlen(after));
-        return (after_g);
+		return (after_g);
 	}
-    else
-        after_g = fill_after_g(after, len, zeros);
-    if (zeros == len - 1 && (*flag).hash != 1)
-        (*flag).dot = 0;
+	else if (zeros == ft_strlen(after) - 1)
+		return (NULL);
+	else
+		after_g = fill_after_g(after, len, zeros);
+	if (zeros == len - 1 && (*flag).hash != 1)
+		(*flag).dot = 0;
 	return (after_g);
 }
