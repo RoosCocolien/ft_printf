@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:36:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/16 10:52:21 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/21 17:49:21 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,34 @@
 
 static void		find_len_decimals(long double i, t_info *flag)
 {
+	int		digits;
+
+	digits = digit_count(i, 10);
+	printf("find_len_decimals\tdigits: %d\n", digits);	
 	(*flag).dot = 1;
 	if ((*flag).precision != 0 && (*flag).prec_value == 0 && (*flag).hash != 0)
 		(*flag).dot = 0;
 	if ((*flag).precision == 0 && (*flag).precision == 0)
+	{
+		if ((*flag).spec_g == 1)
+		{
+			if (i < 1)
+				(*flag).prec_value = 6;
+			else
+			{
+				if (digits >= 6)
+				{
+					(*flag).prec_value = 0;
+					(*flag).dot = 0;
+				}
+				else
+				{
+					(*flag).prec_value = 6 - digits;
+				}
+			}
+		}
 		(*flag).prec_value = 6;
+	}
 }
 
 static long long	find_precision(t_info *flag)
@@ -71,10 +94,12 @@ static char	*get_decimals(long double i, t_info *flag, int l_before)
 	int			x;
 
 	x = 1;
-	if ((*flag).spec_g == 1)
-		(*flag).prec_value = (*flag).prec_value - l_before;
+//	if ((*flag).spec_g == 1)				Dit heb ik weggehaald, want dat doe ik nu in find_len_decimals
+//		(*flag).prec_value = (*flag).prec_value - l_before;
 	precision = find_precision(flag);
+	printf("Dit is precision: %lld\n", precision);
 	dec_int = (i - (int)i) * precision;
+	printf("Dit is dec_int: %lld\n", dec_int);
 	len = 1 + (*flag).prec_value - (*flag).leftover;
 	dec_str = ft_memalloc(sizeof(char) * len + 1);
 	dec_str[len] = '\0';
@@ -128,7 +153,10 @@ char		*make_str_f(long double i, t_info *flag)
 	char		*after;
 	char		*after_g;
 
+	printf("Dit is i voor roundup: %Lf (make str f)\n", i);
 	i = roundup_f(i, (*flag).prec_value);
+	printf("Dit is i na roundup: %Lf (make str f)\n", i);
+	printf("Dit is (*flag).precision: %d\n", (*flag).precision);
 	find_len_decimals(i, flag);
 	before = ft_itoa_llu(i);
 	if ((*flag).dot == 0 && (*flag).hash == 0)
@@ -148,5 +176,6 @@ char		*make_str_f(long double i, t_info *flag)
 		free(after);
 	if (before)
 		free(before);
+	printf("Dit is ret_str: %s (make str f)\n", ret_str);
 	return (ret_str);
 }

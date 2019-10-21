@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/16 15:41:36 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/21 17:46:09 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,11 @@ static void		len_mod_g(void)
 	ft_printf("%g\n", -0.0123456789);
 	printf("\nprintf\t%%g\t(-0.222222222222222)\n%g\n", -0.222222222222222);
 	ft_printf("%g\n", -0.222222222222222);
+	printf("\nprintf\t%%g\t(-123456.222222222222222)\n%g\n", -123456.222222222222222);
+	ft_printf("%g\n", -123456.222222222222222);
+	printf("\nprintf\t%%g\t(-0.000222222)\n%g\n", -0.000222222);
+	ft_printf("%g\n", -0.000222222);
+
 	// printf("\nPOS E\n");
 	// printf("\nprintf\t%%Le\t(0.333333333333333334)\n%Le\n", 0.333333333333333334);
 	// ft_printf("%Le\n", 0.333333333333333334);
@@ -263,20 +268,20 @@ static void		width_asterisk_g(void)
 static void		precision_g(void)
 {
 	printf("\nPRECISION_G\n");
-	// printf("\nPrecision test g notation\n");
-	// printf("\n- plus sign, precision 0\n");
-	// printf("\nprintf\t%%+.0g\t(3.1416)\n%+.0g\n", 3.1416);
-	// ft_printf("%+.0g\n", 3.1416);
-	// printf("\n- precision with asterisk, value: 0");
-	// printf("\nprintf\t%%.*g\t(0, 1.2345)\n%.*g\n", 0, 1.2345);
-	// ft_printf("%.*g\n", 0, 1.2345);
-	// printf("\n- precision with asterisk, value: 4");
-	// printf("\nprintf\t%%.*g\t(4, 1.2345)\n%.*g\n", 4, 1.2345);
-	// ft_printf("%.*g\n", 4, 1.2345);
-	// printf("\n- precision with asterisk, value: 8");
-	// printf("*\nWITH WIDTH: 22, fill left ' '*");
-	// printf("\nprintf\t%%22.*g\t(8, 1.2345)\n%22.*g\n", 8, 1.2345);
-	// ft_printf("%22.*g\n", 8, 1.2345);
+	printf("\nPrecision test g notation\n");
+	printf("\n- plus sign, precision 0\n");
+	printf("\nprintf\t%%+.0g\t(3.1416)\n%+.0g\n", 3.1416);
+	ft_printf("%+.0g\n", 3.1416);
+	printf("\n- precision with asterisk, value: 0");
+	printf("\nprintf\t%%.*g\t(0, 1.2345)\n%.*g\n", 0, 1.2345);
+	ft_printf("%.*g\n", 0, 1.2345);
+	printf("\n- precision with asterisk, value: 4");
+	printf("\nprintf\t%%.*g\t(4, 1.2345)\n%.*g\n", 4, 1.2345);
+	ft_printf("%.*g\n", 4, 1.2345);
+	printf("\n- precision with asterisk, value: 8");
+	printf("*\nWITH WIDTH: 22, fill left ' '*");
+	printf("\nprintf\t%%22.*g\t(8, 1.2345)\n%22.*g\n", 8, 1.2345);
+	ft_printf("%22.*g\n", 8, 1.2345);
 
 	printf("\n- precision with asterisk, value: 0");
 	printf("\nprintf\t%%.*g\t(0, 1.0)\n%.*g\n", 0, 1.0);
@@ -290,15 +295,15 @@ static void		precision_g(void)
 	printf("\n normal f");
 	printf("\nprintf\t%%f\t(368)\n%f\n", 368);
 	ft_printf("%f\n", 368);
-	// printf("\n- precision with asterisk, value: 6");
-	// printf("\nprintf\t%%.*g\t(6, 35.7412345)\n%.*g\n", 6, 35.7412345);
-	// ft_printf("%.*g\n", 6, 35.7412345);
-	// printf("\n- spec_g precision with asterisk, value: 20");
-	// printf("\nprintf\t%%.*g\t(20, 98.7654321)\n%.*g\n", 20, 98.7654321);
-	// ft_printf("%.*g\n", 20, 98.7654321);
-	// printf("\n- spec_f precision with asterisk, value: 20");
-	// printf("\nprintf\t%%.*f\t(20, 98.7654321)\n%.*f\n", 20, 98.7654321);
-	// ft_printf("%.*f\n", 20, 98.7654321);
+	printf("\n- precision with asterisk, value: 6");
+	printf("\nprintf\t%%.*g\t(6, 35.7412345)\n%.*g\n", 6, 35.7412345);
+	ft_printf("%.*g\n", 6, 35.7412345);
+	printf("\n- spec_g precision with asterisk, value: 20");
+	printf("\nprintf\t%%.*g\t(20, 98.7654321)\n%.*g\n", 20, 98.7654321);
+	ft_printf("%.*g\n", 20, 98.7654321);
+	printf("\n- spec_f precision with asterisk, value: 20");
+	printf("\nprintf\t%%.*f\t(20, 98.7654321)\n%.*f\n", 20, 98.7654321);
+	ft_printf("%.*f\n", 20, 98.7654321);
 }
 
 static void hash_g(void)
@@ -334,8 +339,8 @@ static void hash_g(void)
 int				main(void)
 {
 //	simple_g();
-	simple_g_for_e();
-//	len_mod_g();
+//	simple_g_for_e();
+	len_mod_g();
 //	flags_g();
 //	width_asterisk_g();
 //	precision_g();

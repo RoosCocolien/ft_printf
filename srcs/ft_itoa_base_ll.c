@@ -6,13 +6,13 @@
 /*   By: rsteigen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/28 10:37:26 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/12 16:22:32 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/10/21 17:18:52 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 
-static size_t	digit_count(intmax_t value, int base)
+size_t			digit_count(intmax_t value, int base)
 {
 	size_t	i;
 
