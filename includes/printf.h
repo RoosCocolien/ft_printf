@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/21 17:18:42 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/22 14:55:18 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ int						spec_g(char *s, va_list args, t_info *flag, int x);
 **	spec_g_zero.c
 */
 char				    *erase_zeros_for_spec_g(char *after, t_info *flag);
+int						check_for_zeros_gf(long double i, t_info *flag);
 
 /*
 **	spec_o.c

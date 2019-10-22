@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/02 16:44:00 by rooscocolie    #+#    #+#                */
-/*   Updated: 2019/10/16 10:50:30 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/22 14:59:05 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static char	*fill_after_g(char *after, int len, int zeros)
 {
-	char	*after_g;
-	int		i;
+	char		*after_g;
+	int			i;
 
 	i = 1;  //sla de '.' over
 	after_g = (char*)malloc(sizeof(char) * (len - zeros + 2));
@@ -31,10 +31,10 @@ static char	*fill_after_g(char *after, int len, int zeros)
 
 char		*erase_zeros_for_spec_g(char *after, t_info *flag)
 {
-	int		len;
-	int		zeros;
-	char	*after_g;
-	int		i;
+	int			len;
+	int			zeros;
+	char		*after_g;
+	int			i;
 
 	zeros = 0;
 	len = ft_strlen(after);
@@ -56,4 +56,24 @@ char		*erase_zeros_for_spec_g(char *after, t_info *flag)
 	if (zeros == len - 1 && (*flag).hash != 1)
 		(*flag).dot = 0;
 	return (after_g);
+}
+
+int				check_for_zeros_gf(long double i, t_info *flag)
+{
+	int			count_zeros;
+	long double	devidend;
+	int			decimals;
+
+	count_zeros = 0;
+	devidend = 0.1;
+	decimals = 0;
+	while (i < devidend)
+	{
+		decimals++;
+		devidend /= 10;
+		if (decimals > 18)
+			return (-1);
+	}
+	(*flag).prec_value += decimals;
+	return (1);
 }

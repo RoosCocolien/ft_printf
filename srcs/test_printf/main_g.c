@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/21 17:46:09 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/22 15:24:46 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,40 +133,56 @@ static void		simple_g_for_e(void)
 
 static void		len_mod_g(void)
 {
-	printf("\nLEN_MOD_G\n");
-	printf("\nLong double test g, general-format floating-point number\n");
-	printf("\nPOS\n");
-	printf("\nprintf\t%%Lg\t(0.333333333333333334)\n%Lg\n", 0.333333333333333334);
-	ft_printf("%Lg\n", 0.333333333333333334);
-	printf("\nNEG\n");
-	printf("\nprintf\t%%g\t(-0.333333333333333334)\n%g\n", -0.333333333333333334);
-	ft_printf("%g\n", -0.333333333333333334);
-	printf("\nprintf\t%%g\t(-5498.333333333333333334)\n%g\n", -5498.333333333333333334);
-	ft_printf("%g\n", -5498.333333333333333334);
-	printf("\nprintf\t%%g\t(-0.333333333333333334)\n%g\n", -0.333333333333333334);
-	ft_printf("%g\n", -0.333333333333333334);
-	printf("\nprintf\t%%g\t(0.333333333333333334)\n%g\n", 0.333333333333333334);
-	ft_printf("%g\n", 0.333333333333333334);
-	printf("\nprintf\t%%g\t(-0.1234567)\n%g\n", -0.1234567);
-	ft_printf("%g\n", -0.1234567);
-	printf("\nprintf\t%%g\t(-0.1234517)\n%g\n", -0.1234517);
-	ft_printf("%g\n", -0.1234517);
-	printf("\nprintf\t%%g\t(-0.0102200300)\n%g\n", -0.0102200300);
-	ft_printf("%g", -0.0102200300);
-	printf("\nprintf\t%%g\t(-6.6009123)\n%g\n", -6.6009123);
-	ft_printf("%g\n", -6.6009123);
-	printf("\nprintf\t%%g\t(-6.60091222222)\n%g\n", -6.60091222222);
-	ft_printf("%g\n", -6.60091222222);
-	printf("\nprintf\t%%g\t(-0.2222222222)\n%g\n", -0.2222222222);
-	ft_printf("%g\n", -0.2222222222);
-	printf("\nprintf\t%%g\t(-0.0123456789)\n%g\n", -0.0123456789);
-	ft_printf("%g\n", -0.0123456789);
-	printf("\nprintf\t%%g\t(-0.222222222222222)\n%g\n", -0.222222222222222);
-	ft_printf("%g\n", -0.222222222222222);
-	printf("\nprintf\t%%g\t(-123456.222222222222222)\n%g\n", -123456.222222222222222);
-	ft_printf("%g\n", -123456.222222222222222);
-	printf("\nprintf\t%%g\t(-0.000222222)\n%g\n", -0.000222222);
-	ft_printf("%g\n", -0.000222222);
+	// printf("\nLEN_MOD_G\n");
+	// printf("\nLong double test g, general-format floating-point number\n");
+	// printf("\nPOS\n");
+	// printf("\nprintf\t%%Lg\t(0.333333333333333334)\n%Lg\n", 0.333333333333333334);
+	// ft_printf("%Lg\n", 0.333333333333333334);
+	// printf("\nNEG\n");
+	// printf("\nprintf\t%%g\t(-0.333333333333333334)\n%g\n", -0.333333333333333334);
+	// ft_printf("%g\n", -0.333333333333333334);
+	// printf("\nprintf\t%%g\t(-5498.333333333333333334)\n%g\n", -5498.333333333333333334);
+	// ft_printf("%g\n", -5498.333333333333333334);
+	// printf("\nprintf\t%%g\t(-0.333333333333333334)\n%g\n", -0.333333333333333334);
+	// ft_printf("%g\n", -0.333333333333333334);
+	// printf("\nprintf\t%%g\t(0.333333333333333334)\n%g\n", 0.333333333333333334);
+	// ft_printf("%g\n", 0.333333333333333334);
+	// printf("\nprintf\t%%g\t(-0.1234567)\n%g\n", -0.1234567);
+	// ft_printf("%g\n", -0.1234567);
+	// printf("\nprintf\t%%g\t(-0.1234517)\n%g\n", -0.1234517);
+	// ft_printf("%g\n", -0.1234517);
+	// printf("\nprintf\t%%g\t(-0.0102200300)\n%g\n", -0.0102200300);
+	// ft_printf("%g", -0.0102200300);
+	// printf("\nprintf\t%%g\t(-6.6009123)\n%g\n", -6.6009123);
+	// ft_printf("%g\n", -6.6009123);
+	// printf("\nprintf\t%%g\t(-6.60091222222)\n%g\n", -6.60091222222);
+	// ft_printf("%g\n", -6.60091222222);
+	// printf("\nprintf\t%%g\t(-0.2222222222)\n%g\n", -0.2222222222);
+	// ft_printf("%g\n", -0.2222222222);
+	// printf("\nprintf\t%%g\t(-0.0123456789)\n%g\n", -0.0123456789);
+	// ft_printf("%g\n", -0.0123456789);
+	// printf("\nprintf\t%%g\t(-0.222222222222222)\n%g\n", -0.222222222222222);
+	// ft_printf("%g\n", -0.222222222222222);
+	// printf("\nprintf\t%%g\t(-123456.222222222222222)\n%g\n", -123456.222222222222222);
+	// ft_printf("%g\n", -123456.222222222222222);
+	printf("\nprintf\t%%.8g\t(-123456.222222222222222)\n%.8g\n", -123456.222222222222222);
+	ft_printf("%.8g\n", -123456.222222222222222);
+	// printf("\nprintf\t%%g\t(-0.000222222)\n%g\n", -0.000222222);
+	// ft_printf("%g\n", -0.000222222);
+
+	// printf("Voorbeelden met f\n");
+	// printf("\nprintf\t%%f\t(-0.2222222222)\n%f\n", -0.2222222222);
+	// ft_printf("%f\n", -0.2222222222);
+	// printf("\nprintf\t%%f\t(-0.0123456789)\n%f\n", -0.0123456789);
+	// ft_printf("%f\n", -0.0123456789);
+	// printf("\nprintf\t%%f\t(-0.222222222222222)\n%f\n", -0.222222222222222);
+	// ft_printf("%f\n", -0.222222222222222);
+	// printf("\nprintf\t%%f\t(-123456.222222222222222)\n%f\n", -123456.222222222222222);
+	// ft_printf("%f\n", -123456.222222222222222);
+	printf("\nprintf\t%%.8f\t(-123456.222222222222222)\n%.8f\n", -123456.222222222222222);
+	ft_printf("%.8f\n", -123456.222222222222222);
+	// printf("\nprintf\t%%f\t(-0.000222222)\n%f\n", -0.000222222);
+	// ft_printf("%f\n", -0.000222222);
 
 	// printf("\nPOS E\n");
 	// printf("\nprintf\t%%Le\t(0.333333333333333334)\n%Le\n", 0.333333333333333334);

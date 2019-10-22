@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/20 16:11:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/16 13:35:03 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/22 15:21:52 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,7 @@ char				*make_str_e(long double i, t_info *flag, char e_notation)
 
 	x = 0;
 	i = find_power(i, flag);
-	printf("make_str_e\tpower: %f\n", (double)i);
 	i = roundup_e(i, flag, (*flag).prec_value);
-	printf("make_str_e 2\ti (roundup): %f\n", (double)i);
 	new_i_int = calc_new_i_int(flag, i);
 	if ((*flag).spec_g == 1)
 		new_i_int = remove_zero_spec_g(flag, new_i_int);
