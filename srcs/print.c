@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:23:54 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/14 10:30:30 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/23 18:18:57 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	print_address(t_info *flag, char *s)
 	}
 }
 
-void	print_string(t_info *flag, char *s)
+void	print_string(t_info *flag, char *s, int fill)
 {
 	int		i;
 

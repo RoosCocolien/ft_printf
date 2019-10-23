@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:36:17 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/10 18:14:46 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/23 18:16:08 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		spec_e(char *s, va_list args, t_info *flag, int x)
 		ft_putchar('-');
 		(*flag).count++;
 	}
-	print_string(flag, str_spec_e);
+	print_string(flag, str_spec_e, fill);
 	//PADDING AAN HET EINDE? (only blank spaces)
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 		put_padding(flag, fill);

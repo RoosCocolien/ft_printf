@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:36:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/22 15:23:36 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/23 18:35:42 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,9 @@ char		*make_str_f(long double i, t_info *flag)
 	after = NULL;
 	if ((*flag).hash == 1 || ((*flag).dot == 1 && (*flag).prec_value != 0))
 		after = get_decimals(i, flag, ft_strlen(before));
+	//to make sure neg will work if precision is on, but there are more decimals than precision
+	if (after && (*flag).prec_value <= ft_strlen(after) - 1)
+		(*flag).zero = 0;
 	if ((*flag).spec_g == 1 && (*flag).no_decimals == 0 && (*flag).hash == 0)
 	{
 		after_g = erase_zeros_for_spec_g(after, flag);

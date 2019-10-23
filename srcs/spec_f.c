@@ -26,6 +26,7 @@ int		spec_f(char *s, va_list args, t_info *flag, int x)
 	int				length;
 	int				fill;
 
+	printf("test\n");
 	fill = 0;
 	//sla de waardes op als precision aan staat
 	prec_and_zero_check(args, flag, s[x]);
@@ -42,7 +43,7 @@ int		spec_f(char *s, va_list args, t_info *flag, int x)
 		ft_putchar('-');
 		(*flag).count++;
 	}
-	print_string(flag, str_spec_f);
+	print_string(flag, str_spec_f, fill);
 	//PADDING AAN HET EINDE? (only blank spaces)
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 		put_padding(flag, fill);

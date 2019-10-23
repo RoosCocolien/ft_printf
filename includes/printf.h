@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/22 14:55:18 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/23 18:14:45 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ size_t					digit_count(intmax_t value, int base);
 void					print_flags(t_info flag); //kan weg
 void					print_digit(t_info *flag, unsigned long long nb);
 void					print_address(t_info *flag, char *s);
-void					print_string(t_info *flag, char *s);
+void					print_string(t_info *flag, char *s, int fill);
 void					print_binary(t_info *flag, char *s);
 
 /*
