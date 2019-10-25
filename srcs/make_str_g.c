@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/30 17:23:07 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/16 14:35:10 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/25 14:42:04 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ char	*make_str_g(long double i, t_info *flag)
 	else
 	{
 		//if precision is not given, set default to 5
-		// if ((*flag).precision == 0)
-			// (*flag).prec_value = 5;
+//		(*flag).prec_value -= 1;	//toegevoegd
 		(*flag).spec_g = 1;
 		ret_str = make_str_e(i, flag, 'e');
 	}
