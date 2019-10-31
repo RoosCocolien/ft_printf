@@ -6,12 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/30 17:23:07 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/25 14:42:04 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/31 22:05:41 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 
+//im not using this, remove?
 static int	get_var_p(t_info *flag)
 {
 	int		var_p;
@@ -31,8 +32,9 @@ static int	get_var_p(t_info *flag)
 char	*make_str_g(long double i, t_info *flag)
 {
 	char	*ret_str;
-	double	exp;
-	int		var_p;
+	double	exp;	//remove
+	int		var_p;	//remove
+	long double	decimals;
 
 	// var_p = get_var_p(flag);
 	// exp = find_power(i, flag);
@@ -43,7 +45,11 @@ char	*make_str_g(long double i, t_info *flag)
 	// else
 	// {
 	// 	(*flag).prec_value = var_p - 1;
-	// }		
+	// }
+	//try out
+	decimals = i - (int)i;
+	if (decimals == 0)
+		i = 0;
 	if (i < (double)999999.50)
 	{
 		//spec_f

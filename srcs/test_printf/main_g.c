@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/31 13:57:15 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/10/31 21:28:38 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -395,10 +395,14 @@ static void		troubles(void)
 {
 	printf("\nprintf\t%%g\t(-0)\n%g\n", -0);
 	ft_printf("%g", -0);
-	printf("\nprintf\t%%g\t(-1)\n%g\n", -1);
-	ft_printf("%g", -1);
+	printf("\nprintf\t%%g\t(-1.567)\n%g\n", -1.567);
+	ft_printf("%g", -1.567);
 	printf("\nprintf\t%%g\t(-2)\n%g\n", -2);
 	ft_printf("%g", -2);
+	printf("\nprintf\t%%g\t(2)\n%g\n", 2);
+	ft_printf("%g", 2);
+	printf("\nprintf\t%%f\t(2)\n%f\n", 2);
+	ft_printf("%f", 2);
 	printf("\nprintf\t%%g\t(999995.50)\n%g\n", 999995.50);
 	ft_printf("%g", 999995.50);
 	printf("\nprintf: no decimals, precision: 3\t%%.3g\t(389389389)\n%g\n", 389389389);
