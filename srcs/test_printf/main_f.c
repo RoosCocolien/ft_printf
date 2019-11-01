@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/01 10:11:43 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/11/01 16:37:02 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,11 +301,11 @@ static void		no_decimals(void)
 
 int				main(void)
 {
-	// simple_f();
-	// len_mod_f();
-	// flags_f();
-	// width_asterisk_f();
-	// precision_f();
+	simple_f();
+	len_mod_f();
+	flags_f();
+	width_asterisk_f();
+	precision_f();
 	no_decimals();
 	return (0);
 }

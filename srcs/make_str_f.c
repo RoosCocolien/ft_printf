@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:36:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/01 10:16:39 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/11/01 18:06:08 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,21 +90,20 @@ static char	*get_decimals(long double i, t_info *flag, int l_before)
 	int					x;
 
 	x = 1;
-//	if ((*flag).spec_g == 1)				Dit heb ik weggehaald, want dat doe ik nu in find_len_decimals
-//		(*flag).prec_value = (*flag).prec_value - l_before;
-	printf("**get_decimals(f)\ti: %Lf\n", i);
 	precision = find_precision(flag);
-	printf("**get_decimals(f)\tprecision: %lld\n", precision);
 	dec_int = (i - (int)i) * precision;
-	printf("**get_decimals(f)\tdec_int: %lld\n", dec_int);
 	len = 1 + (*flag).prec_value - (*flag).leftover;
-	printf("**get_decimals(f)\tlen: %d\n", len);
 	dec_str = ft_memalloc(sizeof(char) * len + 1);
 	dec_str[len] = '\0';
 	dec_str[0] = '.';
 	while ((len - x) > 0)
 	{
-		dec_str[len - x] = dec_int % 10 + '0';
+		//i've added this, because of zero values, a weird very big nb
+		//is being stored in 'i', so it should be 0
+		if (dec_int % 10 >= 0 && dec_int % 10 <= 9)
+			dec_str[len - x] = dec_int % 10 + '0';
+		else
+			dec_str[len - x] = '0';
 		dec_int = dec_int / 10;
 		x++;
 	}
@@ -154,7 +153,6 @@ char		*make_str_f(long double i, t_info *flag)
 	if ((*flag).spec_g == 1)
 		if (!check_for_zeros_gf(i, flag))
 			i = 0;
-	printf("make_str_f\t\ti: %Lf\n", i);
 	i = roundup_f(i, (*flag).prec_value);
 	find_len_decimals(i, flag);
 	before = ft_itoa_llu(i);
@@ -163,11 +161,12 @@ char		*make_str_f(long double i, t_info *flag)
 	after = NULL;
 	if ((*flag).hash == 1 || ((*flag).dot == 1 && (*flag).prec_value != 0))
 		after = get_decimals(i, flag, ft_strlen(before));
-	printf("**make str f\t\tafter: %s\n", after);
 	//to make sure neg will work if precision is on, but there are more decimals than precision
-	if (after && (*flag).prec_value <= ft_strlen(after) - 1)
+	//onderstaande moet ik ook in een functietje zetten
+	if (after && (*flag).prec_value <= ft_strlen(after) - 1 && (*flag).width <= ft_strlen(after) - 1)
 		(*flag).zero = 0;
-	if ((*flag).spec_g == 1 && (*flag).no_decimals == 0 && (*flag).hash == 0)
+	if ((*flag).spec_g == 1 && (*flag).no_decimals == 0 &&\
+	(*flag).hash == 0)
 	{
 		after_g = erase_zeros_for_spec_g(after, flag);
 		ret_str = fill_ret_str(flag, before, after_g);
