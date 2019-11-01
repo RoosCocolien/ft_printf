@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/01 16:37:02 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/01 18:30:57 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,6 @@ static void		width_asterisk_f(void)
 ** precision value 1: 1 DECIMAL PRINTED
 ** precision value 8: 8 DECIMALS PRINTED, filled with 0's
 */
-
 
 static void		precision_f(void)
 {

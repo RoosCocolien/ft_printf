@@ -27,23 +27,19 @@ int		spec_f(char *s, va_list args, t_info *flag, int x)
 	int				fill;
 
 	fill = 0;
-	//sla de waardes op als precision aan staat
 	prec_and_zero_check(args, flag, s[x]);
-	//if 'L' and check if neg value, returned altijd een pos getal
 	i = len_mod_check_efg(args, flag);
 	str_spec_f = make_str_f(i, flag);
 	length = ft_strlen(str_spec_f);
 	fill = change_fill(flag, fill, length);
 	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
 		put_padding(flag, fill);
-	//neg?
 	if ((*flag).neg == 1 && (*flag).zero != 1)
 	{
 		ft_putchar('-');
 		(*flag).count++;
 	}
 	print_string(flag, str_spec_f, fill);
-	//PADDING AAN HET EINDE? (only blank spaces)
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 		put_padding(flag, fill);
 	free(str_spec_f);
