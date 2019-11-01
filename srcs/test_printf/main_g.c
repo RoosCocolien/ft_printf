@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/31 21:28:38 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/11/01 09:20:07 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -389,6 +389,22 @@ static void	spec_g_e_result()
 	ft_printf("%e", 9999999.40);
 	printf("\nprintf\t%%e\t(99999999.40)\n%e\n", 99999999.40);
 	ft_printf("%e\n", 99999999.40);
+
+	printf("\nno decimals\n");
+	printf("printf\t%%.4g$\t(1000600)\n%.4g$\n", 1000600);
+	printf("%.4g$\n", 1000600);
+	printf("printf\t%%.4g$\t(1000060)\n%.4g$\n", 1000060);
+	printf("%.4g$\n", 1000060);
+	printf("printf\t%%.5g$\t(1000600)\n%.5g$\n", 1000600);
+	printf("%.5g$\n", 1000600);
+	long double nb_pos;
+	long double nb_neg;
+	nb_pos = 456;
+	nb_neg = -23;
+	printf("printf\t%%.4g$\t(456)\n%.4g$\n", nb_pos);
+	printf("%.4g$\n", nb_pos);
+	printf("printf\t%%.5g$\t(-23)\n%.5g$\n", nb_neg);
+	printf("%.5g$\n", nb_neg);	
 }
 
 static void		troubles(void)

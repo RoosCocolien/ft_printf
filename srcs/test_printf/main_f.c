@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/15 15:32:19 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/01 10:11:43 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,12 +260,52 @@ static void		precision_f(void)
 	ft_printf("{red}%-22.*f{eoc}\n", 8, 1.2345);	
 }
 
+static void		no_decimals(void)
+{
+	printf("NO DECIMALS\n");
+	printf("\nprintf\t%%f\t(6589)\n%f\n", 6589);
+	ft_printf("%f\n", 6589);
+	printf("\nprintf\t%%f\t(5891)\n%f\n", 5891);
+	ft_printf("%f\n", 5891);
+	printf("\nprintf\t%%f\t(-31416)\n%f\n", -31416);
+	ft_printf("%f\n", -31416);
+	printf("\nprintf\t%%f\t(-66589)\n%f\n", -66589);
+	ft_printf("%f\n", -66589);
+	printf("\nprintf\t%%f\t(2)\n%f\n", 2);
+	ft_printf("%f\n", 2);
+	printf("\nprintf\t%%f\t(0)\n%f\n", 0);
+	ft_printf("%f\n", 0);
+	printf("\nprintf\t%%f\t(-3)\n%f\n", -3);
+	ft_printf("%f\n", -3);
+	printf("\nprintf\t%%f\t(-0)\n%f\n", -0);
+	ft_printf("%f\n", -0);
+
+	printf("NO DECIMALS (only zeros as decimals)\n");
+	printf("\nprintf\t%%f\t(6589.00)\n%f\n", 6589.00);
+	ft_printf("%f\n", 6589.00);
+	printf("\nprintf\t%%f\t(5891.00)\n%f\n", 5891.00);
+	ft_printf("%f\n", 5891.00);
+	printf("\nprintf\t%%f\t(-31416.00)\n%f\n", -31416.00);
+	ft_printf("%f\n", -31416.00);
+	printf("\nprintf\t%%f\t(-66589.00)\n%f\n", -66589.00);
+	ft_printf("%f\n", -66589.00);
+	printf("\nprintf\t%%f\t(2.00)\n%f\n", 2.00);
+	ft_printf("%f\n", 2.00);
+	printf("\nprintf\t%%f\t(0.00)\n%f\n", 0.00);
+	ft_printf("%f\n", 0.00);
+	printf("\nprintf\t%%f\t(-3.00)\n%f\n", -3.00);
+	ft_printf("%f\n", -3.00);
+	printf("\nprintf\t%%f\t(-0.00)\n%f\n", -0.00);
+	ft_printf("%f\n", -0.00);
+}
+
 int				main(void)
 {
-	simple_f();
-	len_mod_f();
-	flags_f();
-	width_asterisk_f();
-	precision_f();
+	// simple_f();
+	// len_mod_f();
+	// flags_f();
+	// width_asterisk_f();
+	// precision_f();
+	no_decimals();
 	return (0);
 }

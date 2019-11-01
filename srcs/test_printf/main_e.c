@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/08 16:26:34 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/01 09:46:38 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,13 +258,34 @@ static void		precision_e(void)
 	ft_printf("{red}%-22.*e{eoc}\n", 8, 1.2345);
 }
 
+static void		no_decimals(void)
+{
+	printf("\nprintf\t%%E\t(6589)\n%E\n", 6589);
+	ft_printf("%E\n", 6589);
+	printf("\nprintf\t%%e\t(5891)\n%e\n", 5891);
+	ft_printf("%e\n", 5891);
+	printf("\nprintf\t%%E\t(-31416)\n%E\n", -31416);
+	ft_printf("%E\n", -31416);
+	printf("\nprintf\t%%e\t(-66589)\n%e\n", -66589);
+	ft_printf("%e\n", -66589);
+	printf("\nprintf\t%%E\t(2)\n%E\n", 2);
+	ft_printf("%E\n", 2);
+	printf("\nprintf\t%%e\t(0)\n%e\n", 0);
+	ft_printf("%e\n", 0);
+	printf("\nprintf\t%%E\t(-3)\n%E\n", -3);
+	ft_printf("%E\n", -3);
+	printf("\nprintf\t%%e\t(-0)\n%e\n", -0);
+	ft_printf("%e\n", -0);
+}
+
 int				main(void)
 {
-	simple_e();
-	len_mod_efg();
-	flags_e();
-	width_asterisk_e();
-	precision_e();
-	while(1);
+	// simple_e();
+	// len_mod_efg();
+	// flags_e();
+	// width_asterisk_e();
+	// precision_e();
+	no_decimals();
+	// while(1);
 	return (0);
 }

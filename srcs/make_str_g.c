@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/30 17:23:07 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/31 22:05:41 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/11/01 09:07:00 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ char	*make_str_g(long double i, t_info *flag)
 	// }
 	//try out
 	decimals = i - (int)i;
+	printf("**Make str g\tdecimals: %Lf\n", decimals);
 	if (decimals == 0)
+	{
+		printf("**Make str g\tdecimals == 0\n");
 		i = 0;
+	}
 	if (i < (double)999999.50)
 	{
 		//spec_f
