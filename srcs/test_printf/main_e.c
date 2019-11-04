@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/04 15:27:10 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/04 16:38:39 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,6 @@ static void		width_asterisk_e(void)
 ** precision value 8: 8 DECIMALS PRINTED, filled with 0's
 */
 
-
 static void		precision_e(void)
 {
 	printf("\nPrecision test eE notation\n");
@@ -239,7 +238,6 @@ static void		precision_e(void)
 	printf("*\nWITH WIDTH: 22, fill left ' '*");
 	printf("\nprintf\t%%22.*e\t(8, 1.2345)\n%22.*e\n", 8, 1.2345);
 	ft_printf("%22.*e\n", 8, 1.2345);
-
 	printf("\n- plus sign and left align sign, precision 0\n");
 	printf("\nprintf\t%%-+.0e\t(3.1416)\n%-+.0e\n", 3.1416);
 	ft_printf("%-+.0e\n", 3.1416);
@@ -278,14 +276,40 @@ static void		no_decimals(void)
 	ft_printf("%e\n", -0);
 }
 
+static void		troubles(void)
+{
+	printf("\n- asterisk pointing to width value NO ZERO: 0");
+	printf("\nprintf\t%%-*e\t(0, 7.3412)\n%-*e\n", 0, 7.3412);
+	ft_printf("%-*e\n", 0, 7.3412);
+	printf("\n- asterisk pointing to width value NO ZERO: 4");
+	printf("\nprintf\t%%-*e\t(4, 7.3412)\n%-*e\n", 4, 7.3412);
+	ft_printf("%-*e\n", 4, 7.3412);
+	printf("\n- asterisk pointing to width value NO ZERO: 18");
+	printf("\nprintf\t%%-*e\t(18, 7.3412)\n%-*e\n", 18, 7.3412);
+	ft_printf("%-*e\n", 18, 7.3412);
+	printf("\n- asterisk pointing to width value WITH ZERO: 18");
+	printf("\nprintf\t%%-0*e\t(18, -7.3412)\n%-0*e\n", 18, -7.3412);
+	ft_printf("%-0*e\n", 18, -7.3412);
+	printf("\n- precision with asterisk, value: 4");
+	printf("\nprintf\t%%.*e\t(4, 1.2345)\n%.*e\n", 4, 1.2345);
+	ft_printf("%.*e\n", 4, 1.2345);
+	printf("\n- precision with asterisk and left align(-), value: 4");
+	printf("\nprintf\t%%-.*e\t(4, 1.2345)\n%-.*e\n", 4, 1.2345);
+	ft_printf("%-.*e\n", 4, 1.2345);
+	printf("\n- precision with asterisk and left align(-), value: 4");
+	printf("\nprintf\t%%-.*e\t(4, 1.23449)\n%-.*e\n", 4, 1.23449);
+	ft_printf("%-.*e\n", 4, 1.23449);
+}
+
 int				main(void)
 {
-	simple_e();
-	len_mod_ef();
-	flags_e();
-	width_asterisk_e();
-	precision_e();
-	no_decimals();
+	// simple_e();
+	// len_mod_ef();
+	// flags_e();
+	// width_asterisk_e();
+	// precision_e();
+	// no_decimals();
+	troubles();
 	// while(1);
 	return (0);
 }
