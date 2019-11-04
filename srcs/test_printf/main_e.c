@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/01 18:20:36 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/04 15:27:10 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		simple_e(void)
 	ft_printf("%e\n", -6.6589);
 }
 
-static void		len_mod_efg(void)
+static void		len_mod_ef(void)
 {
 	double		first;
 	long double	first_long;
@@ -281,7 +281,7 @@ static void		no_decimals(void)
 int				main(void)
 {
 	simple_e();
-	len_mod_efg();
+	len_mod_ef();
 	flags_e();
 	width_asterisk_e();
 	precision_e();

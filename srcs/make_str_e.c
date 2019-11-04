@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/20 16:11:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/25 18:02:20 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/04 15:28:47 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ long double			find_power(long double i, t_info *flag)
 	return (i);
 }
 
-static char			*ret_str_maker(t_info *flag, char e_notation)
+static char			*ret_str_maker(t_info *flag, char e_not)
 {
 	char	*ret_str;
 	int		i;
@@ -124,7 +124,7 @@ static int		remove_zero_spec_g(t_info *flag, int new_i_int)
 	return (new_i_int);
 }
 
-char				*make_str_e(long double i, t_info *flag, char e_notation)
+char				*make_str_e(long double i, t_info *flag, char e_not)
 {
 	char	*ret_str;
 	int		new_i_int;
@@ -134,11 +134,7 @@ char				*make_str_e(long double i, t_info *flag, char e_notation)
 	x = 0;
 	i = find_power(i, flag);
 	i = roundup_e(i, flag, (*flag).prec_value);
-	if ((*flag).spec_g == 1)
-		(*flag).prec_value -= 1;
 	new_i_int = calc_new_i_int(flag, i);
-	if ((*flag).spec_g == 1)
-		new_i_int = remove_zero_spec_g(flag, new_i_int);
 	ret_str = ret_str_maker(flag, e_notation);
 	new_i_str = ft_itoa_llu(new_i_int);
 	while (new_i_str[x] && x <= (*flag).prec_value)

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/23 18:14:45 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/04 15:28:47 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,9 @@ typedef struct s_info
 	int		power;
 	char	power_not;	//power notation (e or E)
 	int		no_decimals;	//off or on ('.' or no '.') (floats, eE etc.)
-	int		spec_g;			//off: normal spec_f, on: spec_f for spec_g
 	int		dot;		//for spec_g, spec_f and spec_e
 	int		leftover;
 }				t_info;
-
 
 //Moeten naar libft
 char					*ft_itoa_llu(unsigned long long n);
@@ -65,7 +63,6 @@ size_t					digit_count(intmax_t value, int base);
 /*
 **	print.c
 */
-void					print_flags(t_info flag); //kan weg
 void					print_digit(t_info *flag, unsigned long long nb);
 void					print_address(t_info *flag, char *s);
 void					print_string(t_info *flag, char *s, int fill);
@@ -88,7 +85,7 @@ unsigned long long		len_mod_check_di(va_list args, t_info *flag);
 unsigned long long		check_int(va_list args, t_info *flag);
 
 /*
-**	len_mod_efg.c
+**	len_mod_ef.c
 */
 long double				len_mod_check_efg(va_list args, t_info *flag);
 
@@ -106,18 +103,13 @@ unsigned long long		check_u(va_list args, t_info *flag, char conv_spec);
 /*
 **	make_str_e.c
 */
-char					*make_str_e(long double i, t_info *flag, char e_notation);
+char					*make_str_e(long double i, t_info *flag, char e_not);
 long double				find_power(long double i, t_info *flag);
 
 /*
 **	make_str_f.c
 */
 char					*make_str_f(long double i, t_info *flag);
-
-/*
-**	make_str_g.c
-*/
-char					*make_str_g(long double i, t_info *flag);
 
 /*
 **	flags.c
@@ -193,22 +185,9 @@ int						spec_e(char *s, va_list args, t_info *flag, int x);
 int						spec_e(char *s, va_list args, t_info *flag, int x);
 
 /*
-**	spec_g.c
-*/
-int						spec_g(char *s, va_list args, t_info *flag, int x);
-
-/*
-**	spec_g_zero.c
-*/
-char				    *erase_zeros_for_spec_g(char *after, t_info *flag);
-int						check_for_zeros_gf(long double i, t_info *flag);
-
-/*
 **	spec_o.c
 */
 int						spec_o(char *s, va_list args, t_info *flag, int x);
-
-
 
 /*
 **	spec_x.c
@@ -224,7 +203,6 @@ void					bin_bits_filler(long long *arr, int len);
 void					bin_filler(long long *bin_bits);
 void					bin_bits_calcu(long long *bin_bits, int i, int remain);
 char					*bin_str_cpy(long long *bin_bits, int j, int min);
-
 
 /*
 **	spec_u.c

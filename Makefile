@@ -6,7 +6,7 @@
 #    By: bvan-de- <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/15 14:53:31 by bvan-de-       #+#    #+#                 #
-#    Updated: 2019/10/16 14:23:23 by rsteigen      ########   odam.nl          #
+#    Updated: 2019/11/04 15:27:10 by rsteigen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,9 @@ SRCS 	= srcs/ft_printf.c srcs/flags.c srcs/spec.c srcs/spec_c.c\
 			srcs/spec_p.c srcs/spec_n.c srcs/ft_roundup.c srcs/ft_deci_count.c\
 			srcs/print.c srcs/padding.c srcs/len_mod_di2.c srcs/ft_zero_count.c\
 			srcs/len_mod_di.c srcs/len_mod_u.c srcs/len_mod_u2.c\
-			srcs/ft_itoa_base_ll.c srcs/precision.c srcs/len_mod_efg.c\
+			srcs/ft_itoa_base_ll.c srcs/precision.c srcs/len_mod_ef.c\
 			srcs/make_str_e.c srcs/colors.c srcs/spec_b2.c srcs/make_str_f.c\
-			srcs/roundup.c srcs/make_str_g.c\
-			srcs/spec_g_zero.c
+			srcs/roundup.c
 
 FLAG 	= -Wall -Wextra -Werror
 
@@ -68,9 +67,6 @@ x:
 f:
 	@gcc srcs/test_printf/main_f.c libft/libft.a $(SRCS)
 
-g:
-	@gcc srcs/test_printf/main_g.c libft/libft.a $(SRCS)
-
 b:
 	@gcc srcs/test_printf/main_b.c libft/libft.a $(SRCS)
 
@@ -87,4 +83,3 @@ fclean: clean
 	@/bin/rm -rf $(NAME)
 
 re: fclean all
-

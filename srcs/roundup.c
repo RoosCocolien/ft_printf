@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 15:03:48 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/01 17:45:13 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/04 15:25:05 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ long double			roundup_e(long double i, t_info *flag, int prec)
 	int			begin;
 
 	begin = (int)i;
-	j = i * ten_to_the_power_of(prec + 1 - (*flag).spec_g);
+	j = i * ten_to_the_power_of(prec + 1);
 	str = ft_itoa_llu(j);
 	len = ft_strlen(str);
 	if (str[len - 1] >= '5')
-		i = (((j / 10) + 1) / ten_to_the_power_of(prec - (*flag).spec_g));
+		i = (((j / 10) + 1) / ten_to_the_power_of(prec);
 	free(str);
 	if ((begin == 9 && i < 2) || i >= 10)
 		(*flag).power++;

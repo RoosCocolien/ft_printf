@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:36:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/01 18:06:08 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/04 15:22:59 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,8 @@ static void		find_len_decimals(long double i, t_info *flag)
 	(*flag).dot = 1;
 	if ((*flag).precision != 0 && (*flag).prec_value == 0 && (*flag).hash != 0)
 		(*flag).dot = 0;
-	if ((*flag).spec_g == 1)
-	{
-		if (i >= 1)
-		{
-			if (digits >= (*flag).prec_value)
-			{
-				(*flag).prec_value = 0;
-				(*flag).dot = 0;
-			}
-			else
-				(*flag).prec_value = (*flag).prec_value - digits;
-		}
-	}
-	else
-	{
-		if ((*flag).precision == 0)
-			(*flag).prec_value = 6;
-	}
+	if ((*flag).precision == 0)
+		(*flag).prec_value = 6;
 }
 
 static long long	find_precision(t_info *flag)
@@ -150,9 +134,6 @@ char		*make_str_f(long double i, t_info *flag)
 	char				*after;
 	char				*after_g;
 
-	if ((*flag).spec_g == 1)
-		if (!check_for_zeros_gf(i, flag))
-			i = 0;
 	i = roundup_f(i, (*flag).prec_value);
 	find_len_decimals(i, flag);
 	before = ft_itoa_llu(i);
@@ -165,15 +146,7 @@ char		*make_str_f(long double i, t_info *flag)
 	//onderstaande moet ik ook in een functietje zetten
 	if (after && (*flag).prec_value <= ft_strlen(after) - 1 && (*flag).width <= ft_strlen(after) - 1)
 		(*flag).zero = 0;
-	if ((*flag).spec_g == 1 && (*flag).no_decimals == 0 &&\
-	(*flag).hash == 0)
-	{
-		after_g = erase_zeros_for_spec_g(after, flag);
-		ret_str = fill_ret_str(flag, before, after_g);
-		free(after_g);
-	}
-	else
-		ret_str = fill_ret_str(flag, before, after);
+	ret_str = fill_ret_str(flag, before, after);
 	if (after)
 		free(after);
 	if (before)
