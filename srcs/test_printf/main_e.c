@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/04 16:38:39 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/05 11:05:42 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,16 +299,25 @@ static void		troubles(void)
 	printf("\n- precision with asterisk and left align(-), value: 4");
 	printf("\nprintf\t%%-.*e\t(4, 1.23449)\n%-.*e\n", 4, 1.23449);
 	ft_printf("%-.*e\n", 4, 1.23449);
+	printf("\n- precision with asterisk and left align(-), value: 4");
+	printf("\nprintf\t%%-.*e\t(4, 1.2344449)\n%-.*e\n", 4, 1.2344449);
+	ft_printf("%-.*e\n", 4, 1.2344449);
+	printf("\n- precision with asterisk and left align(-), value: 4");
+	printf("\nprintf\t%%-.*e\t(4, 9.99)\n%-.*e\n", 4, 9.99);
+	ft_printf("%-.*e\n", 4, 9.99);
+	printf("\n- precision with asterisk and left align(-), value: 4");
+	printf("\nprintf\t%%-.*e\t(4, 9.99999)\n%-.*e\n", 4, 9.99999);
+	ft_printf("%-.*e\n", 4, 9.99999);
 }
 
 int				main(void)
 {
-	// simple_e();
-	// len_mod_ef();
-	// flags_e();
-	// width_asterisk_e();
-	// precision_e();
-	// no_decimals();
+	simple_e();
+	len_mod_ef();
+	flags_e();
+	width_asterisk_e();
+	precision_e();
+	no_decimals();
 	troubles();
 	// while(1);
 	return (0);

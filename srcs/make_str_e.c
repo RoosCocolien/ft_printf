@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/20 16:11:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/04 16:58:36 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/05 11:05:31 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,6 @@ static int			calc_new_i_int(t_info *flag, long double i)
 	return (i);
 }
 
-//static void/* static char	**/ret_str_filler(char *ret_str, char input, int x)
-//{
-//	ret_str[x] = input;
-//	//return (ret_str);
-//}
-
 char				*make_str_e(long double i, t_info *flag, char e_not)
 {
 	char	*ret_str;
@@ -114,23 +108,16 @@ char				*make_str_e(long double i, t_info *flag, char e_not)
 
 	x = 0;
 	i = find_power(i, flag);
-	printf("make str e\t\t(*flag).power:\t\t%d\n", (*flag).power);
-	printf("make str e\t\t(*flag).power_not:\t%c\n", (*flag).power_not);
-	printf("make str e\t\ti before roundup:\t%Lf\n", i);
 	i = roundup_e(i, flag, (*flag).prec_value);
-	printf("make str e\t\ti after roundup:\t%Lf\n", i);
 	new_i_int = calc_new_i_int(flag, i);
-	printf("make str e\t\tnew_i_int:\t\t%i\n", new_i_int);
 	ret_str = ret_str_maker(flag, e_not);
 	new_i_str = ft_itoa_llu(new_i_int);
 	while (new_i_str[x] && x <= (*flag).prec_value)
 	{
 		if (x > 0)
 			ret_str[x + 1] = new_i_str[x];
-//			ret_str_filler(ret_str, new_i_str[x], x + 1);
 		else
 			ret_str[x] = new_i_str[x];
-//			ret_str_filler(ret_str, new_i_str[x], x);
 		x++;
 	}
 	if (new_i_str)

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/12 14:25:20 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/04 16:37:41 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/05 11:05:55 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char			*ft_itoa_llu(unsigned long long n)
 	int		intlen;
 	char	*str;
 
-	printf("ft itoa ll\t\tn:\t\t%llu\n", n);
 	cx = 0;
 	intlen = ft_intlength(n);
 	str = (char*)ft_memalloc(intlen + 1);
