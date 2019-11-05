@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 16:43:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/09/11 13:21:17 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/05 16:03:19 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,19 @@ static void	range_check_u(void)
 */
 }
 
+static void hash_u(void)
+{
+	printf("\n**hash**\n");
+	printf("\nprintf\t%%#u\t(532)\n%#u\n", 532);
+	ft_printf("%#u\n", 532);
+	printf("\nprintf\t%%#u\t(-689)\n%#u\n", -689);
+	ft_printf("%#u\n", -689);
+	printf("\nprintf\t%%#.*u (10, 374)\n%#.*u\n", 10, 374);
+	ft_printf("%#.*u\n", 10, 374);
+	printf("\nprintf\t%%#0*u (11, 798)\n%#0*u\n", 11, 798);
+	ft_printf("%#0*u\n", 11, 798);
+}
+
 int		main(void)
 {
 	simple_test_u();
@@ -212,5 +225,6 @@ int		main(void)
 //	precision_u();
 //	asterisk_u();
 //	range_check_u();
+	hash_u();
 	return (0);
 }
