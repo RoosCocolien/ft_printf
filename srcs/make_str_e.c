@@ -6,24 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/20 16:11:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 11:05:31 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/05 13:22:43 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-
-/*
-** (*flag).prec_value	--> amount of decimals
-** (*flag).neg			--> 1 (neg), 0 (pos)
-** ATTENTION: 'long double i' is always neg (check (*flag).neg)
-*/
-
-/*
-** This functions finds:
-** - power
-** - first nb before '.'
-** - '+' or '-' (0 - 1)
-*/
 
 long double			find_power(long double i, t_info *flag)
 {
@@ -52,33 +39,30 @@ static char			*ret_str_maker(t_info *flag, char e_not)
 {
 	char	*ret_str;
 	int		i;
+	int		malloc_size;
 
 	i = 0;
-	ret_str = (char*)malloc(sizeof(char) * (6 + (*flag).prec_value)\
-	- (*flag).no_decimals);
-	ret_str[6 + (*flag).prec_value - (*flag).no_decimals] = '\0';
-	while (i < 6 + (*flag).prec_value - (*flag).no_decimals)
+	malloc_size = (*flag).prec_value + (*flag).dot;
+	ret_str = (char*)malloc(sizeof(char) * 5 + malloc_size + 1);
+	ret_str[5 + malloc_size] = '\0';
+	while (i < 5 + malloc_size && ret_str[i])
 	{
 		ret_str[i] = '0';
 		i++;
 	}
-	if ((*flag).no_decimals == 0)
+	if ((*flag).no_decimals == 0 || (*flag).dot == 1)
 		ret_str[1] = '.';
-	ret_str[2 + (*flag).prec_value - (*flag).no_decimals] = e_not;
-	ret_str[3 + (*flag).prec_value - (*flag).no_decimals] = (*flag).power_not;
+	ret_str[1 + malloc_size] = e_not;
+	ret_str[2 + malloc_size] = (*flag).power_not;
 	if ((*flag).power >= 10)
 	{
-		ret_str[4 + (*flag).prec_value -\
-		(*flag).no_decimals] = ((*flag).power / 10) + 48;
-		ret_str[5 + (*flag).prec_value -\
-		(*flag).no_decimals] = ((*flag).power % 10) + 48;
+		ret_str[3 + malloc_size] = ((*flag).power / 10) + 48;
+		ret_str[4 + malloc_size] = ((*flag).power % 10) + 48;
 	}
 	else
 	{
-		ret_str[4 + (*flag).prec_value -\
-		(*flag).no_decimals] = '0';
-		ret_str[5 + (*flag).prec_value -\
-		(*flag).no_decimals] = (*flag).power + 48;
+		ret_str[3 + malloc_size] = '0';
+		ret_str[4 + malloc_size] = (*flag).power + 48;
 	}
 	return (ret_str);
 }

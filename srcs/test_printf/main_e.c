@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 11:05:42 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/05 13:20:04 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -310,15 +310,45 @@ static void		troubles(void)
 	ft_printf("%-.*e\n", 4, 9.99999);
 }
 
+static void		hash(void)
+{
+	printf("\n**Hash**\n");
+	printf("\nprintf\t%%#-*e\t(0, 7.3412)\n%#-*e\n", 0, 7.3412);
+	ft_printf("%#-*e\n", 0, 7.3412);
+	printf("\nprintf\t%%#-.*e\t(4, 9.99)\n%#-.*e\n", 4, 9.99);
+	ft_printf("%#-.*e\n", 4, 9.99);
+	printf("\nprintf\t%%#-.*e\t(4, 9.99999)\n%#-.*e\n", 4, 9.99999);
+	ft_printf("%#-.*e\n", 4, 9.99999);
+	printf("\nprintf\t{red}%%#-22.*e\t(8, 1.2345)\n%#-22.*e\n", 8, 1.2345);
+	ft_printf("{red}%#-22.*e{eoc}\n", 8, 1.2345);
+	printf("\nprintf\t%%#*e\t(18, 7.3412)\n%#*e\n", 18, 7.3412);
+	ft_printf("%#*e\n", 18, 7.3412);
+	printf("\nprintf\t%%#+.0e\t(3.1416)\n%#+.0e\n", 3.1416);
+	ft_printf("%#+.0e\n", 3.1416);
+	printf("\nprintf\t%%#.0E\t(6.6589)\n%#.0E\n", 6.6589);
+	ft_printf("%#.0E\n", 6.6589);
+	printf("\nprintf\t%%#.0e\t(6.6589)\n%#.0e\n", 6.6589);
+	ft_printf("%#.0e\n", 6.6589);
+	printf("\nprintf\t%%#.0E\t(-3.1416)\n%#.0E\n", -3.1416);
+	ft_printf("%#.0E\n", -3.1416);
+	printf("\nprintf\t%%#.0e\t(-6.6589)\n%#.0e\n", -6.6589);
+	ft_printf("%#.0e\n", -6.6589);
+	printf("\nprintf\t%%.0E\t(-3.1416)\n%.0E\n", -3.1416);
+	ft_printf("%.0E\n", -3.1416);
+	printf("\nprintf\t%%.0e\t(-6.6589)\n%.0e\n", -6.6589);
+	ft_printf("%.0e\n", -6.6589);
+}
+
 int				main(void)
 {
-	simple_e();
-	len_mod_ef();
-	flags_e();
-	width_asterisk_e();
-	precision_e();
-	no_decimals();
-	troubles();
+	// simple_e();
+	// len_mod_ef();
+	// flags_e();
+	// width_asterisk_e();
+	// precision_e();
+	// no_decimals();
+	// troubles();
+	hash();
 	// while(1);
 	return (0);
 }

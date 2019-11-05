@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 15:03:48 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 11:05:37 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/05 12:10:42 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,13 @@ long double			roundup_f(long double i, int prec)
 	char				*str;
 	int					len;
 
+	printf("roundup\t\ti\t\t%Lf\n", i);
 	j = i * ten_to_the_power_of(prec + 1);
+	printf("roundup\t\tj\t\t%Lf\n", j);
 	str = ft_itoa_llu(j);
+	printf("roundup\t\tstr\t\t%s\n", str);
 	len = ft_strlen(str);
+	printf("roundup\t\tlen\t\t%d\n", len);
 	if (str[len - 1] >= '5')
 		i = ((j / 10 + 1) / ten_to_the_power_of(prec));
 	free(str);

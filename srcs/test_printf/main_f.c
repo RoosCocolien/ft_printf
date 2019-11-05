@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/01 18:30:57 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/05 12:13:12 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void		len_mod_f(void)
 	second_long_neg = -5.33456456456456456456;
 	third_neg = -23.14514514514514514514514599999;
 	third_long_neg = -23.14514514514514514514514599999;
-	ft_printf("\n{yellow}KAK{eoc}\n");
+	ft_printf("\n{yellow}Yellow{eoc}\n");
 	printf("\nLong double test eE scientific notation\n");
 	printf("\nPOS LONG DOUBLE\n");
 	printf("\nprintf dit is raar\t%%f\t(0.333333333333333334)\n%f\n", first_long);
@@ -256,7 +256,7 @@ static void		precision_f(void)
 	printf("\n- precision with asterisk and left align, value: 8");
 	printf("*\nWITH WIDTH: 22, fill left ' '*");
 	printf("\nprintf\t{red}%%-22.*f{eoc}\t(8, 1.2345)\n%-22.*f\n", 8, 1.2345);
-	ft_printf("{red}%-22.*f{eoc}\n", 8, 1.2345);	
+	ft_printf("{red}%-22.*f{eoc}\n", 8, 1.2345);
 }
 
 static void		no_decimals(void)
@@ -298,6 +298,23 @@ static void		no_decimals(void)
 	ft_printf("%f\n", -0.00);
 }
 
+static void		rounding(void)
+{
+	printf("\n- plus sign and left align sign, precision 0\n");
+	printf("\nprintf\t%%-+.0f\t(3.99998)\n%-+.0f\n", 3.99998);
+	ft_printf("%-+.0f\n", 3.99998);
+	printf("\n- precision with asterisk and left align, value: 0");
+	printf("\nprintf\t%%-.*f\t(3, 78.234599)\n%-.*f\n", 3, 78.234599);
+	ft_printf("%-.*f\n", 3, 78.234599);
+	printf("\n- precision with asterisk and left align(-), value: 4");
+	printf("\nprintf\t%%-.*f\t(4, 1.23455)\n%-.*f\n", 4, 1.23455);
+	ft_printf("%-.*f\n", 4, 1.23455);
+	printf("\n- precision with asterisk and left align, value: 8");
+	printf("*\nWITH WIDTH: 22, fill left ' '*");
+	printf("\nprintf\t{red}%%-22.*f{eoc}\t(8, 1.234599990)\n%-22.*f.\n", 8, 1.234599990);
+	ft_printf("{red}%-22.*f.{eoc}\n", 8, 1.234599990);
+}
+
 int				main(void)
 {
 	simple_f();
@@ -306,5 +323,6 @@ int				main(void)
 	width_asterisk_f();
 	precision_f();
 	no_decimals();
+	rounding();
 	return (0);
 }
