@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:49:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/14 14:49:45 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/05 15:34:34 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,7 @@
 ** This function will print an unsigned int as a hexadecimal number and consider
 ** the used flags.
 ** print: 					OK
-** consideration of flags:	NO
-*/
-
-/*
-** STEPS: (same as with octal)
-** flag.width of flag.precision opslaan
-** dan len_mod_check(u)
-** getal omzetten naar hex 16 (string)
-** dan lengte checken (van string)
-** en consideration of other flags
+** consideration of flags:	OK
 */
 
 int		spec_x(char *s, va_list args, t_info *flag, int x)
@@ -46,7 +37,7 @@ int		spec_x(char *s, va_list args, t_info *flag, int x)
 	if ((s[x] == 'p' || (*flag).hash) && (*flag).precision == 0)
 		length += 2;
 	//vanaf hier
-	if ((*flag).precision != 0 && (*flag).prec_value != 0)
+	if ((*flag).precision != 0 && ((*flag).prec_value != 0 || (*flag).width != 0))
 	{
 		if ((*flag).precision == 1)
 			(*flag).width = (*flag).prec_value;
@@ -69,33 +60,3 @@ int		spec_x(char *s, va_list args, t_info *flag, int x)
 	free(hex_str);
 	return (x + 1);
 }
-
-/*
-int		spec_x(char *s, va_list args, t_info *flag, int x)
-{
-	char *s1;
-	// int d;
-	// d = va_arg(args, int);
-	// if (d < 0)
-	// {
-	// 	d = -d;
-	// 	ft_putchar('-');
-	// }
-	// i = (unsigned long long)d;
-
-	if (s[x] == 'x')
-	{
-		s1 = ft_itoa_base(va_arg(args, int), 16);
-		ft_putstr(s1);
-	}
-	else if (s[x] == 'X')
-	{
-		s1 = ft_itoa_base_cap(va_arg(args, int), 16);
-		ft_putstr(s1);
-	}
-	free(s1);
-	return (x + 1);
-}
-*/
-
-//echte printf geeft undefined behaviour met een min getal

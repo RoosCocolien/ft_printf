@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 15:20:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/10 17:06:31 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/05 15:53:35 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,19 @@ static void		padding_s(void)
 	printf("\n%%015-s (printf)\n");
 	printf("%015+s\n", "roos");
 	ft_printf("%015+s\n", "roos");
+}
+
+static void		hash(void)
+{
+	printf("\n%%#-015s (printf)\n");
+	printf("%#-015s\n", "roos");
+	ft_printf("%#-015s\n", "roos");
+	printf("\n%%#015-s (printf)\n");
+	printf("%#015+s\n", "roos");
+	ft_printf("%#015+s\n", "roos");
+	printf("\n%%#s (printf)\n");
+	printf("%#s\n", "roos");
+	ft_printf("%#s\n", "roos");
 }
 
 int main(void)

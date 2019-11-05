@@ -6,13 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/08 18:03:42 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/12 16:56:00 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/11/05 15:50:43 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/printf.h"
 
-int		main(void)
+static void		simple(void)
 {
 	printf("\nFlags spec conv 'c'\n");
 	printf("\n%%-5c (printf)\n");
@@ -40,7 +40,10 @@ int		main(void)
 	printf("\n%%05-c (printf)\n");
 	printf("%05+c\n", 'k');
 	ft_printf("%05+c\n", 'k');
+}
 
+void		hash(void)
+{
 	printf("Test # flag\n");
 	printf("printf %%#c\n");
 	printf("%#c\n", 'a');
@@ -51,5 +54,11 @@ int		main(void)
 	printf("printf %%#05c\n");
 	printf("%#05c\n", 'c');
 	ft_printf("%#05c\n", 'c');
+}
+
+int		main(void)
+{
+	simple();
+	hash();
 	return (0);
 }

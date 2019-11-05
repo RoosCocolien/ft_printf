@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/04 17:45:04 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/05 14:35:57 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ long double				roundup_f(long double i, int prec);
 **	spec.c
 */
 int						find_spec(char *s, va_list args, t_info *flag, int x);
-int						find_spec_2(/*char *s, va_list args, t_info *flag, */int x);
+int						find_spec_2(char *s, va_list args, t_info *flag, int x);
 
 /*
 **	spec_d_i.c
@@ -193,16 +193,6 @@ int						spec_o(char *s, va_list args, t_info *flag, int x);
 **	spec_x.c
 */
 int						spec_x(char *s, va_list args, t_info *flag, int x);
-
-
-/*
-**	spec_b.c BONUS
-*/
-int						spec_b(char *s, va_list args, t_info *flag, int x);
-void					bin_bits_filler(long long *arr, int len);
-void					bin_filler(long long *bin_bits);
-void					bin_bits_calcu(long long *bin_bits, int i, int remain);
-char					*bin_str_cpy(long long *bin_bits, int j, int min);
 
 /*
 **	spec_u.c

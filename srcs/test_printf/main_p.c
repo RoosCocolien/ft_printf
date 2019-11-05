@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/10 15:24:21 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/11 19:09:38 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/05 15:33:45 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,11 +143,9 @@ static void		padding_p(void)
 	printf("\n%%-15p (printf)\n");
 	printf("%-15p.\n", str1);
 	ft_printf("%-15p.\n", str1);
-
 	printf("\n%%015p (printf)\n");
 	printf("%015p.\n", str1);
 	ft_printf("%015p.\n", str1);
-
 	//if I use the '-' && the width '15', then the '0' will do nothing
 	printf("\n%%-015p (printf)\n");
 	printf("%-015p.\n", str1);
@@ -158,11 +156,27 @@ static void		padding_p(void)
 	ft_printf("%015+p.\n", str1);
 }
 
+static void		troubles(void)
+{
+	char *str1;
+	char *str2;
+	char *str3;
+
+	str1 = "Coco";
+	str2 = "Lien888";
+	str3 = "Roosmarijn";
+	printf("%%.*p (printf, value: 17)\n%.*p.\n", 17, str3);
+	ft_printf("%.*p.\n", 17, str3);
+	printf("%%.*x (printf, value: 17)\n%.*x.\n", 17, str3);
+	ft_printf("%.*x.\n", 17, str3);
+}
+
 int		main(void)
 {
 	simple_p();
 	flags_p();
 	precision_p();
 	padding_p();
+	troubles();
 	return (0);
 }

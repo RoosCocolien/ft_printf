@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 12:13:12 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/05 14:17:23 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,7 +243,6 @@ static void		precision_f(void)
 	printf("*\nWITH WIDTH: 22, fill left ' '*");
 	printf("\nprintf\t%%22.*f\t(8, 1.2345)\n%22.*f\n", 8, 1.2345);
 	ft_printf("%22.*f\n", 8, 1.2345);
-
 	printf("\n- plus sign and left align sign, precision 0\n");
 	printf("\nprintf\t%%-+.0f\t(3.1416)\n%-+.0f\n", 3.1416);
 	ft_printf("%-+.0f\n", 3.1416);
@@ -315,14 +314,34 @@ static void		rounding(void)
 	ft_printf("{red}%-22.*f.{eoc}\n", 8, 1.234599990);
 }
 
+static void		hash(void)
+{
+	printf("\n- plus sign and left align sign, precision 0\n");
+	printf("\nprintf\t%%#-+.0f\t(3.1416)\n%#-+.0f\n", 3.1416);
+	ft_printf("%#-+.0f\n", 3.1416);
+	printf("\n- precision with asterisk and left align, value: 0");
+	printf("\nprintf\t%%#-.*f\t(0, 1.2345)\n%#-.*f\n", 0, 1.2345);
+	ft_printf("%#-.*f\n", 0, 1.2345);
+	printf("\n- asterisk pointing to width value WITH ZERO: 4");
+	printf("\nprintf\t%%#.0-0f\t7.3412)\n%#.0-0f\n",7.3412);
+	ft_printf("%#.0-0f\n",7.3412);
+	printf("\n- asterisk pointing to width value WITH ZERO: 18");
+	printf("\nprintf\t%%#.0-0f\t(7.3412)\n%#.0-0f\n", 7.3412);
+	ft_printf("%#.0-0f\n", 7.3412);
+	printf("\n- asterisk pointing to width value NO ZERO: 0");
+	printf("\nprintf\t%%#.0-f\t7.3412)\n%#.0-f\n",7.3412);
+	ft_printf("%#.0-f\n",7.3412);
+}
+
 int				main(void)
 {
-	simple_f();
-	len_mod_f();
-	flags_f();
-	width_asterisk_f();
-	precision_f();
-	no_decimals();
-	rounding();
+	// simple_f();
+	// len_mod_f();
+	// flags_f();
+	// width_asterisk_f();
+	// precision_f();
+	// no_decimals();
+	// rounding();
+	hash();
 	return (0);
 }
