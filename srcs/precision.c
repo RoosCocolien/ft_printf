@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:48:28 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 11:30:40 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/06 12:19:50 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	prec_and_zero_check(va_list args, t_info *flag, char spec)
 	(*flag).dot = 1;
 	if ((*flag).precision == 2)
 	{
-		if (spec == 'p' || spec == 'x')
+		if (spec == 'p' || spec == 'x' || spec == 'd' || spec == 'i')
 			(*flag).width = va_arg(args, int);
 		else
 			(*flag).prec_value = va_arg(args, int);
 	}
 	if ((*flag).width == 1 && (*flag).asterisk == 1 && (*flag).precision == 0)
 		(*flag).width = va_arg(args, int);
-	if ((*flag).prec_value == 0 && spec != 'p')
+	if ((*flag).prec_value == 0 && spec != 'p' && spec != 'd' && spec != 'i')
 	{
 		if ((*flag).precision != 0)
 		{
@@ -54,7 +54,7 @@ void	prec_and_zero_check(va_list args, t_info *flag, char spec)
 		else
 			(*flag).prec_value = 6;
 	}
-	if ((*flag).minus == 1)
+	if ((*flag).minus == 1 && spec != 'd' && spec != 'i')
 		(*flag).zero = 0;
 	if (spec == 'x' || spec == 'X')
 		(*flag).plus = 0;

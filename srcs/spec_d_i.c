@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:44:31 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 12:13:18 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/06 12:18:21 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ int		spec_d_i(char *s, va_list args, t_info *flag, int x)
 	int						fill;
 
 	fill = 0;
-	if ((*flag).precision == 2)
-		(*flag).width = va_arg(args, int);
-	if ((*flag).width == 1 && (*flag).asterisk == 1 && (*flag).precision == 0)
-		(*flag).width = va_arg(args, int);
+	prec_and_zero_check(args, flag, s[i]);
+	// if ((*flag).precision == 2)
+	// 	(*flag).width = va_arg(args, int);
+	// if ((*flag).width == 1 && (*flag).asterisk == 1 && (*flag).precision == 0)
+	// 	(*flag).width = va_arg(args, int);
 /* flag '0' is ignored when flag '-' is used, same everywhere? */
 	if ((*flag).zero == 1 && (*flag).minus == 1)
 		(*flag).zero = 0;
