@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:58 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/09/20 18:55:19 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/06 11:32:06 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		spec_u(char *s, va_list args, t_info *flag, int x)
 	int					fill;
 
 	fill = 0;
-
+	(*flag).plus = 0;
 	//vanaf hier
 	if ((*flag).precision == 2)
 		(*flag).width = va_arg(args, int);
@@ -36,17 +36,18 @@ int		spec_u(char *s, va_list args, t_info *flag, int x)
 		(*flag).width = va_arg(args, int);	
 	//tm hier is hetzelfde als spec_d_i
 	i = len_mod_check_u(args, flag, s[x]);
-	//vanaf hier
 	length = ft_intlength(i);
-	if ((*flag).precision != 0)
-	{
-		if ((*flag).precision == 1)
-			(*flag).width = (*flag).prec_value;
-		(*flag).zero = 1;
-		(*flag).minus = 0;
-	}
-	if ((*flag).width > 0)
-		fill = (*flag).width - length;
+	//vanaf hier
+	// if ((*flag).precision != 0)
+	// {
+	// 	if ((*flag).precision == 1)
+	// 		(*flag).width = (*flag).prec_value;
+	// 	(*flag).zero = 1;
+	// 	(*flag).minus = 0;
+	// }
+	// if ((*flag).width > 0)
+	// 	fill = (*flag).width - length;
+	fill = fill_width_prec(flag, length);
 	//tm hier is hetzelfde als spec_d_i en spec_o
 
 	//neg overslaan

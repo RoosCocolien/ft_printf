@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/12 14:25:20 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 09:07:18 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/06 11:21:55 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int		check_flag_plus(t_info *flag, int fill, int left_align)
 {
-	//first if: to let '+' be counted as well in the fill
 	if ((*flag).precision == 0 && (*flag).neg == 0)
 		fill--;
 	if ((*flag).neg == 0 && (((*flag).precision != 0 || left_align == 1) ||
@@ -26,10 +25,8 @@ int		check_flag_plus(t_info *flag, int fill, int left_align)
 	return (fill);
 }
 
-//invisible plus sign
 int		check_flag_space(t_info *flag, int fill, int left_align)
 {
-	//first if: to let ' ' be counted as well in the fill
 	if ((*flag).precision == 0 && (*flag).neg == 0)
 		fill--;
 	if ((*flag).neg == 0 && (((*flag).precision != 0 || left_align == 1) ||\
@@ -41,11 +38,22 @@ int		check_flag_space(t_info *flag, int fill, int left_align)
 	return (fill);
 }
 
-/*
-**	If a '*' comes after a '.' then the prec_value will be computed
-**	from the next arg (which must be an int).
-**	The (*flag).precision will be set to 2.
-*/
+int		save_prec_width(char *s, t_info *flag, int x)
+{
+	char	*value_prec_width;
+	int		i;
+
+	i = x;
+	while (s[x] >= 48 && s[x] <= 57)
+		x++;
+	value_prec_width = ft_strsub(s, i, x - i);
+	if (s[i - 1] == '.')
+		(*flag).prec_value = ft_atoi(value_prec_width);
+	else
+		(*flag).width = ft_atoi(value_prec_width);
+	free(value_prec_width);
+	return (x);
+}
 
 int		check_precision(char *s, t_info *flag, int x)
 {
@@ -54,21 +62,21 @@ int		check_precision(char *s, t_info *flag, int x)
 
 	if (s[x + 1] == '*')
 	{
-		//asterisk flag hoeft niet aan, die gaat alleen aan als het voor de width is
 		(*flag).precision = 2;
-		x = x + 2; //+2 want we moeten '*' ook overslaan
+		x = x + 2;
 	}
 	else
 	{
 		(*flag).precision = 1;
 		x++;
-		//onderstaand stukje code is precies hetzelfde als bij width
-		i = x;
-		while (s[x] >= 48 && s[x] <= 57)
-			x++;
-		value_precision = ft_strsub(s, i, x - i);
-		(*flag).prec_value = ft_atoi(value_precision);
-		free(value_precision);
+		//onderstaand stukje code is precies hetzelfde als bij width (zie flags.c)
+		// i = x;
+		// while (s[x] >= 48 && s[x] <= 57)
+		// 	x++;
+		// value_precision = ft_strsub(s, i, x - i);
+		// (*flag).prec_value = ft_atoi(value_precision);
+		// free(value_precision);
+		x = save_prec_width(s, flag, x);
 	}
 	return (x);
 }

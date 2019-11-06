@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:33 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/12 17:41:54 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/11/06 11:31:41 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,16 @@ int		spec_o(char *s, va_list args, t_info *flag, int x)
 	oct_str = ft_itoa_base_ll(i, 8, 0);
 	length = ft_strlen(oct_str);
 	//vanaf hier
-	if ((*flag).precision != 0)
-	{
-		if ((*flag).precision == 1)
-			(*flag).width = (*flag).prec_value;
-		(*flag).zero = 1;
-		(*flag).minus = 0;
-	}
-	if ((*flag).width > 0)
-		fill = (*flag).width - length;
+	// if ((*flag).precision != 0)
+	// {
+	// 	if ((*flag).precision == 1)
+	// 		(*flag).width = (*flag).prec_value;
+	// 	(*flag).zero = 1;
+	// 	(*flag).minus = 0;
+	// }
+	// if ((*flag).width > 0)
+	// 	fill = (*flag).width - length;
+	fill = fill_width_prec(flag, length);
 	//tm hier is hetzelfde als spec_di && spec_u && spec_x
 /*
 	ft_putstr("Omgezette getal (na len_mod_check_u): \n");

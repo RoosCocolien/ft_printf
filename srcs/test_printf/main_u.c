@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 16:43:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 16:03:19 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/06 10:15:19 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	padding_test_u(void)
 static void	plus_sign_test_u(void)
 {
 	printf("\nPlus flag\n");
+	printf("Plus flag doesn't do anything for unsigned\n");
 	printf("\nprintf\t%%+8u\t(327) width: 8, flag: +\n%+8u\n", 327);
 	ft_printf("%+8u\n", 327);
 	printf("\nprintf\t%%+8u\t(0) width: 8, flag: +\n%+8u\n", 0);
@@ -212,19 +213,20 @@ static void hash_u(void)
 	ft_printf("%#u\n", -689);
 	printf("\nprintf\t%%#.*u (10, 374)\n%#.*u\n", 10, 374);
 	ft_printf("%#.*u\n", 10, 374);
-	printf("\nprintf\t%%#0*u (11, 798)\n%#0*u\n", 11, 798);
-	ft_printf("%#0*u\n", 11, 798);
+	printf("\nprintf\t%%#0*u (11, 798)\n");
+	printf("return printf:\t\t%d\n", printf("%#0*u\n", 11, 798));
+	ft_printf("return ft_printf:\t%d\n", ft_printf("%#0*u\n", 11, 798));
 }
 
 int		main(void)
 {
 	simple_test_u();
-//	padding_test_u();
-//	plus_sign_test_u();
-//	combi_plus_space_zero_u();
-//	precision_u();
-//	asterisk_u();
-//	range_check_u();
+	padding_test_u();
+	plus_sign_test_u();
+	combi_plus_space_zero_u();
+	precision_u();
+	asterisk_u();
+	range_check_u();
 	hash_u();
 	return (0);
 }

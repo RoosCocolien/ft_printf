@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 13:20:04 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/06 11:06:16 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -339,16 +339,42 @@ static void		hash(void)
 	ft_printf("%.0e\n", -6.6589);
 }
 
+static void		flag_simple_zero_e(void)
+{
+	double			double_zero;
+	long double		long_double_zero;
+	float			float_zero;
+
+	double_zero = 0.0;
+	long_double_zero = 0.0;
+	float_zero = 0.0;
+	printf("\nprintf\t%%.0E\t(-3.1416)\n%.0E\n", -3.1416);
+	ft_printf("%.0E\n", -3.1416);
+	printf("\nprintf\t%%.0e\t(-6.6589)\n%.0e\n", -6.6589);
+	ft_printf("%.0e\n", -6.6589);
+	ft_printf("\n\nflag_Simple zero E\n\n");
+	ft_printf("double zero (0.0)\n");
+	printf("printf\n%e\n", double_zero);
+	ft_printf("%e\n", double_zero);
+	ft_printf("long double zero (0.0) \n");
+	printf("printf\n%Le\n", long_double_zero);
+	ft_printf("%Le\n", long_double_zero);
+	ft_printf("float zero (0.0)\n");
+	printf("printf\n%Le\n", float_zero);
+	ft_printf("%Le\n", float_zero);
+}
+
 int				main(void)
 {
-	// simple_e();
-	// len_mod_ef();
-	// flags_e();
-	// width_asterisk_e();
-	// precision_e();
-	// no_decimals();
-	// troubles();
+	simple_e();
+	len_mod_ef();
+	flags_e();
+	width_asterisk_e();
+	precision_e();
+	no_decimals();
+	troubles();
 	hash();
+	flag_simple_zero_e();
 	// while(1);
 	return (0);
 }

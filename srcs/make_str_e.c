@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/20 16:11:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 13:22:43 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/06 11:05:49 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char			*ret_str_maker(t_info *flag, char e_not)
 	malloc_size = (*flag).prec_value + (*flag).dot;
 	ret_str = (char*)malloc(sizeof(char) * 5 + malloc_size + 1);
 	ret_str[5 + malloc_size] = '\0';
-	while (i < 5 + malloc_size && ret_str[i])
+	while (i < 5 + malloc_size)
 	{
 		ret_str[i] = '0';
 		i++;

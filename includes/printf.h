@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 09:07:30 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/06 12:04:52 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ size_t					digit_count(intmax_t value, int base);
 void					print_digit(t_info *flag, unsigned long long nb);
 void					print_address(t_info *flag, char *s);
 void					print_string(t_info *flag, char *s, int fill);
-void					print_binary(t_info *flag, char *s);
+void					print_neg(t_info *flag);
 
 /*
 **	ft_printf.c
@@ -123,6 +123,7 @@ int						check_precision(char *s, t_info *flag, int x);
 void					set_zero_flags(t_info *flag);
 int						check_flag_plus(t_info *flag, int fill, int left_align);
 int						check_flag_space(t_info *flag, int fill, int left_align);
+int						save_prec_width(char *s, t_info *flag, int x);
 
 /*
 **	colors.c
@@ -133,7 +134,7 @@ int						color_setter(char *str, int x);
 **	precision.c
 */
 void					prec_and_zero_check(va_list args, t_info *flag, char spec);
-void					prec_change_settings_e(t_info *flag);
+int						fill_width_prec(t_info *flag, int length);
 
 /*
 **	roundup.c

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/20 12:25:22 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 08:36:12 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/06 12:11:33 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,9 +267,9 @@ static void	hash_flag_di()
 	printf("return: %#d\n", ft_printf("%+05#d\n", -7));
 	ft_printf("\nprintf %%+05#d, 1536924\n");
 	printf("%+05#d\n", 1536924);
-	printf("return: %#d\n", printf("%+05#d\n", 1536924));
+	printf("return: %#d\n", printf("bla bla %i bla bla %+05#d\n", 3, 1536924));
 	ft_printf("%+05#d\n", 1536924);
-	printf("return: %#d\n", ft_printf("%+05#d\n", 1536924));
+	printf("return: %#d\n", ft_printf("bla bla %i bla bla %+05#d\n", 3, 1536924));
 }
 
 int		main(void)
