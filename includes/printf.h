@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 14:35:57 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/06 09:07:30 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int						save_flags(char *s, t_info *flag, int x);
 **	flags2.c
 */
 int						check_precision(char *s, t_info *flag, int x);
-void					set_zero_flags(t_info *flag, int start_count);
+void					set_zero_flags(t_info *flag);
 int						check_flag_plus(t_info *flag, int fill, int left_align);
 int						check_flag_space(t_info *flag, int fill, int left_align);
 

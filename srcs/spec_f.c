@@ -34,6 +34,7 @@ int		spec_f(char *s, va_list args, t_info *flag, int x)
 	fill = change_fill(flag, fill, length);
 	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
 		put_padding(flag, fill);
+	//this neg printing is the same for e and f
 	if ((*flag).neg == 1 && (*flag).zero != 1)
 	{
 		ft_putchar('-');

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 16:43:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/12 17:40:15 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/11/06 08:45:18 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,20 +263,20 @@ static void hash_flag_o(void)
 	printf("\nprintf\t%%+05#o\t(38)\
 	Visible plus sign, fill 0, width 5\n%+05#o\n", 38);
 	ft_printf("%+05#o\n", 38);
-	printf("\nprintf\t%%+05#o\t(97)\
-	Visible plus sign, fill 0, width 5\n%+05#o\n", 97);
-	ft_printf("%+05#o\n", 97);
+	printf("\nprintf\t%%+05#o\t(97) Visible plus sign, fill 0, width 5\n");
+	ft_printf("return: %d\n", printf("Result: %+05#o\n", 97));
+	ft_printf("return: %d\n", ft_printf("Result: %+05#o\n", 97));
 }
 
 int		main(void)
 {
-//	simple_test_o();
-//	padding_test_o();
-//	plus_sign_test_o();
-//	combi_plus_space_zero_o();
-//	precision_o();
-//	asterisk_o();
-//	range_check_o();
+	simple_test_o();
+	padding_test_o();
+	plus_sign_test_o();
+	combi_plus_space_zero_o();
+	precision_o();
+	asterisk_o();
+	range_check_o();
 	hash_flag_o();
 	return (0);
 }

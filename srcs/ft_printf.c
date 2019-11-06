@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:28:36 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/08 15:45:52 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/06 09:07:03 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,15 @@ int			loop_format_args(char *s, va_list args)
 {
 	t_info	flag;
 	int		x;
-	int		start_count;
 
 	x = 0;
-	start_count = 0;
+	flag.count = 0;
 	while (s[x])
 	{
 		if (s[x] == '%')
 		{
 			x++;
-			set_zero_flags(&flag, start_count);
-			start_count++;
+			set_zero_flags(&flag);
 			x = save_flags(s, &flag, x);
 //			print_flags(flag);	//this can be removed
 			if (x == -1)

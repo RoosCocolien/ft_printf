@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/20 12:25:22 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/12 17:29:37 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/11/06 08:36:12 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,13 +274,13 @@ static void	hash_flag_di()
 
 int		main(void)
 {
-//	extra_space_plus_di();
-//	simple_test_di();
-//	padding_test_di();
-//	combi_plus_space_zero_di();
-//	precision_di();
-//	asterisk_di();
-//	range_check_di();
+	extra_space_plus_di();
+	simple_test_di();
+	padding_test_di();
+	combi_plus_space_zero_di();
+	precision_di();
+	asterisk_di();
+	range_check_di();
 	hash_flag_di();
 	return (0);
 }

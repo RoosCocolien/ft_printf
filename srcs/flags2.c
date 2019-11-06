@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/12 14:25:20 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/04 15:15:38 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/06 09:07:18 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		check_precision(char *s, t_info *flag, int x)
 	return (x);
 }
 
-void		set_zero_flags(t_info *flag, int start_count)
+void		set_zero_flags(t_info *flag)
 {
 	(*flag).minus = 0;
 	(*flag).zero = 0;
@@ -90,8 +90,6 @@ void		set_zero_flags(t_info *flag, int start_count)
 	(*flag).hh = 0;
 	(*flag).l_cap = 0;
 	(*flag).neg = 0;
-	if (start_count == 0)
-		(*flag).count = 0;
 	(*flag).power = 0;
 	(*flag).power_not = 0;
 	(*flag).no_decimals = 0;
