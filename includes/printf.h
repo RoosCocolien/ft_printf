@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/07 15:07:02 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/07 15:47:49 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ typedef struct s_info
 }				t_info;
 
 //Moeten naar libft
-char					*ft_itoa_llu(unsigned long long n);
-int						ft_intlength(unsigned long long y);
-unsigned long long   	ft_roundup(unsigned long long d);
+char					*ft_itoa_llu(unsigned long long n);	//deze gebruik ik, verplaatsen naar libft
+int						ft_intlength(unsigned long long y);	//zelfde als digit count?
+unsigned long long   	ft_roundup(unsigned long long d);	//
 int     				ft_deci_count(double d);
 int     				ft_zero_count(char *str);
-char					*ft_itoa_base_ll(intmax_t value, int base, int cap);
-size_t					ft_digit_count(intmax_t value, int base);
+char					*ft_itoa_base_ll(intmax_t value, int base, int cap);	//deze gebruik ik, verplaatsen naar libft
+size_t					ft_digit_count(intmax_t value, int base);	//deze gebruik ik
 
 /*
 **	print.c
