@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:36:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 12:34:06 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/07 15:10:57 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void		find_len_decimals(long double i, t_info *flag)
 {
 	int					digits;
 
-	digits = digit_count(i, 10);
+	digits = ft_digit_count(i, 10);
 	(*flag).dot = 1;
 	if ((*flag).precision != 0 && (*flag).prec_value == 0 && (*flag).hash != 0)
 		(*flag).dot = 0;

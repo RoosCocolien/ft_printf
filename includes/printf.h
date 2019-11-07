@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 12:04:52 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/07 15:07:02 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ unsigned long long   	ft_roundup(unsigned long long d);
 int     				ft_deci_count(double d);
 int     				ft_zero_count(char *str);
 char					*ft_itoa_base_ll(intmax_t value, int base, int cap);
-size_t					digit_count(intmax_t value, int base);
+size_t					ft_digit_count(intmax_t value, int base);
 
 /*
 **	print.c

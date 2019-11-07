@@ -6,7 +6,7 @@
 /*   By: rsteigen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/28 10:37:26 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/18 13:39:17 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/07 15:08:30 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static char		*fill_str(int value, int base, int len, int sign)
 	int		i;
 
 	i = 1;
-	//s_base = (char*)malloc(sizeof(char) * 17);
 	s_base = "0123456789ABCDEF";
 	s = (char*)malloc(sizeof(char) * (len + 1));
 	if (sign)
@@ -72,7 +71,7 @@ char			*ft_itoa_base_cap(int value, int base)
 		value = -value;
 	if (value == 0)
 		return ("0");
-	len = digit_count(value, base);
+	len = ft_digit_count(value, base);
 	if (sign)
 		len += 1;
 	s = fill_str(value, base, len, sign);

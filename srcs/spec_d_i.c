@@ -6,25 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:44:31 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 12:18:21 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/07 13:51:24 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-
-/*
-** This function will print an integer and consider
-** the used flags.
-** print: 					OK
-** consideration of flags:	OK
-**
-**	int	fill -> difference between flag.width && length
-**	(taking other flags like precision in consideration)
-**
-** DOESN'T WORK WITH:
-** -long int	
-** 
-*/
 
 int		spec_d_i(char *s, va_list args, t_info *flag, int x)
 {
@@ -33,12 +19,7 @@ int		spec_d_i(char *s, va_list args, t_info *flag, int x)
 	int						fill;
 
 	fill = 0;
-	prec_and_zero_check(args, flag, s[i]);
-	// if ((*flag).precision == 2)
-	// 	(*flag).width = va_arg(args, int);
-	// if ((*flag).width == 1 && (*flag).asterisk == 1 && (*flag).precision == 0)
-	// 	(*flag).width = va_arg(args, int);
-/* flag '0' is ignored when flag '-' is used, same everywhere? */
+	prec_and_zero_check(args, flag, s[x]);
 	if ((*flag).zero == 1 && (*flag).minus == 1)
 		(*flag).zero = 0;
 	i = len_mod_check_di(args, flag);
