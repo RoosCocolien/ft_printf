@@ -1,33 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_itoa_ll.c                                       :+:    :+:            */
+/*   ft_itoa_llu.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/12 14:25:20 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 11:05:55 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/07 18:49:51 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
-
-int				ft_intlength(unsigned long long y)
-{
-	int		cx;
-
-	cx = 0;
-	if (y == 0)
-	{
-		return (1);
-	}
-	while (y != 0)
-	{
-		cx++;
-		y = y / 10;
-	}
-	return (cx);
-}
+#include "includes/libft.h"
 
 static char		*ft_itoa_cpy(char *str, int cx, int intlen,
 unsigned long long n)
@@ -46,7 +29,7 @@ unsigned long long n)
 	return (str);
 }
 
-char			*ft_itoa_llu(unsigned long long n)
+char				*ft_itoa_llu(unsigned long long n)
 {
 	int		cx;
 	int		intlen;

@@ -6,24 +6,11 @@
 /*   By: rsteigen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/28 10:37:26 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/07 15:08:30 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/07 18:56:34 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static size_t	digit_count(long nb, int base)
-{
-	size_t	i;
-
-	i = 0;
-	while (nb)
-	{
-		nb = nb / base;
-		i++;
-	}
-	return (i);
-}
 
 static int		check_sign(int value, int base)
 {

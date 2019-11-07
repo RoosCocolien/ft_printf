@@ -6,17 +6,16 @@
 /*   By: rsteigen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/28 10:37:26 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/07 15:06:43 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/07 18:56:29 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "libft.h"
 
 static char		*fill_str(intmax_t value, int base, int len, int cap)
 {
 	char	*s;
 	char	*s_base;
-	int		i;
 
 	s = (char*)malloc(sizeof(char) * (len + 1));
 	s[len] = '\0';

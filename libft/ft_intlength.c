@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_deci_count.c                                    :+:    :+:            */
+/*   ft_intlength.c                                     :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rsteigen <marvin@codam.nl>                   +#+                     */
+/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/06/24 18:07:39 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/01 16:21:09 by rsteigen      ########   odam.nl         */
+/*   Created: 2019/11/07 18:28:18 by rsteigen       #+#    #+#                */
+/*   Updated: 2019/11/07 18:35:38 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "includes/libft.h"
 
-int		ft_deci_count(double d)
+int				ft_intlength(unsigned long long y)
 {
-	int i;
+	int		cx;
 
-	i = 0;
-	while (d > 10)
+	cx = 0;
+	if (y == 0)
 	{
-		d = d / 10;
-		i++;
+		return (1);
 	}
-	return (i);
+	while (y != 0)
+	{
+		cx++;
+		y = y / 10;
+	}
+	return (cx);
 }
