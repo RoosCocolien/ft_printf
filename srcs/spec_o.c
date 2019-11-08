@@ -6,27 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:33 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 11:31:41 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/08 14:30:56 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-
-/*
-** This function will print an unsigned int in octal (base 8) and consider
-** the used flags.
-** print: 					OK
-** consideration of flags:	OK
-*/
-
-/*
-** STEPS:
-** flag.width of flag.precision opslaan
-** dan len_mod_check(u)
-** getal omzetten naar oct 8 (string)
-** dan lengte checken (van de string)
-** en consideration van andere flags
-*/
 
 int		spec_o(char *s, va_list args, t_info *flag, int x)
 {
@@ -43,36 +27,15 @@ int		spec_o(char *s, va_list args, t_info *flag, int x)
 	i = len_mod_check_u(args, flag, s[x]);
 	oct_str = ft_itoa_base_ll(i, 8, 0);
 	length = ft_strlen(oct_str);
-	//vanaf hier
-	// if ((*flag).precision != 0)
-	// {
-	// 	if ((*flag).precision == 1)
-	// 		(*flag).width = (*flag).prec_value;
-	// 	(*flag).zero = 1;
-	// 	(*flag).minus = 0;
-	// }
-	// if ((*flag).width > 0)
-	// 	fill = (*flag).width - length;
 	fill = fill_width_prec(flag, length);
-	//tm hier is hetzelfde als spec_di && spec_u && spec_x
-/*
-	ft_putstr("Omgezette getal (na len_mod_check_u): \n");
-	print_digit(flag, i);
-	ft_putchar('\n');
-	ft_putstr("Length oct_str: \n");
-	ft_putnbr(length);
-	ft_putchar('\n');
-	ft_putstr("Octal getal: \n");
-	ft_putstr(oct_str);
-	ft_putchar('\n');
-*/
 	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
 		put_padding(flag, fill);
-	else if (i != 0 && (*flag).hash == 1)
-	{
-		ft_putchar('0');
-		(*flag).count++;
-	}
+	print_zero(flag, i);
+	// else if (i != 0 && (*flag).hash == 1)
+	// {
+	// 	ft_putchar('0');
+	// 	(*flag).count++;
+	// }
 	ft_putstr(oct_str);
 	(*flag).count += length;
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)

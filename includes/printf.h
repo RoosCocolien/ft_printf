@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/07 18:57:19 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/08 14:32:22 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void					print_digit(t_info *flag, unsigned long long nb);
 void					print_address(t_info *flag, char *s);
 void					print_string(t_info *flag, char *s, int fill);
 void					print_neg(t_info *flag);
+void					print_zero(t_info *flag, long long i);
 
 /*
 **	ft_printf.c

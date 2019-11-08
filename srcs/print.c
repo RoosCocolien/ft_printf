@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:23:54 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 12:06:26 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/08 14:31:54 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,15 @@ void	print_neg(t_info *flag)
 	if ((*flag).neg == 1 && (*flag).zero != 1)
 	{
 		ft_putchar('-');
+		(*flag).count++;
+	}
+}
+
+void	print_zero(t_info *flag, long long i)
+{
+	if (i != 0 && (*flag).hash == 1)
+	{
+		ft_putchar('0');
 		(*flag).count++;
 	}
 }

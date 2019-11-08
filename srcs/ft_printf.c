@@ -6,15 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:28:36 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 09:07:03 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/08 19:48:26 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-
-/*
-** if something goes wrong in print_content, return (-1);
-*/
 
 static int	print_content(t_info *flag, char *s, int x)
 {
@@ -50,7 +46,6 @@ int			loop_format_args(char *s, va_list args)
 			x++;
 			set_zero_flags(&flag);
 			x = save_flags(s, &flag, x);
-//			print_flags(flag);	//this can be removed
 			if (x == -1)
 			{
 				printf("Error ft_printf.c from save_flags.c\n");
