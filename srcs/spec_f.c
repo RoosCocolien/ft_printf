@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   spec_f.c                                          :+:    :+:            */
+/*   spec_f.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:15:44 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/09/27 13:17:38 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/10 15:22:33 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-
-/*
-** This function will print an double and consider
-** the used flags.
-** print: 					OK
-** consideration of flags:	OK
-*/
 
 int		spec_f(char *s, va_list args, t_info *flag, int x)
 {

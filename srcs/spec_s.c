@@ -6,18 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:52 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/09/20 18:55:02 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/10 15:31:34 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-
-/*
-** This function will print an null-terminated string and consider
-** the used flags.
-** print: 					OK
-** consideration of flags:	OK
-*/
 
 static int	put_part_str(char *str, int max)
 {
@@ -38,15 +31,7 @@ int			spec_s(char *s, va_list args, t_info *flag, int x)
 	int		fill;
 	int		length;
 
-	if ((*flag).precision != 0)
-	{
-		if ((*flag).precision == 2)
-			(*flag).width = va_arg(args, int);
-		if ((*flag).precision == 1)
-			(*flag).width = (*flag).prec_value;
-		(*flag).zero = 0;
-		(*flag).minus = 0;
-	}
+	pres_width_s(args, flag);
 	str = va_arg(args, char*);
 	length = ft_strlen(str);
 	if (length < (*flag).width && (*flag).precision != 0)

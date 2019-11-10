@@ -6,18 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:47:36 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/09/20 18:53:58 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/10 15:20:47 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-
-/*
-** This function will print an character and consider
-** the used flags.
-** print: 					OK
-** consideration of flags:	OK
-*/
 
 int		spec_c(char *s, va_list args, t_info *flag, int x)
 {
