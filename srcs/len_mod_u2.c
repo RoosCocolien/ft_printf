@@ -14,11 +14,7 @@
 
 unsigned long long		check_u(va_list args, t_info *flag, char conv_spec)
 {
-//	unsigned int (u)
 	unsigned int		uns_int;
-//	octal int (o)
-//	hexal int (x)
-//	hexal int (X)
 	unsigned long long	i;
 
 	if (conv_spec == 'u' || conv_spec == 'o' || conv_spec == 'x'\
@@ -27,6 +23,5 @@ unsigned long long		check_u(va_list args, t_info *flag, char conv_spec)
 		uns_int = va_arg(args, unsigned int);
 		i = (unsigned long long)uns_int;
 	}
-	//else? // i = ?
 	return (i);
 }

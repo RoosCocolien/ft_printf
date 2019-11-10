@@ -6,15 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:48:28 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/07 13:49:14 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/10 15:03:25 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-
-/*
-**	I use this function for spec e, spec f and spec x.
-*/
 
 int		fill_width_prec(t_info *flag, int length)
 {

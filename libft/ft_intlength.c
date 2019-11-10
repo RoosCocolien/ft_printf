@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 18:28:18 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/07 18:35:38 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/10 14:53:21 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int				ft_intlength(unsigned long long y)
 
 	cx = 0;
 	if (y == 0)
-	{
 		return (1);
+	if (cx < 0)
+	{
+		y = -y;
+		cx++;
 	}
 	while (y != 0)
 	{

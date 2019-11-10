@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/12 14:25:20 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 11:21:55 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/10 14:31:42 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,6 @@ int		check_precision(char *s, t_info *flag, int x)
 	{
 		(*flag).precision = 1;
 		x++;
-		//onderstaand stukje code is precies hetzelfde als bij width (zie flags.c)
-		// i = x;
-		// while (s[x] >= 48 && s[x] <= 57)
-		// 	x++;
-		// value_precision = ft_strsub(s, i, x - i);
-		// (*flag).prec_value = ft_atoi(value_precision);
-		// free(value_precision);
 		x = save_prec_width(s, flag, x);
 	}
 	return (x);

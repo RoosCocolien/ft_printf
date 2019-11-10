@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:28:36 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/08 19:48:26 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/10 14:14:36 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	print_content(t_info *flag, char *s, int x)
 {
-	char 	*color_str;
-	int 	color;
+	char	*color_str;
+	int		color;
 	int		save;
 
 	while (s[x] && s[x] != '%')
@@ -44,28 +44,18 @@ int			loop_format_args(char *s, va_list args)
 		if (s[x] == '%')
 		{
 			x++;
-			set_zero_flags(&flag);
 			x = save_flags(s, &flag, x);
 			if (x == -1)
-			{
-				printf("Error ft_printf.c from save_flags.c\n");
 				return (-1);
-			}
 			x = find_spec(s, args, &flag, x);
 			if (x == -1)
-			{
-				printf("Error ft_printf.c from find_spec.c, %c\n", s[x]);
 				return (-1);
-			}
 		}
 		else
 		{
 			x = print_content(&flag, s, x);
 			if (x == -1)
-			{
-				printf("Error ft_printf.c from print_content\n");
 				return (-1);
-			}
 		}
 	}
 	return (flag.count);
@@ -79,10 +69,7 @@ int			ft_printf(const char *restrict format, ...)
 	va_start(args, format);
 	count = loop_format_args((char*)format, args);
 	if (count == -1)
-	{
-		printf("Error ft_printf.c from loop_format_args\n");
 		return (-1);
-	}
 	va_end(args);
 	return (count);
 }

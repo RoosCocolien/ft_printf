@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/20 16:11:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 11:05:49 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/10 14:48:02 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,35 +35,41 @@ long double			find_power(long double i, t_info *flag)
 	return (i);
 }
 
-static char			*ret_str_maker(t_info *flag, char e_not)
+static char			*fill_ret_str(t_info *flag, char not, int mal_size, int i)
 {
-	char	*ret_str;
-	int		i;
-	int		malloc_size;
+	char *ret_str;
 
-	i = 0;
-	malloc_size = (*flag).prec_value + (*flag).dot;
-	ret_str = (char*)malloc(sizeof(char) * 5 + malloc_size + 1);
-	ret_str[5 + malloc_size] = '\0';
-	while (i < 5 + malloc_size)
+	ret_str = (char*)malloc(sizeof(char) * 5 + mal_size + 1);
+	ret_str[5 + mal_size] = '\0';
+	while (i < 5 + mal_size)
 	{
 		ret_str[i] = '0';
 		i++;
 	}
 	if ((*flag).no_decimals == 0 || (*flag).dot == 1)
 		ret_str[1] = '.';
-	ret_str[1 + malloc_size] = e_not;
-	ret_str[2 + malloc_size] = (*flag).power_not;
+	ret_str[1 + mal_size] = not;
+	ret_str[2 + mal_size] = (*flag).power_not;
 	if ((*flag).power >= 10)
 	{
-		ret_str[3 + malloc_size] = ((*flag).power / 10) + 48;
-		ret_str[4 + malloc_size] = ((*flag).power % 10) + 48;
+		ret_str[3 + mal_size] = ((*flag).power / 10) + 48;
+		ret_str[4 + mal_size] = ((*flag).power % 10) + 48;
 	}
 	else
 	{
-		ret_str[3 + malloc_size] = '0';
-		ret_str[4 + malloc_size] = (*flag).power + 48;
+		ret_str[3 + mal_size] = '0';
+		ret_str[4 + mal_size] = (*flag).power + 48;
 	}
+	return (ret_str);
+}
+
+static char			*ret_str_maker(t_info *flag, char e_not)
+{
+	char	*ret_str;
+	int		malloc_size;
+
+	malloc_size = (*flag).prec_value + (*flag).dot;
+	ret_str = fill_ret_str(flag, e_not, malloc_size, 0);
 	return (ret_str);
 }
 
