@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 16:47:00 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/10 18:13:53 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void				print_digit(t_info *flag, unsigned long long nb);
 void				print_address(t_info *flag, char *s);
 void				print_string(t_info *flag, char *s, int fill);
 void				print_neg(t_info *flag);
-void				print_zero(t_info *flag, long long i);
+void				print_zero(t_info *flag, long long i, char *oct_str, int fill);
 
 /*
 **	ft_printf.c
@@ -124,6 +124,7 @@ int					color_setter(char *str, int x);
 void				prec_and_zero_check(va_list args, t_info *flag, char spec);
 int					fill_width_prec(t_info *flag, int length);
 void				pres_width_s(va_list args, t_info *flag);
+void				get_prec_width(va_list args, t_info *flag, char spec);
 
 /*
 **	roundup.c
@@ -203,6 +204,6 @@ int					spec_n(char *s, va_list args, t_info *flag, int x);
 */
 int					put_0x_spec_f(int count, char spec);
 int					change_fill(t_info *flag, int fill, int length);
-void				put_padding(t_info *flag, int fill);
+void				put_padding(t_info *flag, int fill, int spec);
 
 #endif

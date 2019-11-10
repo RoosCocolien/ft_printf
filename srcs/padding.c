@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:55:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 15:02:36 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/10 18:11:46 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		change_fill(t_info *flag, int fill, int length)
 	return (fill);
 }
 
-void	put_padding(t_info *flag, int fill)
+void	put_padding(t_info *flag, int fill, int spec)
 {
 	char	char_fill;
 

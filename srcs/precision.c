@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:48:28 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 16:34:02 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/10 17:54:44 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void		pres_width_s(va_list args, t_info *flag)
 	}
 }
 
-static void	get_prec_width(va_list args, t_info *flag, char spec)
+void		get_prec_width(va_list args, t_info *flag, char spec)
 {
 	if ((*flag).precision == 2)
 	{
 		if (spec == 'p' || spec == 'x' || spec == 'd' || spec == 'i'\
-		|| spec == 'u')
+		|| spec == 'u' || spec == 'o')
 			(*flag).width = va_arg(args, int);
 		else
 			(*flag).prec_value = va_arg(args, int);

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 16:43:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 08:45:18 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/10 18:04:50 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,6 @@ static void asterisk_o(void)
 	printf("Asterisk PRECISION\n");
 	printf("\nprintf\t%%.*o (10, 374)\n%.*o\n", 10, 374);
 	ft_printf("%.*o\n", 10, 374);
-
 	printf("\nAsterisk WIDTH\n");
 	printf("\nprintf\t%%0*o (11, 798)\n%0*o\n", 11, 798);
 	ft_printf("%0*o\n", 11, 798);
@@ -235,15 +234,14 @@ static void hash_flag_o(void)
 	printf("Asterisk PRECISION\n");
 	printf("\nprintf\t%%.*#o (10, 374)\n%.*#o\n", 10, 374);
 	ft_printf("%.*#o\n", 10, 374);
-
 	printf("\nAsterisk WIDTH #\n");
 	printf("\nprintf\t%%0*#o (11, 798)\n%0*#o\n", 11, 798);
 	ft_printf("%0*#o\n", 11, 798);
 	printf("\nPrecision with #\n");
 	printf("\nprintf\t%%.7#o\t(354) min digits: 7\n%.7#o\n", 354);
 	ft_printf("%.7#o\n", 354);
-	printf("\nprintf\t%%-.7#o\t(997) min digits: 7, align left ('-')\n%-.7#o\n",\
-	997);
+	printf("\nprintf\t%%-.7#o\t(997) min digits: 7, align left\
+	('-')\n%-.7#o\n", 997);
 	ft_printf("%-.7#o\n", 997);
 	printf("\nprintf\t%%0.7#o\t(997) min digits: 7, zero\n%0.7#o\n", 632);
 	ft_printf("%0.7#o\n", 632);
@@ -260,12 +258,24 @@ static void hash_flag_o(void)
 	printf("\nprintf\t%% 05#o\t(-461)\
 	Invisible plus sign, fill 0, width 5\n% 05#o\n", -461);
 	ft_printf("% 05#o\n", -461);
+	printf("\nprintf\t%% 05o\t(-461)\
+	Invisible plus sign, fill 0, width 5\n% 05o\n", -461);
+	ft_printf("% 05o\n", -461);
 	printf("\nprintf\t%%+05#o\t(38)\
 	Visible plus sign, fill 0, width 5\n%+05#o\n", 38);
 	ft_printf("%+05#o\n", 38);
 	printf("\nprintf\t%%+05#o\t(97) Visible plus sign, fill 0, width 5\n");
 	ft_printf("return: %d\n", printf("Result: %+05#o\n", 97));
 	ft_printf("return: %d\n", ft_printf("Result: %+05#o\n", 97));
+	printf("\nprintf\t%%+05o\t(97) Visible plus sign, fill 0, width 5\n");
+	ft_printf("return: %d\n", printf("Result: %+05o\n", 97));
+	ft_printf("return: %d\n", ft_printf("Result: %+05o\n", 97));
+	printf("\nprintf\t%%+05#o\t(12345) Visible plus sign, fill 0, width 5\n");
+	ft_printf("return: %d\n", printf("Result: %+05#o\n", 12345));
+	ft_printf("return: %d\n", ft_printf("Result: %+05#o\n", 12345));
+	printf("\nprintf\t%%+04#o\t(12345) Visible plus sign, fill 0, width 5\n");
+	ft_printf("return: %d\n", printf("Result: %+04#o\n", 12345));
+	ft_printf("return: %d\n", ft_printf("Result: %+04#o\n", 12345));
 }
 
 int		main(void)
