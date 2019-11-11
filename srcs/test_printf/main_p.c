@@ -6,11 +6,12 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/10 15:24:21 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 15:33:45 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/11 14:59:47 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/printf.h"
+#define LONG_MAX 2147483647
 
 /*
 ** indien spec == 'p', change settings of the flags
@@ -171,6 +172,18 @@ static void		troubles(void)
 	ft_printf("%.*x.\n", 17, str3);
 }
 
+static void		make_test_p(void)
+{
+	printf("return_pf:\t(%%p)\t%d\n", printf("%p\n", LONG_MAX));
+	printf("return_fpf:\t(%%p)\t%d\n", ft_printf("%p\n", LONG_MAX));
+	printf("return_pf:\t(%%p)\t%d\n", printf("%p\n", LONG_MAX + 12));
+	printf("return_fpf:\t(%%p)\t%d\n", ft_printf("%p\n", LONG_MAX + 12));
+	printf("return_pf:\t(%%.5p)\t%d\n", printf("%.5p\n", 32));
+	printf("return_fpf:\t(%%.5p)\t%d\n", ft_printf("%.5p\n", 32));
+	printf("return_pf:\t(%%9.0p)\t%d\n", printf("%9.0p\n", 482));
+	printf("return_fpf:\t(%%9.0p)\t%d\n", ft_printf("%9.0p\n", 482));
+}
+
 int		main(void)
 {
 	simple_p();
@@ -178,5 +191,6 @@ int		main(void)
 	precision_p();
 	padding_p();
 	troubles();
+	make_test_p();
 	return (0);
 }

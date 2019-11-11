@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 18:13:53 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/11 16:16:26 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /*
 **	remove <stdio.h>
 */
+
 # include <stdarg.h>
 # include <stdlib.h>
 # include "../libft/includes/libft.h"
@@ -33,6 +34,7 @@ typedef struct		s_info
 	int				asterisk;
 	int				precision;
 	int				prec_value;
+	int				prec_no_val;
 	int				l;
 	int				ll;
 	int				h;
@@ -48,65 +50,64 @@ typedef struct		s_info
 }					t_info;
 
 /*
-**	print.c
-*/
-void				print_digit(t_info *flag, unsigned long long nb);
-void				print_address(t_info *flag, char *s);
-void				print_string(t_info *flag, char *s, int fill);
-void				print_neg(t_info *flag);
-void				print_zero(t_info *flag, long long i, char *oct_str, int fill);
-
-/*
 **	ft_printf.c
 */
+
 int					ft_printf(const char *restrict format, ...);
 int					loop_format_args(char *s, va_list args);
 
 /*
-**	len_mod_di.c
+**	conversion specifiers functions
 */
+
+int					find_spec(char *s, va_list args, t_info *flag, int x);
+int					find_spec_2(char *s, va_list args, t_info *flag, int x);
+int					spec_d_i(char *s, va_list args, t_info *flag, int x);
+int					spec_f(char *s, va_list args, t_info *flag, int x);
+int					spec_s(char *s, va_list args, t_info *flag, int x);
+int					spec_c(char *s, va_list args, t_info *flag, int x);
+int					spec_perc(char *s, va_list args, t_info *flag, int x);
+int					spec_e(char *s, va_list args, t_info *flag, int x);
+int					spec_o(char *s, va_list args, t_info *flag, int x);
+int					spec_x(char *s, va_list args, t_info *flag, int x);
+int					spec_u(char *s, va_list args, t_info *flag, int x);
+int					spec_p(char *s, va_list args, t_info *flag, int x);
+
+/*
+**	print functions
+*/
+
+void				print_digit(t_info *flag, unsigned long long nb);
+void				print_address(t_info *flag, char *s);
+void				print_string(t_info *flag, char *s, int fill);
+void				print_neg(t_info *flag);
+void				print_zero(t_info *flag, long long i, char *oct_str,\
+int fill);
+
+/*
+**	length modifier functions
+*/
+
 unsigned long long	len_mod_check_di(va_list args, t_info *flag);
-
-/*
-**	len_mod_di2.c
-*/
 unsigned long long	check_int(va_list args, t_info *flag);
-
-/*
-**	len_mod_ef.c
-*/
 long double			len_mod_check_efg(va_list args, t_info *flag);
-
-/*
-**	len_mod_u.c
-*/
 intmax_t			len_mod_check_u(va_list args, t_info *flag,\
 char conv_spec);
-
-/*
-**	len_mod_u2.c
-*/
 unsigned long long	check_u(va_list args, t_info *flag, char conv_spec);
 
 /*
-**	make_str_e.c
+**	make string functions
 */
+
 char				*make_str_e(long double i, t_info *flag, char e_not);
 long double			find_power(long double i, t_info *flag);
-
-/*
-**	make_str_f.c
-*/
 char				*make_str_f(long double i, t_info *flag);
 
 /*
-**	flags.c
+**	save flags functions
 */
-int					save_flags(char *s, t_info *flag, int x);
 
-/*
-**	flags2.c
-*/
+int					save_flags(char *s, t_info *flag, int x);
 int					check_precision(char *s, t_info *flag, int x);
 void				set_zero_flags(t_info *flag);
 int					check_flag_plus(t_info *flag, int fill, int left_align);
@@ -116,94 +117,32 @@ int					save_prec_width(char *s, t_info *flag, int x);
 /*
 **	colors.c
 */
+
 int					color_setter(char *str, int x);
 
 /*
-**	precision.c
+**	precision
 */
+
 void				prec_and_zero_check(va_list args, t_info *flag, char spec);
 int					fill_width_prec(t_info *flag, int length);
 void				pres_width_s(va_list args, t_info *flag);
 void				get_prec_width(va_list args, t_info *flag, char spec);
 
 /*
-**	roundup.c
+**	roundup
 */
+
 unsigned long long	ten_to_the_power_of(int power);
 long double			roundup_e(long double i, t_info *flag, int prec);
 long double			roundup_f(long double i, int prec);
 
 /*
-**	spec.c
-*/
-int					find_spec(char *s, va_list args, t_info *flag, int x);
-int					find_spec_2(char *s, va_list args, t_info *flag, int x);
-
-/*
-**	spec_d_i.c
-*/
-int					spec_d_i(char *s, va_list args, t_info *flag, int x);
-
-/*
-**	error_d_i.c
-*/
-int					error_d_i(t_info flag, long long int i);
-
-/*
-**	spec_f.c
-*/
-int					spec_f(char *s, va_list args, t_info *flag, int x);
-
-/*
-**	spec_s.c
-*/
-int					spec_s(char *s, va_list args, t_info *flag, int x);
-
-/*
-**	spec_c.c
-*/
-int					spec_c(char *s, va_list args, t_info *flag, int x);
-
-/*
-**	spec_perc.c
-*/
-int					spec_perc(char *s, va_list args, t_info *flag, int x);
-
-/*
-**	spec_e.c
-*/
-int					spec_e(char *s, va_list args, t_info *flag, int x);
-
-/*
-**	spec_o.c
-*/
-int					spec_o(char *s, va_list args, t_info *flag, int x);
-
-/*
-**	spec_x.c
-*/
-int					spec_x(char *s, va_list args, t_info *flag, int x);
-
-/*
-**	spec_u.c
-*/
-int					spec_u(char *s, va_list args, t_info *flag, int x);
-
-/*
-**	spec_p.c
-*/
-int					spec_p(char *s, va_list args, t_info *flag, int x);
-
-/*
-**	spec_n.c
-*/
-int					spec_n(char *s, va_list args, t_info *flag, int x);
-
-/*
 **	padding.c
 */
+
 int					put_0x_spec_f(int count, char spec);
 int					change_fill(t_info *flag, int fill, int length);
-void				put_padding(t_info *flag, int fill, int spec);
+void				put_padding(t_info *flag, int fill);
 
 #endif

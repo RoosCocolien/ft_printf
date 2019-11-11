@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/08 18:03:42 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 15:50:43 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/11 15:03:59 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void		simple(void)
 	ft_printf("%05+c\n", 'k');
 }
 
-void		hash(void)
+static void		hash(void)
 {
 	printf("Test # flag\n");
 	printf("printf %%#c\n");
@@ -56,9 +56,20 @@ void		hash(void)
 	ft_printf("%#05c\n", 'c');
 }
 
+static void		make_test_c(void)
+{
+	printf("return_pf:\t(%%s)\t%d\n", printf("%s\n", NULL));
+	printf("return_fpf:\t(%%s)\t%d\n", ft_printf("%s\n", NULL));
+	printf("return_pf:\t(%%.3s)\t%d\n", printf("%.3s\n", NULL));
+	printf("return_fpf:\t(%%.3s)\t%d\n", ft_printf("%.3s\n", NULL));
+	printf("return_pf:\t(%%50.3s)\t%d\n", printf("%50.3s\n", NULL));
+	printf("return_fpf:\t(%%50.3s)\t%d\n", ft_printf("%50.3s\n", NULL));
+}
+
 int		main(void)
 {
 	simple();
 	hash();
+	make_test_c();
 	return (0);
 }

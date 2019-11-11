@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:23:54 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 18:27:41 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/11 16:50:36 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,21 @@ void	print_digit(t_info *flag, unsigned long long nb)
 	(*flag).precision == 0 && (*flag).zero == 0)
 	{
 		ft_putchar('+');
+		(*flag).plus++;
 		(*flag).count++;
 	}
-	while (str_digit[i])
+	if (nb == 0 && (*flag).plus > 1)
+		free(str_digit);
+	else
 	{
-		ft_putchar(str_digit[i]);
-		(*flag).count++;
-		i++;
+		while (str_digit[i])
+		{
+			ft_putchar(str_digit[i]);
+			(*flag).count++;
+			i++;
+		}
+		free(str_digit);
 	}
-	free(str_digit);
 }
 
 void	print_address(t_info *flag, char *s)

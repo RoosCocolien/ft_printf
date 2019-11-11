@@ -6,19 +6,17 @@
 #    By: bvan-de- <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/15 14:53:31 by bvan-de-       #+#    #+#                 #
-#    Updated: 2019/11/07 19:00:03 by rsteigen      ########   odam.nl          #
+#    Updated: 2019/11/11 13:18:02 by rsteigen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= ft_printf
 SRCS 	= srcs/ft_printf.c srcs/flags.c srcs/spec.c srcs/spec_c.c\
 			srcs/spec_d_i.c srcs/spec_s.c srcs/spec_perc.c srcs/spec_f.c\
-			srcs/spec_e.c srcs/spec_o.c\
-			srcs/flags2.c srcs/spec_x.c srcs/spec_u.c\
-			srcs/spec_p.c srcs/spec_n.c\
-			srcs/print.c srcs/padding.c srcs/len_mod_di2.c\
-			srcs/len_mod_di.c srcs/len_mod_u.c srcs/len_mod_u2.c\
-			srcs/precision.c srcs/len_mod_ef.c\
+			srcs/spec_e.c srcs/spec_o.c srcs/flags2.c srcs/spec_x.c\
+			srcs/spec_u.c srcs/spec_p.c srcs/print.c srcs/padding.c\
+			srcs/len_mod_di2.c srcs/len_mod_di.c srcs/len_mod_u.c\
+			srcs/len_mod_u2.c srcs/precision.c srcs/len_mod_ef.c\
 			srcs/make_str_e.c srcs/colors.c srcs/make_str_f.c\
 			srcs/roundup.c
 

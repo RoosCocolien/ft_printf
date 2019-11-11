@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:48:28 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 17:54:44 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/11 17:14:49 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,14 @@ void		pres_width_s(va_list args, t_info *flag)
 	if ((*flag).precision != 0)
 	{
 		if ((*flag).precision == 2)
+		{
 			(*flag).width = va_arg(args, int);
+			if ((*flag).width < 0)
+			{
+				(*flag).minus = 1;
+				(*flag).width = -(*flag).width;
+			}
+		}
 		if ((*flag).precision == 1)
 			(*flag).width = (*flag).prec_value;
 		(*flag).zero = 0;
@@ -49,12 +56,30 @@ void		get_prec_width(va_list args, t_info *flag, char spec)
 	{
 		if (spec == 'p' || spec == 'x' || spec == 'd' || spec == 'i'\
 		|| spec == 'u' || spec == 'o')
+		{
 			(*flag).width = va_arg(args, int);
+			if ((*flag).width < 0)
+				(*flag).width = 0;
+		}
 		else
+		{
 			(*flag).prec_value = va_arg(args, int);
+			if ((*flag).prec_value < 0)
+				(*flag).prec_value = 6;
+		}
 	}
 	if ((*flag).width == 1 && (*flag).asterisk == 1 && (*flag).precision == 0)
 		(*flag).width = va_arg(args, int);
+	if ((*flag).width < 0)
+	{
+		(*flag).width = -(*flag).width;
+		(*flag).minus = 1;
+	}
+	// if ((*flag).prec_value < 0)
+	// {
+	// 	(*flag).prec_value = -(*flag).prec_value;
+	// 	(*flag).minus = 1;
+	// }
 }
 
 void		prec_and_zero_check(va_list args, t_info *flag, char spec)

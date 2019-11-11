@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:36:17 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 18:08:03 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/11 11:49:47 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int		spec_e(char *s, va_list args, t_info *flag, int x)
 	length = ft_strlen(str_spec_e);
 	fill = change_fill(flag, fill, length);
 	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
-		put_padding(flag, fill, s[x]);
+		put_padding(flag, fill);
 	print_neg(flag);
 	print_string(flag, str_spec_e, fill);
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
-		put_padding(flag, fill, s[x]);
+		put_padding(flag, fill);
 	free(str_spec_e);
 	return (x + 1);
 }

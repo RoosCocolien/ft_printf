@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/12 14:25:20 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 14:31:42 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/11 17:05:40 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		check_flag_plus(t_info *flag, int fill, int left_align)
 	(*flag).zero == 1))
 	{
 		ft_putchar('+');
+		(*flag).plus++;
 		(*flag).count++;
 	}
 	return (fill);
@@ -57,7 +58,6 @@ int		save_prec_width(char *s, t_info *flag, int x)
 
 int		check_precision(char *s, t_info *flag, int x)
 {
-	char	*value_precision;
 	int		i;
 
 	if (s[x + 1] == '*')
@@ -74,7 +74,7 @@ int		check_precision(char *s, t_info *flag, int x)
 	return (x);
 }
 
-void		set_zero_flags(t_info *flag)
+void	set_zero_flags(t_info *flag)
 {
 	(*flag).minus = 0;
 	(*flag).zero = 0;
@@ -85,6 +85,7 @@ void		set_zero_flags(t_info *flag)
 	(*flag).asterisk = 0;
 	(*flag).precision = 0;
 	(*flag).prec_value = 0;
+	(*flag).prec_no_val = 0;
 	(*flag).l = 0;
 	(*flag).ll = 0;
 	(*flag).h = 0;

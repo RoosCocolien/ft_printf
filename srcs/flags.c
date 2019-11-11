@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:48:34 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 14:31:04 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/11 16:17:33 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ static int	flags_part_three(char *s, t_info *flag, int x)
 		if ((s[x + 1] >= '0' && s[x + 1] <= '9') || s[x + 1] == '*')
 			x = check_precision(s, flag, x);
 		else
+		{
+			(*flag).prec_no_val = 1;
 			x++;
+		}
 	}
 	else if (s[x] == 'l' && s[x - 1] != 'l')
 	{

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:49:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 18:08:03 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/11 14:20:40 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,12 @@ int			spec_x(char *s, va_list args, t_info *flag, int x)
 	if ((s[x] == 'p' || (*flag).hash == 1) && (*flag).zero != 0)
 		(*flag).count = put_0x_spec_f((*flag).count, s[x]);
 	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
-		put_padding(flag, fill, s[x]);
+		put_padding(flag, fill);
 	if ((s[x] == 'p' || (*flag).hash == 1) && (*flag).zero == 0)
 		(*flag).count = put_0x_spec_f((*flag).count, s[x]);
 	print_address(flag, hex_str);
-	(*flag).count += length;
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
-		put_padding(flag, fill, s[x]);
+		put_padding(flag, fill);
 	free(hex_str);
 	return (x + 1);
 }

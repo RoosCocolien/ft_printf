@@ -6,11 +6,12 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 16:43:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 18:04:50 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/11 13:45:12 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/printf.h"
+#define ULONG_MAX 0xFFFFFFFFUL
 
 /*
 **	Simple test
@@ -278,6 +279,21 @@ static void hash_flag_o(void)
 	ft_printf("return: %d\n", ft_printf("Result: %+04#o\n", 12345));
 }
 
+static void		make_test_o(void)
+{
+	unsigned long ulong_max;
+
+	ulong_max = ULONG_MAX;
+	printf("return_pf:\t(%%lo)\t%d\n", printf("%lo\n", ulong_max));
+	printf("return_fpf:\t(%%lo)\t%d\n", ft_printf("%lo\n", ulong_max));
+	printf("return_pf:\t(%%llo)\t%d\n", printf("%llo\n", ulong_max));
+	printf("return_fpf:\t(%%llo)\t%d\n", ft_printf("%llo\n", ulong_max));
+	printf("return_pf:\t(%%#09.0o)\t%d\n", printf("%#09.0o\n", 482));
+	printf("return_fpf:\t(%%#09.0o)\t%d\n", ft_printf("%#09.0o\n", 482));
+	printf("return_pf:\t(%%09.0o)\t%d\n", printf("%09.0o\n", 482));
+	printf("return_fpf:\t(%%09.0o)\t%d\n", ft_printf("%09.0o\n", 482));
+}
+
 int		main(void)
 {
 	simple_test_o();
@@ -288,5 +304,6 @@ int		main(void)
 	asterisk_o();
 	range_check_o();
 	hash_flag_o();
+	make_test_o();
 	return (0);
 }
