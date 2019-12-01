@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:48:28 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/11 17:14:49 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/24 16:45:34 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,19 @@ int			fill_width_prec(t_info *flag, int length)
 	int		fill;
 
 	fill = 0;
+	//toegevoegd voor x en p
+	if ((*flag).width > 0 && (*flag).precision == 1 && (*flag).prec_value == 0)
+	{
+		(*flag).precision = 0;
+		(*flag).prec_value = 0;
+		(*flag).zero = 0;
+	}
+	// printf("prec value: %d\n", (*flag).prec_value);
 	if ((*flag).precision != 0 && ((*flag).prec_value != 0\
 	|| (*flag).width != 0))
 	{
+		//%%#09.0X
+		// printf("fill_width_prec test\n");
 		if ((*flag).precision == 1)
 			(*flag).width = (*flag).prec_value;
 		(*flag).zero = 1;
@@ -36,17 +46,20 @@ void		pres_width_s(va_list args, t_info *flag)
 	{
 		if ((*flag).precision == 2)
 		{
-			(*flag).width = va_arg(args, int);
-			if ((*flag).width < 0)
+			(*flag).prec_value = va_arg(args, int);
+			if ((*flag).prec_value < 0)
 			{
 				(*flag).minus = 1;
-				(*flag).width = -(*flag).width;
+				(*flag).prec_value = -(*flag).prec_value;
 			}
 		}
-		if ((*flag).precision == 1)
-			(*flag).width = (*flag).prec_value;
 		(*flag).zero = 0;
 		(*flag).minus = 0;
+	}
+	if ((*flag).prec_no_val == 1)
+	{
+		(*flag).precision = 1;
+		(*flag).prec_value = 0;
 	}
 }
 

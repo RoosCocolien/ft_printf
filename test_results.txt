@@ -78,234 +78,452 @@ return ft_printf:[0m 0
 [34mreturn printf:[0m 22
 ------------------------------------------
 [[32mOK[0m]	"%llo", ULLONG_MAX + 5
-[[31mFAIL[0m]	"%jo", 0
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m0[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 1
-------------------------------------------
-[[31mFAIL[0m]	"%jo", -246
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m37777777412[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 11
-------------------------------------------
-[[31mFAIL[0m]	"%jo", UINTMAX_MAX
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m1777777777777777777777[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 22
-------------------------------------------
-[[31mFAIL[0m]	"%jo", UINTMAX_MAX + 5
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m4[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 1
-------------------------------------------
-[[31mFAIL[0m]	"%zo", 0
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m0[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 1
-------------------------------------------
-[[31mFAIL[0m]	"%zo", -246
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m37777777412[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 11
-------------------------------------------
-[[31mFAIL[0m]	"%zo", SIZE_MAX
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m1777777777777777777777[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 22
-------------------------------------------
-[[31mFAIL[0m]	"%zo", SIZE_MAX + 5
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m4[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 1
-------------------------------------------
 [[32mOK[0m]	"%.3o", 1
 [[32mOK[0m]	"%#0.3o", 0
 [[32mOK[0m]	"%#.3o", 1
 [[32mOK[0m]	"%#0.3o", 1
 [[31mFAIL[0m]	"%#09.0o", 482
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m0742[34m$
+[34mft_printf:[0m      742[34m$
    printf:[0m     0742[34m$
-return ft_printf:[0m 4
+return ft_printf:[0m 9
 [34mreturn printf:[0m 9
 ------------------------------------------
-[[31mFAIL[0m]	"%O", UINT_MAX
+[[32mOK[0m]	"%#04096o", 1337
+[[32mOK[0m]	"%.5o", 4826
+[[32mOK[0m]	"%#0#4lo", 0
+[[31mFAIL[0m]	"%x", 0
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m37777777777[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 11
-------------------------------------------
-[[31mFAIL[0m]	"%O", -1
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m37777777777[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 11
-------------------------------------------
-[[31mFAIL[0m]	"%O", 0
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 0
+s[x]: x
+length: 1
+length: 1
+
+width: 0
+fill: 0
+0[34m$
    printf:[0m0[34m$
-return ft_printf:[0m -1
+return ft_printf:[0m 1
 [34mreturn printf:[0m 1
 ------------------------------------------
-[[31mFAIL[0m]	"%O", INT_MIN - 5
+[[31mFAIL[0m]	"%x", -42
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m17777777773[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 11
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = ffffffd6
+s[x]: x
+length: 8
+length: 8
+
+width: 0
+fill: 0
+ffffffd6[34m$
+   printf:[0mffffffd6[34m$
+return ft_printf:[0m 8
+[34mreturn printf:[0m 8
 ------------------------------------------
-[[31mFAIL[0m]	"%+042O", -15
+[[31mFAIL[0m]	"%x", UINT_MAX
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m000000000000000000000000000000037777777761[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 42
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = ffffffff
+s[x]: x
+length: 8
+length: 8
+
+width: 0
+fill: 0
+ffffffff[34m$
+   printf:[0mffffffff[34m$
+return ft_printf:[0m 8
+[34mreturn printf:[0m 8
 ------------------------------------------
-[[31mFAIL[0m]	"%+42llO", LLONG_MAX
+[[31mFAIL[0m]	"%x", UINT_MAX + 12
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m                     777777777777777777777[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 42
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = b
+s[x]: x
+length: 1
+length: 1
+
+width: 0
+fill: 0
+b[34m$
+   printf:[0mb[34m$
+return ft_printf:[0m 1
+[34mreturn printf:[0m 1
 ------------------------------------------
-[[31mFAIL[0m]	"%-42hhO", LONG_MAX
+[[31mFAIL[0m]	"%hhx", 0
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m777777777777777777777                     [34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 42
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 0
+s[x]: x
+length: 1
+length: 1
+
+width: 0
+fill: 0
+0[34m$
+   printf:[0m0[34m$
+return ft_printf:[0m 1
+[34mreturn printf:[0m 1
 ------------------------------------------
-[[31mFAIL[0m]	"%o %o %O%lo %O", 45, 28, 96, LONG_MAX, 201506784
+[[31mFAIL[0m]	"%hhx", -1
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m55 34 [34m$
-   printf:[0m55 34 140777777777777777777777 1400537740[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 41
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = ff
+s[x]: x
+length: 2
+length: 2
+
+width: 0
+fill: 0
+ff[34m$
+   printf:[0mff[34m$
+return ft_printf:[0m 2
+[34mreturn printf:[0m 2
 ------------------------------------------
-[[32mOK[0m]	"%x", 0
-[[32mOK[0m]	"%x", -42
-[[32mOK[0m]	"%x", UINT_MAX
-[[32mOK[0m]	"%x", UINT_MAX + 12
-[[32mOK[0m]	"%hhx", 0
-[[32mOK[0m]	"%hhx", -1
-[[32mOK[0m]	"%hhx", UCHAR_MAX
-[[32mOK[0m]	"%hhx", UCHAR_MAX + 5
-[[32mOK[0m]	"%hx", 0
-[[32mOK[0m]	"%hx", -4
-[[32mOK[0m]	"%hx", USHRT_MAX
-[[32mOK[0m]	"%hx", USHRT_MAX + 5
-[[32mOK[0m]	"%lx", 0
-[[32mOK[0m]	"%lx", -246
+[[31mFAIL[0m]	"%hhx", UCHAR_MAX
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = ff
+s[x]: x
+length: 2
+length: 2
+
+width: 0
+fill: 0
+ff[34m$
+   printf:[0mff[34m$
+return ft_printf:[0m 2
+[34mreturn printf:[0m 2
+------------------------------------------
+[[31mFAIL[0m]	"%hhx", UCHAR_MAX + 5
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 4
+s[x]: x
+length: 1
+length: 1
+
+width: 0
+fill: 0
+4[34m$
+   printf:[0m4[34m$
+return ft_printf:[0m 1
+[34mreturn printf:[0m 1
+------------------------------------------
+[[31mFAIL[0m]	"%hx", 0
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 0
+s[x]: x
+length: 1
+length: 1
+
+width: 0
+fill: 0
+0[34m$
+   printf:[0m0[34m$
+return ft_printf:[0m 1
+[34mreturn printf:[0m 1
+------------------------------------------
+[[31mFAIL[0m]	"%hx", -4
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = fffc
+s[x]: x
+length: 4
+length: 4
+
+width: 0
+fill: 0
+fffc[34m$
+   printf:[0mfffc[34m$
+return ft_printf:[0m 4
+[34mreturn printf:[0m 4
+------------------------------------------
+[[31mFAIL[0m]	"%hx", USHRT_MAX
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = ffff
+s[x]: x
+length: 4
+length: 4
+
+width: 0
+fill: 0
+ffff[34m$
+   printf:[0mffff[34m$
+return ft_printf:[0m 4
+[34mreturn printf:[0m 4
+------------------------------------------
+[[31mFAIL[0m]	"%hx", USHRT_MAX + 5
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 4
+s[x]: x
+length: 1
+length: 1
+
+width: 0
+fill: 0
+4[34m$
+   printf:[0m4[34m$
+return ft_printf:[0m 1
+[34mreturn printf:[0m 1
+------------------------------------------
+[[31mFAIL[0m]	"%lx", 0
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 0
+s[x]: x
+length: 1
+length: 1
+
+width: 0
+fill: 0
+0[34m$
+   printf:[0m0[34m$
+return ft_printf:[0m 1
+[34mreturn printf:[0m 1
+------------------------------------------
+[[31mFAIL[0m]	"%lx", -246
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = ffffff0a
+s[x]: x
+length: 8
+length: 8
+
+width: 0
+fill: 0
+ffffff0a[34m$
+   printf:[0mffffff0a[34m$
+return ft_printf:[0m 8
+[34mreturn printf:[0m 8
+------------------------------------------
 [[31mFAIL[0m]	"%lx", ULONG_MAX
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 
+s[x]: x
+length: 0
+length: 0
+
+width: 0
+fill: 0
+[34m$
    printf:[0mffffffffffffffff[34m$
 return ft_printf:[0m 0
 [34mreturn printf:[0m 16
 ------------------------------------------
-[[32mOK[0m]	"%lx", ULONG_MAX + 5
-[[32mOK[0m]	"%llx", 0
-[[32mOK[0m]	"%llx", -246
+[[31mFAIL[0m]	"%lx", ULONG_MAX + 5
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 4
+s[x]: x
+length: 1
+length: 1
+
+width: 0
+fill: 0
+4[34m$
+   printf:[0m4[34m$
+return ft_printf:[0m 1
+[34mreturn printf:[0m 1
+------------------------------------------
+[[31mFAIL[0m]	"%llx", 0
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 0
+s[x]: x
+length: 1
+length: 1
+
+width: 0
+fill: 0
+0[34m$
+   printf:[0m0[34m$
+return ft_printf:[0m 1
+[34mreturn printf:[0m 1
+------------------------------------------
+[[31mFAIL[0m]	"%llx", -246
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = ffffff0a
+s[x]: x
+length: 8
+length: 8
+
+width: 0
+fill: 0
+ffffff0a[34m$
+   printf:[0mffffff0a[34m$
+return ft_printf:[0m 8
+[34mreturn printf:[0m 8
+------------------------------------------
 [[31mFAIL[0m]	"%llx", ULLONG_MAX
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 
+s[x]: x
+length: 0
+length: 0
+
+width: 0
+fill: 0
+[34m$
    printf:[0mffffffffffffffff[34m$
 return ft_printf:[0m 0
 [34mreturn printf:[0m 16
 ------------------------------------------
-[[32mOK[0m]	"%llx", ULLONG_MAX + 5
-[[31mFAIL[0m]	"%jx", 0
+[[31mFAIL[0m]	"%llx", ULLONG_MAX + 5
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m0[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 1
-------------------------------------------
-[[31mFAIL[0m]	"%jx", -246
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0mffffff0a[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 8
-------------------------------------------
-[[31mFAIL[0m]	"%jx", UINTMAX_MAX
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0mffffffffffffffff[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 16
-------------------------------------------
-[[31mFAIL[0m]	"%jx", UINTMAX_MAX + 5
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 4
+s[x]: x
+length: 1
+length: 1
+
+width: 0
+fill: 0
+4[34m$
    printf:[0m4[34m$
-return ft_printf:[0m -1
+return ft_printf:[0m 1
 [34mreturn printf:[0m 1
 ------------------------------------------
-[[31mFAIL[0m]	"%zx", 0
+[[31mFAIL[0m]	"%x", 58
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m0[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 1
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 3a
+s[x]: x
+length: 2
+length: 2
+
+width: 0
+fill: 0
+3a[34m$
+   printf:[0m3a[34m$
+return ft_printf:[0m 2
+[34mreturn printf:[0m 2
 ------------------------------------------
-[[31mFAIL[0m]	"%zx", -246
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0mffffff0a[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 8
-------------------------------------------
-[[31mFAIL[0m]	"%zx", SIZE_MAX
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0mffffffffffffffff[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 16
-------------------------------------------
-[[31mFAIL[0m]	"%zx", SIZE_MAX + 5
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m4[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 1
-------------------------------------------
-[[32mOK[0m]	"%x", 58
 [[31mFAIL[0m]	"%#.5x", 0
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m0x00000[34m$
+[34mft_printf:[0mprecision: 1
+width: 0
+hex_Str = 0
+s[x]: x
+length: 1
+length: 3
+0x
+width: 5
+fill: 2
+000[34m$
    printf:[0m00000[34m$
-return ft_printf:[0m 7
+return ft_printf:[0m 5
 [34mreturn printf:[0m 5
 ------------------------------------------
-[[32mOK[0m]	"%#.5x", 32
+[[31mFAIL[0m]	"%#.5x", 32
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 1
+width: 0
+hex_Str = 20
+s[x]: x
+length: 2
+length: 4
+0x
+width: 5
+fill: 1
+020[34m$
+   printf:[0m0x00020[34m$
+return ft_printf:[0m 5
+[34mreturn printf:[0m 7
+------------------------------------------
 [[31mFAIL[0m]	"%#09.0X", 482
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m0X1E2[34m$
+[34mft_printf:[0mprecision: 1
+width: 9
+hex_Str = 1E2
+s[x]: X
+length: 3
+length: 5
+
+width: 9
+fill: 4
+    0X1E2[34m$
    printf:[0m    0X1E2[34m$
-return ft_printf:[0m 5
+return ft_printf:[0m 9
 [34mreturn printf:[0m 9
 ------------------------------------------
-[[32mOK[0m]	"%-8X", 42
+[[31mFAIL[0m]	"%--.5x", 42
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 1
+width: 0
+hex_Str = 2a
+s[x]: x
+length: 2
+length: 2
+
+width: 5
+fill: 3
+0002a[34m$
+   printf:[0m0002a[34m$
+return ft_printf:[0m 5
+[34mreturn printf:[0m 5
+------------------------------------------
+[[31mFAIL[0m]	"%-8X", 42
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 8
+hex_Str = 2A
+s[x]: X
+length: 2
+length: 2
+
+width: 8
+fill: 6
+2A      [34m$
+   printf:[0m2A      [34m$
+return ft_printf:[0m 8
+[34mreturn printf:[0m 8
+------------------------------------------
+[[31mFAIL[0m]	"%#04x", 0
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 4
+hex_Str = 0
+s[x]: x
+length: 1
+length: 3
+0x
+width: 4
+fill: 1
+00[34m$
+   printf:[0m0000[34m$
+return ft_printf:[0m 4
+[34mreturn printf:[0m 4
+------------------------------------------
 [[32mOK[0m]	"%u", 0
 [[32mOK[0m]	"%u", -42
 [[32mOK[0m]	"%u", UINT_MAX
@@ -326,257 +544,315 @@ return ft_printf:[0m 5
 [[32mOK[0m]	"%llu", -246
 [[32mOK[0m]	"%llu", ULLONG_MAX
 [[32mOK[0m]	"%llu", ULLONG_MAX + 5
-[[31mFAIL[0m]	"%ju", 0
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m0[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 1
-------------------------------------------
-[[31mFAIL[0m]	"%ju", -246
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m4294967050[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 10
-------------------------------------------
-[[31mFAIL[0m]	"%ju", UINTMAX_MAX
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m18446744073709551615[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 20
-------------------------------------------
-[[31mFAIL[0m]	"%ju", UINTMAX_MAX + 5
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m4[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 1
-------------------------------------------
-[[31mFAIL[0m]	"%zu", 0
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m0[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 1
-------------------------------------------
-[[31mFAIL[0m]	"%zu", -246
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m4294967050[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 10
-------------------------------------------
-[[31mFAIL[0m]	"%zu", SIZE_MAX
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m18446744073709551615[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 20
-------------------------------------------
-[[31mFAIL[0m]	"%zu", SIZE_MAX + 5
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m4[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 1
-------------------------------------------
 [[32mOK[0m]	"%u", 58
 [[32mOK[0m]	"%.5u", 0
 [[32mOK[0m]	"%.5u", 32
-[[31mFAIL[0m]	"%09.0U", 482
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m      482[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 9
-------------------------------------------
-[[31mFAIL[0m]	"%-8U", 42
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m42      [34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 8
-------------------------------------------
+[[32mOK[0m]	"%09.0u", 482
+[[32mOK[0m]	"%--.5u", 42
+[[32mOK[0m]	"%-8u", 42
 [[32mOK[0m]	"%04u", 0
-[[31mFAIL[0m]	"%U", 587
+[[32mOK[0m]	"%u", 587
+[[31mFAIL[0m]	"%5u%u", 587
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m587[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 3
+[34mft_printf:[0m  5870[34m$
+   printf:[0m  58754526024[34m$
+return ft_printf:[0m 6
+[34mreturn printf:[0m 13
 ------------------------------------------
-[[31mFAIL[0m]	"%5u%u %.0U %.5u %05u", 4, 50, 0, LONG_MAX, 0
+[[31mFAIL[0m]	"%5u%u %.0u %.5u %05u", 4, 50, 0, LONG_MAX, 0
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m    450 [34m$
+[34mft_printf:[0m    450 0 4294967295 00000[34m$
    printf:[0m    450  4294967295 00000[34m$
-return ft_printf:[0m -1
+return ft_printf:[0m 26
 [34mreturn printf:[0m 25
 ------------------------------------------
-[[32mOK[0m]	"%p", 0
-[[32mOK[0m]	"%p", -42
-[[32mOK[0m]	"%p", LONG_MAX
+[[31mFAIL[0m]	"%p", 0
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 0
+s[x]: p
+length: 1
+length: 3
+
+width: 0
+fill: 0
+0x0[34m$
+   printf:[0m0x0[34m$
+return ft_printf:[0m 3
+[34mreturn printf:[0m 3
+------------------------------------------
+[[31mFAIL[0m]	"%p", -42
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = ffffffd6
+s[x]: p
+length: 8
+length: 10
+
+width: 0
+fill: 0
+0xffffffd6[34m$
+   printf:[0m0xffffffd6[34m$
+return ft_printf:[0m 10
+[34mreturn printf:[0m 10
+------------------------------------------
+[[31mFAIL[0m]	"%p", LONG_MAX
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 7fffffffffffffff
+s[x]: p
+length: 16
+length: 18
+
+width: 0
+fill: 0
+0x7fffffffffffffff[34m$
+   printf:[0m0x7fffffffffffffff[34m$
+return ft_printf:[0m 18
+[34mreturn printf:[0m 18
+------------------------------------------
 [[31mFAIL[0m]	"%p", LONG_MAX + 12
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m0xm[34m$
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = m
+s[x]: p
+length: 1
+length: 3
+
+width: 0
+fill: 0
+0xm[34m$
    printf:[0m0x800000000000000b[34m$
 return ft_printf:[0m 3
 [34mreturn printf:[0m 18
 ------------------------------------------
-[[32mOK[0m]	"%p", -1
-[[32mOK[0m]	"%p", 58
-[[32mOK[0m]	"%.5p", 0
-[[32mOK[0m]	"%.5p", 32
-[[31mFAIL[0m]	"%9.0p", 482
+[[31mFAIL[0m]	"%p", -1
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m0x1e2[34m$
-   printf:[0m    0x1e2[34m$
-return ft_printf:[0m 5
-[34mreturn printf:[0m 9
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = ffffffff
+s[x]: p
+length: 8
+length: 10
+
+width: 0
+fill: 0
+0xffffffff[34m$
+   printf:[0m0xffffffff[34m$
+return ft_printf:[0m 10
+[34mreturn printf:[0m 10
 ------------------------------------------
-[[32mOK[0m]	"%-8p", 42
-[[32mOK[0m]	"%4p", 0
-[[32mOK[0m]	"%48p", 587
-[[32mOK[0m]	"%p %5p %.2p %.15p %.15p", 5, 4896548, 15694, 0, -1
-[[32mOK[0m]	"%c", 0
-[[32mOK[0m]	"%c", 'a'
-[[32mOK[0m]	"%c", -1
-[[32mOK[0m]	"%lc", 0x24
-[[31mFAIL[0m]	"%lc", 0xa2
+[[31mFAIL[0m]	"%p", 58
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m¢[34m$
-   printf:[0mÂ¢[34m$
-return ft_printf:[0m 1
-[34mreturn printf:[0m 2
-------------------------------------------
-[[32mOK[0m]	"%5c", 0
-[[32mOK[0m]	"%5c", 'b'
-[[31mFAIL[0m]	"%s", ""
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m(*flag).width: 0
-[34m$
-   printf:[0m[34m$
-return ft_printf:[0m 0
-[34mreturn printf:[0m 0
-------------------------------------------
-[[31mFAIL[0m]	"%s", "Hello world %s!"
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m(*flag).width: 0
-Hello world %s![34m$
-   printf:[0mHello world %s![34m$
-return ft_printf:[0m 15
-[34mreturn printf:[0m 15
-------------------------------------------
-[[31mFAIL[0m]	"%s This is a string %s", ">>", "<<"
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m(*flag).width: 0
->> This is a string (*flag).width: 0
-<<[34m$
-   printf:[0m>> This is a string <<[34m$
-return ft_printf:[0m 22
-[34mreturn printf:[0m 22
-------------------------------------------
-[[31mFAIL[0m]	"%.s", "hide"
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m(*flag).width: 0
-hide[34m$
-   printf:[0m[34m$
-return ft_printf:[0m 4
-[34mreturn printf:[0m 0
-------------------------------------------
-[[31mFAIL[0m]	"%.5s", "kqkunqagrwaihnowtnqekdhegbufx"
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m(*flag).width: 5
-kqkun[34m$
-   printf:[0mkqkun[34m$
-return ft_printf:[0m 5
-[34mreturn printf:[0m 5
-------------------------------------------
-[[31mFAIL[0m]	"%5s", ""
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m(*flag).width: 5
-     [34m$
-   printf:[0m     [34m$
-return ft_printf:[0m 5
-[34mreturn printf:[0m 5
-------------------------------------------
-[[31mFAIL[0m]	"%s", NULL
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m(*flag).width: 0
-(null)[34m$
-   printf:[0m(null)[34m$
-return ft_printf:[0m 6
-[34mreturn printf:[0m 6
-------------------------------------------
-[[31mFAIL[0m]	"%.3s", NULL
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m(*flag).width: 3
-(nu[34m$
-   printf:[0m(nu[34m$
-return ft_printf:[0m 3
-[34mreturn printf:[0m 3
-------------------------------------------
-[[31mFAIL[0m]	"%50.3s", NULL
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m(*flag).width: 3
-(nu[34m$
-   printf:[0m                                               (nu[34m$
-return ft_printf:[0m 3
-[34mreturn printf:[0m 50
-------------------------------------------
-[[31mFAIL[0m]	"%.4s", "123456789"
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m(*flag).width: 4
-1234[34m$
-   printf:[0m1234[34m$
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 3a
+s[x]: p
+length: 2
+length: 4
+
+width: 0
+fill: 0
+0x3a[34m$
+   printf:[0m0x3a[34m$
 return ft_printf:[0m 4
 [34mreturn printf:[0m 4
 ------------------------------------------
-[[31mFAIL[0m]	"%.42s", "123456789"
+[[31mFAIL[0m]	"%.5p", 0
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m(*flag).width: 0
-123456789[34m$
-   printf:[0m123456789[34m$
-return ft_printf:[0m 9
+[34mft_printf:[0mprecision: 1
+width: 0
+hex_Str = 0
+s[x]: p
+length: 1
+length: 1
+0x
+width: 5
+fill: 4
+00000[34m$
+   printf:[0m0x00000[34m$
+return ft_printf:[0m 7
+[34mreturn printf:[0m 7
+------------------------------------------
+[[31mFAIL[0m]	"%.5p", 32
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 1
+width: 0
+hex_Str = 20
+s[x]: p
+length: 2
+length: 2
+0x
+width: 5
+fill: 3
+00020[34m$
+   printf:[0m0x00020[34m$
+return ft_printf:[0m 7
+[34mreturn printf:[0m 7
+------------------------------------------
+[[31mFAIL[0m]	"%9.0p", 482
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 1
+width: 9
+hex_Str = 1e2
+s[x]: p
+length: 3
+length: 3
+
+width: 9
+fill: 6
+      0x1e2[34m$
+   printf:[0m    0x1e2[34m$
+return ft_printf:[0m 11
 [34mreturn printf:[0m 9
 ------------------------------------------
-[[31mFAIL[0m]	"%-50s", "-50"
+[[31mFAIL[0m]	"%--.5p", 42
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m(*flag).width: 50
--50                                               [34m$
-   printf:[0m-50                                               [34m$
-return ft_printf:[0m 50
-[34mreturn printf:[0m 50
+[34mft_printf:[0mprecision: 1
+width: 0
+hex_Str = 2a
+s[x]: p
+length: 2
+length: 2
+0x
+width: 5
+fill: 3
+0002a[34m$
+   printf:[0m0x0002a[34m$
+return ft_printf:[0m 7
+[34mreturn printf:[0m 7
 ------------------------------------------
-[[31mFAIL[0m]	"%.50s", "cc"
+[[31mFAIL[0m]	"%-8p", 42
 -------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m(*flag).width: 0
-cc[34m$
-   printf:[0mcc[34m$
-return ft_printf:[0m 2
-[34mreturn printf:[0m 2
+[34mft_printf:[0mprecision: 0
+width: 8
+hex_Str = 2a
+s[x]: p
+length: 2
+length: 4
+
+width: 8
+fill: 4
+0x2a    [34m$
+   printf:[0m0x2a    [34m$
+return ft_printf:[0m 8
+[34mreturn printf:[0m 8
 ------------------------------------------
+[[31mFAIL[0m]	"%4p", 0
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 4
+hex_Str = 0
+s[x]: p
+length: 1
+length: 3
+
+width: 4
+fill: 1
+ 0x0[34m$
+   printf:[0m 0x0[34m$
+return ft_printf:[0m 4
+[34mreturn printf:[0m 4
+------------------------------------------
+[[31mFAIL[0m]	"%48p", 587
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 48
+hex_Str = 24b
+s[x]: p
+length: 3
+length: 5
+
+width: 48
+fill: 43
+                                           0x24b[34m$
+   printf:[0m                                           0x24b[34m$
+return ft_printf:[0m 48
+[34mreturn printf:[0m 48
+------------------------------------------
+[[31mFAIL[0m]	"%p %5p %.2p %.15p %.15p", 5, 4896548, 15694, 0, -1
+-------------- [31mFAIL RESULT[0m ---------------
+[34mft_printf:[0mprecision: 0
+width: 0
+hex_Str = 5
+s[x]: p
+length: 1
+length: 3
+
+width: 0
+fill: 0
+0x5 precision: 0
+width: 5
+hex_Str = 4ab724
+s[x]: p
+length: 6
+length: 8
+
+width: 5
+fill: -3
+0x4ab724 precision: 1
+width: 0
+hex_Str = 3d4e
+s[x]: p
+length: 4
+length: 4
+0x
+width: 2
+fill: -2
+3d4e precision: 1
+width: 0
+hex_Str = 0
+s[x]: p
+length: 1
+length: 1
+0x
+width: 15
+fill: 14
+000000000000000 precision: 1
+width: 0
+hex_Str = ffffffff
+s[x]: p
+length: 8
+length: 8
+0x
+width: 15
+fill: 7
+0000000ffffffff[34m$
+   printf:[0m0x5 0x4ab724 0x3d4e 0x000000000000000 0x0000000ffffffff[34m$
+return ft_printf:[0m 55
+[34mreturn printf:[0m 55
+------------------------------------------
+[[32mOK[0m]	"%c", 0
+[[32mOK[0m]	"%c", 'a'
+[[32mOK[0m]	"%c", -1
+[[32mOK[0m]	"%5c", 0
+[[32mOK[0m]	"%5c", 'b'
+[[32mOK[0m]	"%--5c", 'a'
+[[32mOK[0m]	"%s", ""
+[[32mOK[0m]	"%s", "Hello world %s!"
+[[32mOK[0m]	"%s This is a string %s", ">>", "<<"
+[[32mOK[0m]	"%.s", "hide"
+[[32mOK[0m]	"%.5s", "kqkunqagrwaihnowtnqekdhegbufx"
+[[32mOK[0m]	"%5s", ""
+[[32mOK[0m]	"%s", NULL
+[[32mOK[0m]	"%.3s", NULL
+[[32mOK[0m]	"%50.3s", NULL
+[[32mOK[0m]	"%.4s", "123456789"
+[[32mOK[0m]	"%.42s", "123456789"
+[[32mOK[0m]	"%-50s", "-50"
+[[32mOK[0m]	"%.50s", "cc"
 [[32mOK[0m]	"%%"
 [[32mOK[0m]	"% %"
-[[31mFAIL[0m]	"%10%"
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m%[34m$
-   printf:[0m         %[34m$
-return ft_printf:[0m 1
-[34mreturn printf:[0m 10
-------------------------------------------
-[[31mFAIL[0m]	"%-10%"
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m%[34m$
-   printf:[0m%         [34m$
-return ft_printf:[0m 1
-[34mreturn printf:[0m 10
-------------------------------------------
+[[32mOK[0m]	"%10%"
+[[32mOK[0m]	"%-10%"
 [[32mOK[0m]	"%-%"
 [31m=============== Result Normal tests ================[0m
-195 test(s) ok. (195 / 256)
-61 test(s) fail.
+170 test(s) ok. (170 / 216)
+46 test(s) fail.
 
 [34m=============== Bonus tests ===============[0m
 [[32mOK[0m]	"%*d", 5, 50
@@ -585,14 +861,7 @@ return ft_printf:[0m 1
 [[32mOK[0m]	"%.*d", 5, 50
 [[32mOK[0m]	"%.*d", 0, 50
 [[32mOK[0m]	"%.*d", -15, 50
-[[31mFAIL[0m]	"%n", 0
--------------- [31mFAIL RESULT[0m ---------------
-[34mft_printf:[0m[34m$
-   printf:[0m[34m$
-return ft_printf:[0m -1
-[34mreturn printf:[0m 0
-------------------------------------------
-[31m=============== Result Bonus tests ================[0m
-7 test(s) ok. (7 / 8)
-1 test(s) fail.
+[32m=============== Result Bonus tests ================[0m
+6 test(s) ok. (6 / 6)
+0 test(s) fail.
 

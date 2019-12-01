@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2017/01/26 23:34:44 by thugo          #+#    #+#                */
-/*   Updated: 2019/10/16 13:17:43 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/12 10:55:51 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	bonus_tests(void)
 	INIT_TESTS()
 	printf("\033[34m=============== Bonus tests ===============\033[0m\n");
 	tests_wildcard();
-	tests_n();
+	// tests_n();
 
 	PRINT_TESTS_RESULT("Bonus tests")
 }

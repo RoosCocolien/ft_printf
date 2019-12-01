@@ -6,13 +6,12 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/10 15:24:21 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/11 14:59:47 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/24 13:18:00 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/printf.h"
-#define LONG_MAX 2147483647
-
+#include <limits.h>
 /*
 ** indien spec == 'p', change settings of the flags
 */
@@ -33,7 +32,7 @@ static void		flags_p(void)
 	str1 = "Roos";
 	printf("\nTest flags (#0-+' ') individually\n");
 	printf("%%#p (printf #)\n%#p.\n", str1);
-//	ft_printf("%#p.\n", str1);
+	ft_printf("%#p.\n", str1);
 	printf("%%0p (printf 0)\n%0p.\n", str1);
 	ft_printf("%0p.\n", str1);
 	printf("%%-p (printf -)\n%-p.\n", str1);
@@ -176,21 +175,49 @@ static void		make_test_p(void)
 {
 	printf("return_pf:\t(%%p)\t%d\n", printf("%p\n", LONG_MAX));
 	printf("return_fpf:\t(%%p)\t%d\n", ft_printf("%p\n", LONG_MAX));
+	printf("\n");
+	printf("return_pf:\t(%%p)\t%d\n", printf("%p\n", LONG_MAX + 1));
+	printf("return_fpf:\t(%%p)\t%d\n", ft_printf("%p\n", LONG_MAX + 1));
+	printf("\n");
+	printf("return_pf:\t(%%p)\t%d\n", printf("%p\n", LONG_MAX + 2));
+	printf("return_fpf:\t(%%p)\t%d\n", ft_printf("%p\n", LONG_MAX + 2));
+	printf("\n");
 	printf("return_pf:\t(%%p)\t%d\n", printf("%p\n", LONG_MAX + 12));
 	printf("return_fpf:\t(%%p)\t%d\n", ft_printf("%p\n", LONG_MAX + 12));
+	printf("\n");
 	printf("return_pf:\t(%%.5p)\t%d\n", printf("%.5p\n", 32));
 	printf("return_fpf:\t(%%.5p)\t%d\n", ft_printf("%.5p\n", 32));
+	printf("\n");
+	printf("return_pf:\t(%%-.5p)\t%d\n", printf("%-.5p\n", 32));
+	printf("return_fpf:\t(%%-.5p)\t%d\n", ft_printf("%-.5p\n", 32));
+	printf("\n");
+	printf("return_pf:\t(%%--.5p)\t%d\n", printf("%--.5p\n", 32));
+	printf("return_fpf:\t(%%--.5p)\t%d\n", ft_printf("%--.5p\n", 32));
+	printf("\n");
+	printf("return_pf:\t(%%.p)\t%d\n", printf("%.p\n", 32));
+	printf("return_fpf:\t(%%.p)\t%d\n", ft_printf("%.p\n", 32));
+	printf("\n");
 	printf("return_pf:\t(%%9.0p)\t%d\n", printf("%9.0p\n", 482));
 	printf("return_fpf:\t(%%9.0p)\t%d\n", ft_printf("%9.0p\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%9.1p)\t%d\n", printf("%9.1p\n", 482));
+	printf("return_fpf:\t(%%9.1p)\t%d\n", ft_printf("%9.1p\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%9p)\t%d\n", printf("%9p\n", 482));
+	printf("return_fpf:\t(%%9p)\t%d\n", ft_printf("%9p\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%#9.0p)\t%d\n", printf("%#9.0p\n", 482));
+	printf("return_fpf:\t(%%#9.0p)\t%d\n", ft_printf("%#9.0p\n", 482));
+	printf("\n");
 }
 
 int		main(void)
 {
-	simple_p();
-	flags_p();
-	precision_p();
-	padding_p();
-	troubles();
+	// simple_p();
+	// flags_p();
+	// precision_p();
+	// padding_p();
+	// troubles();
 	make_test_p();
 	return (0);
 }

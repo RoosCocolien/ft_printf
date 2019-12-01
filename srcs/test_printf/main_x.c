@@ -6,13 +6,12 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/10 15:24:21 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/11 14:29:35 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/24 16:49:01 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/printf.h"
-#define UINT_MAX 4294967295
-#define ULONG_MAX 0xFFFFFFFFUL
+#include "limits.h"
 
 /*
 ** indien spec == 'p', change settings of the flags
@@ -140,8 +139,10 @@ static void		precision_x(void)
 static void		padding_x(void)
 {
 	char *str1;
+	char *str2;
 
 	str1 = "hrkp";
+	str2 = "482";
 	printf("\n%%-15x (printf)\n");
 	printf("%-15x.\n", str1);
 	ft_printf("%-15x.\n", str1);
@@ -155,9 +156,36 @@ static void		padding_x(void)
 	printf("%-015x.\n", str1);
 	ft_printf("%-015x.\n", str1);
 
+	printf("\n%%015x (printf)\n");
+	printf("%015x.\n", str1);
+	ft_printf("%015x.\n", str1);
+
+	printf("\n%%15x (printf)\n");
+	printf("%15x.\n", str1);
+	ft_printf("%15x.\n", str1);
+
 	printf("\n%%015+x (printf)\n");
 	printf("%015+x.\n", str1);
 	ft_printf("%015+x.\n", str1);
+	
+	printf("return_pf:\t(%%9.0x)\t%d\n", printf("%9.0x$\n", str2));
+	printf("return_fpf:\t(%%9.0x)\t%d\n", ft_printf("%9.0x$\n", str2));
+	printf("\n");
+	printf("return_pf:\t(%%.0x)\t%d\n", printf("%.0x$\n", str2));
+	printf("return_fpf:\t(%%.0x)\t%d\n", ft_printf("%.0x$\n", str2));
+	printf("\n");
+	printf("return_pf:\t(%%9x)\t%d\n", printf("%9x$\n", str2));
+	printf("return_fpf:\t(%%9x)\t%d\n", ft_printf("%9x$\n", str2));
+	printf("\n");
+	printf("return_pf:\t(%%09x)\t%d\n", printf("%09x$\n", str2));
+	printf("return_fpf:\t(%%09x)\t%d\n", ft_printf("%09x$\n", str2));
+	printf("\n");
+	printf("return_pf:\t(%%09.0X)\t%d\n", printf("%09.0X$\n", 482));
+	printf("return_fpf:\t(%%09.0X)\t%d\n", ft_printf("%09.0X$\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%#09.0X)\t%d\n", printf("%#09.0X$\n", 482));
+	printf("return_fpf:\t(%%#09.0X)\t%d\n", ft_printf("%#09.0X$\n", 482));
+	printf("\n");
 }
 
 static void		check_hash_x(void)
@@ -205,36 +233,64 @@ static void		check_hash_x(void)
 
 static void		make_test_x(void)
 {
-	printf("return_pf:\t(%%x)\t%d\n", printf("%x\n", 0));
-	printf("return_fpf:\t(%%x)\t%d\n", ft_printf("%x\n", 0));
-	printf("return_pf:\t(%%x)\t%d\n", printf("%x\n", -42));
-	printf("return_fpf:\t(%%x)\t%d\n", ft_printf("%x\n", -42));
-	printf("\nlength modifiers (gaat wel goed bij conv spec 'u'\n");
-	printf("return_pf:\t(%%x)\t%d\n", printf("%x\n", UINT_MAX));
-	printf("return_fpf:\t(%%x)\t%d\n", ft_printf("%x\n", UINT_MAX));
-	printf("return_pf:\t(%%x)\t%d\n", printf("%x\n", UINT_MAX + 12));
-	printf("return_fpf:\t(%%x)\t%d\n", ft_printf("%x\n", UINT_MAX + 12));
-	printf("return_pf:\t(%%lx)\t%d\n", printf("%lx\n", ULONG_MAX - 1));
-	printf("return_fpf:\t(%%lx)\t%d\n", ft_printf("%lx\n", ULONG_MAX - 1));
-	printf("return_pf:\t(%%lx)\t%d\n", printf("%lx\n", ULONG_MAX));
-	printf("return_fpf:\t(%%lx)\t%d\n", ft_printf("%lx\n", ULONG_MAX));
-	printf("return_pf:\t(%%lx)\t%d\n", printf("%lx\n", ULONG_MAX + 5));
-	printf("return_fpf:\t(%%lx)\t%d\n", ft_printf("%lx\n", ULONG_MAX + 5));
-	printf("return_pf:\t(%%#.5x)\t%d\n", printf("%#.5x\n", 0));
-	printf("return_fpf:\t(%%#.5x)\t%d\n", ft_printf("%#.5x\n", 0));
-	printf("return_pf:\t(%%#.5x)\t%d\n", printf("%#.5x\n", 32));
-	printf("return_fpf:\t(%%#.5x)\t%d\n", ft_printf("%#.5x\n", 32));
-	printf("return_pf:\t(%%#09.0X)\t%d\n", printf("%#09.0X\n", 482));
-	printf("return_fpf:\t(%%#09.0X)\t%d\n", ft_printf("%#09.0X\n", 482));
+	// printf("return_pf:\t(%%x)\t%d\n", printf("%x\n", 0));
+	// printf("return_fpf:\t(%%x)\t%d\n", ft_printf("%x\n", 0));
+	// printf("\n");
+	// printf("return_pf:\t(%%x)\t%d\n", printf("%x\n", -42));
+	// printf("return_fpf:\t(%%x)\t%d\n", ft_printf("%x\n", -42));
+	// printf("\nlength modifiers (gaat wel goed bij conv spec 'u'\n");
+	// printf("\n");
+	// printf("return_pf:\t(%%x)\t%d\n", printf("%x\n", UINT_MAX));
+	// printf("return_fpf:\t(%%x)\t%d\n", ft_printf("%x\n", UINT_MAX));
+	// printf("\n");
+	// printf("return_pf:\t(%%x)\t%d\n", printf("%x\n", UINT_MAX + 12));
+	// printf("return_fpf:\t(%%x)\t%d\n", ft_printf("%x\n", UINT_MAX + 12));
+	// printf("\n");
+	// printf("return_pf:\t(%%lx)\t%d\n", printf("%lx\n", ULONG_MAX - 1));
+	// printf("return_fpf:\t(%%lx)\t%d\n", ft_printf("%lx\n", ULONG_MAX - 1));
+	// printf("\n");
+	// printf("return_pf:\t(%%lx)\t%d\n", printf("%lx\n", ULONG_MAX));
+	// printf("return_fpf:\t(%%lx)\t%d\n", ft_printf("%lx\n", ULONG_MAX));
+	// printf("\n");
+	// printf("return_pf:\t(%%lx)\t%d\n", printf("%lx\n", ULONG_MAX + 5));
+	// printf("return_fpf:\t(%%lx)\t%d\n", ft_printf("%lx\n", ULONG_MAX + 5));
+	// printf("\n");
+	printf("return_pf:\t(%%#.5x (0))\t%d\n", printf("%#.5x$\n", 0));
+	printf("return_fpf:\t(%%#.5x (0))\t%d\n", ft_printf("%#.5x$\n", 0));
+	printf("\n");
+	// printf("return_pf:\t(%%#.5x (32))\t%d\n", printf("%#.5x$\n", 32));
+	// printf("return_fpf:\t(%%#.5x (32))\t%d\n", ft_printf("%#.5x$\n", 32));
+	// printf("\n");
+	// printf("return_pf:\t(%%.5x (32))\t%d\n", printf("%.5x$\n", 32));
+	// printf("return_fpf:\t(%%.5x (32))\t%d\n", ft_printf("%.5x$\n", 32));
+	// printf("\n");
+	printf("return_pf:\t(%%#09.0X)\t%d\n", printf("%#09.0X$\n", 482));
+	printf("return_fpf:\t(%%#09.0X)\t%d\n", ft_printf("%#09.0X$\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%09.0X)\t%d\n", printf("%09.0X$\n", 482));
+	printf("return_fpf:\t(%%09.0X)\t%d\n", ft_printf("%09.0X$\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%9X)\t%d\n", printf("%#9X$\n", 482));
+	printf("return_fpf:\t(%%9X)\t%d\n", ft_printf("%#9X$\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%.9X)\t%d\n", printf("%.9X$\n", 482));
+	printf("return_fpf:\t(%%.9X)\t%d\n", ft_printf("%.9X$\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%9.0X)\t%d\n", printf("%9.0X$\n", 482));
+	printf("return_fpf:\t(%%9.0X)\t%d\n", ft_printf("%9.0X$\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%09X)\t%d\n", printf("%09X$\n", 482));
+	printf("return_fpf:\t(%%09X)\t%d\n", ft_printf("%09X$\n", 482));
+	printf("\n");
 }
 
 int		main(void)
 {
-	// simple_x();
-	// flags_x();
-	// precision_x();
-	// padding_x();
-	// check_hash_x();
+	simple_x();
+	flags_x();
+	precision_x();
+	padding_x();
+	check_hash_x();
 	make_test_x();
 	return (0);
 }

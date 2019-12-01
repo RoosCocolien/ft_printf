@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 15:20:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 15:53:35 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/15 22:07:01 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,36 @@ static void		hash(void)
 	ft_printf("%#s\n", "roos");
 }
 
+static void		make_test_s(void)
+{
+	printf("return_pf:\t(%%.3s, NULL)\t%d\n", printf("-pf\n%.3s$\n", NULL));	
+	printf("return_fpf:\t(%%.3s, NULL)\t%d\n", ft_printf("fpf\n%.3s$\n", NULL));
+	printf("\n");
+	printf("return_pf:\t(%%50.3s, NULL)\t%d\n", printf("-pf\n%50.3s$\n", NULL));	
+	printf("return_fpf:\t(%%50.3s, NULL)\t%d\n", ft_printf("fpf\n%50.3s$\n", NULL));
+	printf("\n");
+	printf("return_pf:\t(%%.*s, 3, NULL)\t%d\n", printf("-pf\n%.*s$\n", 3, NULL));	
+	printf("return_fpf:\t(%%.*s, 3, NULL)\t%d\n", ft_printf("fpf\n%.*s$\n", 3, NULL));
+	printf("\n");
+	printf("return_pf:\t(%%50.*s, 3, NULL)\t%d\n", printf("-pf\n%50.*s$\n", 3, NULL));	
+	printf("return_fpf:\t(%%50.*s, 3, NULL)\t%d\n", ft_printf("fpf\n%50.*s$\n", 3, NULL));
+	printf("\n");
+	printf("return_pf:\t(%%.s, \"hide\")\t%d\n", printf("-pf\n%.s$\n", "hide"));	
+	printf("return_fpf:\t(%%.s,\"hide\")\t%d\n", ft_printf("fpf\n%.s$\n", "hide"));
+	printf("\n");
+	printf("return_pf:\t(%%.2s, \"hide\")\t%d\n", printf("-pf\n%.2s$\n", "hide"));	
+	printf("return_fpf:\t(%%.2s,\"hide\")\t%d\n", ft_printf("fpf\n%.2s$\n", "hide"));
+	printf("\n");
+	printf("return_pf:\t(%%.0s, \"hide\")\t%d\n", printf("-pf\n%.0s$\n", "hide"));	
+	printf("return_fpf:\t(%%.0s,\"hide\")\t%d\n", ft_printf("fpf\n%.0s$\n", "hide"));
+	printf("\n");
+}
+
 int main(void)
 {
-	simple_s();
-	precision_s();
-	padding_s();
+	// simple_s();
+	// precision_s();
+	// padding_s();
+	make_test_s();
 	return (0);
 }

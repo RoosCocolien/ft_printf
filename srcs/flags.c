@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:48:34 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/11 16:17:33 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/15 22:00:36 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	flags_part_four(char *s, t_info *flag, int x)
 
 static int	flags_part_three(char *s, t_info *flag, int x)
 {
-	if (s[x] == '.' && (*flag).precision == 0)
+	if (s[x] == '.')
 	{
 		if ((s[x + 1] >= '0' && s[x + 1] <= '9') || s[x + 1] == '*')
 			x = check_precision(s, flag, x);
@@ -81,7 +81,7 @@ static int	flags_part_two(char *s, t_info *flag, int x)
 	int		i;
 	char	*width;
 
-	if (s[x] == '#' && (*flag).hash == 0)
+	if (s[x] == '#')
 	{
 		(*flag).hash = 1;
 		x++;
@@ -101,22 +101,22 @@ static int	flags_part_two(char *s, t_info *flag, int x)
 
 static int	flags_part_one(char *s, t_info *flag, int x)
 {
-	if (s[x] == '-' && (*flag).minus == 0)
+	if (s[x] == '-')
 	{
 		(*flag).minus = 1;
 		x++;
 	}
-	else if (s[x] == '0' && (*flag).zero == 0)
+	else if (s[x] == '0')
 	{
 		(*flag).zero = 1;
 		x++;
 	}
-	else if (s[x] == '+' && (*flag).plus == 0)
+	else if (s[x] == '+')
 	{
 		(*flag).plus = 1;
 		x++;
 	}
-	else if (s[x] == ' ' && (*flag).space == 0)
+	else if (s[x] == ' ')
 	{
 		(*flag).space = 1;
 		x++;

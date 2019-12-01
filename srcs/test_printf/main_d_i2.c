@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/20 12:25:22 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/11 17:09:56 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/11/12 14:46:25 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,7 +272,7 @@ static void	hash_flag_di()
 	printf("return: %#d\n", ft_printf("bla bla %i bla bla %+05#d\n", 3, 1536924));
 }
 
-static void	make_test_di()
+static void	make_test_di_1()
 {
 	printf("\npart1\n");
 	printf("return_pf:\t(%%+.0d, 0)\t%d\n", printf("%+.0d$\n", 0));
@@ -293,6 +293,10 @@ static void	make_test_di()
 	printf("return_pf:\t(%%047d, 482)\t%d\n", printf("%047d$\n", 482));
 	printf("return_fpf:\t(%%047d, 482)\t%d\n", ft_printf("%047d$\n", 482));
 	printf("\n");
+}
+
+static void		make_test_di_bonus(void)
+{
 	printf("\npart2(bonus)\n");
 	printf("return_pf:\t(%%*d, 5, 482)\t%d\n", printf("%*d$\n", 5, 482));
 	printf("return_fpf:\t(%%*d, 5, 482)\t%d\n", ft_printf("%*d$\n", 5, 482));
@@ -322,6 +326,14 @@ static void	make_test_di()
 	printf("return_fpf:\t(%%.*f, 15, 50.44)\t%d\n", ft_printf("%.*f$\n", 15, 50.44));
 }
 
+static void	make_test_di_loop(void)
+{
+	printf("return_pf:\t(%%++ ++ d, 482642)\t%d\n", printf("%++ ++ d$\n", 482642));
+	printf("return_pf:\t(%%++  + d, 482642)\t%d\n", printf("%++  + d$\n", 482642));
+	printf("return_fpf:\t(%%++ ++ d, 482642)\t%d\n", ft_printf("%++ ++ d$\n", 482642));	
+	printf("return_pf:\t(%%++  + d, 482642)\t%d\n", ft_printf("%++  + d$\n", 482642));
+}
+
 int		main(void)
 {
 	extra_space_plus_di();
@@ -332,6 +344,8 @@ int		main(void)
 	asterisk_di();
 	range_check_di();
 	hash_flag_di();
-	make_test_di();
+	make_test_di_1();
+	make_test_di_bonus();
+	make_test_di_loop();
 	return (0);
 }
