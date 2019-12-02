@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:23:54 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/24 16:55:13 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/02 16:34:06 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ void	print_address(t_info *flag, char *s)
 		(*flag).count++;
 		i++;
 	}
-	while ((*flag).leftover != 0)
-	{
-		ft_putchar('0');
-		(*flag).leftover--;
-		(*flag).count++;
-	}
+	// while ((*flag).leftover != 0)		I don't use it
+	// {
+	// 	ft_putchar('0');
+	// 	(*flag).leftover--;
+	// 	(*flag).count++;
+	// }
 }
 
 void	print_string(t_info *flag, char *s, int fill)

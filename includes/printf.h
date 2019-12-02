@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/11 16:16:26 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/02 17:15:01 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int					spec_perc(char *s, va_list args, t_info *flag, int x);
 int					spec_e(char *s, va_list args, t_info *flag, int x);
 int					spec_o(char *s, va_list args, t_info *flag, int x);
 int					spec_x(char *s, va_list args, t_info *flag, int x);
+int					spec_x2(char *s, va_list args, t_info *flag, int x);
 int					spec_u(char *s, va_list args, t_info *flag, int x);
 int					spec_p(char *s, va_list args, t_info *flag, int x);
 
@@ -144,5 +145,6 @@ long double			roundup_f(long double i, int prec);
 int					put_0x_spec_f(int count, char spec);
 int					change_fill(t_info *flag, int fill, int length);
 void				put_padding(t_info *flag, int fill);
+void				put_padding_w(t_info *flag, int fill_w);
 
 #endif

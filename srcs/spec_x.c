@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:49:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/24 16:55:34 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/02 15:40:23 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 static char	*get_hex_str(intmax_t i, char spec)
 {
-	char	*hex_str;
+	char			*hex_str;
 
 	if (spec == 'x' || spec == 'p')
 		hex_str = ft_itoa_base_ll(i, 16, 0);
@@ -47,30 +47,34 @@ int			spec_x(char *s, va_list args, t_info *flag, int x)
 	length = ft_strlen(hex_str);
 	// printf("hex_Str = %s\n", hex_str);
 	// printf("s[x]: %c\n", s[x]);
-	// printf("length: %d\n", length);	
-	if ((s[x] == 'p' /*&& (*flag).precision == 0*/) || (*flag).hash == 1)
+	// printf("length: %d\n", length);
+	//add
+	if ((*flag).prec_value <= length)
+		(*flag).prec_value = 0;
+	if ((s[x] == 'p' && (*flag).prec_value == 0) || (*flag).hash == 1)
 		length += 2;
 	// printf("length: %d\n", length);
 	// printf("before zero: %d\n", (*flag).zero);
 	fill = fill_width_prec(flag, length);
-	if (i == 0)
-		fill += 2;
+//	if (i == 0)
+//		fill += 2;
 	// printf("after zero: %d\n", (*flag).zero);
 	// printf("zero: %d\n", (*flag).zero);
-	if (s[x] == 'p' || ((*flag).hash == 1 && (*flag).zero != 0 && i != 0))
+	if ((s[x] == 'p' || ((*flag).hash == 1 && i != 0)) && (*flag).zero != 0)
 	{
 		// printf("put_0x 1\n");
 		(*flag).count = put_0x_spec_f((*flag).count, s[x]);
 	}
+	// printf("\nlength: %d\n", length);	
 	// printf("\nwidth: %d\n", (*flag).width);
 	// printf("minus: %d\n", (*flag).minus);
 	// printf("fill: %d\n", fill);
 	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
 	{
-		// printf("put_padding 1\n");
+		printf("\nput_padding 1\n");
 		put_padding(flag, fill);
 	}
-	if ((s[x] == 'p' || (*flag).hash == 1) && (*flag).zero == 0 && i != 0)
+	if ((s[x] == 'p' || ((*flag).hash == 1 && i != 0)) && (*flag).zero == 0)
 	{
 		// printf("put_0x 2\n");
 		(*flag).count = put_0x_spec_f((*flag).count, s[x]);
@@ -78,7 +82,7 @@ int			spec_x(char *s, va_list args, t_info *flag, int x)
 	print_address(flag, hex_str);
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 	{
-		// printf("put_padding 2\n");
+		printf("put_padding 2\n");
 		put_padding(flag, fill);
 	}
 	free(hex_str);

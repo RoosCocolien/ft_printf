@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:55:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/24 16:31:03 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/02 16:40:53 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,16 @@ int		change_fill(t_info *flag, int fill, int length)
 	if ((*flag).space == 1)
 		fill = check_flag_space(flag, fill, (*flag).minus);
 	return (fill);
+}
+
+void	put_padding_w(t_info *flag, int fill_w)
+{
+	while (fill_w > 0)
+	{
+		ft_putchar(' ');
+		(*flag).count++;
+		fill_w--;
+	}
 }
 
 void	put_padding(t_info *flag, int fill)

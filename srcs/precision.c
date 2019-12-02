@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:48:28 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/24 16:45:34 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/02 15:41:44 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,6 @@ void		get_prec_width(va_list args, t_info *flag, char spec)
 		(*flag).width = -(*flag).width;
 		(*flag).minus = 1;
 	}
-	// if ((*flag).prec_value < 0)
-	// {
-	// 	(*flag).prec_value = -(*flag).prec_value;
-	// 	(*flag).minus = 1;
-	// }
 }
 
 void		prec_and_zero_check(va_list args, t_info *flag, char spec)

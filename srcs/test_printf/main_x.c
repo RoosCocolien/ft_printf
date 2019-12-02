@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/10 15:24:21 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/24 16:49:01 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/02 13:43:00 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,8 +270,8 @@ static void		make_test_x(void)
 	printf("return_pf:\t(%%09.0X)\t%d\n", printf("%09.0X$\n", 482));
 	printf("return_fpf:\t(%%09.0X)\t%d\n", ft_printf("%09.0X$\n", 482));
 	printf("\n");
-	printf("return_pf:\t(%%9X)\t%d\n", printf("%#9X$\n", 482));
-	printf("return_fpf:\t(%%9X)\t%d\n", ft_printf("%#9X$\n", 482));
+	printf("return_pf:\t(%%#9X)\t%d\n", printf("%#9X$\n", 482));
+	printf("return_fpf:\t(%%#9X)\t%d\n", ft_printf("%#9X$\n", 482));
 	printf("\n");
 	printf("return_pf:\t(%%.9X)\t%d\n", printf("%.9X$\n", 482));
 	printf("return_fpf:\t(%%.9X)\t%d\n", ft_printf("%.9X$\n", 482));
