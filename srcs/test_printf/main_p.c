@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/10 15:24:21 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/02 15:46:39 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/05 14:12:14 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,27 +197,27 @@ static void		make_test_p(void)
 	// printf("return_pf:\t(%%.p)\t%d\n", printf("%.p\n", 32));
 	// printf("return_fpf:\t(%%.p)\t%d\n", ft_printf("%.p\n", 32));
 	// printf("\n");
-	printf("return_pf:\t(%%9.0p)\t%d\n", printf("%9.0p\n", 482));
-	printf("return_fpf:\t(%%9.0p)\t%d\n", ft_printf("%9.0p\n", 482));
-	printf("\n");
-	printf("return_pf:\t(%%9p)\t%d\n", printf("%9p\n", 482));
-	printf("return_fpf:\t(%%9p)\t%d\n", ft_printf("%9p\n", 482));
-	printf("\n");
-	printf("return_pf:\t(%%09p)\t%d\n", printf("%09p\n", 482));
-	printf("return_fpf:\t(%%09p)\t%d\n", ft_printf("%09p\n", 482));
-	printf("\n");
-	printf("return_pf:\t(%%9.1p)\t%d\n", printf("%9.1p$\n", 482));
-	printf("return_fpf:\t(%%9.1p)\t%d\n", ft_printf("%9.1p$\n", 482));
-	printf("\n");
-	printf("return_pf:\t(%%9.3p)\t%d\n", printf("%9.3p$\n", 482));
-	printf("return_fpf:\t(%%9.3p)\t%d\n", ft_printf("%9.3p$\n", 482));
-	printf("\n");
-	printf("return_pf:\t(%%9.9p)\t%d\n", printf("%9.9p$\n", 482));
-	printf("return_fpf:\t(%%9.9p)\t%d\n", ft_printf("%9.9p$\n", 482));
-	printf("\n");
-	printf("return_pf:\t(%%9.6p)\t%d\n", printf("%9.6p$\n", 482));
-	printf("return_fpf:\t(%%9.6p)\t%d\n", ft_printf("%9.6p$\n", 482));
-	printf("\n");
+	// printf("return_pf:\t(%%9.0p)\t%d\n", printf("%9.0p\n", 482));
+	// printf("return_fpf:\t(%%9.0p)\t%d\n", ft_printf("%9.0p\n", 482));
+	// printf("\n");
+	// printf("return_pf:\t(%%9p)\t%d\n", printf("%9p\n", 482));
+	// printf("return_fpf:\t(%%9p)\t%d\n", ft_printf("%9p\n", 482));
+	// printf("\n");
+	// printf("return_pf:\t(%%09p)\t%d\n", printf("%09p\n", 482));
+	// printf("return_fpf:\t(%%09p)\t%d\n", ft_printf("%09p\n", 482));
+	// printf("\n");
+	// printf("return_pf:\t(%%9.1p)\t%d\n", printf("%9.1p$\n", 482));
+	// printf("return_fpf:\t(%%9.1p)\t%d\n", ft_printf("%9.1p$\n", 482));
+	// printf("\n");
+	// printf("return_pf:\t(%%9.3p)\t%d\n", printf("%9.3p$\n", 482));
+	// printf("return_fpf:\t(%%9.3p)\t%d\n", ft_printf("%9.3p$\n", 482));
+	// printf("\n");
+	// printf("return_pf:\t(%%9.9p)\t%d\n", printf("%9.9p$\n", 482));
+	// printf("return_fpf:\t(%%9.9p)\t%d\n", ft_printf("%9.9p$\n", 482));
+	// printf("\n");
+	// printf("return_pf:\t(%%9.6p)\t%d\n", printf("%9.6p$\n", 482));
+	// printf("return_fpf:\t(%%9.6p)\t%d\n", ft_printf("%9.6p$\n", 482));
+	// printf("\n");
 	// printf("return_pf:\t(%%9.0x)\t%d\n", printf("%9.0x\n", 482));
 	// printf("return_fpf:\t(%%9.0x)\t%d\n", ft_printf("%9.0x\n", 482));
 	// printf("\n");
@@ -248,15 +248,24 @@ static void		make_test_p(void)
 	// printf("return_pf:\t(%%p (0))\t%d\n", printf("%p\n", 0));
 	// printf("return_fpf:\t(%%p (0))\t%d\n", ft_printf("%p\n", 0));
 	// printf("\n");
+	printf("return_pf:\t(%%.5p (5))\t%d\n", printf("%.5p\n", 5));
+	printf("return_fpf:\t(%%.5p (5))\t%d\n", ft_printf("%.5p\n", 5));
+	printf("\n");
+	printf("return_pf:\t(%%.5x (368))\t%d\n", printf("%.5x\n", 368));
+	printf("return_fpf:\t(%%.5x (368))\t%d\n", ft_printf("%.5x\n", 368));
+	printf("\n");
+	printf("return_pf:\t(%%#.5x (368))\t%d\n", printf("%#.5x\n", 368));
+	printf("return_fpf:\t(%%#.5x (368))\t%d\n", ft_printf("%#.5x\n", 368));
+	printf("\n");
 }
 
 int		main(void)
 {
-	// simple_p();
-	// flags_p();
+	simple_p();
+	flags_p();
 	// precision_p();
 	// padding_p();
 	// troubles();
-	make_test_p();
+	// make_test_p();
 	return (0);
 }

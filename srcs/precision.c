@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:48:28 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/02 15:41:44 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/05 12:42:37 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		get_prec_width(va_list args, t_info *flag, char spec)
 	if ((*flag).precision == 2)
 	{
 		if (spec == 'p' || spec == 'x' || spec == 'd' || spec == 'i'\
-		|| spec == 'u' || spec == 'o')
+		|| spec == 'u' || spec == 'o' || spec == 'X')
 		{
 			(*flag).width = va_arg(args, int);
 			if ((*flag).width < 0)
@@ -78,7 +78,10 @@ void		get_prec_width(va_list args, t_info *flag, char spec)
 		{
 			(*flag).prec_value = va_arg(args, int);
 			if ((*flag).prec_value < 0)
+			{
 				(*flag).prec_value = 6;
+				printf("get_prec_width\tchange prec value to 6\n");
+			}
 		}
 	}
 	if ((*flag).width == 1 && (*flag).asterisk == 1 && (*flag).precision == 0)
@@ -95,7 +98,7 @@ void		prec_and_zero_check(va_list args, t_info *flag, char spec)
 	(*flag).dot = 1;
 	get_prec_width(args, flag, spec);
 	if ((*flag).prec_value == 0 && spec != 'p' && spec != 'd' && spec != 'i'\
-	&& spec != 'u')
+	&& spec != 'u' && spec != 'x' && spec != 'X')
 	{
 		if ((*flag).precision != 0)
 		{
@@ -104,7 +107,10 @@ void		prec_and_zero_check(va_list args, t_info *flag, char spec)
 				(*flag).dot = 0;
 		}
 		else
+		{
 			(*flag).prec_value = 6;
+			printf("prec_and_zero_check\tchange prec value to 6\n");
+		}
 	}
 	if ((*flag).minus == 1 && spec != 'd' && spec != 'i')
 		(*flag).zero = 0;

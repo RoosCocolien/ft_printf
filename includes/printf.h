@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/02 17:15:01 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/05 10:38:45 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 **	remove <stdio.h>
 */
 
-# include <stdarg.h>
-# include <stdlib.h>
-# include "../libft/includes/libft.h"
-# include <stdio.h>
-# include <unistd.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include "../libft/includes/libft.h"
+#include <stdio.h>
+#include <unistd.h>
 
 typedef struct		s_info
 {
