@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 16:43:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 10:15:19 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/06 17:49:56 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,15 +218,32 @@ static void hash_u(void)
 	ft_printf("return ft_printf:\t%d\n", ft_printf("%#0*u\n", 11, 798));
 }
 
+static void make_test_u(void)
+{
+	printf("return_pf:\t(%%5u)\t%d\n", printf("%5u$\n", 587));
+	printf("return_fpf:\t(%%5u)\t%d\n", ft_printf("%5u$\n", 587));
+	printf("\n");
+	printf("return_pf:\t(%%5u%%u)\t%d\n", printf("%5u%u$\n", 587));
+	printf("return_fpf:\t(%%5u%%u)\t%d\n", ft_printf("%5u%u$\n", 587));
+	printf("\n");
+	printf("return_pf:\t(%%u)\t%d\n", printf("%u$\n"));
+	printf("return_fpf:\t(%%u)\t%d\n", ft_printf("%u$\n"));
+	printf("\n");
+	printf("return_pf:\t(%%5d%%d)\t%d\n", printf("%5d%d$\n", 587));
+	printf("return_fpf:\t(%%5d%%d)\t%d\n", ft_printf("%5d%d$\n", 587));
+	printf("\n");
+}
+
 int		main(void)
 {
-	simple_test_u();
-	padding_test_u();
-	plus_sign_test_u();
-	combi_plus_space_zero_u();
-	precision_u();
-	asterisk_u();
-	range_check_u();
-	hash_u();
+// 	simple_test_u();
+// 	padding_test_u();
+// 	plus_sign_test_u();
+// 	combi_plus_space_zero_u();
+// 	precision_u();
+// 	asterisk_u();
+// 	range_check_u();
+// 	hash_u();
+	make_test_u();
 	return (0);
 }

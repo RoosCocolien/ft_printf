@@ -162,9 +162,9 @@ return ft_printf:[0m 0
 [[31mFAIL[0m]	"%5u%u", 587
 -------------- [31mFAIL RESULT[0m ---------------
 [34mft_printf:[0m  5870[34m$
-   printf:[0m  5873167027337[34m$
+   printf:[0m  587423886851[34m$
 return ft_printf:[0m 6
-[34mreturn printf:[0m 15
+[34mreturn printf:[0m 14
 ------------------------------------------
 [[31mFAIL[0m]	"%5u%u %.0u %.5u %05u", 4, 50, 0, LONG_MAX, 0
 -------------- [31mFAIL RESULT[0m ---------------
