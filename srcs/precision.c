@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:48:28 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/05 12:42:37 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/14 20:41:27 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ void		prec_and_zero_check(va_list args, t_info *flag, char spec)
 		else
 		{
 			(*flag).prec_value = 6;
-			printf("prec_and_zero_check\tchange prec value to 6\n");
 		}
 	}
 	if ((*flag).minus == 1 && spec != 'd' && spec != 'i')

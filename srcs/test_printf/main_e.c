@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 11:06:16 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/14 20:39:53 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -375,6 +375,6 @@ int				main(void)
 	troubles();
 	hash();
 	flag_simple_zero_e();
-	// while(1);
+	//while(1);
 	return (0);
 }

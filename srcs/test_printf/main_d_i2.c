@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/20 12:25:22 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/12 14:46:25 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/14 20:53:44 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -334,18 +334,29 @@ static void	make_test_di_loop(void)
 	printf("return_pf:\t(%%++  + d, 482642)\t%d\n", ft_printf("%++  + d$\n", 482642));
 }
 
+static void extra(void)
+{
+	printf("%ld (printf)\n", __LONG_MAX__);
+	ft_printf("%ld (ft_printf)\n", __LONG_MAX__);
+	printf("%lld (printf)\n", __LONG_LONG_MAX__);
+	ft_printf("%lld (ft_printf)\n", __LONG_LONG_MAX__);
+	printf("%lu (printf)\n", UINT16_MAX);
+	ft_printf("%lu (printf)\n", UINT16_MAX);
+}
+
 int		main(void)
 {
-	extra_space_plus_di();
-	simple_test_di();
-	padding_test_di();
-	combi_plus_space_zero_di();
-	precision_di();
-	asterisk_di();
-	range_check_di();
-	hash_flag_di();
-	make_test_di_1();
-	make_test_di_bonus();
-	make_test_di_loop();
+	// extra_space_plus_di();
+	// simple_test_di();
+	// padding_test_di();
+	// combi_plus_space_zero_di();
+	// precision_di();
+	// asterisk_di();
+	// range_check_di();
+	// hash_flag_di();
+	// make_test_di_1();
+	// make_test_di_bonus();
+	// make_test_di_loop();
+	extra();
 	return (0);
 }

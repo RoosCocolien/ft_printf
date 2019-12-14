@@ -6,12 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/06 10:49:42 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/14 21:42:09 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/printf.h"
 #include <stdio.h>
+#include <limits.h>
 
 static void		simple_f(void)
 {
@@ -333,15 +334,35 @@ static void		hash(void)
 	ft_printf("%#.0-f\n",7.3412);
 }
 
+static void		extra(void)
+{
+	printf("Even numbers gets round up and odd numbers gets round down\n");
+	printf("%f\t(printf)\n", 0.5f);
+	ft_printf("%f\t(ft_printf)\n", 0.5f);
+	printf("%.0f\t(printf)\n", 2.5f);
+	ft_printf("%.0f\t(ft_printf)\n", 2.5f);
+	printf("%.0f\t(printf)\n", 3.5f);
+	ft_printf("%.0f\t(ft_printf)\n", 3.5f);
+	printf("%.0f\t(printf)\n", 4.5f);
+	ft_printf("%.0f\t(ft_printf)\n", 4.5f);
+	printf("%.0f\t(printf)\n", 0/0.0);
+	ft_printf("%.0f\t(ft_printf)\n", 0/0.0);
+	printf("%.0f\t(printf)\n", 1/0.0);
+	ft_printf("%.0f\t(ft_printf)\n", 1/0.0);
+	printf("%.0f\t(printf)\n", -1/0.0);
+	ft_printf("%.0f\t(ft_printf)\n", -1/0.0);
+}
+
 int				main(void)
 {
-	simple_f();
-	len_mod_f();
-	flags_f();
-	width_asterisk_f();
-	precision_f();
-	no_decimals();
-	rounding();
-	hash();
+	// simple_f();
+	// len_mod_f();
+	// flags_f();
+	// width_asterisk_f();
+	// precision_f();
+	// no_decimals();
+	// rounding();
+	// hash();
+	extra();
 	return (0);
 }
