@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 15:03:48 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/05 14:11:08 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/16 17:01:30 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,31 @@ long double			roundup_f(long double i, int prec)
 	long double			j;
 	char				*str;
 	int					len;
+	int					even_odd;
 
+	even_odd = 0;
+	printf("ROUNDUP i: %Lf\n", i);
 	j = i * ten_to_the_power_of(prec + 1);
+	printf("j = %Lf\n", j);
 	str = ft_itoa_llu(j);
+	printf("str = %s\n", str);
 	len = ft_strlen(str);
-	if (str[len - 1] >= '5')
-		i = ((j / 10 + 1) / ten_to_the_power_of(prec));
+	printf("len = %d\n", len);
+	if (len > 1 && str[len - 1] >= '5')
+	{
+		printf("test, %d\n", ((int)j / 10) % 10);
+		even_odd = ((int)j / 10) % 10;
+		//if j is gelijk aan even_odd dan is het oneven++
+		if (even_odd % 2 == 0)
+			i = ((j / 10 + 1) / ten_to_the_power_of(prec));
+	}
 	free(str);
 	return (i);
 }
+
+/*
+** bij de decimalen is het even ++
+** bij de grote getalen is het oneven ++
+** check conversation with dominque and create ft_dprintf
+** writing to a file (is that possible with my code?)
+*/
