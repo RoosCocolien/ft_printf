@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/16 15:30:03 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/17 14:43:39 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -337,6 +337,7 @@ static void		hash(void)
 static void		extra(void)
 {
 	printf("Odd numbers gets round up and even numbers gets round down\n");
+	printf("\nPRECISION 0");
 	printf("\n%f\t(%%f\t0.5F\tprintf)\n", 0.5F);
 	ft_printf("%f\t(%%f\t0.5F\tft_printf)\n", 0.5F);
 	printf("\n%.0f\t(%%.0f\t0.5F\tprintf)\n", 0.5F);
@@ -347,10 +348,33 @@ static void		extra(void)
 	ft_printf("%.0f\t(%%.0f\t3.5F\tft_printf)\n", 3.5F);
 	printf("\n%.0f\t(%%.0f\t4.5F\tprintf)\n", 4.5F);
 	ft_printf("%.0f\t(%%.0f\t4.5F\tft_printf)\n", 4.5F);
+	printf("\n%.0f\t(%%.0f\t3.5\tprintf)\n", 3.5);
+	ft_printf("%.0f\t(%%.0f\t3.5\tft_printf)\n", 3.5);
+	printf("\n%.0f\t(%%.0f\t3.9\tprintf)\n", 3.9);
+	ft_printf("%.0f\t(%%.0f\t3.9\tft_printf)\n", 3.9);
+	printf("\n%.0f\t(%%.0f\t4.5\tprintf)\n", 4.5);
+	ft_printf("%.0f\t(%%.0f\t4.5\tft_printf)\n", 4.5);
+
+	printf("\nPRECISION 1");
+	printf("\n%.1f\t(%%.1f\t3.35\tprintf)\n", 3.35F);
+	ft_printf("%.1f\t(%%.1f\t3.35\tft_printf)\n", 3.35F);
+	printf("\n%.1f\t(%%.1f\t4.45\tprintf)\n", 4.45F);
+	ft_printf("%.1f\t(%%.1f\t4.45\tprintf)\n", 4.45F);
+
+	printf("\nPRECISION 2");
 	printf("\n%.2f\t(%%.2f\t4.535F\tprintf)\n", 4.535F);
 	ft_printf("%.2f\t(%%.2f\t4.535F\tft_printf)\n", 4.535F);
 	printf("\n%.2f\t(%%.2f\t4.545F\tprintf)\n", 4.545F);
 	ft_printf("%.2f\t(%%.2f\t4.545F\tft_printf)\n", 4.545F);
+
+	printf("\nPRECISION 3");
+	printf("\n%.3f\t(%%.3f\t4.2535F\tprintf)\n", 4.2535F);
+	ft_printf("%.3f\t(%%.3f\t4.2535F\tft_printf)\n", 4.2535F);
+	printf("\n%.3f\t(%%.3f\t4.2545F\tprintf)\n", 4.2545F);
+	ft_printf("%.3f\t(%%.3f\t4.2545F\tft_printf)\n", 4.2545F);
+
+	printf("\nEDGE CASES");
+	printf("NAN not a number, check wikipedia, floating point arithmetic");
 	printf("\n%.0f\t(%%.0f\t0/0.0\tprintf)\n", 0/0.0);
 	ft_printf("%.0f\t(%%.0f\t0/0.0\tft_printf)\n", 0/0.0);
 	printf("\n%.0f\t(%%.0f\t1/0.0\tprintf)\n", 1/0.0);

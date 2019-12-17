@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 15:03:48 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/16 17:01:30 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/17 13:41:03 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ long double			roundup_f(long double i, int prec)
 	int					even_odd;
 
 	even_odd = 0;
+	printf("prec: %d\n", prec);
 	printf("ROUNDUP i: %Lf\n", i);
 	j = i * ten_to_the_power_of(prec + 1);
 	printf("j = %Lf\n", j);
