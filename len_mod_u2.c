@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_digit_count.c                                   :+:    :+:            */
+/*   len_mod_u2.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/07 15:05:00 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 14:53:58 by rsteigen      ########   odam.nl         */
+/*   Created: 2019/07/09 17:41:20 by rsteigen       #+#    #+#                */
+/*   Updated: 2019/07/09 17:46:42 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/printf.h"
 
-size_t			ft_digit_count(intmax_t value, int base)
+unsigned long long		check_u(va_list args, char conv_spec)
 {
-	size_t	i;
+	unsigned int		uns_int;
+	unsigned long long	i;
 
 	i = 0;
-	if (value == 0)
-		i = 1;
-	while (value)
+	uns_int = 0;
+	if (conv_spec == 'u' || conv_spec == 'o' || conv_spec == 'x'\
+	|| conv_spec == 'X')
 	{
-		value = value / base;
-		i++;
+		uns_int = va_arg(args, unsigned int);
+		i = (unsigned long long)uns_int;
 	}
 	return (i);
 }

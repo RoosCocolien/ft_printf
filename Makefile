@@ -6,81 +6,65 @@
 #    By: bvan-de- <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/15 14:53:31 by bvan-de-       #+#    #+#                 #
-#    Updated: 2019/12/02 17:14:31 by rsteigen      ########   odam.nl          #
+#    Updated: 2019/12/18 17:18:25 by rsteigen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= ft_printf
-SRCS 	= srcs/ft_printf.c srcs/flags.c srcs/spec.c srcs/spec_c.c\
-			srcs/spec_d_i.c srcs/spec_s.c srcs/spec_perc.c srcs/spec_f.c\
-			srcs/spec_e.c srcs/spec_o.c srcs/flags2.c srcs/spec_x.c\
-			srcs/spec_u.c srcs/spec_p.c srcs/print.c srcs/padding.c\
-			srcs/len_mod_di2.c srcs/len_mod_di.c srcs/len_mod_u.c\
-			srcs/len_mod_u2.c srcs/precision.c srcs/len_mod_ef.c\
-			srcs/make_str_e.c srcs/colors.c srcs/make_str_f.c\
-			srcs/roundup.c srcs/spec_x_2.c
-
+NAME	= libftprintf.a
+LIBFT	= libft
+SRCS 	= ft_printf.c flags.c spec.c spec_c.c\
+			spec_d_i.c spec_s.c spec_perc.c spec_f.c\
+			spec_e.c spec_o.c flags2.c spec_x.c\
+			spec_u.c spec_p.c print.c padding.c\
+			len_mod_di2.c len_mod_di.c len_mod_u.c\
+			len_mod_u2.c precision.c len_mod_ef.c\
+			make_str_e.c colors.c make_str_f.c\
+			roundup.c spec_x_2.c
+LIBFUNC	= libft/ft_memset.c libft/ft_bzero.c libft/ft_memcpy.c\
+			libft/ft_memccpy.c libft/ft_memmove.c libft/ft_memchr.c\
+			libft/ft_strstr.c libft/ft_isdigit.c libft/ft_memalloc.c\
+			libft/ft_memcmp.c libft/ft_strlen.c libft/ft_strdup.c\
+			libft/ft_strcpy.c libft/ft_strcpy.c libft/ft_strcat.c\
+			libft/ft_strncat.c libft/ft_strlcat.c libft/ft_strchr.c\
+			libft/ft_strrchr.c libft/ft_strnstr.c libft/ft_strcmp.c\
+			libft/ft_strncmp.c libft/ft_atoi.c libft/ft_isalpha.c\
+			libft/ft_isalnum.c libft/ft_isascii.c libft/ft_isprint.c\
+			libft/ft_toupper.c libft/ft_tolower.c libft/ft_memdel.c\
+			libft/ft_strnew.c libft/ft_strdel.c libft/ft_strclr.c\
+			libft/ft_striter.c libft/ft_striteri.c libft/ft_strjoin.c\
+			libft/ft_putendl.c libft/ft_putnbr_fd.c libft/ft_lstmap.c\
+			libft/ft_strmap.c libft/ft_strmapi.c libft/ft_strequ.c\
+			libft/ft_strnequ.c libft/ft_strsub.c libft/ft_strtrim.c\
+			libft/ft_strsplit.c libft/ft_itoa.c libft/ft_putchar.c\
+			libft/ft_putstr.c libft/ft_putnbr.c libft/ft_putchar_fd.c\
+			libft/ft_putstr_fd.c libft/ft_putendl_fd.c libft/ft_lstnew.c\
+			libft/ft_lstdelone.c libft/ft_lstdel.c libft/ft_lstadd.c\
+			libft/ft_lstiter.c libft/ft_printtlist.c libft/ft_printelem.c\
+			libft/ft_strnlen.c libft/ft_strcharfind.c libft/ft_strsldup.c\
+			libft/ft_sqrt.c libft/ft_lstpushback.c libft/ft_itoa_base.c\
+			libft/ft_itoa_base_cap.c libft/ft_intlength.c\
+			libft/ft_digit_count.c libft/ft_itoa_base_ll.c\
+			libft/ft_itoa_llu.c libft/ft_strncpy.c
 FLAG 	= -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME):
-	@gcc srcs/main_simple.c libft/libft.a $(SRCS)
-
-lib:
-	@gcc -c -I includes/*.h libft/includes/*.h $(SRCS) $(SRCSLIBFT)
-	@ar rc ext_test/libftprintf.a *.o
-	@ranlib ext_test/libftprintf.a
+	@make re -C $(LIBFT)
+	@echo Succeeded making: $(LIBFT)
+	@gcc $(FLAG) -c -I $(LIBFT) -I includes $(SRCS)
+	@ar rc $(NAME) $(SRCS:.c=.o) $(LIBFUNC:.c=.o)
+	@echo Succeeded making: $(NAME)
+	@ranlib $(NAME)
 	@rm -rf *.o
-
-test:
-	@make lib
-	@cd ext_test && make test
-	@cd ext_test && ./ft_printf_test  > ../test_results.txt && ./ft_printf_test
-
-leaks:
-	@gcc -g srcs/main_simple.c libft/libft.a $(SRCS)
-
-c:
-	@gcc srcs/test_printf/main_c.c libft/libft.a $(SRCS)
-
-di:
-	@gcc srcs/test_printf/main_d_i2.c libft/libft.a $(SRCS)
-
-e:
-	@gcc srcs/test_printf/main_e.c libft/libft.a $(SRCS)
-
-o:
-	@gcc srcs/test_printf/main_o.c libft/libft.a $(SRCS)
-
-s:
-	@gcc srcs/test_printf/main_s.c libft/libft.a $(SRCS)
-
-u:
-	@gcc srcs/test_printf/main_u.c libft/libft.a $(SRCS)
-
-x:
-	@gcc srcs/test_printf/main_x.c libft/libft.a $(SRCS)
-   
-f:
-	@gcc srcs/test_printf/main_f.c libft/libft.a $(SRCS)
-
-b:
-	@gcc srcs/test_printf/main_b.c libft/libft.a $(SRCS)
-
-zero:
-	@gcc srcs/test_printf/main_zero.c libft/libft.a $(SRCS)
-
-p:
-	@gcc srcs/test_printf/main_p.c libft/libft.a $(SRCS)
-
-perc:
-	@gcc srcs/test_printf/main_perc.c libft/libft.a $(SRSC)
 
 clean:
 	@rm -rf *.o
+	@make -C $(LIBFT) clean
 
 fclean: clean
 	@/bin/rm -rf $(NAME)
+	@make -C $(LIBFT) fclean
 
 re: fclean all
+	@make -C $(LIBFT) re

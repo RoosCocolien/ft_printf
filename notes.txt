@@ -22,11 +22,18 @@ Check het verschil van j in de rounding method wanneer je er een F achterplaatst
 of geen F. Als je er geen F achter plaatst dan is het getal hoger.
 
 wo
-0900-1030 TW
-1100-2000 printf MAKEFILE aanpassen!!!
+0900-1200 TW
+1300-1800 printf MAKEFILE aanpassen!!!
+1900-2100 digital designer (met premiere pro en color grading)
 
 do
-0900-1700 printf
+Try 08 oclock
+0900-1700 printf floats
+				1. alles banking rounding
+				2. edge cases
+				3. limits.h
+				4. alles testen
+				5. andere testen
 1730-2100 klimmen Rosa
 
 vr

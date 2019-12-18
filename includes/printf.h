@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/05 10:38:45 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/18 14:16:08 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int					find_spec(char *s, va_list args, t_info *flag, int x);
 int					find_spec_2(char *s, va_list args, t_info *flag, int x);
 int					spec_d_i(char *s, va_list args, t_info *flag, int x);
 int					spec_f(char *s, va_list args, t_info *flag, int x);
-int					spec_s(char *s, va_list args, t_info *flag, int x);
-int					spec_c(char *s, va_list args, t_info *flag, int x);
-int					spec_perc(char *s, va_list args, t_info *flag, int x);
+int					spec_s(va_list args, t_info *flag, int x);
+int					spec_c(va_list args, t_info *flag, int x);
+int					spec_perc(t_info *flag, int x);
 int					spec_e(char *s, va_list args, t_info *flag, int x);
 int					spec_o(char *s, va_list args, t_info *flag, int x);
 int					spec_x(char *s, va_list args, t_info *flag, int x);
@@ -80,7 +80,7 @@ int					spec_p(char *s, va_list args, t_info *flag, int x);
 
 void				print_digit(t_info *flag, unsigned long long nb);
 void				print_address(t_info *flag, char *s);
-void				print_string(t_info *flag, char *s, int fill);
+void				print_string(t_info *flag, char *s);
 void				print_neg(t_info *flag);
 void				print_zero(t_info *flag, long long i, char *oct_str,\
 int fill);
@@ -92,9 +92,8 @@ int fill);
 unsigned long long	len_mod_check_di(va_list args, t_info *flag);
 unsigned long long	check_int(va_list args, t_info *flag);
 long double			len_mod_check_efg(va_list args, t_info *flag);
-intmax_t			len_mod_check_u(va_list args, t_info *flag,\
-char conv_spec);
-unsigned long long	check_u(va_list args, t_info *flag, char conv_spec);
+intmax_t			len_mod_check_u(va_list args, t_info *flag, char conv_spec);
+unsigned long long	check_u(va_list args, char conv_spec);
 
 /*
 **	make string functions

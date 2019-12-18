@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_digit_count.c                                   :+:    :+:            */
+/*   spec_perc.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/07 15:05:00 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 14:53:58 by rsteigen      ########   odam.nl         */
+/*   Created: 2019/06/07 15:48:45 by rsteigen       #+#    #+#                */
+/*   Updated: 2019/12/18 14:14:06 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/printf.h"
 
-size_t			ft_digit_count(intmax_t value, int base)
+int		spec_perc(t_info *flag, int x)
 {
-	size_t	i;
+	int fill;
 
-	i = 0;
-	if (value == 0)
-		i = 1;
-	while (value)
-	{
-		value = value / base;
-		i++;
-	}
-	return (i);
+	fill = (*flag).width - 1;
+	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
+		put_padding(flag, fill);
+	ft_putchar('%');
+	(*flag).count++;
+	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
+		put_padding(flag, fill);
+	x++;
+	return (x);
 }
