@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/18 14:16:08 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/19 17:48:42 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 **	remove <stdio.h>
 */
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include "../libft/includes/libft.h"
-#include <stdio.h>
-#include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
+# include "../libft/includes/libft.h"
+# include <stdio.h>
+# include <unistd.h>
 
 typedef struct		s_info
 {
@@ -47,6 +47,8 @@ typedef struct		s_info
 	int				no_decimals;
 	int				dot;
 	int				leftover;
+	int				f_nan;
+	int				f_inf;
 }					t_info;
 
 /*

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 16:43:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/18 17:25:27 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/19 10:25:18 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,6 +284,8 @@ static void		make_test_o(void)
 	unsigned long ulong_max;
 
 	ulong_max = ULONG_MAX;
+	printf("return_pf:\t(%%#09.0o (482))\t%d\n", printf("%#09.0o\n", 482));
+	printf("return_fpf:\t(%%#09.0o (482))\t%d\n", ft_printf("%#09.0o\n", 482));
 	printf("return_pf:\t(%%lo)\t%d\n", printf("%lo\n", ulong_max));
 	printf("return_fpf:\t(%%lo)\t%d\n", ft_printf("%lo\n", ulong_max));
 	printf("return_pf:\t(%%llo)\t%d\n", printf("%llo\n", ulong_max));

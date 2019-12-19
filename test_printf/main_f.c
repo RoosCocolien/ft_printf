@@ -6,13 +6,14 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/18 18:00:27 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/19 17:41:03 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 #include <stdio.h>
 #include <limits.h>
+#include <math.h>
 
 static void		simple_f(void)
 {
@@ -336,7 +337,7 @@ static void		hash(void)
 
 static void		inconsistent_rounding(void)
 {
-	printf("Odd numbers gets round up and even numbers gets round down\n");
+	printf("Rounding towards nearest even number.\n");
 	printf("\nPRECISION 0");
 	printf("\n%f\t(%%f\t0.5F\tprintf)\n", 0.5F);
 	ft_printf("%f\t(%%f\t0.5F\tft_printf)\n", 0.5F);
@@ -350,16 +351,22 @@ static void		inconsistent_rounding(void)
 	ft_printf("%.0f\t(%%.0f\t4.5F\tft_printf)\n", 4.5F);
 	printf("\n%.0f\t(%%.0f\t3.5\tprintf)\n", 3.5);
 	ft_printf("%.0f\t(%%.0f\t3.5\tft_printf)\n", 3.5);
-	printf("\n%.0f\t(%%.0f\t3.9\tprintf)\n", 3.9);
-	ft_printf("%.0f\t(%%.0f\t3.9\tft_printf)\n", 3.9);
 	printf("\n%.0f\t(%%.0f\t4.5\tprintf)\n", 4.5);
 	ft_printf("%.0f\t(%%.0f\t4.5\tft_printf)\n", 4.5);
+	printf("\n%.0f\t(%%.0f\t3.5\tprintf)\n", 4.55);
+	ft_printf("%.0f\t(%%.0f\t3.5\tft_printf)\n", 4.55);
+	printf("\n%.0f\t(%%.0f\t3.9\tprintf)\n", 3.9);
+	ft_printf("%.0f\t(%%.0f\t3.9\tft_printf)\n", 3.9);
 
 	printf("\nPRECISION 1");
 	printf("\n%.1f\t(%%.1f\t3.35\tprintf)\n", 3.35F);
 	ft_printf("%.1f\t(%%.1f\t3.35\tft_printf)\n", 3.35F);
 	printf("\n%.1f\t(%%.1f\t4.45\tprintf)\n", 4.45F);
 	ft_printf("%.1f\t(%%.1f\t4.45\tprintf)\n", 4.45F);
+	printf("\n%.1f\t(%%.1f\t3.35\tprintf)\n", 3.356F);
+	ft_printf("%.1f\t(%%.1f\t3.35\tft_printf)\n", 3.356F);
+	printf("\n%.1f\t(%%.1f\t4.45\tprintf)\n", 4.456F);
+	ft_printf("%.1f\t(%%.1f\t4.45\tprintf)\n", 4.456F);
 
 	printf("\nPRECISION 2");
 	printf("\n%.2f\t(%%.2f\t4.535F\tprintf)\n", 4.535F);
@@ -378,14 +385,26 @@ static void		edge_cases(void)
 {
 	printf("\nEDGE CASES");
 	printf("NAN not a number, check wikipedia, floating point arithmetic");
-	printf("\n%.0f\t(%%.0f\t0/0.0\tprintf)\n", 0.0);
-	ft_printf("%.0f\t(%%.0f\t0/0.0\tft_printf)\n", 0.0);
-	printf("\n%.0f\t(%%.0f\t0/0.0\tprintf)\n", 0/0.0);
-	ft_printf("%.0f\t(%%.0f\t0/0.0\tft_printf)\n", 0/0.0);
-	printf("\n%.0f\t(%%.0f\t1/0.0\tprintf)\n", 1/0.0);
-	ft_printf("%.0f\t(%%.0f\t1/0.0\tft_printf)\n", 1/0.0);
-	printf("\n%.0f\t(%%.0f\t-1/0.0\tprintf)\n", -1/0.0);
-	ft_printf("%.0f\t(%%.0f\t-1/0.0\tft_printf)\n", -1/0.0);
+	printf("\n%.0f\t(%%.0f\t0.0\tprintf)\n", 0.0);
+	ft_printf("%.0f\t(%%.0f\t0.0\tft_printf)\n", 0.0);
+	printf("\n%10.0f\t(%%10.0f\t0/0.0\tprintf)\n", 0 / 0.0);
+	ft_printf("%10.0f\t(%%10.0f\t0/0.0\tft_printf)\n", 0 / 0.0);
+	printf("\n%.0f\t(%%.0f\t1/0.0\tprintf)\n", 1 / 0.0);
+	ft_printf("%.0f\t(%%.0f\t1/0.0\tft_printf)\n", 1 / 0.0);
+	printf("\n%.0f\t(%%.0f\t-1/0.0\tprintf)\n", -1 / 0.0);
+	ft_printf("%.0f\t(%%.0f\t-1/0.0\tft_printf)\n", -1 / 0.0);
+	printf("\n%.0f\t(%%.0f\t-45/0.0\tprintf)\n", -45 / 0.0);
+	ft_printf("%.0f\t(%%.0f\t-45/0.0\tft_printf)\n", -45 / 0.0);
+	printf("\n%.1f\t(%%.1f\t0.0\tprintf)\n", 0.0);
+	ft_printf("%.1f\t(%%.1f\t0.0\tft_printf)\n", 0.0);
+	printf("\n%.1f\t(%%.1f\t0/0.0\tprintf)\n", 0 / 0.0);
+	ft_printf("%.1f\t(%%.1f\t0/0.0\tft_printf)\n", 0 / 0.0);
+	printf("\n%.1f\t(%%.1f\t1/0.0\tprintf)\n", 1 / 0.0);
+	ft_printf("%.1f\t(%%.1f\t1/0.0\tft_printf)\n", 1 / 0.0);
+	printf("\n%.1f\t(%%.1f\t-1/0.0\tprintf)\n", -1 / 0.0);
+	ft_printf("%.1f\t(%%.1f\t-1/0.0\tft_printf)\n", -1 / 0.0);
+	printf("\n%f\t(%%f\tsrt(-1)\tprintf)\n", sqrt(-1));
+	ft_printf("%f\t(%%f\tsrt(-1)\tft_printf)\n", sqrt(-1));
 }
 
 int				main(void)
