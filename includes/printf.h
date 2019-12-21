@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/21 17:34:55 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/21 23:07:08 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int					save_prec_width(char *s, t_info *flag, int x);
 **	colors.c
 */
 
-int					color_setter(char *str, int x);
+int					color_setter(char *str, int x, t_info *flag);
 
 /*
 **	precision
@@ -149,7 +149,7 @@ long double			roundup_f(long double i, int prec);
 **	padding.c
 */
 
-int					put_0x_spec_f(int count, char spec);
+int					put_0x_spec_f(int count, char spec, int fd);
 int					change_fill(t_info *flag, int fill, int length);
 void				put_padding(t_info *flag, int fill);
 void				put_padding_w(t_info *flag, int fill_w);

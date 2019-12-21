@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:15:44 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/19 17:47:50 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/21 23:07:50 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ static void	print_nan_f(t_info *flag)
 	if ((*flag).f_nan == 1)
 	{
 		(*flag).count += 3;
-		ft_putstr("nan");
+		ft_putstr_fd("nan", (*flag).fd);
 	}
 	if ((*flag).f_inf == 1)
 	{
 		(*flag).count += 3;
-		ft_putstr("inf");
+		ft_putstr_fd("inf", (*flag).fd);
 	}
 	if ((*flag).f_inf == -1)
 	{
 		(*flag).count += 4;
-		ft_putstr("-inf");
+		ft_putstr_fd("-inf", (*flag).fd);
 	}
 }
 

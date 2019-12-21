@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:52 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/21 17:36:07 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/21 23:08:22 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			spec_s(va_list args, t_info *flag, int x)
 	(fill < 0 || (*flag).prec_value != 0))
 		length = put_part_str(str, (*flag).prec_value, (*flag).fd);
 	else
-		ft_putstr(str);
+		ft_putstr_fd(str, (*flag).fd);
 	(*flag).count += length;
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 		put_padding(flag, fill);

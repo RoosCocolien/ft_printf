@@ -6,18 +6,18 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:55:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/21 17:28:28 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/21 23:07:24 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 
-int		put_0x_spec_f(int count, char spec)
+int		put_0x_spec_f(int count, char spec, int fd)
 {
 	if (spec >= 65 && spec <= 90)
-		ft_putstr("0X");
+		ft_putstr_fd("0X", fd);
 	else
-		ft_putstr("0x");
+		ft_putstr_fd("0x", fd);
 	return (count += 2);
 }
 
