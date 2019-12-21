@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 16:43:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/18 17:25:05 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/21 17:01:30 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,17 +191,16 @@ static void	range_check_u(void)
 	ft_printf("%lu\n", 4294967296);
 
 	//uns long long
-	printf("\nprintf\t%%llu\tuns long long (18.443.744.073.709.551.614)\n%llu\n", 18443744073709551614);
-	ft_printf("%llu\n", 18443744073709551614);
+	printf("\nprintf\t%%llu\tuns long long (18.443.744.073.709.551.613)\n%llu\n", 18443744073709551613);
+	ft_printf("%llu\n", 18443744073709551613);
 	//uns long long < 0
 	printf("\nprintf\t%%llu\tuns long long < 0 (-1)\n%llu\n", -1);
 	ft_printf("%llu\n", -1);
 
 	//uns long long > 18.466.744.073.709.551.615
-/*	printf("\nprintf\t%%llu\tuns long long > 18.446.744.073.709.551.615\n%llu\n", 18446744073709551616);
-	ft_printf("%llu\n", 18446744073709551616);
-	GEEFT EEN ERROR
-*/
+	printf("\nprintf\t%%llu\tuns long long > 18.443.744.073.709.551.616\n%llu\n", 18443744073709551616);
+	ft_printf("%llu\n", 18443744073709551616);
+//	GEEFT EEN ERROR
 }
 
 static void hash_u(void)
@@ -236,14 +235,14 @@ static void make_test_u(void)
 
 int		main(void)
 {
-// 	simple_test_u();
-// 	padding_test_u();
-// 	plus_sign_test_u();
-// 	combi_plus_space_zero_u();
-// 	precision_u();
-// 	asterisk_u();
-// 	range_check_u();
-// 	hash_u();
+	simple_test_u();
+	padding_test_u();
+	plus_sign_test_u();
+	combi_plus_space_zero_u();
+	precision_u();
+	asterisk_u();
+	range_check_u();
+	hash_u();
 	make_test_u();
 	return (0);
 }

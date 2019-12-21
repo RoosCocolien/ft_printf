@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:33 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/18 14:10:55 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/21 16:58:25 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		spec_o(char *s, va_list args, t_info *flag, int x)
 {
-	long long			i;
+	unsigned long long	i;
 	int					length;
 	int					fill;
 	char				*oct_str;
@@ -25,9 +25,11 @@ int		spec_o(char *s, va_list args, t_info *flag, int x)
 	oct_str = ft_itoa_base_ll(i, 8, 0);
 	length = ft_strlen(oct_str);
 	fill = fill_width_prec(flag, length);
+	if (s[x] == 'o' && (*flag).hash == 1 && (*flag).zero == 0 && i != 0)
+		fill--;
 	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
 		put_padding(flag, fill);
-	print_zero(flag, i, oct_str, fill);
+	print_zero(flag, i, oct_str);
 	ft_putstr(oct_str);
 	(*flag).count += length;
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)

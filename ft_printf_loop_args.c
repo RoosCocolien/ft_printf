@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   spec_perc.c                                        :+:    :+:            */
+/*   ft_printf_loop_args.c                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/06/07 15:48:45 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/21 17:29:31 by rsteigen      ########   odam.nl         */
+/*   Created: 2019/12/21 17:14:15 by rsteigen       #+#    #+#                */
+/*   Updated: 2019/12/21 17:25:22 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 
-int		spec_perc(t_info *flag, int x)
+int			loop_format_args(char *s, va_list args, int fd, int x)
 {
-	int fill;
+	t_info	flag;
 
-	fill = (*flag).width - 1;
-	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
-		put_padding(flag, fill);
-	ft_putchar_fd('%', (*flag).fd);
-	(*flag).count++;
-	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
-		put_padding(flag, fill);
-	x++;
-	return (x);
+	flag.count = 0;
+	flag.fd = fd;
+	while (s[x])
+	{
+		if (s[x] == '%')
+		{
+			x++;
+			x = save_flags(s, &flag, x);
+			if (x == -1)
+				return (-1);
+			x = find_spec(s, args, &flag, x);
+			if (x == -1)
+				return (-1);
+		}
+		else
+		{
+			x = print_content(&flag, s, x);
+			if (x == -1)
+				return (-1);
+		}
+	}
+	return (flag.count);
 }

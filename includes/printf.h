@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/19 17:48:42 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/21 17:34:55 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct		s_info
 	int				leftover;
 	int				f_nan;
 	int				f_inf;
+	int				fd;
 }					t_info;
 
 /*
@@ -56,7 +57,12 @@ typedef struct		s_info
 */
 
 int					ft_printf(const char *restrict format, ...);
-int					loop_format_args(char *s, va_list args);
+int					ft_dprintf(int fd, const char *restrict format, ...);
+
+/*
+**	ft_printf_loop_args
+*/
+int					loop_format_args(char *s, va_list args, int fd, int x);
 
 /*
 **	conversion specifiers functions
@@ -84,8 +90,8 @@ void				print_digit(t_info *flag, unsigned long long nb);
 void				print_address(t_info *flag, char *s);
 void				print_string(t_info *flag, char *s);
 void				print_neg(t_info *flag);
-void				print_zero(t_info *flag, long long i, char *oct_str,\
-int fill);
+void				print_zero(t_info *flag, long long i, char *oct_str);
+int					print_content(t_info *flag, char *s, int x);
 
 /*
 **	length modifier functions

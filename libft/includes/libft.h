@@ -6,7 +6,7 @@
 /*   By: bvan-de- <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/15 14:57:08 by bvan-de-       #+#    #+#                */
-/*   Updated: 2019/11/07 18:40:40 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/21 16:52:50 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-size_t				ft_digit_count(intmax_t value, int base);
+size_t				ft_digit_count(unsigned long long value, int base);
 int					ft_intlength(unsigned long long y);
 char				*ft_itoa_base_ll(intmax_t value, int base, int cap);
 char				*ft_itoa_llu(unsigned long long n);

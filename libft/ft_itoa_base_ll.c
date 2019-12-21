@@ -6,13 +6,14 @@
 /*   By: rsteigen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/28 10:37:26 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/07 18:56:29 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/21 16:54:29 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static char		*fill_str(intmax_t value, int base, int len, int cap)
+static char		*fill_str(unsigned long long value, int base, int len, int cap)
 {
 	char	*s;
 	char	*s_base;
@@ -40,6 +41,6 @@ char			*ft_itoa_base_ll(intmax_t value, int base, int cap)
 	if (base < 2 || base > 16)
 		return (0);
 	len = ft_digit_count(value, base);
-	s = fill_str(value, base, len, cap);
+	s = fill_str((unsigned long long)value, base, len, cap);
 	return (s);
 }

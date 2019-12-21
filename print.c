@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:23:54 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/18 14:12:01 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/21 17:29:18 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_digit(t_info *flag, unsigned long long nb)
 	if ((*flag).neg == 0 && (*flag).plus == 1 && (*flag).minus == 0 &&\
 	(*flag).precision == 0 && (*flag).zero == 0)
 	{
-		ft_putchar('+');
+		ft_putchar_fd('+', (*flag).fd);
 		(*flag).plus++;
 		(*flag).count++;
 	}
@@ -32,7 +32,7 @@ void	print_digit(t_info *flag, unsigned long long nb)
 	{
 		while (str_digit[i])
 		{
-			ft_putchar(str_digit[i]);
+			ft_putchar_fd(str_digit[i], (*flag).fd);
 			(*flag).count++;
 			i++;
 		}
@@ -49,20 +49,14 @@ void	print_address(t_info *flag, char *s)
 	(*flag).precision == 0 && (*flag).zero == 0)
 	{
 		(*flag).count++;
-		ft_putchar('+');
+		ft_putchar_fd('+', (*flag).fd);
 	}
 	while (s[i])
 	{
-		ft_putchar(s[i]);
+		ft_putchar_fd(s[i], (*flag).fd);
 		(*flag).count++;
 		i++;
 	}
-	// while ((*flag).leftover != 0)		I don't use it
-	// {
-	// 	ft_putchar('0');
-	// 	(*flag).leftover--;
-	// 	(*flag).count++;
-	// }
 }
 
 void	print_string(t_info *flag, char *s)
@@ -74,17 +68,17 @@ void	print_string(t_info *flag, char *s)
 	(*flag).precision == 0 && (*flag).zero == 0)
 	{
 		(*flag).count++;
-		ft_putchar('+');
+		ft_putchar_fd('+', (*flag).fd);
 	}
 	while (s[i])
 	{
-		ft_putchar(s[i]);
+		ft_putchar_fd(s[i], (*flag).fd);
 		(*flag).count++;
 		i++;
 	}
 	while ((*flag).leftover != 0)
 	{
-		ft_putchar('0');
+		ft_putchar_fd('0', (*flag).fd);
 		(*flag).leftover--;
 		(*flag).count++;
 	}
@@ -94,17 +88,23 @@ void	print_neg(t_info *flag)
 {
 	if ((*flag).neg == 1 && (*flag).zero != 1)
 	{
-		ft_putchar('-');
+		ft_putchar_fd('-', (*flag).fd);
 		(*flag).count++;
 	}
 }
 
-void	print_zero(t_info *flag, long long i, char *oct_str, int fill)
+void	print_zero(t_info *flag, long long i, char *oct_str)
 {
-	if (i != 0 && (*flag).hash == 1 && fill < 1)
+	int length;
+
+	length = ft_strlen(oct_str);
+	if ((i != 0 && (*flag).hash == 1) &&\
+	((*flag).zero == 0 || ((*flag).zero == 1 && (*flag).width <= length)))
 	{
 		if (oct_str[0] != '0')
-			ft_putchar('0');
-		(*flag).count++;
+		{
+			ft_putchar_fd('0', (*flag).fd);
+			(*flag).count++;
+		}
 	}
 }

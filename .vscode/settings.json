@@ -1,7 +1,8 @@
 {
     "files.associations": {
-        "fcntl.h": "c",
-        "macros.h": "c",
-        "printf.h": "c"
-    }
+		"fcntl.h": "c",
+		"macros.h": "c",
+		"printf.h": "c",
+		"limits.h": "c"
+	}
 }

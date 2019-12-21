@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:55:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/02 16:40:53 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/21 17:28:28 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	put_padding_w(t_info *flag, int fill_w)
 {
 	while (fill_w > 0)
 	{
-		ft_putchar(' ');
+		ft_putchar_fd(' ', (*flag).fd);
 		(*flag).count++;
 		fill_w--;
 	}
@@ -48,13 +48,12 @@ void	put_padding(t_info *flag, int fill)
 {
 	char	char_fill;
 
-	// printf("%d\t\tfill (padding test)\n", fill);
 	if ((*flag).zero == 1 && (*flag).prec_no_val == 0)
 	{
 		char_fill = '0';
 		if ((*flag).neg == 1)
 		{
-			ft_putchar('-');
+			ft_putchar_fd('-', (*flag).fd);
 			(*flag).count++;
 		}
 	}
@@ -62,7 +61,7 @@ void	put_padding(t_info *flag, int fill)
 		char_fill = ' ';
 	while (fill > 0)
 	{
-		ft_putchar(char_fill);
+		ft_putchar_fd(char_fill, (*flag).fd);
 		(*flag).count++;
 		fill--;
 	}

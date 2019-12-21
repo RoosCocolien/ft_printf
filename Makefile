@@ -6,7 +6,7 @@
 #    By: bvan-de- <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/15 14:53:31 by bvan-de-       #+#    #+#                 #
-#    Updated: 2019/12/18 17:18:25 by rsteigen      ########   odam.nl          #
+#    Updated: 2019/12/21 17:31:04 by rsteigen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRCS 	= ft_printf.c flags.c spec.c spec_c.c\
 			len_mod_di2.c len_mod_di.c len_mod_u.c\
 			len_mod_u2.c precision.c len_mod_ef.c\
 			make_str_e.c colors.c make_str_f.c\
-			roundup.c spec_x_2.c
+			roundup.c spec_x_2.c print_content.c\
+			ft_printf_loop_args.c
 LIBFUNC	= libft/ft_memset.c libft/ft_bzero.c libft/ft_memcpy.c\
 			libft/ft_memccpy.c libft/ft_memmove.c libft/ft_memchr.c\
 			libft/ft_strstr.c libft/ft_isdigit.c libft/ft_memalloc.c\

@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   spec_perc.c                                        :+:    :+:            */
+/*   main_fd.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/06/07 15:48:45 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/21 17:29:31 by rsteigen      ########   odam.nl         */
+/*   Created: 2019/12/21 17:37:10 by rsteigen       #+#    #+#                */
+/*   Updated: 2019/12/21 17:49:33 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
-
-int		spec_perc(t_info *flag, int x)
+static void check_c_fd(void)
 {
-	int fill;
-
-	fill = (*flag).width - 1;
-	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
-		put_padding(flag, fill);
-	ft_putchar_fd('%', (*flag).fd);
-	(*flag).count++;
-	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
-		put_padding(flag, fill);
-	x++;
-	return (x);
+	//blabla
 }
+
+// static void check_s_fd(void)
+// {
+// 	dprintf();
+// }
+
+// int		main(void)
+// {
+// 	check_c_fd();
+// 	check_di_fd();
+// 	check_e_fd();
+// 	check_f_fd();
+// 	check_o_fd();
+// 	check_p_fd();
+// 	check_perc_fd();
+// 	check_s_fd();
+// 	check_u_fd();
+// 	check_x_fd();
+// 	return (0);
+// }

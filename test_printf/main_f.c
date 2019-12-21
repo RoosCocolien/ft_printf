@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/19 17:41:03 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/21 16:45:09 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -409,15 +409,15 @@ static void		edge_cases(void)
 
 int				main(void)
 {
-	// simple_f();
-	// len_mod_f();
-	// flags_f();
-	// width_asterisk_f();
-	// precision_f();
-	// no_decimals();
-	// rounding();
-	// hash();
+	simple_f();
+	len_mod_f();
+	flags_f();
+	width_asterisk_f();
+	precision_f();
+	no_decimals();
+	rounding();
+	hash();
 	inconsistent_rounding();
-	// edge_cases();
+	edge_cases();
 	return (0);
 }
