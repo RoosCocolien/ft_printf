@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/21 16:45:09 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/22 18:44:47 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -405,6 +405,12 @@ static void		edge_cases(void)
 	ft_printf("%.1f\t(%%.1f\t-1/0.0\tft_printf)\n", -1 / 0.0);
 	printf("\n%f\t(%%f\tsrt(-1)\tprintf)\n", sqrt(-1));
 	ft_printf("%f\t(%%f\tsrt(-1)\tft_printf)\n", sqrt(-1));
+	printf("\n%.16f\t(%%.16f\t(a lot of decimals)\tprintf)\n", 9873.2148794567);
+	ft_printf("%.16f\t(%%.16f\t(a lot of decimals)\tft_printf)\n", 9873.2148794567);
+	printf("\n%.23f\t(%%.23f\t(a lot of decimals)\tprintf)\n", 989789.2148794567);
+	ft_printf("%.23f\t(%%.23f\t(a lot of decimals)\tft_printf)\n", 989789.2148794567);
+	printf("\n%#f\t(%%#f\t(a lot of decimals)\tprintf)\n", 3.21);
+	ft_printf("%#f\t(%%#f\t(a lot of decimals)\tft_printf)\n", 3.21);
 }
 
 int				main(void)

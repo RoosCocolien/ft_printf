@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 15:03:48 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/19 13:50:14 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/22 18:41:00 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ unsigned long long	ten_to_the_power_of(int power)
 
 static long double	get_decimals(long double i)
 {
-	i = i - ((int)i);
-	while (i >= 0.999999)
+	i = i - ((unsigned long long)i);
+	while (i >= 0.999999 && i < 2)
 		i--;
+	if (i >= 2)
+		i = 0;
 	return (i);
 }
 

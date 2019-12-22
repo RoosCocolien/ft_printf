@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:15:44 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/21 23:07:50 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/22 18:41:33 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,16 @@ static void	print_nan_f(t_info *flag)
 
 static int	check_length_f(t_info *flag, char *str_spec_f)
 {
+	int				length;
+
+	length = 0;
 	if ((*flag).f_nan == 1 || (*flag).f_inf == 1)
-		return (3);
+		length = 3;
 	else if ((*flag).f_inf == -1)
-		return (4);
+		length = 4;
 	else
-		return (ft_strlen(str_spec_f));
+		length = ft_strlen(str_spec_f);
+	return (length);
 }
 
 static int	check_nan_inf(long double i, t_info *flag)
@@ -48,7 +52,7 @@ static int	check_nan_inf(long double i, t_info *flag)
 		(*flag).f_nan = 1;
 		return (0.0);
 	}
-	else if (i > 1.797 * 10 + 308)
+	else if (i > 1.797e308)
 	{
 		(*flag).f_inf = 1;
 		return (0.0);
@@ -70,7 +74,7 @@ int			spec_f(char *s, va_list args, t_info *flag, int x)
 	fill = 0;
 	prec_and_zero_check(args, flag, s[x]);
 	i = len_mod_check_efg(args, flag);
-	if (i != i || i > 1.797 * 10 + 308 || i < -1.796E308)
+	if (i != i || i > (1.797e308) || i < (-1.797e308))
 		i = check_nan_inf(i, flag);
 	str_spec_f = make_str_f(i, flag);
 	length = check_length_f(flag, str_spec_f);

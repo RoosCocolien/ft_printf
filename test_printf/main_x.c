@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/10 15:24:21 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/18 17:25:00 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/22 12:31:20 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,17 +122,17 @@ static void		precision_x(void)
 	ft_printf("%.17#x.\n", str1);
 
 	printf("\nPrecision combi with flags and asterisk\n");
-	printf("%%.*x (printf, value: 7)\n%.*x.\n", 7, str3);
+	printf("%%.*x (printf, value: 7 (str3))\n%.*x.\n", 7, str3);
 	ft_printf("%.*x.\n", 7, str3);
-	printf("%%.*x (printf, value: 3)\n%.*x.\n", 3, str3);
+	printf("%%.*x (printf, value: 3 (str3))\n%.*x.\n", 3, str3);
 	ft_printf("%.*x.\n", 3, str3);
-	printf("%%.*x (printf, value: 17)\n%.*x.\n", 17, str3);
+	printf("%%.*x (printf, value: 17 (str3))\n%.*x.\n", 17, str3);
 	ft_printf("%.*x.\n", 17, str3);
-	printf("%%.*x (printf, value: 1)\n%.*x.\n", 1, str3);
+	printf("%%.*x (printf, value: 1 (str3))\n%.*x.\n", 1, str3);
 	ft_printf("%.*x.\n", 1, str3);
-	printf("%%.*x (printf, value: 3)\n%.*x.\n", 5, str3);
+	printf("%%.*x (printf, value: 3 (str3))\n%.*x.\n", 5, str3);
 	ft_printf("%.*x.\n", 5, str3);
-	printf("%%.*x (printf, value: 17)\n%.*x.\n", 17, str3);
+	printf("%%.*x (printf, value: 17 (str3))\n%.*x.\n", 17, str3);
 	ft_printf("%.*x.\n", 17, str3);
 }
 
@@ -233,6 +233,9 @@ static void		check_hash_x(void)
 
 static void		make_test_x(void)
 {
+	char *str1;
+
+	str1 = "Coco5";
 	printf("return_pf:\t(%%x)\t%d\n", printf("%x\n", 0));
 	printf("return_fpf:\t(%%x)\t%d\n", ft_printf("%x\n", 0));
 	printf("\n");
@@ -297,6 +300,12 @@ static void		make_test_x(void)
 	printf("return_pf:\t(%%09X)\t%d\n", printf("%09X$\n", 482));
 	printf("return_fpf:\t(%%09X)\t%d\n", ft_printf("%09X$\n", 482));
 	printf("\n");
+	printf("return_pf:\t(%%.*x (17, str1))\t%d\n", printf("%.*x$\n", 17, str1));
+	printf("return_fpf:\t(%%.*x (17, str1))\t%d\n", ft_printf("%.*x$\n", 17, str1));
+	printf("\n");
+	printf("return_pf:\t(%%.17x (str1))\t%d\n", printf("%.17x$\n", str1));
+	printf("return_fpf:\t(%%.17x (str1))\t%d\n", ft_printf("%.17x$\n", str1));
+	printf("\n");	
 }
 
 int		main(void)

@@ -6,17 +6,14 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:36:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/19 17:40:39 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/22 18:39:00 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 
-static void		find_len_decimals(long double i, t_info *flag)
+static void			find_len_decimals(t_info *flag)
 {
-	int					digits;
-
-	digits = ft_digit_count(i, 10);
 	(*flag).dot = 1;
 	if ((*flag).precision != 0 && (*flag).prec_value == 0 && (*flag).hash != 0)
 		(*flag).dot = 0;
@@ -44,7 +41,7 @@ static long long	find_precision(t_info *flag)
 	return (multiplier);
 }
 
-static char	*get_decimals(long double i, t_info *flag)
+static char			*get_decimals(long double i, t_info *flag)
 {
 	char				*dec_str;
 	int					len;
@@ -71,7 +68,7 @@ static char	*get_decimals(long double i, t_info *flag)
 	return (dec_str);
 }
 
-static char		*make_ret_str(char *before, char *after, int i, int x)
+static char			*make_ret_str(char *before, char *after, int i, int x)
 {
 	int					len_a;
 	int					len_b;
@@ -99,19 +96,18 @@ static char		*make_ret_str(char *before, char *after, int i, int x)
 	return (ret_str);
 }
 
-char		*make_str_f(long double i, t_info *flag)
+char				*make_str_f(long double i, t_info *flag)
 {
 	char				*ret_str;
 	char				*before;
 	char				*after;
 
-	printf("i: %Lf\t(make_str_f)\n", i);
 	i = roundup_f(i, (*flag).prec_value);
-	find_len_decimals(i, flag);
+	find_len_decimals(flag);
 	before = ft_itoa_llu(i);
+	after = NULL;
 	if ((*flag).dot == 0 && (*flag).hash == 0)
 		return (before);
-	after = NULL;
 	if ((*flag).hash == 1 || ((*flag).dot == 1 && (*flag).prec_value != 0))
 		after = get_decimals(i, flag);
 	if (after && (*flag).prec_value <= (int)ft_strlen(after) - 1 &&\

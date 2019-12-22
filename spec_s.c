@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:52 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/21 23:08:22 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/22 11:54:46 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int			spec_s(va_list args, t_info *flag, int x)
 	if (!str)
 		str = "(null)";
 	length = ft_strlen(str);
-//	if (length < (*flag).width && (*flag).precision != 0)
-//		(*flag).width = 0; TESTEN?!
 	fill = (*flag).width - (length - (*flag).prec_value);
 	if ((*flag).minus != 0 && (*flag).width != 0 && (*flag).zero == 1)
 		(*flag).zero = 0;

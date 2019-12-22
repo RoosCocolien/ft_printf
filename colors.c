@@ -6,11 +6,17 @@
 /*   By: bvan-de- <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 13:41:35 by bvan-de-       #+#    #+#                */
-/*   Updated: 2019/12/21 23:10:13 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/22 15:07:40 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
+
+/*
+**	color setter:
+**	red, green, yellow
+**	blue en purple
+*/
 
 static int		color_setter_a(char *str, int x, int fd)
 {

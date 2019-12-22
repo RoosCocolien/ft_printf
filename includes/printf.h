@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/21 23:07:08 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/22 14:57:29 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int					spec_perc(t_info *flag, int x);
 int					spec_e(char *s, va_list args, t_info *flag, int x);
 int					spec_o(char *s, va_list args, t_info *flag, int x);
 int					spec_x(char *s, va_list args, t_info *flag, int x);
-int					spec_x2(char *s, va_list args, t_info *flag, int x);
 int					spec_u(char *s, va_list args, t_info *flag, int x);
 int					spec_p(char *s, va_list args, t_info *flag, int x);
 
@@ -110,6 +109,7 @@ unsigned long long	check_u(va_list args, char conv_spec);
 char				*make_str_e(long double i, t_info *flag, char e_not);
 long double			find_power(long double i, t_info *flag);
 char				*make_str_f(long double i, t_info *flag);
+char				*get_hex_str(intmax_t i, t_info *flag, char spec);
 
 /*
 **	save flags functions
