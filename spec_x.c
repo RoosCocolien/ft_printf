@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/02 15:37:53 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/22 15:01:31 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/23 23:37:22 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ int			spec_x(char *s, va_list args, t_info *flag, int x)
 	check_hash_zero(flag, s[x]);
 	i = len_mod_check_u(args, flag, s[x]);
 	hex_str = get_hex_str(i, flag, s[x]);
-	length = ft_strlen(hex_str);
+	// printf("hex_str: %s\n", hex_str);
+	length = check_length_zero(i, hex_str, flag);
 	fill_w = (*flag).width - length;
+	// printf("fill_w: %d\n", fill_w);
 	if (fill_w > 0 && (*flag).minus == 0)
 		put_padding(flag, fill_w);
-	print_address(flag, hex_str);
+	print_address(flag, hex_str, length);
 	if (fill_w > 0 && (*flag).minus != 0)
 		put_padding(flag, fill_w);
 	free(hex_str);

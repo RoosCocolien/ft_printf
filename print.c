@@ -6,13 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:23:54 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/21 17:29:18 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/24 10:54:23 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 
-void	print_digit(t_info *flag, unsigned long long nb)
+void	print_digit(t_info *flag, unsigned long long nb, int length)
 {
 	char	*str_digit;
 	int		i;
@@ -26,21 +26,21 @@ void	print_digit(t_info *flag, unsigned long long nb)
 		(*flag).plus++;
 		(*flag).count++;
 	}
-	if (nb == 0 && (*flag).plus > 1)
-		free(str_digit);
-	else
-	{
-		while (str_digit[i])
+//	if (nb == 0 && (*flag).plus > 1)
+//		free(str_digit);
+//	else
+//	{
+		while (str_digit[i] && length != 0)
 		{
 			ft_putchar_fd(str_digit[i], (*flag).fd);
 			(*flag).count++;
 			i++;
 		}
 		free(str_digit);
-	}
+//	}
 }
 
-void	print_address(t_info *flag, char *s)
+void	print_address(t_info *flag, char *s, int length)
 {
 	int		i;
 
@@ -51,7 +51,7 @@ void	print_address(t_info *flag, char *s)
 		(*flag).count++;
 		ft_putchar_fd('+', (*flag).fd);
 	}
-	while (s[i])
+	while (s[i] && length != 0)
 	{
 		ft_putchar_fd(s[i], (*flag).fd);
 		(*flag).count++;
@@ -70,13 +70,15 @@ void	print_string(t_info *flag, char *s)
 		(*flag).count++;
 		ft_putchar_fd('+', (*flag).fd);
 	}
-	while (s[i])
+	if ((*flag).f_nan != 0 || (*flag).f_inf != 0)
+		print_nan_f(flag);
+	while (s[i] && (*flag).f_nan == 0 && (*flag).f_inf == 0)
 	{
 		ft_putchar_fd(s[i], (*flag).fd);
 		(*flag).count++;
 		i++;
 	}
-	while ((*flag).leftover != 0)
+	while ((*flag).leftover != 0 && (*flag).f_nan == 0 && (*flag).f_inf == 0)
 	{
 		ft_putchar_fd('0', (*flag).fd);
 		(*flag).leftover--;
@@ -84,9 +86,15 @@ void	print_string(t_info *flag, char *s)
 	}
 }
 
-void	print_neg(t_info *flag)
+void	print_neg(t_info *flag, int length, char spec)
 {
 	if ((*flag).neg == 1 && (*flag).zero != 1)
+	{
+		ft_putchar_fd('-', (*flag).fd);
+		(*flag).count++;
+	}
+	if ((*flag).neg == 1 && (*flag).zero == 1 && length >= (*flag).prec_value\
+	&& (spec == 'd' || spec == 'i'))
 	{
 		ft_putchar_fd('-', (*flag).fd);
 		(*flag).count++;

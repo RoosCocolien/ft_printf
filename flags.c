@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:48:34 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/18 14:36:14 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/23 20:54:41 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,17 @@ static int	flags_part_two(char *s, t_info *flag, int x)
 		x = save_prec_width(s, flag, x);
 	else if (s[x] == '*' && s[x - 1] != '.' && (*flag).asterisk == 0)
 	{
+		if (s[x + 1] > 48 && s[x + 1] <= 57)
+		{
+			x = save_prec_width(s, flag, x + 1);
+			(*flag).precision = -1;
+		}
+		else
+		{
+			(*flag).width = -1;
+			x++;
+		}
 		(*flag).asterisk = 1;
-		(*flag).width = 1;
-		x++;
 	}
 	else
 		x = flags_part_three(s, flag, x);

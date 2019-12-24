@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/12 14:25:20 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/21 23:13:08 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/23 19:42:24 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,15 @@ int		check_flag_plus(t_info *flag, int fill, int left_align)
 
 int		check_flag_space(t_info *flag, int fill, int left_align)
 {
-	if ((*flag).precision == 0 && (*flag).neg == 0)
-		fill--;
-	if ((*flag).neg == 0 && (((*flag).precision != 0 || left_align == 1) ||\
-	(*flag).zero == 1))
+	left_align = 0; //weghalen
+//	if ((*flag).precision == 0 && (*flag).neg == 0)
+//		fill--;
+//	printf("test\nneg: %d, precision: %d, left_align: %d", (*flag).neg, (*flag).precision, left_align);
+	if ((*flag).neg == 0/*&& (((*flag).precision != 0 || left_align == 1) ||\
+	(*flag).zero == 1)*/ && (*flag).f_nan == 0)
 	{
 		ft_putchar_fd(' ', (*flag).fd);
+		fill--;
 		(*flag).count++;
 	}
 	return (fill);
@@ -97,5 +100,4 @@ void	set_zero_flags(t_info *flag)
 	(*flag).leftover = 0;
 	(*flag).f_nan = 0;
 	(*flag).f_inf = 0;
-	// (*flag).fd = 0;
 }

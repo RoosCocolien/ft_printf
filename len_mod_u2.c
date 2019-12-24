@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   len_mod_u2.c                                    :+:    :+:            */
+/*   len_mod_u2.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/07/09 17:41:20 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/07/09 17:46:42 by rsteigen      ########   odam.nl         */
+/*   Created: 2019/12/23 13:09:36 by rsteigen       #+#    #+#                */
+/*   Updated: 2019/12/23 13:09:40 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,12 @@ unsigned long long		check_u(va_list args, char conv_spec)
 		i = (unsigned long long)uns_int;
 	}
 	return (i);
+}
+
+intmax_t				check_intmax_t(va_list args)
+{
+	intmax_t		num;
+
+	num = va_arg(args, intmax_t);
+	return (num);
 }

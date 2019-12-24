@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/22 14:57:29 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/24 13:47:38 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@
 # include "../libft/includes/libft.h"
 # include <stdio.h>
 # include <unistd.h>
+
+typedef union		u_float
+{
+	long double		floatnb;
+	short			float_short[5];
+}					t_float;
 
 typedef struct		s_info
 {
@@ -85,12 +91,16 @@ int					spec_p(char *s, va_list args, t_info *flag, int x);
 **	print functions
 */
 
-void				print_digit(t_info *flag, unsigned long long nb);
-void				print_address(t_info *flag, char *s);
+void				print_digit(t_info *flag, unsigned long long nb,\
+					int length);
+void				print_address(t_info *flag, char *s, int length);
 void				print_string(t_info *flag, char *s);
-void				print_neg(t_info *flag);
+void				print_neg(t_info *flag, int length, char spec);
 void				print_zero(t_info *flag, long long i, char *oct_str);
 int					print_content(t_info *flag, char *s, int x);
+void				print_nan_f(t_info *flag);
+void				print_string_count_length(unsigned long long i,\
+					t_info *flag, char *str, int length);
 
 /*
 **	length modifier functions
@@ -101,6 +111,8 @@ unsigned long long	check_int(va_list args, t_info *flag);
 long double			len_mod_check_efg(va_list args, t_info *flag);
 intmax_t			len_mod_check_u(va_list args, t_info *flag, char conv_spec);
 unsigned long long	check_u(va_list args, char conv_spec);
+intmax_t			check_intmax_t(va_list args);
+
 
 /*
 **	make string functions
@@ -109,7 +121,10 @@ unsigned long long	check_u(va_list args, char conv_spec);
 char				*make_str_e(long double i, t_info *flag, char e_not);
 long double			find_power(long double i, t_info *flag);
 char				*make_str_f(long double i, t_info *flag);
+int					float_check_neg_zero(long double i);
 char				*get_hex_str(intmax_t i, t_info *flag, char spec);
+int					check_length_zero(intmax_t i, char *str, t_info *flag);
+int					check_length_zero_int(unsigned long long, t_info *flag);
 
 /*
 **	save flags functions
@@ -121,6 +136,7 @@ void				set_zero_flags(t_info *flag);
 int					check_flag_plus(t_info *flag, int fill, int left_align);
 int					check_flag_space(t_info *flag, int fill, int left_align);
 int					save_prec_width(char *s, t_info *flag, int x);
+void				check_asterisk(t_info *flag, char spec);
 
 /*
 **	colors.c
@@ -152,6 +168,6 @@ long double			roundup_f(long double i, int prec);
 int					put_0x_spec_f(int count, char spec, int fd);
 int					change_fill(t_info *flag, int fill, int length);
 void				put_padding(t_info *flag, int fill);
-void				put_padding_w(t_info *flag, int fill_w);
+//void				put_padding_w(t_info *flag, int fill_w);
 
 #endif

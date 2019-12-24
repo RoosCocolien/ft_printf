@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/12 14:25:20 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/07 18:49:51 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/23 13:13:51 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static char		*ft_itoa_cpy(char *str, int cx, int intlen,
 unsigned long long n)
 {
-	unsigned long long		y;
+	unsigned long long	y;
 
 	while (intlen >= cx)
 	{
@@ -29,11 +29,11 @@ unsigned long long n)
 	return (str);
 }
 
-char				*ft_itoa_llu(unsigned long long n)
+char			*ft_itoa_llu(unsigned long long n)
 {
-	int		cx;
-	int		intlen;
-	char	*str;
+	int					cx;
+	int					intlen;
+	char				*str;
 
 	cx = 0;
 	intlen = ft_intlength(n);

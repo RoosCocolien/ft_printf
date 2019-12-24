@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 15:53:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/21 16:55:01 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/23 13:10:56 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,10 @@ static unsigned long long	check_longlong_uns(va_list args)
 	return (num);
 }
 
-static intmax_t	check_intmax_t(va_list args)
+intmax_t					len_mod_check_u(va_list args, t_info *flag,\
+char conv_spec)
 {
-	intmax_t		num;
-
-	num = va_arg(args, intmax_t);
-	return (num);
-}
-
-intmax_t			len_mod_check_u(va_list args, t_info *flag, char conv_spec)
-{
-	intmax_t		i;
+	intmax_t				i;
 
 	if (conv_spec == 'p')
 		i = check_intmax_t(args);

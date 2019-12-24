@@ -6,13 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:15:44 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/22 18:41:33 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/24 10:40:50 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 
-static void	print_nan_f(t_info *flag)
+void	print_nan_f(t_info *flag)
 {
 	if ((*flag).f_nan == 1)
 	{
@@ -28,6 +28,7 @@ static void	print_nan_f(t_info *flag)
 	{
 		(*flag).count += 4;
 		ft_putstr_fd("-inf", (*flag).fd);
+		(*flag).neg = 1;
 	}
 }
 
@@ -81,11 +82,8 @@ int			spec_f(char *s, va_list args, t_info *flag, int x)
 	fill = change_fill(flag, fill, length);
 	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
 		put_padding(flag, fill);
-	print_neg(flag);
-	if ((*flag).f_nan == 0 && (*flag).f_inf == 0)
-		print_string(flag, str_spec_f);
-	else
-		print_nan_f(flag);
+	print_neg(flag, length, s[x]);
+	print_string(flag, str_spec_f);
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 		put_padding(flag, fill);
 	free(str_spec_f);

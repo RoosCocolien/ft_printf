@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:55:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/21 23:07:24 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/24 10:46:18 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int		change_fill(t_info *flag, int fill, int length)
 {
 	if ((*flag).width > 0)
 		fill = (*flag).width - length;
-	if ((*flag).neg == 1 && (*flag).precision == 0)
+	if ((*flag).neg == 1 && (*flag).prec_value == 0)
+	{
 		fill--;
+	}
 	if ((*flag).plus == 1)
 		fill = check_flag_plus(flag, fill, (*flag).minus);
 	if ((*flag).space == 1)
@@ -54,6 +56,7 @@ void	put_padding(t_info *flag, int fill)
 		if ((*flag).neg == 1)
 		{
 			ft_putchar_fd('-', (*flag).fd);
+			(*flag).neg = 1;
 			(*flag).count++;
 		}
 	}
