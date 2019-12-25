@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:23:54 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/24 10:54:23 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/24 16:44:56 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	print_digit(t_info *flag, unsigned long long nb, int length)
 {
 	char	*str_digit;
-	int		i;
+	int		x;
 
 	str_digit = ft_itoa_llu(nb);
-	i = 0;
+	x = 0;
 	if ((*flag).neg == 0 && (*flag).plus == 1 && (*flag).minus == 0 &&\
 	(*flag).precision == 0 && (*flag).zero == 0)
 	{
@@ -30,11 +30,13 @@ void	print_digit(t_info *flag, unsigned long long nb, int length)
 //		free(str_digit);
 //	else
 //	{
-		while (str_digit[i] && length != 0)
+	//ik moet length als parameter weghalen, of length_b gebruiken
+	//length original and length adjusted?? Too many statements.
+		while (str_digit[x] && length != 0)
 		{
-			ft_putchar_fd(str_digit[i], (*flag).fd);
+			ft_putchar_fd(str_digit[x], (*flag).fd);
 			(*flag).count++;
-			i++;
+			x++;
 		}
 		free(str_digit);
 //	}

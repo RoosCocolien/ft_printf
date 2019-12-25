@@ -6,13 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:44:31 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/24 14:09:14 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/25 13:53:24 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 
-static int	fill_precision(t_info *flag, int length)
+int	fill_precision(t_info *flag, int length)
 {
 	int fill;
 
@@ -22,27 +22,31 @@ static int	fill_precision(t_info *flag, int length)
 	if ((*flag).precision != 0)
 		fill = (*flag).prec_value - length;
 	// printf("fill: %d\n", fill);
+	if (fill < 0)
+		fill = 0;
 	return (fill);
 }
 
-static int	fill_width(t_info *flag, int length)
+int		fill_width(t_info *flag, int length)
 {
 	int fill;
 
 	fill = 0;
 	if ((*flag).width != 0)
 		fill = (*flag).width - length;
+	if (fill < 0)
+		fill = 0;
 	return (fill);
 }
 
-static void	put_neg(t_info *flag)
+void		put_neg(t_info *flag)
 {
 	ft_putchar_fd('-', (*flag).fd);
 	(*flag).count++;
-	(*flag).neg = 0;
+	(*flag).neg = -1;
 }
 
-static void	check_print_neg(t_info *flag, int fill_w, int fill_p, int nb)
+void		check_print_neg(t_info *flag, int fill_w, int fill_p, int nb)
 {
 	if (nb == 1)
 	{
@@ -75,7 +79,7 @@ static void	check_print_neg(t_info *flag, int fill_w, int fill_p, int nb)
 	}
 }
 
-static void	put_padding_w(t_info *flag, int fill_w)
+void		put_padding_w(t_info *flag, int fill_w)
 {
 	char					char_fill;
 
@@ -91,7 +95,7 @@ static void	put_padding_w(t_info *flag, int fill_w)
 	}
 }
 
-static void	put_padding_p(t_info *flag, int fill_p)
+void		put_padding_p(t_info *flag, int fill_p)
 {
 	char				char_fill;
 
@@ -107,30 +111,30 @@ static void	put_padding_p(t_info *flag, int fill_p)
 int			spec_d_i(char *s, va_list args, t_info *flag, int x)
 {
 	unsigned long long		i;
-	int						length;
+	int						length_original;
 	int						fill_w;
 	int						fill_p;
+	int						length_new;
 
 	prec_and_zero_check(args, flag, s[x]);
-	if ((*flag).zero == 1 && (*flag).minus == 1)
-		(*flag).zero = 0;
+	// if ((*flag).zero == 1 && (*flag).minus == 1)
+		// (*flag).zero = 0; //dit staat in de prec_and_zero_check
 	i = len_mod_check_di(args, flag);
-	length = check_length_zero_int(i, flag);
-	fill_p = fill_precision(flag, length);
-	length = length + fill_p + (*flag).neg;
-	fill_w = fill_width(flag, length);
+	length_original = check_length_zero_int(i, flag);
+	fill_p = fill_precision(flag, length_original);
+	length_new = length_original + fill_p + (*flag).neg;
+	fill_w = fill_width(flag, length_new);
 	if ((*flag).plus == 1)
 		fill_w = check_flag_plus(flag, fill_w, (*flag).minus);
 	if ((*flag).space == 1 && (*flag).plus == 0)
 		fill_w = check_flag_space(flag, fill_w, (*flag).minus);
-	// printf("fill_p: %d\n", fill_p);
 	check_print_neg(flag, fill_w, fill_p, 1);
 	if ((*flag).minus == 0 && fill_w > 0)
 		put_padding_w(flag, fill_w);
-	check_print_neg(flag, fill_p, fill_w, 2);
+	check_print_neg(flag, fill_w, fill_p, 2);
 	put_padding_p(flag, fill_p);
-	check_print_neg(flag, length, s[x], 3);
-	print_digit(flag, i, length);
+	check_print_neg(flag, fill_w, fill_p, 3);
+	print_digit(flag, i, length_original);
 	if ((*flag).minus == 1 && fill_w > 0)
 		put_padding_w(flag, fill_w);
 	x++;
@@ -164,7 +168,7 @@ int			spec_d_i(char *s, va_list args, t_info *flag, int x)
 // 	if (fill_w > 0 && (*flag).minus == 0)
 // 		put_padding(flag, fill_w);
 // 	print_neg(flag, length, s[x]);
-// 	print_digit(flag, i, length);
+// 	print_digit(flag, i);
 // 	if (/*(*flag).width > 0 && */(*flag).minus == 1 && fill_p > 0)
 // 		put_padding(flag, fill_p);
 // 	if (fill_w > 0 && (*flag).minus == 1)

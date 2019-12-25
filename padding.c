@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:55:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/24 10:46:18 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/25 10:32:46 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ int		change_fill(t_info *flag, int fill, int length)
 	return (fill);
 }
 
-void	put_padding_w(t_info *flag, int fill_w)
-{
-	while (fill_w > 0)
-	{
-		ft_putchar_fd(' ', (*flag).fd);
-		(*flag).count++;
-		fill_w--;
-	}
-}
+// void	put_padding_w(t_info *flag, int fill_w)
+// {
+// 	while (fill_w > 0)
+// 	{
+// 		ft_putchar_fd(' ', (*flag).fd);
+// 		(*flag).count++;
+// 		fill_w--;
+// 	}
+// }
 
 void	put_padding(t_info *flag, int fill)
 {

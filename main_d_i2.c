@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/20 12:25:22 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/23 20:39:03 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/24 15:20:16 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,8 +278,8 @@ static void	make_test_di_1()
 	printf("return_pf:\t(%%+.0d, 0)\t%d\n", printf("%+.0d$\n", 0));
 	printf("return_fpf:\t(%%+.0d, 0)\t%d\n", ft_printf("%+.0d$\n", 0));
 	printf("\n");
-	printf("return_pf:\t(%%+.0d, 0)\t%d\n", printf("%+.0d$\n", 5));
-	printf("return_fpf:\t(%%+.0d, 0)\t%d\n", ft_printf("%+.0d$\n", 5));
+	printf("return_pf:\t(%%+.0d, 5)\t%d\n", printf("%+.0d$\n", 5));
+	printf("return_fpf:\t(%%+.0d, 5)\t%d\n", ft_printf("%+.0d$\n", 5));
 	printf("\n");
 	printf("return_pf:\t(%%+ 04d, 40)\t%d\n", printf("%+ 04d$\n", 40));
 	printf("return_fpf:\t(%%+ 04d, 40)\t%d\n", ft_printf("%+ 04d$\n", 40));
@@ -403,22 +403,31 @@ static void mistakes(void)
 	ft_printf("\nprintf %%+5d, 0\n");
 	printf("%+5d$\n", 0);
 	ft_printf("%+5d$\n", 0);
+	printf("return_pf:\t(%%+.0d, 5)\t%d\n", printf("%+.0d$\n", 5));
+	printf("return_fpf:\t(%%+.0d, 5)\t%d\n", ft_printf("%+.0d$\n", 5));
+	printf("\n");
+	ft_printf("\nprintf %%+5d, 0\n");
+	printf("%+5d\n", 0);
+	ft_printf("%+5d\n", 0);
+	ft_printf("printf %%+5d, -7\n");
+	printf("%+5d\n", -7);
+	ft_printf("%+5d\n", -7);
 }
 
 int		main(void)
 {
-	extra_space_plus_di();
-	simple_test_di();
-	padding_test_di();
-	combi_plus_space_zero_di();
-	precision_di();
-	asterisk_di();
-	range_check_di();
-	hash_flag_di();
-	make_test_di_1();
-	make_test_di_bonus();
-	make_test_di_loop();
-	extra();
+	// extra_space_plus_di();
+	// simple_test_di();
+	// padding_test_di();
+	// combi_plus_space_zero_di();
+	// precision_di();
+	// asterisk_di();
+	// range_check_di();
+	// hash_flag_di();
+	// make_test_di_1();
+	// make_test_di_bonus();
+	// make_test_di_loop();
+	// extra();
 	mistakes();
 	return (0);
 }

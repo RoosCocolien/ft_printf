@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:48:28 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/24 14:25:13 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/25 16:54:05 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int			fill_width_prec(t_info *flag, int length)
 		(*flag).prec_value = 0;
 		(*flag).zero = 0;
 	}
+	//onderstaand heb ik opgevangen dmv een fill_p en een fill_w voor diou
 	if ((*flag).precision != 0 && ((*flag).prec_value != 0\
 	|| (*flag).width != 0))
 	{
@@ -81,6 +82,7 @@ void		pres_width_s(va_list args, t_info *flag)
 	}
 }
 
+//eerste if/else statement hoeft er helemaal niet in te staan
 void		get_prec_width(va_list args, t_info *flag, char spec)
 {
 	if (((*flag).precision == 2 || (*flag).asterisk == 1) && (*flag).prec_value == 0)
@@ -103,6 +105,7 @@ void		get_prec_width(va_list args, t_info *flag, char spec)
 //		(*flag).width = va_arg(args, int);
 	if ((*flag).prec_value < 0)
 	{
+		// printf("prec_val: %d\n", (*flag).prec_value);
 		if (spec == 'f' && (*flag).asterisk == 0)
 			(*flag).prec_value = 6;
 		else if ((*flag).asterisk == 0)
@@ -113,9 +116,9 @@ void		get_prec_width(va_list args, t_info *flag, char spec)
 		else
 		{
 			(*flag).prec_value = -(*flag).prec_value;
+			(*flag).minus = 1;
 		}
 		// (*flag).prec_value = -(*flag).prec_value;
-		(*flag).minus = 1;
 	}
 }
 
@@ -151,8 +154,8 @@ void		prec_and_zero_check(va_list args, t_info *flag, char spec)
 // //			(*flag).prec_value = -(*flag).prec_value;	
 // 		(*flag).minus = 1;
 // 	}
-	if ((*flag).minus == 1 && spec != 'd' && spec != 'i')
-		(*flag).zero = 0;
+	if ((*flag).minus == 1)
+		(*flag).zero = 0;	//uitbreiden naar andere spec's?
 	if (spec == 'x' || spec == 'X')
 		(*flag).plus = 0;
 	// printf("\n*3prec val: %d\n", (*flag).prec_value);
