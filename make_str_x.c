@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/22 14:55:52 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/25 18:43:02 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/25 20:33:27 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	change_fill_0x(intmax_t i, t_info *flag, char spec, int fill)
 	{
 		fill += 2;
 	}
-	if (fill < 2 && (*flag).hash == 1)
+	if (fill < 2 && ((*flag).hash == 1 || spec == 'p'))
 		fill = 2;
 	return (fill);
 }
@@ -31,6 +31,8 @@ static char	*fill_str_with_zeros(intmax_t i, t_info *flag, int len, char spec)
 	int		x;
 
 	fill = 0;
+	// printf("len: %d\n", len);
+	// printf("pv: %d\n", (*flag).prec_value);
 	// printf("zero: %d\nminus: %d\nprecision: %d\n", (*flag).zero, (*flag).minus, (*flag).precision);
 	if ((*flag).minus == 0 && ((*flag).zero == 1 || (*flag).precision != 0))
 		fill = (*flag).prec_value - len;
@@ -44,9 +46,9 @@ static char	*fill_str_with_zeros(intmax_t i, t_info *flag, int len, char spec)
 	}
 	else
 	{
-		// printf("fill: %d\n", fill);
+		// printf("fill1: %d\n", fill);
 		fill = change_fill_0x(i, flag, spec, fill);
-		// printf("fill: %d\n", fill);
+		// printf("fill2: %d\n", fill);
 		zeros = (char*)malloc(sizeof(char) * (fill + 1));
 		while (fill > 0)
 		{
@@ -93,20 +95,20 @@ char		*get_hex_str(intmax_t i, t_info *flag, char spec)
 		hex = ft_itoa_base_ll(i, 16, 1);
 	length = check_length_zero(i, hex, flag);
 	(*flag).prec_value = change_prec_value_hash_p(flag, length, spec);
-	printf("prec_val: %d\n", (*flag).prec_value);
-	printf("length: %d\n", length);
+	// printf("prec_val: %d\n", (*flag).prec_value);
+	// printf("length: %d\n", length);
 	if (((*flag).prec_value <= length && (*flag).hash == 0 && spec != 'p')\
 	|| ((*flag).zero == 0 && (*flag).hash == 0 && (*flag).precision == 0\
 	&& spec != 'p'))
 	{
-		printf("no zeros\n");
+		// printf("no zeros\n");
 		hex_str = ft_strdup(hex);
 	}
 	else
 	{
-		printf("test\n");
+		// printf("test\n");
 		zeros = fill_str_with_zeros(i, flag, length, spec);
-		printf("zeros: %s\n", zeros);
+		// printf("zeros: %s\n", zeros);
 		if (i == 0 && length == 0 && spec == 'p')
 			hex_str = ft_strjoin(hex, zeros);
 		else

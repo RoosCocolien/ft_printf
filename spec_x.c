@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/02 15:37:53 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/25 18:37:30 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/25 20:44:03 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int			spec_x(char *s, va_list args, t_info *flag, int x)
 	prec_and_zero_check(args, flag, s[x]);
 	check_hash_zero(flag, s[x]);
 	i = len_mod_check_u(args, flag, s[x]);
-	printf("width: %d\n", (*flag).width);
-	printf("pv: %d\n", (*flag).prec_value);
+	// printf("width: %d\n", (*flag).width);
+	// printf("pv: %d\n", (*flag).prec_value);
 	hex_str = get_hex_str(i, flag, s[x]);
 	printf("hex_str: %s\n", hex_str);
 	length = check_length_zero(i, hex_str, flag);
