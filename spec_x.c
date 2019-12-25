@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/02 15:37:53 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/25 18:12:20 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/25 18:37:30 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,15 @@ int			spec_x(char *s, va_list args, t_info *flag, int x)
 	prec_and_zero_check(args, flag, s[x]);
 	check_hash_zero(flag, s[x]);
 	i = len_mod_check_u(args, flag, s[x]);
-	// printf("width: %d\n", (*flag).width);
-	// printf("pv: %d\n", (*flag).prec_value);
+	printf("width: %d\n", (*flag).width);
+	printf("pv: %d\n", (*flag).prec_value);
 	hex_str = get_hex_str(i, flag, s[x]);
-	// printf("hex_str: %s\n", hex_str);
+	printf("hex_str: %s\n", hex_str);
 	length = check_length_zero(i, hex_str, flag);
 	fill_p = fill_precision(flag, length);
 	fill_w = fill_width(flag, length + fill_p + (*flag).neg);
-	// printf("fill_w: %d\n", fill_w);
+	printf("fill_w: %d\n", fill_w);
+	printf("fill_p: %d\n", fill_p);
 	if ((*flag).minus == 0 && fill_w > 0)
 	{
 		// printf("check padding w1\n");
@@ -47,8 +48,6 @@ int			spec_x(char *s, va_list args, t_info *flag, int x)
 	}
 	put_padding_p(flag, fill_p);
 	print_address(flag, hex_str, length);
-	if (fill_w > 0 && (*flag).minus != 0)
-		put_padding(flag, fill_w);
 	if ((*flag).minus == 1 && fill_w > 0)
 		put_padding_w(flag, fill_w);
 	if (hex_str)
