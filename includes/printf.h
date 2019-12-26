@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/25 10:26:07 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/26 14:27:34 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ typedef union		u_float
 	long double		floatnb;
 	short			float_short[5];
 }					t_float;
+
+typedef struct s_padding
+{
+	int				fill_p;
+	int				fill_w;
+	int				length;
+}					t_padding;
+
 
 typedef struct		s_info
 {
@@ -91,7 +99,7 @@ int					spec_p(char *s, va_list args, t_info *flag, int x);
 **	NEWLY ADDED
 */
 int					fill_precision(t_info *flag, int length);
-int					fill_width(t_info *flag, int length);
+int					fill_width(t_info *flag, char spec, int length);
 void				put_neg(t_info *flag);
 void				check_print_neg(t_info *flag, int fill_w, int fill_p, int nb);
 void				put_padding_w(t_info *flag, int fill_w);
@@ -103,7 +111,7 @@ void				put_padding_p(t_info *flag, int fill_p);
 
 void				print_digit(t_info *flag, unsigned long long nb,\
 					int length_original);
-void				print_address(t_info *flag, char *s, int length);
+void				print_address(t_info *flag, char *str, int length);
 void				print_string(t_info *flag, char *s);
 void				print_neg(t_info *flag, int length, char spec);
 void				print_zero(t_info *flag, long long i, char *oct_str);
@@ -132,7 +140,7 @@ char				*make_str_e(long double i, t_info *flag, char e_not);
 long double			find_power(long double i, t_info *flag);
 char				*make_str_f(long double i, t_info *flag);
 int					float_check_neg_zero(long double i);
-char				*get_hex_str(intmax_t i, t_info *flag, char spec);
+char				*make_hex_str(intmax_t i, t_info *flag, char spec, t_padding *padding);
 int					check_length_zero(intmax_t i, char *str, t_info *flag);
 int					check_length_zero_int(unsigned long long, t_info *flag);
 

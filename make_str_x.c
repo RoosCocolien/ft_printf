@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/22 14:55:52 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/25 20:33:27 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/26 14:24:40 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,22 @@ static char	*fill_str_with_zeros(intmax_t i, t_info *flag, int len, char spec)
 	return (zeros);
 }
 
-static int	change_prec_value_hash_p(t_info *flag, int length, char spec)
-{
-	if (((*flag).hash == 1 && (*flag).prec_value <= length + 1) ||\
-	(spec == 'p' && (*flag).prec_value <= length + 1))
-	{
-		if ((*flag).prec_value == length + 1)
-			(*flag).prec_value += 1;
-		else
-			(*flag).prec_value += 2;
-	}
-	return ((*flag).prec_value);
-}
+// static int	change_prec_value_hash_p(t_info *flag, int length, char spec)
+// {
+// 	if (((*flag).hash == 1 && (*flag).prec_value <= length + 1) ||\
+// 	(spec == 'p' && (*flag).prec_value <= length + 1))
+// 	{
+// 		if ((*flag).prec_value == length + 1)
+// 			(*flag).prec_value += 1;
+// 		else
+// 			(*flag).prec_value += 2;
+// 	}
+// 	return ((*flag).prec_value);
+// }
 
-char		*get_hex_str(intmax_t i, t_info *flag, char spec)
+char		*make_hex_str(intmax_t i, t_info *flag, char spec, t_padding *padding)
 {
 	char	*hex;
-	int		length;
 	char	*hex_str;
 	char	*zeros;
 
@@ -93,11 +92,15 @@ char		*get_hex_str(intmax_t i, t_info *flag, char spec)
 		hex = ft_itoa_base_ll(i, 16, 0);
 	else
 		hex = ft_itoa_base_ll(i, 16, 1);
-	length = check_length_zero(i, hex, flag);
-	(*flag).prec_value = change_prec_value_hash_p(flag, length, spec);
+	(*padding).length = check_length_zero(i, hex, flag);
+//	(*flag).prec_value = change_prec_value_hash_p(flag, padding.length, spec);
 	// printf("prec_val: %d\n", (*flag).prec_value);
 	// printf("length: %d\n", length);
-	if (((*flag).prec_value <= length && (*flag).hash == 0 && spec != 'p')\
+	// printf("hex: %s\n", hex);
+	(*padding).fill_p = fill_precision(flag, (*padding).length);
+	// printf("padding.fill_p: %d\n", padding.fill_p);
+	// printf("padding.length: %d\n", padding.length);
+	if (((*flag).prec_value <= (*padding).length && (*flag).hash == 0 && spec != 'p')\
 	|| ((*flag).zero == 0 && (*flag).hash == 0 && (*flag).precision == 0\
 	&& spec != 'p'))
 	{
@@ -107,9 +110,9 @@ char		*get_hex_str(intmax_t i, t_info *flag, char spec)
 	else
 	{
 		// printf("test\n");
-		zeros = fill_str_with_zeros(i, flag, length, spec);
+		zeros = fill_str_with_zeros(i, flag, (*padding).length, spec);
 		// printf("zeros: %s\n", zeros);
-		if (i == 0 && length == 0 && spec == 'p')
+		if (i == 0 && (*padding).length == 0 && spec == 'p')
 			hex_str = ft_strjoin(hex, zeros);
 		else
 			hex_str = ft_strjoin(zeros, hex);

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:44:31 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/25 13:53:24 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/26 14:29:08 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ int	fill_precision(t_info *flag, int length)
 	return (fill);
 }
 
-int		fill_width(t_info *flag, int length)
+int		fill_width(t_info *flag, char spec, int length)
 {
 	int fill;
 
 	fill = 0;
 	if ((*flag).width != 0)
 		fill = (*flag).width - length;
+	//onderstaande toegevoegd voor hash en p
+	if ((*flag).hash == 1 || spec == 'p')
+		fill -= 2;
 	if (fill < 0)
 		fill = 0;
 	return (fill);
@@ -123,7 +126,7 @@ int			spec_d_i(char *s, va_list args, t_info *flag, int x)
 	length_original = check_length_zero_int(i, flag);
 	fill_p = fill_precision(flag, length_original);
 	length_new = length_original + fill_p + (*flag).neg;
-	fill_w = fill_width(flag, length_new);
+	fill_w = fill_width(flag, s[x], length_new);
 	if ((*flag).plus == 1)
 		fill_w = check_flag_plus(flag, fill_w, (*flag).minus);
 	if ((*flag).space == 1 && (*flag).plus == 0)

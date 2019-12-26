@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:58 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/25 17:05:59 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/26 14:29:26 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		spec_u(char *s, va_list args, t_info *flag, int x)
 	i = len_mod_check_u(args, flag, s[x]);
 	length = check_length_zero_int(i, flag);
 	fill_p = fill_precision(flag, length);
-	fill_w = fill_width(flag, length + fill_p + (*flag).neg);
+	fill_w = fill_width(flag, s[x], length + fill_p + (*flag).neg);
 	if ((*flag).minus == 0 && fill_w > 0)
 	{
 		// printf("check padding w1\n");

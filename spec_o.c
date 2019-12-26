@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:33 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/25 18:09:28 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/26 14:29:17 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		spec_o(char *s, va_list args, t_info *flag, int x)
 	// printf("4width: %d\n", (*flag).width);
 	// printf("4prec_val: %d\n", (*flag).prec_value);
 	fill_p = fill_precision(flag, length);
-	fill_w = fill_width(flag, length + fill_p + (*flag).neg);
+	fill_w = fill_width(flag, s[x], length + fill_p + (*flag).neg);
 	// printf("fill_p: %d, fill_w: %d\n", fill_p, fill_w);
 	// printf("oct_str: [%s]\n", oct_str);
 	if ((*flag).minus == 0 && fill_w > 0)

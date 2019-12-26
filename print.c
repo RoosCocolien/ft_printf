@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:23:54 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/24 16:44:56 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/26 14:24:42 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@ void	print_digit(t_info *flag, unsigned long long nb, int length)
 //	}
 }
 
-void	print_address(t_info *flag, char *s, int length)
+void	print_address(t_info *flag, char *str, int length)
 {
 	int		i;
 
+	// // printf("hex_str: %s\n", str);
+	// printf("length: %d\n", length);
 	i = 0;
 	if ((*flag).neg == 0 && (*flag).plus == 1 && (*flag).minus == 0 &&\
 	(*flag).precision == 0 && (*flag).zero == 0)
@@ -53,9 +55,9 @@ void	print_address(t_info *flag, char *s, int length)
 		(*flag).count++;
 		ft_putchar_fd('+', (*flag).fd);
 	}
-	while (s[i] && length != 0)
+	while (str[i] && length != 0)
 	{
-		ft_putchar_fd(s[i], (*flag).fd);
+		ft_putchar_fd(str[i], (*flag).fd);
 		(*flag).count++;
 		i++;
 	}
