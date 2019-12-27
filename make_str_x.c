@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/22 14:55:52 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/26 14:24:40 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/26 21:37:04 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,19 @@ static int	change_fill_0x(intmax_t i, t_info *flag, char spec, int fill)
 	return (fill);
 }
 
-static char	*fill_str_with_zeros(intmax_t i, t_info *flag, int len, char spec)
+static char	*fill_str_with_zeros(intmax_t i, t_info *flag, t_padding *padding, char spec)
 {
-	int		fill;
 	char	*zeros;
 	int		x;
 
-	fill = 0;
 	// printf("len: %d\n", len);
 	// printf("pv: %d\n", (*flag).prec_value);
 	// printf("zero: %d\nminus: %d\nprecision: %d\n", (*flag).zero, (*flag).minus, (*flag).precision);
-	if ((*flag).minus == 0 && ((*flag).zero == 1 || (*flag).precision != 0))
-		fill = (*flag).prec_value - len;
+//	if ((*flag).minus == 0 && ((*flag).zero == 1 || (*flag).precision != 0))
+//		fill = (*flag).prec_value - len;
 	// printf("fill: %d\n", fill);
 	x = 0;
-	if (i == 0 && len == 0 && spec == 'p')
+	if (i == 0 && (*padding).length == 0 && spec == 'p')
 	{
 		zeros = (char*)malloc(sizeof(char) * 2);
 		zeros[0] = 'x';
@@ -47,10 +45,11 @@ static char	*fill_str_with_zeros(intmax_t i, t_info *flag, int len, char spec)
 	else
 	{
 		// printf("fill1: %d\n", fill);
-		fill = change_fill_0x(i, flag, spec, fill);
+// ondertaand, doe ik dat al ergens anders? Is dit extra
+		(*padding).fill_p = change_fill_0x(i, flag, spec, (*padding).fill_p);
 		// printf("fill2: %d\n", fill);
-		zeros = (char*)malloc(sizeof(char) * (fill + 1));
-		while (fill > 0)
+		zeros = (char*)malloc(sizeof(char) * ((*padding).fill_p + 1));
+		while ((*padding).fill_p > 0)
 		{
 			if (x == 1 && ((spec == 'p' || ((*flag).hash == 1 && i != 0))))
 			{
@@ -61,7 +60,7 @@ static char	*fill_str_with_zeros(intmax_t i, t_info *flag, int len, char spec)
 			}
 			else
 				zeros[x] = '0';
-			fill--;
+			(*padding).fill_p--;
 			x++;
 		}
 		zeros[x] = '\0';
@@ -98,7 +97,7 @@ char		*make_hex_str(intmax_t i, t_info *flag, char spec, t_padding *padding)
 	// printf("length: %d\n", length);
 	// printf("hex: %s\n", hex);
 	(*padding).fill_p = fill_precision(flag, (*padding).length);
-	// printf("padding.fill_p: %d\n", padding.fill_p);
+	// printf("padding.fill_p: %d\n", (*padding).fill_p);
 	// printf("padding.length: %d\n", padding.length);
 	if (((*flag).prec_value <= (*padding).length && (*flag).hash == 0 && spec != 'p')\
 	|| ((*flag).zero == 0 && (*flag).hash == 0 && (*flag).precision == 0\
@@ -110,7 +109,7 @@ char		*make_hex_str(intmax_t i, t_info *flag, char spec, t_padding *padding)
 	else
 	{
 		// printf("test\n");
-		zeros = fill_str_with_zeros(i, flag, (*padding).length, spec);
+		zeros = fill_str_with_zeros(i, flag, padding, spec);
 		// printf("zeros: %s\n", zeros);
 		if (i == 0 && (*padding).length == 0 && spec == 'p')
 			hex_str = ft_strjoin(hex, zeros);
