@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/24 10:53:24 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/28 11:36:36 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -366,22 +366,44 @@ static void		flag_simple_zero_e(void)
 
 static void mistakes(void)
 {
-	printf("\nprintf\t%%#*e\t(18, 7.3412)\n%#*e\n", 18, 7.3412);
-	ft_printf("%#*e\n", 18, 7.3412);
-	printf("\nprintf\t%%#-*e\t(0, 7.3412)\n%#-*e\n", 0, 7.3412);
-	ft_printf("%#-*e\n", 0, 7.3412);
+	printf("\nprintf\t%%# 0*e\t(18, -7.3412)\n%# 0*e$\n", 18, -7.3412);
+	ft_printf("%# 0*e$\n", 18, -7.3412);
+	printf("\nprintf\t%%# 0*e\t(18, 7.3412)\n%# 0*e$\n", 18, 7.3412);
+	ft_printf("%# 0*e$\n", 18, 7.3412);
+	printf("\nprintf\t%%+0*e\t(18, 7.3412)\n%+0*e$\n", 18, 7.3412);
+	ft_printf("%+0*e$\n", 18, 7.3412);
+	printf("\nprintf\t%%#*e\t(18, 7.3412)\n%#*e$\n", 18, 7.3412);
+	ft_printf("%#*e$\n", 18, 7.3412);
+	printf("\nprintf\t%%#*e\t(18, -7.3412)\n%#*e$\n", 18, -7.3412);
+	ft_printf("%#*e$\n", 18, -7.3412);
+	printf("\nprintf\t%%#+*e\t(18, 7.3412)\n%#+*e$\n", 18, 7.3412);
+	ft_printf("%#+*e$\n", 18, 7.3412);
+	printf("\nprintf\t%%#+18.*e\t(3, 7.3412)\n%#+18.*e$\n", 3, 7.3412);
+	ft_printf("%#+18.*e$\n", 3, 7.3412);
+	printf("\nprintf\t%%#+ 18.*e\t(3, 7.3412)\n%#+ 18.*e$\n", 3, 7.3412);
+	ft_printf("%#+ 18.*e$\n", 3, 7.3412);
+	printf("\nprintf\t%%# *e\t(18, 7.3412)\n%# *e$\n", 18, 7.3412);
+	ft_printf("%# *e$\n", 18, 7.3412);
+	printf("\nprintf\t%%# *e\t(0, 7.3412)\n%# *e$\n", 0, 7.3412);
+	ft_printf("%# *e$\n", 0, 7.3412);
+	printf("\nprintf\t%%#-*e\t(0, 7.3412)\n%#-*e$\n", 0, 7.3412);
+	ft_printf("%#-*e$\n", 0, 7.3412);
 	printf("\n- asterisk pointing to width value NO ZERO: 0");
-	printf("\nprintf\t%%-*e\t(0, 7.3412)\n%-*e\n", 0, 7.3412);
-	ft_printf("%-*e\n", 0, 7.3412);
+	printf("\nprintf\t%%-*e\t(0, 7.3412)\n%-*e$\n", 0, 7.3412);
+	ft_printf("%-*e$\n", 0, 7.3412);
 	printf("\n- asterisk pointing to width value NO ZERO: 4");
-	printf("\nprintf\t%%-*e\t(4, 7.3412)\n%-*e\n", 4, 7.3412);
-	ft_printf("%-*e\n", 4, 7.3412);
+	printf("\nprintf\t%%-*e\t(4, 7.3412)\n%-*e$\n", 4, 7.3412);
+	ft_printf("%-*e$\n", 4, 7.3412);
 	printf("\n- asterisk pointing to width value NO ZERO: 18");
-	printf("\nprintf\t%%-*e\t(18, 7.3412)\n%-*e\n", 18, 7.3412);
-	ft_printf("%-*e\n", 18, 7.3412);
+	printf("\nprintf\t%%-*e\t(18, 7.3412)\n%-*e$\n", 18, 7.3412);
+	ft_printf("%-*e$\n", 18, 7.3412);
 	printf("\n- asterisk pointing to width value WITH ZERO: 18");
-	printf("\nprintf\t%%-0*e\t(18, -7.3412)\n%-0*e\n", 18, -7.3412);
-	ft_printf("%-0*e\n", 18, -7.3412);
+	printf("\nprintf\t%%-0*e\t(18, -7.3412)\n%-0*e$\n", 18, -7.3412);
+	ft_printf("%-0*e$\n", 18, -7.3412);
+	printf("\nprintf\t%%-0*o\t(18, 73412)\n%-0*o$\n", 18, 73412);
+	ft_printf("%-0*o$\n", 18, 73412);
+	printf("\nprintf\t%%-0*x\t(18, 73412)\n%-0*x$\n", 18, 73412);
+	ft_printf("%-0*x$\n", 18, 73412);
 }
 
 int				main(void)

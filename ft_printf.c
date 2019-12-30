@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:28:36 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/23 20:17:51 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/30 18:53:14 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "includes/printf.h"
 
 int			ft_printf(const char *restrict format, ...)
 {
@@ -32,6 +32,8 @@ int			ft_dprintf(int fd, const char *restrict format, ...)
 	va_list	args;
 	int		count;
 
+	if (fd < 0)
+		return (-1);
 	va_start(args, format);
 	count = loop_format_args((char*)format, args, fd, 0);
 	if (count == -1)

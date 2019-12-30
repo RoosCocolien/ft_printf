@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:15:44 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/24 10:40:50 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/30 19:29:04 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "includes/printf.h"
 
 void	print_nan_f(t_info *flag)
 {
@@ -51,16 +51,20 @@ static int	check_nan_inf(long double i, t_info *flag)
 	if (i != i)
 	{
 		(*flag).f_nan = 1;
+		(*flag).plus = 0;
+		(*flag).neg = 0;
+		(*flag).space = 0;
 		return (0.0);
 	}
-	else if (i > 1.797e308)
+	else if (i > 1.797e308 && (*flag).neg == 0)
 	{
 		(*flag).f_inf = 1;
 		return (0.0);
 	}
 	else
 	{
-		(*flag).f_nan = 1;
+		(*flag).f_inf = -1;
+		(*flag).neg = 0;
 		return (0.0);
 	}
 }
@@ -79,11 +83,13 @@ int			spec_f(char *s, va_list args, t_info *flag, int x)
 		i = check_nan_inf(i, flag);
 	str_spec_f = make_str_f(i, flag);
 	length = check_length_f(flag, str_spec_f);
-	fill = change_fill(flag, fill, length);
+	fill = change_fill_float(flag, fill, length);
+	if ((*flag).neg == 1 && (*flag).zero == 1 && fill < 1)
+		write_neg_count(flag);
 	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
 		put_padding(flag, fill);
 	print_neg(flag, length, s[x]);
-	print_string(flag, str_spec_f);
+	print_string(flag, str_spec_f, length);
 	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
 		put_padding(flag, fill);
 	free(str_spec_f);

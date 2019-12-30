@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 16:43:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/25 12:05:08 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/30 13:45:45 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,35 +299,99 @@ static void		make_test_o(void)
 	unsigned long ulong_max;
 
 	ulong_max = ULONG_MAX;
-	printf("%%#09.0o (482)\n");
-	printf("\nreturn_pf:\t(%%#09.0o (482))\t%d\n", printf("%#09.0o", 482));
-	printf("return_fpf:\t(%%#09.0o (482))\t%d\n", ft_printf("%#09.0o\n", 482));
-	printf("%%lo (ulong_max)\n");	
-	printf("\nreturn_pf:\t(%%lo)\t%d\n", printf("%lo", ulong_max));
-	printf("return_fpf:\t(%%lo)\t%d\n", ft_printf("%lo\n", ulong_max));
-	printf("%%llo (ulong_max + 10)\n");	
-	printf("\nreturn_pf:\t(%%llo)\t%d\n", printf("%llo", ulong_max + 10));
-	printf("return_fpf:\t(%%llo)\t%d\n", ft_printf("%llo\n", ulong_max + 10));
-	printf("%%#09.0o (482)\n");	
-	printf("\nreturn_pf:\t(%%#09.0o)\t%d\n", printf("%#09.0o", 482));
-	printf("return_fpf:\t(%%#09.0o)\t%d\n", ft_printf("%#09.0o\n", 482));
-	printf("%%09.0o (482)\n");	
+	printf("\n%%#09.0o (482)\n");
+	printf("\nreturn_pf:\t(%%#09.0o (482))\t%d\n", printf("%#09.0o$", 482));
+	printf("return_fpf:\t(%%#09.0o (482))\t%d\n", ft_printf("%#09.0o$\n", 482));
+
+	printf("\n%%09.0o (482)\n");	
 	printf("\nreturn_pf:\t(%%09.0o)\t%d\n", printf("%09.0o", 482));
 	printf("return_fpf:\t(%%09.0o)\t%d\n", ft_printf("%09.0o\n", 482));
-	printf("\nprintf\t%%llo\tuns long long (18.443.744.073.709.551.613)\n%llo\n", 18443744073709551613);
-	ft_printf("%llo\n", 18443744073709551613);
-	printf("\nprintf\t%%llo\tuns long long (18.443.744.073.709.551)\n%llo\n", 18443744073709551);
-	ft_printf("%llo\n", 18443744073709551);
-	printf("\nprintf\t%%llo\tuns long long (18.443.744.073.709.551.6)\n%llo\n", 184437440737095516);
-	ft_printf("%llo\n", 184437440737095516);
-	printf("\nprintf\t%%llo\tuns long long (18.443.744.073.709.551.61)\n%llo\n", 1844374407370955161);
-	ft_printf("%llo\n", 1844374407370955161);
-	printf("\nprintf\t%%llo\tuns long long (18.443.744.073.709.551.610)\n%llo\n", 18443744073709551610);
-	ft_printf("%llo\n", 18443744073709551610);
-	printf("\nprintf\t%%llo\tuns long long (-18.443.744.073.709.551)\n%llo\n", -18443744073709551);
-	ft_printf("%llo\n", -18443744073709551);
-	printf("\nprintf\t%%llo\tuns long long (-456)\n%llo\n", -456);
-	ft_printf("%llo\n", -456);
+
+	printf("\n%%#09.0o (482)\n");	
+	printf("\nreturn_pf:\t(%%#09.0o)\t%d\n", printf("%#09.0o$", 482));
+	printf("return_fpf:\t(%%#09.0o)\t%d\n", ft_printf("%#09.0o$\n", 482));
+	
+	printf("\n%%#09o (482)\n");
+	printf("\nreturn_pf:\t(%%#09o (482))\t%d\n", printf("%#09o$", 482));
+	printf("return_fpf:\t(%%#09o (482))\t%d\n", ft_printf("%#09o$\n", 482));
+
+	printf("\n%%#03o (482)\n");
+	printf("\nreturn_pf:\t(%%#03o (482))\t%d\n", printf("%#03o$", 482));
+	printf("return_fpf:\t(%%#03o (482))\t%d\n", ft_printf("%#03o$\n", 482));
+
+	printf("\n%%09o (482)\n");	
+	printf("\nreturn_pf:\t(%%09o)\t%d\n", printf("%09o", 482));
+	printf("return_fpf:\t(%%09o)\t%d\n", ft_printf("%09o\n", 482));
+
+	printf("\n%%#09o (482)\n");	
+	printf("\nreturn_pf:\t(%%#09o)\t%d\n", printf("%#09o$", 482));
+	printf("return_fpf:\t(%%#09o)\t%d\n", ft_printf("%#09o$\n", 482));
+	
+	printf("\n%%#9o (482)\n");
+	printf("\nreturn_pf:\t(%%#9o (482))\t%d\n", printf("%#9o$", 482));
+	printf("return_fpf:\t(%%#9o (482))\t%d\n", ft_printf("%#9o$\n", 482));
+
+	printf("\n%%9o (482)\n");	
+	printf("\nreturn_pf:\t(%%9o)\t%d\n", printf("%9o", 482));
+	printf("return_fpf:\t(%%9o)\t%d\n", ft_printf("%9o\n", 482));
+
+	printf("\n%%#9o (482)\n");	
+	printf("\nreturn_pf:\t(%%#9o)\t%d\n", printf("%#9o$", 482));
+	printf("return_fpf:\t(%%#9o)\t%d\n", ft_printf("%#9o$\n", 482));
+	
+	// printf("\n%%lo (ulong_max)\n");	
+	// printf("\nreturn_pf:\t(%%lo)\t%d\n", printf("%lo$", ulong_max));
+	// printf("return_fpf:\t(%%lo)\t%d\n", ft_printf("%lo$\n", ulong_max));
+	
+	// printf("\n%%llo (ulong_max + 10)\n");	
+	// printf("\nreturn_pf:\t(%%llo)\t%d\n", printf("%llo$", ulong_max + 10));
+	// printf("return_fpf:\t(%%llo)\t%d\n", ft_printf("%llo$\n", ulong_max + 10));
+	
+	// printf("\nprintf\t%%llo\tuns long long (18.443.744.073.709.551.613)\n%llo\n", 18443744073709551613);
+	// ft_printf("%llo\n", 18443744073709551613);
+	// printf("\nprintf\t%%llo\tuns long long (18.443.744.073.709.551)\n%llo\n", 18443744073709551);
+	// ft_printf("%llo\n", 18443744073709551);
+	// printf("\nprintf\t%%llo\tuns long long (18.443.744.073.709.551.6)\n%llo\n", 184437440737095516);
+	// ft_printf("%llo\n", 184437440737095516);
+	// printf("\nprintf\t%%llo\tuns long long (18.443.744.073.709.551.61)\n%llo\n", 1844374407370955161);
+	// ft_printf("%llo\n", 1844374407370955161);
+	// printf("\nprintf\t%%llo\tuns long long (18.443.744.073.709.551.610)\n%llo\n", 18443744073709551610);
+	// ft_printf("%llo\n", 18443744073709551610);
+	// printf("\nprintf\t%%llo\tuns long long (-18.443.744.073.709.551)\n%llo\n", -18443744073709551);
+	// ft_printf("%llo\n", -18443744073709551);
+	// printf("\nprintf\t%%llo\tuns long long (-456)\n%llo\n", -456);
+	// ft_printf("%llo\n", -456);
+}
+
+void	mistakes(void)
+{
+	printf("\n%%-.7#o (997)\n");	
+	printf("\nreturn_pf:\t(%%-.7#o)\t%d\n", printf("%-.7#o$", 7, 997));
+	printf("return_fpf:\t(%%-.7#o)\t%d\n", ft_printf("%-.7#o$\n", 7, 997));	
+	printf("\n%%0.7#o (997)\n");	
+	printf("\nreturn_pf:\t(%%0.7#o)\t%d\n", printf("%0.7#o$", 7, 997));
+	printf("return_fpf:\t(%%0.7#o)\t%d\n", ft_printf("%0.7#o$\n", 7, 997));	
+	printf("\n%%#.0o (0)\n");	
+	printf("\nreturn_pf:\t(%%#.0o)\t%d\n", printf("%#.0o$", 0));
+	printf("return_fpf:\t(%%#.0o)\t%d\n", ft_printf("%#.0o$\n", 0));	
+	printf("\n%%#o (0)\n");	
+	printf("\nreturn_pf:\t(%%#o)\t%d\n", printf("%#o$", 0));
+	printf("return_fpf:\t(%%#o)\t%d\n", ft_printf("%#o$\n", 0));	
+	printf("\n%%.0o (0)\n");	
+	printf("\nreturn_pf:\t(%%.0o)\t%d\n", printf("%.0o$", 0));
+	printf("return_fpf:\t(%%.0o)\t%d\n", ft_printf("%.0o$\n", 0));	
+	printf("\n%%o (0)\n");	
+	printf("\nreturn_pf:\t(%%o)\t%d\n", printf("%o$", 0));
+	printf("return_fpf:\t(%%o)\t%d\n", ft_printf("%o$\n", 0));
+	printf("\nprintf\t%%#01o\t(12345)\n");
+	ft_printf("return: %#01o\n", printf("Result: %#01o\n", 12345));
+	ft_printf("return: %#01o\n", ft_printf("Result: %#01o\n", 12345));
+	printf("\nprintf\t%% 05#o\t(0)\
+	Invisible plus sign, fill 0, width 5\n% 05#o\n", 0);
+	ft_printf("% 05#o\n", 0);
+	printf("\nprintf\t%% 05#o\t(-461)\
+	Invisible plus sign, fill 0, width 5\n% 05#o\n", -461);
+	ft_printf("% 05#o\n", -461);
 }
 
 int		main(void)
@@ -341,5 +405,6 @@ int		main(void)
 	range_check_o();
 	hash_flag_o();
 	make_test_o();
+	mistakes();
 	return (0);
 }

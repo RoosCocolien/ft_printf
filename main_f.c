@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/12 18:58:16 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/24 11:19:50 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/30 10:48:01 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,24 @@ static void		width_asterisk_f(void)
 	printf("\n- asterisk pointing to width value WITH ZERO: 18");
 	printf("\nprintf\t%%0*f\t(18, 7.3412)\n%0*f\n", 18, 7.3412);
 	ft_printf("%0*f\n", 18, 7.3412);
+	printf("\n- asterisk pointing to width value WITH ZERO: 0");
+	printf("\nprintf\t%%0*+f\t(0, 7.3412)\n%0*+f\n", 0, 7.3412);
+	ft_printf("%0*+f\n", 0, 7.3412);
+	printf("\n- asterisk pointing to width value WITH ZERO: 4");
+	printf("\nprintf\t%%0*+f\t(4, 7.3412)\n%0*+f\n", 4, 7.3412);
+	ft_printf("%0*+f\n", 4, 7.3412);
+	printf("\n- asterisk pointing to width value WITH ZERO: 18");
+	printf("\nprintf\t%%0*+f\t(18, 7.3412)\n%0*+f\n", 18, 7.3412);
+	ft_printf("%0*+f\n", 18, 7.3412);
+	printf("\n- asterisk pointing to width value WITH ZERO: 0");
+	printf("\nprintf\t%%0* f\t(0, 7.3412)\n%0* f\n", 0, 7.3412);
+	ft_printf("%0* f\n", 0, 7.3412);
+	printf("\n- asterisk pointing to width value WITH ZERO: 4");
+	printf("\nprintf\t%%0* f\t(4, 7.3412)\n%0* f\n", 4, 7.3412);
+	ft_printf("%0* f\n", 4, 7.3412);
+	printf("\n- asterisk pointing to width value WITH ZERO: 18");
+	printf("\nprintf\t%%0* f\t(18, 7.3412)\n%0* f\n", 18, 7.3412);
+	ft_printf("%0* f\n", 18, 7.3412);
 	printf("\n- asterisk pointing to width value NO ZERO: 0");
 	printf("\nprintf\t%%*f\t(0, 7.3412)\n%*f\n", 0, 7.3412);
 	ft_printf("%*f\n", 0, 7.3412);
@@ -180,6 +198,12 @@ static void		width_asterisk_f(void)
 	printf("\n- asterisk pointing to width value NO ZERO: 18");
 	printf("\nprintf\t%%*f\t(18, 7.3412)\n%*f\n", 18, 7.3412);
 	ft_printf("%*f\n", 18, 7.3412);
+	printf("\n- asterisk pointing to width value NO ZERO: 4");
+	printf("\nprintf\t%%*+f\t(4, 7.3412)\n%*+f\n", 4, 7.3412);
+	ft_printf("%*+f\n", 4, 7.3412);
+	printf("\n- asterisk pointing to width value NO ZERO: 18");
+	printf("\nprintf\t%%*+f\t(18, 7.3412)\n%*+f\n", 18, 7.3412);
+	ft_printf("%*+f\n", 18, 7.3412);
 
 	printf("\nWIDTH ASTERISK, left aligned");
 	printf("\nflag '0' is ignored when flag '-' (left aligned) is present");
@@ -379,6 +403,52 @@ static void		inconsistent_rounding(void)
 	ft_printf("%.3f\t(%%.3f\t4.2535F\tft_printf)\n", 4.2535F);
 	printf("\n%.3f\t(%%.3f\t4.2545F\tprintf)\n", 4.2545F);
 	ft_printf("%.3f\t(%%.3f\t4.2545F\tft_printf)\n", 4.2545F);
+
+	printf("\nPRECISION 0");
+	printf("\n%f\t(%%f\t10.5F\tprintf)\n", 10.5F);
+	ft_printf("%f\t(%%f\t10.5F\tft_printf)\n", 10.5F);
+	printf("\n%.0f\t(%%.0f\t10.5F\tprintf)\n", 10.5F);
+	ft_printf("%.0f\t(%%.0f\t10.5F\tft_printf)\n", 10.5F);
+	printf("\n%.0f\t(%%.0f\t12.5F\tprintf)\n", 12.5F);
+	ft_printf("%.0f\t(%%.0f\t12.5F\tft_printf)\n", 12.5F);
+	printf("\n%.0f\t(%%.0f\t13.5F\tprintf)\n", 13.5F);
+	ft_printf("%.0f\t(%%.0f\t13.5F\tft_printf)\n", 13.5F);
+	printf("\n%.0f\t(%%.0f\t14.5F\tprintf)\n", 14.5F);
+	ft_printf("%.0f\t(%%.0f\t14.5F\tft_printf)\n", 14.5F);
+	printf("\n%.0f\t(%%.0f\t13.5\tprintf)\n", 13.5);
+	ft_printf("%.0f\t(%%.0f\t13.5\tft_printf)\n", 13.5);
+	printf("\n%.0f\t(%%.0f\t14.5\tprintf)\n", 14.5);
+	ft_printf("%.0f\t(%%.0f\t14.5\tft_printf)\n", 14.5);
+	printf("\n%.0f\t(%%.0f\t19.55\tprintf)\n", 19.55);
+	ft_printf("%.0f\t(%%.0f\t19.55\tft_printf)\n", 19.55);
+	printf("\n%.0f\t(%%.0f\t19.9\tprintf)\n", 19.9);
+	ft_printf("%.0f\t(%%.0f\t19.9\tft_printf)\n", 19.9);
+	printf("\n%.0f\t(%%.3f\t19.9999\tprintf)\n", 19.9999);
+	ft_printf("%.0f\t(%%.3f\t19.9999\tft_printf)\n", 19.9999);
+	printf("\n%.0f\t(%%.3f\t119.9999\tprintf)\n", 119.9999);
+	ft_printf("%.0f\t(%%.3f\t119.9999\tft_printf)\n", 119.9999);
+
+	printf("\nPRECISION 1");
+	printf("\n%.1f\t(%%.1f\t93.35\tprintf)\n", 93.35F);
+	ft_printf("%.1f\t(%%.1f\t93.35\tft_printf)\n", 93.35F);
+	printf("\n%.1f\t(%%.1f\t94.45\tprintf)\n", 94.45F);
+	ft_printf("%.1f\t(%%.1f\t94.45\tprintf)\n", 94.45F);
+	printf("\n%.1f\t(%%.1f\t93.35\tprintf)\n", 93.356F);
+	ft_printf("%.1f\t(%%.1f\t93.35\tft_printf)\n", 93.356F);
+	printf("\n%.1f\t(%%.1f\t94.45\tprintf)\n", 94.456F);
+	ft_printf("%.1f\t(%%.1f\t94.45\tprintf)\n", 94.456F);
+
+	printf("\nPRECISION 2");
+	printf("\n%.2f\t(%%.2f\t4.535F\tprintf)\n", 4.535F);
+	ft_printf("%.2f\t(%%.2f\t4.535F\tft_printf)\n", 4.535F);
+	printf("\n%.2f\t(%%.2f\t4.545F\tprintf)\n", 4.545F);
+	ft_printf("%.2f\t(%%.2f\t4.545F\tft_printf)\n", 4.545F);
+
+	printf("\nPRECISION 3");
+	printf("\n%.3f\t(%%.3f\t4.2535F\tprintf)\n", 4.2535F);
+	ft_printf("%.3f\t(%%.3f\t4.2535F\tft_printf)\n", 4.2535F);
+	printf("\n%.3f\t(%%.3f\t4.2545F\tprintf)\n", 4.2545F);
+	ft_printf("%.3f\t(%%.3f\t4.2545F\tft_printf)\n", 4.2545F);
 }
 
 static void		edge_cases(void)
@@ -405,8 +475,65 @@ static void		edge_cases(void)
 	ft_printf("%.1f\t(%%.1f\t-1/0.0\tft_printf)\n", -1 / 0.0);
 	printf("\n%f\t(%%f\tsrt(-1)\tprintf)\n", sqrt(-1));
 	ft_printf("%f\t(%%f\tsrt(-1)\tft_printf)\n", sqrt(-1));
+	printf("\n%.14f\t(%%.14f\t(a lot of decimals)\tprintf)\n", 9873.2148794567);
+	ft_printf("%.14f\t(%%.14f\t(a lot of decimals)\tft_printf)\n", 9873.2148794567);
+	printf("\n%.15f\t(%%.15f\t(a lot of decimals)\tprintf)\n", 9873.2148794567);
+	ft_printf("%.15f\t(%%.15f\t(a lot of decimals)\tft_printf)\n", 9873.2148794567);
 	printf("\n%.16f\t(%%.16f\t(a lot of decimals)\tprintf)\n", 9873.2148794567);
 	ft_printf("%.16f\t(%%.16f\t(a lot of decimals)\tft_printf)\n", 9873.2148794567);
+
+	printf("\n%.5f\t(%%.5f\t(a lot of decimals)\tprintf)\n", 9873.145965);
+	ft_printf("%.5f\t(%%.5f\t(a lot of decimals)\tft_printf)\n", 9873.145965);
+	printf("\n%.6f\t(%%.6f\t(a lot of decimals)\tprintf)\n", 9873.9145965);
+	ft_printf("%.6f\t(%%.6f\t(a lot of decimals)\tft_printf)\n", 9873.9145965);
+	printf("\n%.7f\t(%%.7f\t(a lot of decimals)\tprintf)\n", 9873.99145965);
+	ft_printf("%.7f\t(%%.7f\t(a lot of decimals)\tft_printf)\n", 9873.99145965);
+	printf("\n%.8f\t(%%.8f\t(a lot of decimals)\tprintf)\n", 9873.999145965);
+	ft_printf("%.8f\t(%%.8f\t(a lot of decimals)\tft_printf)\n", 9873.999145965);
+	printf("\n%.9f\t(%%.9f\t(a lot of decimals)\tprintf)\n", 9873.9999145965);
+	ft_printf("%.9f\t(%%.9f\t(a lot of decimals)\tft_printf)\n", 9873.9999145965);
+	printf("\n%.10f\t(%%.10f\t(a lot of decimals)\tprintf)\n", 9873.99999145965);
+	ft_printf("%.10f\t(%%.10f\t(a lot of decimals)\tft_printf)\n", 9873.99999145965);
+	printf("\n%.11f\t(%%.11f\t(a lot of decimals)\tprintf)\n", 9873.999999145965);
+	ft_printf("%.11f\t(%%.11f\t(a lot of decimals)\tft_printf)\n", 9873.999999145965);
+	printf("\n%.12f\t(%%.12f\t(a lot of decimals)\tprintf)\n", 9873.1999999145965);
+	ft_printf("%.12f\t(%%.12f\t(a lot of decimals)\tft_printf)\n", 9873.1999999145965);
+	printf("\n%.13f\t(%%.13f\t(a lot of decimals)\tprintf)\n", 9873.11999999145965);
+	ft_printf("%.13f\t(%%.13f\t(a lot of decimals)\tft_printf)\n", 9873.11999999145965);
+	printf("\n%.14f\t(%%.14f\t(a lot of decimals)\tprintf)\n", 9873.111999999145965);
+	ft_printf("%.14f\t(%%.14f\t(a lot of decimals)\tft_printf)\n", 9873.111999999145965);
+	printf("\n%.15f\t(%%.15f\t(a lot of decimals)\tprintf)\n", 9873.1111999999145965);
+	ft_printf("%.15f\t(%%.15f\t(a lot of decimals)\tft_printf)\n", 9873.1111999999145965);
+	printf("\n%.16f\t(%%.16f\t(a lot of decimals)\tprintf)\n", 9873.11111999999145965);
+	ft_printf("%.16f\t(%%.16f\t(a lot of decimals)\tft_printf)\n", 9873.11111999999145965);
+	printf("\n%.17f\t(%%.17f\t(a lot of decimals)\tprintf)\n", 9873.111111999999145965);
+	ft_printf("%.17f\t(%%.17f\t(a lot of decimals)\tft_printf)\n", 9873.111111999999145965);
+	printf("\n%.18f\t(%%.18f\t(a lot of decimals)\tprintf)\n", 9873.1111111999999145965);
+	ft_printf("%.18f\t(%%.18f\t(a lot of decimals)\tft_printf)\n", 9873.1111111999999145965);
+
+	printf("\n%.17f\t(%%.17f\t(a lot of decimals)\tprintf)\n", 9873.2148794567);
+	ft_printf("%.17f\t(%%.17f\t(a lot of decimals)\tft_printf)\n", 9873.2148794567);
+	printf("\n%.18f\t(%%.18f\t(a lot of decimals)\tprintf)\n", 9873.2148794567);
+	ft_printf("%.18f\t(%%.18f\t(a lot of decimals)\tft_printf)\n", 9873.2148794567);
+	printf("\n%.10f\t(%%.10f\t(a lot of decimals)\tprintf)\n", 9873.2148794567);
+	ft_printf("%.10f\t(%%.10f\t(a lot of decimals)\tft_printf)\n", 9873.2148794567);
+	printf("\n%.9f\t(%%.9f\t(a lot of decimals)\tprintf)\n", 9873.2148794565);
+	ft_printf("%.9f\t(%%.9f\t(a lot of decimals)\tft_printf)\n", 9873.2148794565);
+	printf("\n%.8f\t(%%.8f\t(a lot of decimals)\tprintf)\n", 9873.2148794567);
+	ft_printf("%.8f\t(%%.8f\t(a lot of decimals)\tft_printf)\n", 9873.2148794567);
+	printf("\n%.7f\t(%%.7f\t(a lot of decimals)\tprintf)\n", 9873.2148794567);
+	ft_printf("%.7f\t(%%.7f\t(a lot of decimals)\tft_printf)\n", 9873.2148794567);
+	printf("\n%.6f\t(%%.6f\t(a lot of decimals)\tprintf)\n", 9873.2148795567);
+	ft_printf("%.6f\t(%%.6f\t(a lot of decimals)\tft_printf)\n", 9873.2148795567);
+	printf("\n%.5f\t(%%.5f\t(a lot of decimals)\tprintf)\n", 9873.2148794567);
+	ft_printf("%.5f\t(%%.5f\t(a lot of decimals)\tft_printf)\n", 9873.2148794567);
+	printf("\n%.4f\t(%%.4f\t(a lot of decimals)\tprintf)\n", 9873.2148794567);
+	ft_printf("%.4f\t(%%.4f\t(a lot of decimals)\tft_printf)\n", 9873.2148794567);
+	printf("\n%.3f\t(%%.3f\t(a lot of decimals)\tprintf)\n", 9873.2148794567);
+	ft_printf("%.3f\t(%%.3f\t(a lot of decimals)\tft_printf)\n", 9873.2148794567);
+	printf("\n%.2f\t(%%.2f\t(a lot of decimals)\tprintf)\n", 9873.2148794567);
+	ft_printf("%.2f\t(%%.2f\t(a lot of decimals)\tft_printf)\n", 9873.2148794567);
+
 	printf("\n%.23f\t(%%.23f\t(a lot of decimals)\tprintf)\n", 989789.2148794567);
 	ft_printf("%.23f\t(%%.23f\t(a lot of decimals)\tft_printf)\n", 989789.2148794567);
 	printf("\n%#f\t(%%#f\t(a lot of decimals)\tprintf)\n", 3.21);

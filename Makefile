@@ -6,21 +6,19 @@
 #    By: bvan-de- <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/15 14:53:31 by bvan-de-       #+#    #+#                 #
-#    Updated: 2019/12/23 21:39:38 by rsteigen      ########   odam.nl          #
+#    Updated: 2019/12/30 19:28:13 by rsteigen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libftprintf.a
 LIBFT	= libft
-SRCS 	= ft_printf.c flags.c spec.c spec_c.c\
-			spec_d_i.c spec_s.c spec_perc.c spec_f.c\
-			spec_e.c spec_o.c flags2.c spec_x.c\
-			spec_u.c spec_p.c print.c padding.c\
-			len_mod_di2.c len_mod_di.c len_mod_u.c\
-			len_mod_u2.c precision.c len_mod_ef.c\
-			make_str_e.c colors.c make_str_f.c make_str_x.c\
-			roundup.c print_content.c floats.c\
-			ft_printf_loop_args.c asterisk.c zero_value.c
+SRCS 	= ft_printf.c flags.c spec.c spec_c.c flag_plus_space.c spec_d_i.c\
+			spec_s.c spec_perc.c spec_f.c spec_e.c spec_o.c flags2.c spec_x.c\
+			spec_u.c spec_p.c print.c padding.c len_mod_di2.c len_mod_di.c\
+			len_mod_u.c len_mod_u2.c precision.c len_mod_ef.c make_str_e.c\
+			colors.c make_str_f.c make_str_x.c roundup.c make_str_o.c\
+			negative.c ft_printf_loop_args.c asterisk.c zero_value.c fill.c\
+			padding2.c float_flags.c
 LIBFUNC	= libft/ft_memset.c libft/ft_bzero.c libft/ft_memcpy.c\
 			libft/ft_memccpy.c libft/ft_memmove.c libft/ft_memchr.c\
 			libft/ft_strstr.c libft/ft_isdigit.c libft/ft_memalloc.c\

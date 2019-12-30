@@ -6,38 +6,36 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:36:17 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/24 10:41:13 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/29 20:40:26 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
-
-/*
-** This function will print a double in normalized scientific notation
-** and consider the used flags.
-** print: 					OK
-** consideration of flags:	OK
-*/
+#include "includes/printf.h"
 
 int		spec_e(char *s, va_list args, t_info *flag, int x)
 {
 	long double		i;
 	char			*str_spec_e;
-	int				length;
-	int				fill;
+	t_padding		padding;
+	int				extra_padding;
 
-	fill = 0;
+	set_padding_to_zero(&padding);
 	prec_and_zero_check(args, flag, s[x]);
 	i = len_mod_check_efg(args, flag);
+	extra_padding = calc_extra_padding(flag);
 	str_spec_e = make_str_e(i, flag, s[x]);
-	length = ft_strlen(str_spec_e);
-	fill = change_fill(flag, fill, length);
-	if ((*flag).width > 0 && (*flag).minus == 0 && fill > 0)
-		put_padding(flag, fill);
-	print_neg(flag, length, s[x]);
-	print_string(flag, str_spec_e);
-	if ((*flag).width > 0 && (*flag).minus == 1 && fill > 0)
-		put_padding(flag, fill);
-	free(str_spec_e);
+	padding.length = ft_strlen(str_spec_e);
+	padding.fill_w = fill_width(flag, s[x], padding.length + extra_padding);
+	put_space_plus_e(flag, &padding);
+	if ((*flag).minus == 0 && padding.fill_w > 0)
+		put_padding_w(flag, padding.fill_w);
+	if (padding.length == 0 && i == 0)
+		padding.length = ft_strlen(str_spec_e);
+	print_neg(flag, padding.length, s[x]);
+	print_string(flag, str_spec_e, padding.length);
+	if ((*flag).minus == 1 && padding.fill_w > 0)
+		put_padding_w(flag, padding.fill_w);
+	if (str_spec_e)
+		free(str_spec_e);
 	return (x + 1);
 }

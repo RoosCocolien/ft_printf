@@ -6,33 +6,33 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/21 17:14:15 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/23 20:17:48 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/29 16:41:53 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "includes/printf.h"
 
-int			loop_format_args(char *s, va_list args, int fd, int x)
+int			loop_format_args(char *str, va_list args, int fd, int x)
 {
 	t_info	flag;
 
 	flag.count = 0;
 	flag.fd = fd;
-	while (s[x])
+	while (str[x])
 	{
-		if (s[x] == '%')
+		if (str[x] == '%')
 		{
 			x++;
-			x = save_flags(s, &flag, x);
+			x = save_flags(str, &flag, x);
 			if (x == -1)
 				return (-1);
-			x = find_spec(s, args, &flag, x);
+			x = find_spec(str, args, &flag, x);
 			if (x == -1)
-				return (-1);
+				x = print_content(&flag, str, x);
 		}
 		else
 		{
-			x = print_content(&flag, s, x);
+			x = print_content(&flag, str, x);
 			if (x == -1)
 				return (-1);
 		}

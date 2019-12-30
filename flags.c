@@ -6,56 +6,33 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:48:34 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/23 20:54:41 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/30 18:41:46 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "includes/printf.h"
 
-/*
-**	These four functions check which flags should be toggled
-**	on.
-**	In the case of an illigal option, the function will return (-1)
-*/
-
-static int	flags_part_four(char *s, t_info *flag, int x)
+static void	reset_precision_values(t_info *flag)
 {
-	if (s[x] == 'h' && s[x - 1] != 'h')
-	{
-		(*flag).hh = 0;
-		(*flag).h = 1;
-		x++;
-	}
-	else if (s[x] == 'h' && s[x - 1] == 'h')
-	{
-		(*flag).h = 0;
-		(*flag).hh = 1;
-		x++;
-	}
-	else if (s[x] == 'L')
-	{
-		(*flag).l_cap = 1;
-		x++;
-	}
-	else if (s[x] == 'd' || s[x] == 'i' || s[x] == 'f' || s[x] == 'c'\
-	|| s[x] == 's' || s[x] == '%' || s[x] == 'e' || s[x] == 'E'\
-	|| s[x] == 'g' || s[x] == 'n' || s[x] == 'o' || s[x] == 'p'\
-	|| s[x] == 'u' || s[x] == 'x')
-		return (x);
-	else
-		return (x++);
-	return (x);
+	(*flag).prec_value = 0;
+	(*flag).precision = 1;
+	(*flag).prec_no_val = 1;
 }
 
 static int	flags_part_three(char *s, t_info *flag, int x)
 {
-	if (s[x] == '.')
+	if (s[x] == '#')
+	{
+		(*flag).hash = 1;
+		x++;
+	}
+	else if (s[x] == '.')
 	{
 		if ((s[x + 1] >= '0' && s[x + 1] <= '9') || s[x + 1] == '*')
 			x = check_precision(s, flag, x);
 		else
 		{
-			(*flag).prec_no_val = 1;
+			reset_precision_values(flag);
 			x++;
 		}
 	}
@@ -65,12 +42,6 @@ static int	flags_part_three(char *s, t_info *flag, int x)
 		(*flag).l = 1;
 		x++;
 	}
-	else if (s[x] == 'l' && s[x - 1] == 'l')
-	{
-		(*flag).l = 0;
-		(*flag).ll = 1;
-		x++;
-	}
 	else
 		x = flags_part_four(s, flag, x);
 	return (x);
@@ -78,12 +49,7 @@ static int	flags_part_three(char *s, t_info *flag, int x)
 
 static int	flags_part_two(char *s, t_info *flag, int x)
 {
-	if (s[x] == '#')
-	{
-		(*flag).hash = 1;
-		x++;
-	}
-	else if ((s[x] > 48 && s[x] <= 57) && s[x - 1] != '.')
+	if ((s[x] > 48 && s[x] <= 57) && s[x - 1] != '.')
 		x = save_prec_width(s, flag, x);
 	else if (s[x] == '*' && s[x - 1] != '.' && (*flag).asterisk == 0)
 	{
@@ -95,6 +61,10 @@ static int	flags_part_two(char *s, t_info *flag, int x)
 		else
 		{
 			(*flag).width = -1;
+			if ((*flag).sequence == 0)
+				(*flag).sequence--;
+			else
+				(*flag).sequence++;
 			x++;
 		}
 		(*flag).asterisk = 1;

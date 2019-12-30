@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/20 12:25:22 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/24 15:20:16 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/30 14:52:41 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@
 static void extra_space_plus_di(void)
 {
 	ft_printf("\n*\t**PLUS SIGN**\t*\\n");
-	ft_printf("\nprintf %%+5d, 0\n");
-	printf("%+5d\n", 0);
-	ft_printf("%+5d\n", 0);
-	ft_printf("printf %%+5d, -7\n");
+	ft_printf("\nprintf %%+15.8d, 0\n");
+	printf("%+15.8d\n", 0);
+	ft_printf("%+15.8d\n", 0);
+	ft_printf("\nprintf %%+15.8d, -5\n");
+	printf("%+15.8d\n", -5);
+	ft_printf("%+15.8d\n", -5);
+	ft_printf("printf %%+15.8d, -7\n");
 	printf("%+5d\n", -7);
 	ft_printf("%+5d\n", -7);
 	ft_printf("printf %%+5d, 1536924\n");
@@ -254,7 +257,7 @@ static void	range_check_di(void)
 
 static void	hash_flag_di()
 {
-	ft_printf("\n*\t**Hash**\t*\n");
+	ft_printf("\n*\t**Hash_flag_di**\t*\n");
 	ft_printf("\nprintf %%+05#d, 0\n");
 	printf("%+05#d\n", 0);
 	printf("return: %#d\n", printf("%+05#d\n", 0));
@@ -292,6 +295,27 @@ static void	make_test_di_1()
 	printf("\n");
 	printf("return_pf:\t(%%047d, 482)\t%d\n", printf("%047d$\n", 482));
 	printf("return_fpf:\t(%%047d, 482)\t%d\n", ft_printf("%047d$\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%+047.d, 482)\t%d\n", printf("%+047.d$\n", 482));
+	printf("return_fpf:\t(%%+047.d, 482)\t%d\n", ft_printf("%+047.d$\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%+047.d, 482)\t%d\n", printf("%+047.d$\n", -482));
+	printf("return_fpf:\t(%%+047.d, 482)\t%d\n", ft_printf("%+047.d$\n", -482));
+	printf("\n");
+	printf("return_pf:\t(%%+047d, 482)\t%d\n", printf("%+047d$\n", 482));
+	printf("return_fpf:\t(%%+047d, 482)\t%d\n", ft_printf("%+047d$\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%47.d, 482)\t%d\n", printf("%47.d$\n", 482));
+	printf("return_fpf:\t(%%47.d, 482)\t%d\n", ft_printf("%47.d$\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%47d, 482)\t%d\n", printf("%47d$\n", 482));
+	printf("return_fpf:\t(%%47d, 482)\t%d\n", ft_printf("%47d$\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%+47.d, 482)\t%d\n", printf("%+47.d$\n", 482));
+	printf("return_fpf:\t(%%+47.d, 482)\t%d\n", ft_printf("%+47.d$\n", 482));
+	printf("\n");
+	printf("return_pf:\t(%%+47d, 482)\t%d\n", printf("%+47d$\n", 482));
+	printf("return_fpf:\t(%%+47d, 482)\t%d\n", ft_printf("%+47d$\n", 482));
 	printf("\n");
 }
 
@@ -400,6 +424,9 @@ static void mistakes(void)
 	ft_printf("printf %%+-5d, 0\n");
 	printf("%+-5d$\n", 0);
 	ft_printf("%+-5d$\n", 0);
+	ft_printf("printf %%+-5o, 0\n");
+	printf("%+-5o$\n", 0);
+	ft_printf("%+-5o$\n", 0);
 	ft_printf("\nprintf %%+5d, 0\n");
 	printf("%+5d$\n", 0);
 	ft_printf("%+5d$\n", 0);
@@ -412,22 +439,26 @@ static void mistakes(void)
 	ft_printf("printf %%+5d, -7\n");
 	printf("%+5d\n", -7);
 	ft_printf("%+5d\n", -7);
+	printf("%+5d\n", 7);
+	ft_printf("%+5d\n", 7);
+	printf("% 5d\n", 7);
+	ft_printf("% 5d\n", 7);
 }
 
 int		main(void)
 {
-	// extra_space_plus_di();
-	// simple_test_di();
-	// padding_test_di();
-	// combi_plus_space_zero_di();
-	// precision_di();
-	// asterisk_di();
-	// range_check_di();
-	// hash_flag_di();
-	// make_test_di_1();
-	// make_test_di_bonus();
-	// make_test_di_loop();
-	// extra();
+	extra_space_plus_di();
+	simple_test_di();
+	padding_test_di();
+	combi_plus_space_zero_di();
+	precision_di();
+	asterisk_di();
+	range_check_di();
+	hash_flag_di();
+	make_test_di_1();
+	make_test_di_bonus();
+	make_test_di_loop();
+	extra();
 	mistakes();
 	return (0);
 }

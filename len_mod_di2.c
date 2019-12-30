@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/27 16:02:08 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/10/01 16:30:20 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/29 16:42:37 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "includes/printf.h"
 
 unsigned long long		check_int(va_list args, t_info *flag)
 {

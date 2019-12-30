@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/23 13:09:36 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/23 13:09:40 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/29 16:43:46 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "includes/printf.h"
 
 unsigned long long		check_u(va_list args, char conv_spec)
 {
@@ -30,7 +30,7 @@ unsigned long long		check_u(va_list args, char conv_spec)
 
 intmax_t				check_intmax_t(va_list args)
 {
-	intmax_t		num;
+	intmax_t			num;
 
 	num = va_arg(args, intmax_t);
 	return (num);

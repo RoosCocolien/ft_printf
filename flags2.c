@@ -6,43 +6,55 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/12 14:25:20 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/25 14:50:55 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/30 18:57:52 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "includes/printf.h"
 
-int		check_flag_plus(t_info *flag, int fill, int left_align)
+static int	flags_part_five(char *s, t_info *flag, int x)
 {
-	if ((*flag).precision == 0 && (*flag).neg == 0)
-		fill--;
-	if ((*flag).neg == 0 && (((*flag).precision != 0 || left_align == 1) ||
-	(*flag).zero == 1))
+	if (s[x] == 'L')
 	{
-		ft_putchar_fd('+', (*flag).fd);
-		(*flag).plus++;
-		(*flag).count++;
+		(*flag).l_cap = 1;
+		x++;
 	}
-	return (fill);
+	else if (s[x] == 'd' || s[x] == 'i' || s[x] == 'f' || s[x] == 'c'\
+	|| s[x] == 's' || s[x] == '%' || s[x] == 'e' || s[x] == 'E'\
+	|| s[x] == 'g' || s[x] == 'n' || s[x] == 'o' || s[x] == 'p'\
+	|| s[x] == 'u' || s[x] == 'x')
+		return (x);
+	else
+		return (x++);
+	return (x);
 }
 
-int		check_flag_space(t_info *flag, int fill, int left_align)
+int			flags_part_four(char *s, t_info *flag, int x)
 {
-	left_align = 0; //weghalen
-//	if ((*flag).precision == 0 && (*flag).neg == 0)
-//		fill--;
-//	printf("test\nneg: %d, precision: %d, left_align: %d", (*flag).neg, (*flag).precision, left_align);
-	if ((*flag).neg == 0/*&& (((*flag).precision != 0 || left_align == 1) ||\
-	(*flag).zero == 1)*/ && (*flag).f_nan == 0)
+	if (s[x] == 'l' && s[x - 1] == 'l')
 	{
-		ft_putchar_fd(' ', (*flag).fd);
-		fill--;
-		(*flag).count++;
+		(*flag).l = 0;
+		(*flag).ll = 1;
+		x++;
 	}
-	return (fill);
+	else if (s[x] == 'h' && s[x - 1] != 'h')
+	{
+		(*flag).hh = 0;
+		(*flag).h = 1;
+		x++;
+	}
+	else if (s[x] == 'h' && s[x - 1] == 'h')
+	{
+		(*flag).h = 0;
+		(*flag).hh = 1;
+		x++;
+	}
+	else
+		x = flags_part_five(s, flag, x);
+	return (x);
 }
 
-int		save_prec_width(char *s, t_info *flag, int x)
+int			save_prec_width(char *s, t_info *flag, int x)
 {
 	char	*value_prec_width;
 	int		i;
@@ -59,12 +71,16 @@ int		save_prec_width(char *s, t_info *flag, int x)
 	return (x);
 }
 
-int		check_precision(char *s, t_info *flag, int x)
+int			check_precision(char *s, t_info *flag, int x)
 {
 	if (s[x + 1] == '*')
 	{
 		(*flag).precision = 2;
 		x = x + 2;
+		if ((*flag).sequence == 0)
+			(*flag).sequence++;
+		else
+			(*flag).sequence--;
 	}
 	else
 	{
@@ -75,7 +91,7 @@ int		check_precision(char *s, t_info *flag, int x)
 	return (x);
 }
 
-void	set_zero_flags(t_info *flag)
+void		set_zero_flags(t_info *flag)
 {
 	(*flag).minus = 0;
 	(*flag).zero = 0;
@@ -84,6 +100,7 @@ void	set_zero_flags(t_info *flag)
 	(*flag).hash = 0;
 	(*flag).width = 0;
 	(*flag).asterisk = 0;
+	(*flag).asterisk_s = 0;
 	(*flag).precision = 0;
 	(*flag).prec_value = 0;
 	(*flag).prec_no_val = 0;
@@ -100,4 +117,5 @@ void	set_zero_flags(t_info *flag)
 	(*flag).leftover = 0;
 	(*flag).f_nan = 0;
 	(*flag).f_inf = 0;
+	(*flag).sequence = 0;
 }

@@ -6,13 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/20 16:11:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 14:48:02 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/29 16:45:51 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "includes/printf.h"
 
-long double			find_power(long double i, t_info *flag)
+long double					find_power(long double i, t_info *flag)
 {
 	if (i < 1 && i > 0)
 	{
@@ -35,9 +35,10 @@ long double			find_power(long double i, t_info *flag)
 	return (i);
 }
 
-static char			*fill_ret_str(t_info *flag, char not, int mal_size, int i)
+static char					*fill_ret_str(t_info *flag, char not,\
+							int mal_size, int i)
 {
-	char *ret_str;
+	char	*ret_str;
 
 	ret_str = (char*)malloc(sizeof(char) * 5 + mal_size + 1);
 	ret_str[5 + mal_size] = '\0';
@@ -63,7 +64,7 @@ static char			*fill_ret_str(t_info *flag, char not, int mal_size, int i)
 	return (ret_str);
 }
 
-static char			*ret_str_maker(t_info *flag, char e_not)
+static char					*ret_str_maker(t_info *flag, char e_not)
 {
 	char	*ret_str;
 	int		malloc_size;
@@ -73,23 +74,23 @@ static char			*ret_str_maker(t_info *flag, char e_not)
 	return (ret_str);
 }
 
-static int			calc_new_i_int(t_info *flag, long double i)
+static unsigned long long	calc_spec_e(t_info *flag, long double i)
 {
-	int		decimals;
+	int		precision;
 	int		multiplier;
 
 	multiplier = 1;
-	decimals = (*flag).prec_value;
-	while (decimals > 0)
+	precision = (*flag).prec_value;
+	while (precision > 0)
 	{
-		multiplier = multiplier * 10;
-		decimals--;
+		multiplier = multiplier * 10.0;
+		precision--;
 	}
 	i = (double)i * multiplier;
 	return (i);
 }
 
-char				*make_str_e(long double i, t_info *flag, char e_not)
+char						*make_str_e(long double i, t_info *flag, char e_not)
 {
 	char	*ret_str;
 	int		new_i_int;
@@ -99,7 +100,7 @@ char				*make_str_e(long double i, t_info *flag, char e_not)
 	x = 0;
 	i = find_power(i, flag);
 	i = roundup_e(i, flag, (*flag).prec_value);
-	new_i_int = calc_new_i_int(flag, i);
+	new_i_int = calc_spec_e(flag, i);
 	ret_str = ret_str_maker(flag, e_not);
 	new_i_str = ft_itoa_llu(new_i_int);
 	while (new_i_str[x] && x <= (*flag).prec_value)

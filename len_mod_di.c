@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/20 13:38:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/11/10 14:33:26 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/30 15:37:15 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "includes/printf.h"
 
 static unsigned long long	check_char(va_list args, t_info *flag)
 {
@@ -90,5 +90,10 @@ unsigned long long			len_mod_check_di(va_list args, t_info *flag)
 		i = check_longlong(args, flag);
 	else
 		i = check_int(args, flag);
+	if ((*flag).neg == 1)
+	{
+		(*flag).space = 0;
+		(*flag).plus = 0;
+	}
 	return (i);
 }

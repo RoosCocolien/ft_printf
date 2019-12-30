@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 11:52:24 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/22 12:20:57 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/30 19:37:04 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "includes/printf.h"
 
 int		find_spec_2(char *s, va_list args, t_info *flag, int x)
 {
@@ -23,7 +23,7 @@ int		find_spec_2(char *s, va_list args, t_info *flag, int x)
 	else if (s[x] == 'p')
 		x = spec_p(s, args, flag, x);
 	else
-		return (-1);
+		return (x);
 	return (x);
 }
 

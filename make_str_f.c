@@ -6,13 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:36:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/22 18:39:00 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/29 22:20:34 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "includes/printf.h"
 
-static void			find_len_decimals(t_info *flag)
+static void					find_len_decimals(t_info *flag)
 {
 	(*flag).dot = 1;
 	if ((*flag).precision != 0 && (*flag).prec_value == 0 && (*flag).hash != 0)
@@ -21,7 +21,7 @@ static void			find_len_decimals(t_info *flag)
 		(*flag).prec_value = 6;
 }
 
-static long long	find_precision(t_info *flag)
+static unsigned long long	find_precision(t_info *flag)
 {
 	unsigned long long	multiplier;
 	int					x;
@@ -41,17 +41,17 @@ static long long	find_precision(t_info *flag)
 	return (multiplier);
 }
 
-static char			*get_decimals(long double i, t_info *flag)
+char						*get_decimals(long double i, t_info *flag)
 {
 	char				*dec_str;
 	int					len;
-	long long			dec_int;
-	long long			precision;
+	unsigned long long	dec_int;
+	unsigned long long	precision;
 	int					x;
 
 	x = 1;
 	precision = find_precision(flag);
-	dec_int = (i - (int)i) * precision;
+	dec_int = (i - (unsigned long long)i) * precision;
 	len = 1 + (*flag).prec_value - (*flag).leftover;
 	dec_str = ft_memalloc(sizeof(char) * len + 1);
 	dec_str[len] = '\0';
@@ -68,7 +68,8 @@ static char			*get_decimals(long double i, t_info *flag)
 	return (dec_str);
 }
 
-static char			*make_ret_str(char *before, char *after, int i, int x)
+static char					*make_ret_str(char *before, char *after,\
+							int i, int x)
 {
 	int					len_a;
 	int					len_b;
@@ -96,7 +97,7 @@ static char			*make_ret_str(char *before, char *after, int i, int x)
 	return (ret_str);
 }
 
-char				*make_str_f(long double i, t_info *flag)
+char						*make_str_f(long double i, t_info *flag)
 {
 	char				*ret_str;
 	char				*before;

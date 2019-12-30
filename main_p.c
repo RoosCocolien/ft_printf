@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/10 15:24:21 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/25 17:26:03 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2019/12/27 15:31:42 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -312,6 +312,22 @@ void	mistakes(void)
 	printf("\n");
 }
 
+static void	extra(void)
+{
+	printf("return_pf:\t(%%.15p 0)\t%d\n", printf("%.15p\n", 0));
+	printf("return_fpf:\t(%%.15p 0)\t%d\n", ft_printf("%.15p\n", 0));
+	printf("\n");
+	printf("return_pf:\t(%%20.15p 0)\t%d\n", printf("%20.15p\n", 0));
+	printf("return_fpf:\t(%%20.15p 0)\t%d\n", ft_printf("%20.15p\n", 0));
+	printf("\n");
+	printf("return_pf:\t(%%.15p 38)\t%d\n", printf("%.15p\n", 38));
+	printf("return_fpf:\t(%%.15p 38)\t%d\n", ft_printf("%.15p\n", 38));
+	printf("\n");
+	printf("return_pf:\t(%%.15#x 0)\t%d\n", printf("%.15#x\n", 0));
+	printf("return_fpf:\t(%%.15#x 0)\t%d\n", ft_printf("%.15#x\n", 0));
+	printf("\n");	
+}
+
 int		main(void)
 {
 	simple_p();
@@ -319,7 +335,8 @@ int		main(void)
 	precision_p();
 	padding_p();
 	troubles();
-	// make_test_p();
-	// mistakes();
+	make_test_p();
+	mistakes();
+	extra();
 	return (0);
 }
