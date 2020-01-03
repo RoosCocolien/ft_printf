@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 15:03:48 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/30 19:22:55 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/30 20:11:01 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/printf.h"
+#include "includes/ft_printf.h"
 
 unsigned long long	ten_to_the_power_of(int power)
 {

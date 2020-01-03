@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/22 14:55:52 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/30 19:04:53 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/30 20:11:01 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/printf.h"
+#include "includes/ft_printf.h"
 
 static char		*fill_zeros(intmax_t i, t_info *flag, t_padding *padding,\
 				char spec)

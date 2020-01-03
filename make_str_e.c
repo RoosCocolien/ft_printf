@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/20 16:11:04 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/29 16:45:51 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/30 20:11:01 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/printf.h"
+#include "includes/ft_printf.h"
 
 long double					find_power(long double i, t_info *flag)
 {

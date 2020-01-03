@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 17:48:28 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/30 19:18:59 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/30 20:11:01 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/printf.h"
+#include "includes/ft_printf.h"
 
 static void	get_prec_value_if_asterisk(va_list args, t_info *flag)
 {

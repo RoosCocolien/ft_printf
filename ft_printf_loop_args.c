@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/21 17:14:15 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/29 16:41:53 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/30 20:11:01 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/printf.h"
+#include "includes/ft_printf.h"
 
 int			loop_format_args(char *str, va_list args, int fd, int x)
 {

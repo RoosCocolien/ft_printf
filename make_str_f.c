@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:36:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/29 22:20:34 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/31 12:52:30 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/printf.h"
+#include "includes/ft_printf.h"
 
 static void					find_len_decimals(t_info *flag)
 {
@@ -41,17 +41,18 @@ static unsigned long long	find_precision(t_info *flag)
 	return (multiplier);
 }
 
-char						*get_decimals(long double i, t_info *flag)
+char						*get_decimals(long double i, t_info *flag, int x)
 {
 	char				*dec_str;
 	int					len;
-	unsigned long long	dec_int;
+	long long			dec_int;
 	unsigned long long	precision;
-	int					x;
 
-	x = 1;
 	precision = find_precision(flag);
-	dec_int = (i - (unsigned long long)i) * precision;
+	if ((*flag).prec_value > 10 && i > 100)
+		i = i - (long long)i;
+	i *= precision;
+	dec_int = (long long)i;
 	len = 1 + (*flag).prec_value - (*flag).leftover;
 	dec_str = ft_memalloc(sizeof(char) * len + 1);
 	dec_str[len] = '\0';
@@ -110,7 +111,7 @@ char						*make_str_f(long double i, t_info *flag)
 	if ((*flag).dot == 0 && (*flag).hash == 0)
 		return (before);
 	if ((*flag).hash == 1 || ((*flag).dot == 1 && (*flag).prec_value != 0))
-		after = get_decimals(i, flag);
+		after = get_decimals(i, flag, 1);
 	if (after && (*flag).prec_value <= (int)ft_strlen(after) - 1 &&\
 	(*flag).width <= (int)ft_strlen(after) - 1)
 		(*flag).zero = 0;

@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/26 14:55:30 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/30 15:32:58 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/30 20:20:37 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/printf.h"
+#include "includes/ft_printf.h"
 
 int		put_0x_spec_f(int count, char spec, int fd)
 {
@@ -25,7 +25,7 @@ int		change_fill_float(t_info *flag, int fill, int length)
 {
 	if ((*flag).width > 0)
 		fill = (*flag).width - length;
-	if ((*flag).neg == 1 /* && (*flag).prec_value == 0*/)
+	if ((*flag).neg == 1)
 	{
 		fill--;
 	}

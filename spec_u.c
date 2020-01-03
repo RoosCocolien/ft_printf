@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:58 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/30 19:34:06 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/31 12:54:17 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/printf.h"
+#include "includes/ft_printf.h"
 
 int		spec_u(char *s, va_list args, t_info *flag, int x)
 {
@@ -24,6 +24,8 @@ int		spec_u(char *s, va_list args, t_info *flag, int x)
 	i = len_mod_check_u(args, flag, s[x]);
 	length = check_length_zero_int(i, flag);
 	fill_p = fill_precision(flag, length);
+	if ((*flag).precision != 0)
+		(*flag).zero = 0;
 	fill_w = fill_width(flag, s[x], length + fill_p + (*flag).neg);
 	if ((*flag).minus == 0 && fill_w > 0)
 	{

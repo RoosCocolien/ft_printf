@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   printf.h                                           :+:    :+:            */
+/*   ft_printf.h                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/25 13:25:23 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/30 19:28:44 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/31 13:01:14 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-
-/*
-**	remove <stdio.h>
-*/
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
 # include <stdlib.h>
 # include "../libft/includes/libft.h"
-# include <stdio.h>
 # include <unistd.h>
 
 typedef union		u_float
@@ -127,7 +122,8 @@ void				print_string_count_length(unsigned long long i,\
 unsigned long long	len_mod_check_di(va_list args, t_info *flag);
 unsigned long long	check_int(va_list args, t_info *flag);
 long double			len_mod_check_efg(va_list args, t_info *flag);
-intmax_t			len_mod_check_u(va_list args, t_info *flag, char conv_spec);
+intmax_t			len_mod_check_u(va_list args, t_info *flag,\
+					char conv_spec);
 unsigned long long	check_u(va_list args, char conv_spec);
 intmax_t			check_intmax_t(va_list args);
 
@@ -138,7 +134,7 @@ intmax_t			check_intmax_t(va_list args);
 char				*make_str_e(long double i, t_info *flag, char e_not);
 long double			find_power(long double i, t_info *flag);
 char				*make_str_f(long double i, t_info *flag);
-char				*get_decimals(long double i, t_info *flag);
+char				*get_decimals(long double i, t_info *flag, int x);
 long double			get_decimals_roundup(long double i);
 int					float_check_neg_zero(long double i);
 char				*make_hex_str(intmax_t i, t_info *flag, char spec,\

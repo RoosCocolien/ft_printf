@@ -6,11 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/07 15:48:33 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/30 13:37:21 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/31 12:54:42 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/printf.h"
+#include "includes/ft_printf.h"
 
 int		spec_o(char *s, va_list args, t_info *flag, int x)
 {
@@ -20,7 +20,7 @@ int		spec_o(char *s, va_list args, t_info *flag, int x)
 
 	set_padding_to_zero(&padding);
 	(*flag).plus = 0;
-	if ((*flag).precision > 0 && (*flag).prec_value == 0)
+	if ((*flag).precision != 0)
 		(*flag).zero = 0;
 	prec_and_zero_check(args, flag, s[x]);
 	check_asterisk(flag, s[x]);

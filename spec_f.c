@@ -6,13 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/24 18:15:44 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/12/30 19:29:04 by rsteigen      ########   odam.nl         */
+/*   Updated: 2019/12/30 21:02:55 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/printf.h"
+#include "includes/ft_printf.h"
 
-void	print_nan_f(t_info *flag)
+void		print_nan_f(t_info *flag)
 {
 	if ((*flag).f_nan == 1)
 	{
